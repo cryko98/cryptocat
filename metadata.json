@@ -1,0 +1,6 @@
+{
+  "name": "Crypto Cat",
+  "description": "He went from depressed hood cat to degen king. The happiest cat in the entire blockchain. $CRYPTOCAT — From broke to based.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
