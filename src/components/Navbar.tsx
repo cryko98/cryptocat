@@ -95,7 +95,7 @@ export default function Navbar({ contractAddress }: NavbarProps) {
             <div className="hidden md:flex items-center space-x-4">
               {/* Telegram Button */}
               <a
-                href="https://t.me/cryptocatsol"
+                href="https://t.me/cryptocatsolana"
                 target="_blank"
                 rel="noreferrer"
                 id="telegram-header-btn"
@@ -178,7 +178,7 @@ export default function Navbar({ contractAddress }: NavbarProps) {
               <div className="pt-4 border-t border-white/10 flex items-center justify-between">
                 <div className="flex space-x-3">
                   <a
-                    href="https://t.me/cryptocatsol"
+                    href="https://t.me/cryptocatsolana"
                     target="_blank"
                     rel="noreferrer"
                     className="p-2.5 rounded-full bg-zinc-900 text-[#14F195] hover:bg-zinc-800 transition-colors"

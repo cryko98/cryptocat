@@ -38,7 +38,7 @@ export default function Footer() {
             
             {/* Telegram */}
             <a
-              href="https://t.me/cryptocatsol"
+              href="https://t.me/cryptocatsolana"
               target="_blank"
               rel="noreferrer"
               id="tg-footer"

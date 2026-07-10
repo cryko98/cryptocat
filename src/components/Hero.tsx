@@ -144,7 +144,7 @@ export default function Hero({ contractAddress }: HeroProps) {
               className="flex flex-wrap justify-center lg:justify-start gap-4"
             >
               <a
-                href="https://t.me/cryptocatsol"
+                href="https://t.me/cryptocatsolana"
                 target="_blank"
                 rel="noreferrer"
                 id="tg-hero-cta"
