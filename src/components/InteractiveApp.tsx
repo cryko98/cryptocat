@@ -67,15 +67,15 @@ export default function InteractiveApp() {
   const stats = calculateStats(solInvestment);
 
   return (
-    <section id="interactive-cat" className="relative py-20 sm:py-28 bg-[#f8fafc] overflow-hidden border-t border-b border-green-50">
+    <section id="interactive-cat" className="relative py-20 sm:py-28 bg-[#0d0d0d] overflow-hidden border-t border-b border-white/5">
       
       {/* Absolute floating decorations from prompt image */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        <div className="absolute top-[10%] left-[5%] w-16 h-16 rounded-full border border-green-100 bg-white/40 backdrop-blur-sm flex items-center justify-center shadow-sm animate-float-slow">
-          <span className="text-xl font-bold text-green-400">₿</span>
+        <div className="absolute top-[10%] left-[5%] w-16 h-16 rounded-full border border-white/10 bg-zinc-900/40 backdrop-blur-sm flex items-center justify-center shadow-sm animate-float-slow">
+          <span className="text-xl font-bold text-[#14F195]/70">₿</span>
         </div>
-        <div className="absolute bottom-[10%] right-[8%] w-14 h-14 rounded-full border border-green-100 bg-white/40 backdrop-blur-sm flex items-center justify-center shadow-sm animate-float-slower">
-          <span className="text-lg font-bold text-green-400">Ξ</span>
+        <div className="absolute bottom-[10%] right-[8%] w-14 h-14 rounded-full border border-white/10 bg-zinc-900/40 backdrop-blur-sm flex items-center justify-center shadow-sm animate-float-slower">
+          <span className="text-lg font-bold text-[#9945FF]/70">Ξ</span>
         </div>
       </div>
 
@@ -83,13 +83,13 @@ export default function InteractiveApp() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#22c55e] bg-green-50 px-3.5 py-2 rounded-full border border-green-100">
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#14F195] bg-zinc-900 px-3.5 py-2 rounded-full border border-white/10">
             🎮 Play & Interact
           </span>
-          <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-neutral-900 tracking-tight">
+          <h2 className="font-display text-4xl sm:text-5xl font-black text-white uppercase italic tracking-tight">
             Crypto Cat's Degen Lounge
           </h2>
-          <p className="text-neutral-500 font-sans font-medium text-base">
+          <p className="text-zinc-400 font-sans font-medium text-base">
             Test his happiness levels, feed him green candles, and see what happens when you stack bags!
           </p>
         </div>
@@ -98,37 +98,37 @@ export default function InteractiveApp() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto items-stretch">
           
           {/* Interactive Purr Game */}
-          <div className="lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl border-2 border-green-100 shadow-xl shadow-green-100/20 flex flex-col justify-between relative overflow-hidden">
+          <div className="lg:col-span-6 bg-zinc-900/80 p-6 sm:p-8 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-md flex flex-col justify-between relative overflow-hidden">
             
             <div className="space-y-6">
               <div className="flex justify-between items-center">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-50 text-green-700 text-xs font-bold border border-green-100">
-                  <Heart className="w-3.5 h-3.5 text-green-500 fill-current animate-pulse" /> Purr Clicker Game
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#14F195]/10 text-[#14F195] text-xs font-mono font-bold border border-[#14F195]/20">
+                  <Heart className="w-3.5 h-3.5 text-[#14F195] fill-current animate-pulse" /> Purr Clicker Game
                 </span>
-                <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest">
+                <span className="text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest">
                   Live local score
                 </span>
               </div>
 
               <div className="text-center space-y-2">
-                <h3 className="font-display text-lg font-bold text-neutral-700">Crypto Cat's Purr Meter</h3>
-                <div className="font-display font-black text-5xl sm:text-6xl text-[#22c55e] tabular-nums">
+                <h3 className="font-display text-lg font-bold text-zinc-300">Crypto Cat's Purr Meter</h3>
+                <div className="font-display font-black text-5xl sm:text-6xl text-[#14F195] tabular-nums">
                   {purrCount.toLocaleString()}
                 </div>
-                <p className="text-xs font-semibold text-neutral-500 bg-slate-50 inline-block px-3 py-1 rounded-full border border-slate-100">
-                  Status: <span className="text-[#22c55e] font-black">{pettingLevel}</span>
+                <p className="text-xs font-semibold text-zinc-400 bg-black/50 inline-block px-3 py-1 rounded-full border border-white/5">
+                  Status: <span className="text-[#14F195] font-black">{pettingLevel}</span>
                 </p>
               </div>
 
               {/* Cat Clicker Area */}
-              <div className="relative h-64 bg-gradient-to-b from-green-50/50 to-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center group overflow-hidden">
+              <div className="relative h-64 bg-black/40 rounded-2xl border border-white/5 flex items-center justify-center group overflow-hidden">
                 <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
                 
                 {/* Embedded Cat Avatar representing the user's exact uploaded image style */}
                 <button
                   onClick={handlePetCat}
                   id="pet-cat-main-action"
-                  className="relative z-10 w-44 h-44 rounded-full overflow-hidden border-4 border-white shadow-2xl focus:outline-none focus:ring-4 focus:ring-green-400 group-hover:scale-105 active:scale-95 transition-all duration-150 cursor-pointer"
+                  className="relative z-10 w-44 h-44 rounded-full overflow-hidden border-4 border-zinc-900 shadow-2xl focus:outline-none focus:ring-4 focus:ring-[#14F195] group-hover:scale-105 active:scale-95 transition-all duration-150 cursor-pointer"
                 >
                   <img
                     src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-07-10_15-56-40.jpg?v=1783688211"
@@ -136,11 +136,11 @@ export default function InteractiveApp() {
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
                 </button>
 
                 {/* Ambient instructions */}
-                <span className="absolute bottom-3 text-xs font-bold text-green-600/70 select-none animate-pulse">
+                <span className="absolute bottom-3 text-xs font-mono font-bold text-[#14F195]/80 select-none animate-pulse">
                   🖱️ CLICK ON THE CAT TO PUMP CANDLES!
                 </span>
 
@@ -158,11 +158,11 @@ export default function InteractiveApp() {
                       {/* Green Candlestick Graphic */}
                       <div 
                         style={{ height: `${candle.height}px` }}
-                        className="w-2.5 bg-green-500 rounded-sm relative flex justify-center"
+                        className="w-2.5 bg-[#14F195] rounded-sm relative flex justify-center"
                       >
-                        <div className="absolute top-[-8px] w-0.5 h-[calc(100%+16px)] bg-green-500"></div>
+                        <div className="absolute top-[-8px] w-0.5 h-[calc(100%+16px)] bg-[#14F195]"></div>
                       </div>
-                      <span className="mt-2 text-[10px] font-black text-green-600 bg-white px-1.5 py-0.5 rounded shadow-sm border border-green-200 uppercase tracking-tight select-none">
+                      <span className="mt-2 text-[10px] font-mono font-black text-black bg-[#14F195] px-1.5 py-0.5 rounded shadow-lg uppercase tracking-tight select-none">
                         {candle.text}
                       </span>
                     </motion.div>
@@ -172,8 +172,8 @@ export default function InteractiveApp() {
 
             </div>
 
-            <div className="pt-6 border-t border-slate-100 flex justify-between items-center">
-              <span className="text-xs text-neutral-400 font-sans font-medium">
+            <div className="pt-6 border-t border-white/5 flex justify-between items-center">
+              <span className="text-xs text-zinc-500 font-sans font-medium">
                 Feed him gains to level up.
               </span>
               <button
@@ -181,7 +181,7 @@ export default function InteractiveApp() {
                   setPurrCount(0);
                   setPettingLevel("Slightly smiling");
                 }}
-                className="text-xs text-neutral-400 hover:text-red-500 font-bold flex items-center gap-1 cursor-pointer"
+                className="text-xs text-zinc-500 hover:text-red-400 font-bold flex items-center gap-1 cursor-pointer"
               >
                 <RefreshCw className="w-3 h-3" /> Reset count
               </button>
@@ -190,30 +190,30 @@ export default function InteractiveApp() {
           </div>
 
           {/* Portfolio Happiness Calculator */}
-          <div className="lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl border-2 border-green-100 shadow-xl shadow-green-100/20 flex flex-col justify-between">
+          <div className="lg:col-span-6 bg-zinc-900/80 p-6 sm:p-8 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-md flex flex-col justify-between">
             
             <div className="space-y-6">
               <div className="flex justify-between items-center">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#9945FF]/10 text-[#9945FF] text-xs font-mono font-bold border border-[#9945FF]/20">
                   <Calculator className="w-3.5 h-3.5" /> Happiness Calculator
                 </span>
-                <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest">
+                <span className="text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest">
                   SOL Integration Simulator
                 </span>
               </div>
 
               <div className="space-y-2">
-                <h3 className="font-display text-lg font-bold text-neutral-700">Simulate Your Bag Size</h3>
-                <p className="text-xs text-neutral-500">
+                <h3 className="font-display text-lg font-bold text-zinc-300">Simulate Your Bag Size</h3>
+                <p className="text-xs text-zinc-400">
                   Drag the slider to define your potential investment in SOL and observe how it fuels Crypto Cat's grin level!
                 </p>
               </div>
 
               {/* Slider Controls */}
-              <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100 space-y-4">
+              <div className="bg-black/40 p-5 rounded-2xl border border-white/5 space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-xs font-bold text-slate-500">INVESTMENT AMOUNT</span>
-                  <span className="font-display font-black text-xl text-green-600">{solInvestment} SOL</span>
+                  <span className="text-xs font-bold text-zinc-500">INVESTMENT AMOUNT</span>
+                  <span className="font-display font-black text-xl text-[#14F195]">{solInvestment} SOL</span>
                 </div>
                 <input
                   type="range"
@@ -222,9 +222,9 @@ export default function InteractiveApp() {
                   step="0.1"
                   value={solInvestment}
                   onChange={(e) => setSolInvestment(parseFloat(e.target.value))}
-                  className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#22c55e]"
+                  className="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-[#14F195]"
                 />
-                <div className="flex justify-between text-[10px] text-slate-400 font-bold">
+                <div className="flex justify-between text-[10px] text-zinc-500 font-bold font-mono">
                   <span>0.1 SOL (Lil bag)</span>
                   <span>50 SOL (Smart buy)</span>
                   <span>100 SOL (Degen King)</span>
@@ -235,35 +235,35 @@ export default function InteractiveApp() {
               <div className="grid grid-cols-2 gap-4">
                 
                 {/* Lambos */}
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-center space-y-1">
-                  <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">LAMBOS IN GARAGE</span>
-                  <span className="font-display font-black text-2xl text-slate-800">{stats.lambos || "0"} 🏎️</span>
+                <div className="p-4 rounded-xl bg-black/40 border border-white/5 text-center space-y-1">
+                  <span className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider">LAMBOS IN GARAGE</span>
+                  <span className="font-display font-black text-2xl text-white">{stats.lambos || "0"} 🏎️</span>
                 </div>
 
                 {/* Tail Wag */}
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-center space-y-1">
-                  <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">TAIL WAG RATE</span>
-                  <span className="font-display font-black text-2xl text-slate-800">{stats.wagFrequency} Hz ⚡</span>
+                <div className="p-4 rounded-xl bg-black/40 border border-white/5 text-center space-y-1">
+                  <span className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider">TAIL WAG RATE</span>
+                  <span className="font-display font-black text-2xl text-white">{stats.wagFrequency} Hz ⚡</span>
                 </div>
 
                 {/* Grin Percentage */}
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-center space-y-1">
-                  <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">GRIN MULTIPLIER</span>
-                  <span className="font-display font-black text-2xl text-[#22c55e]">{stats.grinPercentage}% 😁</span>
+                <div className="p-4 rounded-xl bg-black/40 border border-white/5 text-center space-y-1">
+                  <span className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider font-mono">GRIN MULTIPLIER</span>
+                  <span className="font-display font-black text-2xl text-[#14F195]">{stats.grinPercentage}% 😁</span>
                 </div>
 
                 {/* Cash Bills Burned */}
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-center space-y-1">
-                  <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider">CASH BILLS BURNED</span>
-                  <span className="font-display font-black text-2xl text-red-500">{stats.billsBurned} 💵🔥</span>
+                <div className="p-4 rounded-xl bg-black/40 border border-white/5 text-center space-y-1">
+                  <span className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider">CASH BILLS BURNED</span>
+                  <span className="font-display font-black text-2xl text-red-400">{stats.billsBurned} 💵🔥</span>
                 </div>
 
               </div>
 
             </div>
 
-            <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-xs text-neutral-400 font-sans font-medium text-center sm:text-left">
+            <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <span className="text-xs text-zinc-500 font-sans font-medium text-center sm:text-left">
                 Every green candle elevates his joy!
               </span>
               <button
@@ -271,7 +271,7 @@ export default function InteractiveApp() {
                   const element = document.getElementById("how-to-buy");
                   if (element) element.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-[#22c55e] text-white font-display font-bold text-xs shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-black hover:bg-[#14F195] hover:text-black border border-[#14F195]/20 hover:border-transparent text-[#14F195] font-display font-black text-xs shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <Coins className="w-4 h-4" /> Swap {solInvestment} SOL Now
               </button>
