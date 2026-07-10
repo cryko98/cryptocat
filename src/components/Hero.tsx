@@ -194,7 +194,7 @@ export default function Hero({ contractAddress }: HeroProps) {
             >
               {/* Outer frame matching the Shopify layout style */}
               <img
-                src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-07-10_15-56-40.jpg?v=1783688211"
+                src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-07-10_22-01-31.jpg?v=1783710517"
                 alt="Crypto Cat holding phone showing green chart"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover rounded-[20px]"

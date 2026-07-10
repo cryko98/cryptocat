@@ -131,7 +131,7 @@ export default function InteractiveApp() {
                   className="relative z-10 w-44 h-44 rounded-full overflow-hidden border-4 border-zinc-900 shadow-2xl focus:outline-none focus:ring-4 focus:ring-[#14F195] group-hover:scale-105 active:scale-95 transition-all duration-150 cursor-pointer"
                 >
                   <img
-                    src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-07-10_15-56-40.jpg?v=1783688211"
+                    src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-07-10_22-01-31.jpg?v=1783710517"
                     alt="Grinning Crypto Cat"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover"

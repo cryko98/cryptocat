@@ -18,7 +18,7 @@ export default function Footer() {
             <div className="flex items-center justify-center md:justify-start space-x-3 cursor-pointer group" onClick={handleScrollToTop}>
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#14F195] shadow-[0_0_15px_rgba(20,241,149,0.3)]">
                 <img
-                  src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-07-10_15-56-40.jpg?v=1783688211"
+                  src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-07-10_22-01-31.jpg?v=1783710517"
                   alt="Crypto Cat"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
