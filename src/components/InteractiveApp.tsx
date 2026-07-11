@@ -18,16 +18,16 @@ export default function InteractiveApp() {
   const candleIdRef = useRef(0);
 
   // Sound effects text
-  const purrSounds = ["PURRRRRR!", "MEOW-GAINS!", "$CRYPTOCAT!", "GREEN CANDLE!", "TO THE MOON!", "LOUD PURRS!", "BASED!", "LAMBO!", "DEGEN KING!"];
+  const purrSounds = ["CASH FLOW!", "STACK BILLS!", "$WIFCASH!", "GREEN CANDLE!", "MEOW-MONEY!", "LOUD PURRS!", "BASED!", "LAMBO!", "CASH KING!"];
 
   const handlePetCat = (e: React.MouseEvent<HTMLButtonElement>) => {
     setPurrCount((prev) => {
       const newCount = prev + 1;
-      if (newCount >= 100) setPettingLevel("DEGEN KING EMERALD SUPREME 👑");
+      if (newCount >= 100) setPettingLevel("DEGEN CASH SUPREME 👑");
       else if (newCount >= 50) setPettingLevel("Lamborghini Speedracer 🏎️");
-      else if (newCount >= 25) setPettingLevel("Sunglasses fully on 😎");
-      else if (newCount >= 10) setPettingLevel("Extremely Grinning 😄");
-      else setPettingLevel("Happiest Cat on Solana 😸");
+      else if (newCount >= 25) setPettingLevel("Gold Chains fully on 😎");
+      else if (newCount >= 10) setPettingLevel("Extremely Wealthy 😄");
+      else setPettingLevel("Wealthiest Cat on Solana 😸");
       return newCount;
     });
 
@@ -67,15 +67,15 @@ export default function InteractiveApp() {
   const stats = calculateStats(solInvestment);
 
   return (
-    <section id="interactive-cat" className="relative py-20 sm:py-28 bg-[#0d0d0d] overflow-hidden border-t border-b border-white/5">
+    <section id="interactive-cat" className="relative py-20 sm:py-28 bg-[#050806] overflow-hidden border-t border-b border-white/5">
       
       {/* Absolute floating decorations from prompt image */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
         <div className="absolute top-[10%] left-[5%] w-16 h-16 rounded-full border border-white/10 bg-zinc-900/40 backdrop-blur-sm flex items-center justify-center shadow-sm animate-float-slow">
-          <span className="text-xl font-bold text-[#14F195]/70">₿</span>
+          <span className="text-xl font-bold text-[#10B981]/70">₿</span>
         </div>
         <div className="absolute bottom-[10%] right-[8%] w-14 h-14 rounded-full border border-white/10 bg-zinc-900/40 backdrop-blur-sm flex items-center justify-center shadow-sm animate-float-slower">
-          <span className="text-lg font-bold text-[#9945FF]/70">Ξ</span>
+          <span className="text-lg font-bold text-[#F59E0B]/70">Ξ</span>
         </div>
       </div>
 
@@ -83,14 +83,14 @@ export default function InteractiveApp() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#14F195] bg-zinc-900 px-3.5 py-2 rounded-full border border-white/10">
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#10B981] bg-zinc-900 px-3.5 py-2 rounded-full border border-white/10">
             🎮 Play & Interact
           </span>
           <h2 className="font-display text-4xl sm:text-5xl font-black text-white uppercase italic tracking-tight">
-            Crypto Cat's Degen Lounge
+            Cat wif Cash's Degen Lounge
           </h2>
           <p className="text-zinc-400 font-sans font-medium text-base">
-            Test his happiness levels, feed him green candles, and see what happens when you stack bags!
+            Test his wealth metrics, pump stacks of green bills, and see what happens when you stack $WIFCASH!
           </p>
         </div>
 
@@ -102,8 +102,8 @@ export default function InteractiveApp() {
             
             <div className="space-y-6">
               <div className="flex justify-between items-center">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#14F195]/10 text-[#14F195] text-xs font-mono font-bold border border-[#14F195]/20">
-                  <Heart className="w-3.5 h-3.5 text-[#14F195] fill-current animate-pulse" /> Purr Clicker Game
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#10B981]/10 text-[#10B981] text-xs font-mono font-bold border border-[#10B981]/20">
+                  <Heart className="w-3.5 h-3.5 text-[#10B981] fill-current animate-pulse" /> Cash Clicker Game
                 </span>
                 <span className="text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest">
                   Live local score
@@ -111,12 +111,12 @@ export default function InteractiveApp() {
               </div>
 
               <div className="text-center space-y-2">
-                <h3 className="font-display text-lg font-bold text-zinc-300">Crypto Cat's Purr Meter</h3>
-                <div className="font-display font-black text-5xl sm:text-6xl text-[#14F195] tabular-nums">
+                <h3 className="font-display text-lg font-bold text-zinc-300">Cat wif Cash's Wealth Meter</h3>
+                <div className="font-display font-black text-5xl sm:text-6xl text-[#10B981] tabular-nums">
                   {purrCount.toLocaleString()}
                 </div>
                 <p className="text-xs font-semibold text-zinc-400 bg-black/50 inline-block px-3 py-1 rounded-full border border-white/5">
-                  Status: <span className="text-[#14F195] font-black">{pettingLevel}</span>
+                  Status: <span className="text-[#10B981] font-black">{pettingLevel}</span>
                 </p>
               </div>
 
@@ -128,11 +128,11 @@ export default function InteractiveApp() {
                 <button
                   onClick={handlePetCat}
                   id="pet-cat-main-action"
-                  className="relative z-10 w-44 h-44 rounded-full overflow-hidden border-4 border-zinc-900 shadow-2xl focus:outline-none focus:ring-4 focus:ring-[#14F195] group-hover:scale-105 active:scale-95 transition-all duration-150 cursor-pointer"
+                  className="relative z-10 w-44 h-44 rounded-full overflow-hidden border-4 border-zinc-900 shadow-2xl focus:outline-none focus:ring-4 focus:ring-[#10B981] group-hover:scale-105 active:scale-95 transition-all duration-150 cursor-pointer"
                 >
                   <img
-                    src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-07-10_22-01-31.jpg?v=1783710517"
-                    alt="Grinning Crypto Cat"
+                    src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-07-11_16-18-33.jpg?v=1783775937"
+                    alt="Grinning Cat wif Cash"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover"
                   />
@@ -140,8 +140,8 @@ export default function InteractiveApp() {
                 </button>
 
                 {/* Ambient instructions */}
-                <span className="absolute bottom-3 text-xs font-mono font-bold text-[#14F195]/80 select-none animate-pulse">
-                  🖱️ CLICK ON THE CAT TO PUMP CANDLES!
+                <span className="absolute bottom-3 text-xs font-mono font-bold text-[#10B981]/80 select-none animate-pulse">
+                  🖱️ CLICK ON THE CAT TO PUMP STACKS!
                 </span>
 
                 {/* Floating Candle Animations */}
@@ -158,11 +158,11 @@ export default function InteractiveApp() {
                       {/* Green Candlestick Graphic */}
                       <div 
                         style={{ height: `${candle.height}px` }}
-                        className="w-2.5 bg-[#14F195] rounded-sm relative flex justify-center"
+                        className="w-2.5 bg-[#10B981] rounded-sm relative flex justify-center"
                       >
-                        <div className="absolute top-[-8px] w-0.5 h-[calc(100%+16px)] bg-[#14F195]"></div>
+                        <div className="absolute top-[-8px] w-0.5 h-[calc(100%+16px)] bg-[#10B981]"></div>
                       </div>
-                      <span className="mt-2 text-[10px] font-mono font-black text-black bg-[#14F195] px-1.5 py-0.5 rounded shadow-lg uppercase tracking-tight select-none">
+                      <span className="mt-2 text-[10px] font-mono font-black text-black bg-[#10B981] px-1.5 py-0.5 rounded shadow-lg uppercase tracking-tight select-none">
                         {candle.text}
                       </span>
                     </motion.div>
@@ -194,7 +194,7 @@ export default function InteractiveApp() {
             
             <div className="space-y-6">
               <div className="flex justify-between items-center">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#9945FF]/10 text-[#9945FF] text-xs font-mono font-bold border border-[#9945FF]/20">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#F59E0B]/10 text-[#F59E0B] text-xs font-mono font-bold border border-[#F59E0B]/20">
                   <Calculator className="w-3.5 h-3.5" /> Happiness Calculator
                 </span>
                 <span className="text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest">
@@ -205,7 +205,7 @@ export default function InteractiveApp() {
               <div className="space-y-2">
                 <h3 className="font-display text-lg font-bold text-zinc-300">Simulate Your Bag Size</h3>
                 <p className="text-xs text-zinc-400">
-                  Drag the slider to define your potential investment in SOL and observe how it fuels Crypto Cat's grin level!
+                  Drag the slider to define your potential investment in SOL and observe how it fuels Cat wif Cash's grin level!
                 </p>
               </div>
 
@@ -213,7 +213,7 @@ export default function InteractiveApp() {
               <div className="bg-black/40 p-5 rounded-2xl border border-white/5 space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-xs font-bold text-zinc-500">INVESTMENT AMOUNT</span>
-                  <span className="font-display font-black text-xl text-[#14F195]">{solInvestment} SOL</span>
+                  <span className="font-display font-black text-xl text-[#10B981]">{solInvestment} SOL</span>
                 </div>
                 <input
                   type="range"
@@ -222,12 +222,12 @@ export default function InteractiveApp() {
                   step="0.1"
                   value={solInvestment}
                   onChange={(e) => setSolInvestment(parseFloat(e.target.value))}
-                  className="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-[#14F195]"
+                  className="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-[#10B981]"
                 />
                 <div className="flex justify-between text-[10px] text-zinc-500 font-bold font-mono">
                   <span>0.1 SOL (Lil bag)</span>
                   <span>50 SOL (Smart buy)</span>
-                  <span>100 SOL (Degen King)</span>
+                  <span>100 SOL (Money King)</span>
                 </div>
               </div>
 
@@ -248,13 +248,13 @@ export default function InteractiveApp() {
 
                 {/* Grin Percentage */}
                 <div className="p-4 rounded-xl bg-black/40 border border-white/5 text-center space-y-1">
-                  <span className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider font-mono">GRIN MULTIPLIER</span>
-                  <span className="font-display font-black text-2xl text-[#14F195]">{stats.grinPercentage}% 😁</span>
+                  <span className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider font-mono">CASH GAUGE %</span>
+                  <span className="font-display font-black text-2xl text-[#10B981]">{stats.grinPercentage}% 😁</span>
                 </div>
 
                 {/* Cash Bills Burned */}
                 <div className="p-4 rounded-xl bg-black/40 border border-white/5 text-center space-y-1">
-                  <span className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider">CASH BILLS BURNED</span>
+                  <span className="block text-[10px] font-bold text-zinc-500 uppercase tracking-wider">PAPER FIAT DEVALUED</span>
                   <span className="font-display font-black text-2xl text-red-400">{stats.billsBurned} 💵🔥</span>
                 </div>
 
@@ -271,7 +271,7 @@ export default function InteractiveApp() {
                   const element = document.getElementById("how-to-buy");
                   if (element) element.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-black hover:bg-[#14F195] hover:text-black border border-[#14F195]/20 hover:border-transparent text-[#14F195] font-display font-black text-xs shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-black hover:bg-[#10B981] hover:text-black border border-[#10B981]/20 hover:border-transparent text-[#10B981] font-display font-black text-xs shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <Coins className="w-4 h-4" /> Swap {solInvestment} SOL Now
               </button>

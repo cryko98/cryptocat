@@ -20,42 +20,42 @@ export default function HowToBuy({ contractAddress }: HowToBuyProps) {
       num: "01",
       title: "Create Phantom Wallet",
       description: "Download Phantom Wallet from phantom.app or your mobile app store. Create a new wallet and write down your recovery seed phrase safely.",
-      icon: <Wallet className="w-6 h-6 text-[#9945FF]" />,
+      icon: <Wallet className="w-6 h-6 text-[#F59E0B]" />,
     },
     {
       num: "02",
       title: "Acquire Solana ($SOL)",
       description: "Purchase SOL inside Phantom directly, or buy it on exchanges like Coinbase, Binance, or Kraken, and withdraw it to your Phantom wallet address.",
-      icon: <Landmark className="w-6 h-6 text-[#14F195]" />,
+      icon: <Landmark className="w-6 h-6 text-[#10B981]" />,
     },
     {
       num: "03",
-      title: "Swap SOL for $CRYPTOCAT",
-      description: "Connect to Jupiter (jup.ag) or Raydium inside Phantom's browser. Paste the $CRYPTOCAT contract address and swap your desired amount of SOL.",
-      icon: <ArrowRightLeft className="w-6 h-6 text-[#9945FF]" />,
+      title: "Swap SOL for $WIFCASH",
+      description: "Connect to Jupiter (jup.ag) or Raydium inside Phantom's browser. Paste the $WIFCASH contract address and swap your desired amount of SOL.",
+      icon: <ArrowRightLeft className="w-6 h-6 text-[#F59E0B]" />,
     },
     {
       num: "04",
-      title: "Purr & Stack Gains!",
-      description: "Congratulations! You are officially no longer a sad Cash Cat. Sunglasses on, relax, and grin along as the green candles print money!",
-      icon: <Sparkles className="w-6 h-6 text-[#14F195] animate-pulse" />,
+      title: "Count Coins & Stack Cash!",
+      description: "Congratulations! You are officially no longer a sad broke cat. Sunglasses on, relax, and watch as the green candles print stack after stack of cash!",
+      icon: <Sparkles className="w-6 h-6 text-[#10B981] animate-pulse" />,
     },
   ];
 
   return (
-    <section id="how-to-buy" className="relative py-20 sm:py-28 bg-[#0d0d0d] overflow-hidden border-t border-white/5">
+    <section id="how-to-buy" className="relative py-20 sm:py-28 bg-[#050806] overflow-hidden border-t border-white/5">
       
       {/* Decorative floating grids */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        <div className="absolute top-[40%] left-[-5%] w-64 h-64 bg-[#14F195] rounded-full blur-3xl opacity-10"></div>
-        <div className="absolute bottom-[10%] right-[-5%] w-72 h-72 bg-[#9945FF] rounded-full blur-3xl opacity-10"></div>
+        <div className="absolute top-[40%] left-[-5%] w-64 h-64 bg-[#10B981] rounded-full blur-3xl opacity-10"></div>
+        <div className="absolute bottom-[10%] right-[-5%] w-72 h-72 bg-[#F59E0B] rounded-full blur-3xl opacity-10"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#14F195] bg-zinc-900 px-3.5 py-2 rounded-full border border-white/10">
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#10B981] bg-zinc-900 px-3.5 py-2 rounded-full border border-white/10">
             📖 How to Buy Guide
           </span>
           <h2 className="font-display text-4xl sm:text-5xl font-black text-white uppercase italic tracking-tight">
@@ -75,13 +75,13 @@ export default function HowToBuy({ contractAddress }: HowToBuyProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="relative bg-zinc-900/80 p-6 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-md flex flex-col justify-between group hover:border-[#14F195]/40 transition-all duration-300"
+              className="relative bg-zinc-900/80 p-6 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-md flex flex-col justify-between group hover:border-[#10B981]/40 transition-all duration-300"
             >
               <div className="space-y-6">
                 
                 {/* Header of card */}
                 <div className="flex justify-between items-center">
-                  <span className="font-display font-black text-4xl text-zinc-800 group-hover:text-[#14F195]/40 transition-colors">
+                  <span className="font-display font-black text-4xl text-zinc-800 group-hover:text-[#10B981]/40 transition-colors">
                     {step.num}
                   </span>
                   <div className="p-3 rounded-2xl border border-white/5 bg-black/50 shadow-sm">
@@ -106,7 +106,7 @@ export default function HowToBuy({ contractAddress }: HowToBuyProps) {
         {/* Contract Reminder Bottom block */}
         <div className="max-w-3xl mx-auto bg-zinc-900/80 border border-white/10 p-6 rounded-3xl shadow-2xl backdrop-blur-md text-center space-y-6">
           <div className="space-y-1">
-            <span className="text-[10px] font-mono font-black text-[#14F195] uppercase tracking-widest block">
+            <span className="text-[10px] font-mono font-black text-[#10B981] uppercase tracking-widest block">
               SWAP WITH CONFIDENCE
             </span>
             <h4 className="font-display font-black text-xl text-white uppercase italic">
@@ -126,8 +126,8 @@ export default function HowToBuy({ contractAddress }: HowToBuyProps) {
               id="copy-ca-buy-section"
               className={`w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-display font-bold shadow transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
                 copied
-                  ? "bg-[#14F195] text-black"
-                  : "bg-black hover:bg-[#14F195] hover:text-black text-[#14F195] border border-[#14F195]/20 hover:border-transparent"
+                  ? "bg-[#10B981] text-black"
+                  : "bg-black hover:bg-[#10B981] hover:text-black text-[#10B981] border border-[#10B981]/20 hover:border-transparent"
               }`}
             >
               {copied ? (

@@ -7,7 +7,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#050505] text-zinc-500 py-16 border-t border-white/5">
+    <footer className="bg-[#030504] text-zinc-500 py-16 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Block */}
@@ -16,20 +16,20 @@ export default function Footer() {
           {/* Logo & Slogan */}
           <div className="md:col-span-5 space-y-4 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start space-x-3 cursor-pointer group" onClick={handleScrollToTop}>
-              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#14F195] shadow-[0_0_15px_rgba(20,241,149,0.3)]">
+              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#10B981] shadow-[0_0_15px_rgba(16,185,129,0.3)]">
                 <img
-                  src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-07-10_22-01-31.jpg?v=1783710517"
-                  alt="Crypto Cat"
+                  src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-07-11_16-18-33.jpg?v=1783775937"
+                  alt="Cat wif Cash"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
                 />
               </div>
               <span className="font-display font-black text-xl tracking-tight text-white uppercase italic">
-                Crypto<span className="text-[#14F195]">Cat</span>
+                Cat wif <span className="text-[#10B981]">Cash</span>
               </span>
             </div>
             <p className="text-sm text-zinc-500 max-w-sm font-sans font-medium">
-              From depressed Cash Cat to legendary degen king. The happiest feline on Solana, printing money and green candles! 🐱📈
+              From sad broke cat to supreme money king. The wealthiest feline on Solana, stacking cash and printing fat green candles! 🐱💰💸
             </p>
           </div>
 
@@ -38,7 +38,7 @@ export default function Footer() {
             
             {/* Telegram */}
             <a
-              href="https://t.me/cryptocatsolana"
+              href="https://t.me/wifcashonsol"
               target="_blank"
               rel="noreferrer"
               id="tg-footer"
@@ -50,11 +50,11 @@ export default function Footer() {
               Telegram Group
             </a>
 
-            {/* Jupiter Buy */}
+            {/* Swap Buy */}
             <a
               href="#how-to-buy"
               id="buy-footer"
-              className="px-5 py-3 rounded-xl bg-black hover:bg-[#14F195] hover:text-black text-[#14F195] font-mono font-black text-xs border border-[#14F195]/20 hover:border-transparent transition-all flex items-center gap-1.5 shadow-[0_0_15px_rgba(20,241,149,0.1)] hover:shadow-[0_0_20px_rgba(20,241,149,0.3)]"
+              className="px-5 py-3 rounded-xl bg-black hover:bg-[#10B981] hover:text-black text-[#10B981] font-mono font-black text-xs border border-[#10B981]/20 hover:border-transparent transition-all flex items-center gap-1.5 shadow-[0_0_15px_rgba(16,185,129,0.1)] hover:shadow-[0_0_20px_rgba(16,185,129,0.3)]"
             >
               Swap on Solana <ArrowUpRight className="w-4 h-4" />
             </a>
@@ -70,13 +70,13 @@ export default function Footer() {
               ⚠️ MEMECOIN DISCLAIMER
             </span>
             <p className="text-[11px] leading-relaxed text-zinc-600 font-sans font-medium">
-              $CRYPTOCAT is a digital memecoin launched on the Solana blockchain strictly for entertainment, amusement, and community engagement. It carries zero utility, has no formal investment guarantee, and is purely community-centric. Fictional storylines and gamified simulations do not constitute financial advice. Purchasing cryptocurrencies involves major risk, high volatility, and potential loss of principal. Invest responsibly, do your own due diligence, and never use funds you cannot afford to lose.
+              $WIFCASH is a digital memecoin launched on the Solana blockchain strictly for entertainment, amusement, and community engagement. It carries zero utility, has no formal investment guarantee, and is purely community-centric. Fictional storylines and gamified simulations do not constitute financial advice. Purchasing cryptocurrencies involves major risk, high volatility, and potential loss of principal. Invest responsibly, do your own due diligence, and never use funds you cannot afford to lose.
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row justify-between items-center pt-6 text-[11px] text-zinc-600 font-semibold gap-4">
-            <span>© 2026 Crypto Cat ($cryptocat). Created with positive vibes. All rights reserved.</span>
-            <button onClick={handleScrollToTop} className="hover:text-[#14F195] transition-colors cursor-pointer font-mono">
+            <span>© 2026 Cat wif Cash ($wifcash). Created with positive vibes. All rights reserved.</span>
+            <button onClick={handleScrollToTop} className="hover:text-[#10B981] transition-colors cursor-pointer font-mono">
               Back to Top ↑
             </button>
           </div>
