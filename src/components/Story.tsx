@@ -1,66 +1,66 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Sparkles, TrendingUp, Frown, Smile, DollarSign, Wallet, Compass, Quote, Heart, ShieldCheck } from "lucide-react";
+import { Sparkles, Frown, Smile, Quote } from "lucide-react";
 
 export default function Story() {
-  const [activeTab, setActiveTab] = useState<"broke" | "cash">("cash");
+  const [activeTab, setActiveTab] = useState<"scared" | "bull">("bull");
   const [showCelebration, setShowCelebration] = useState(false);
 
-  const handleToggle = (tab: "broke" | "cash") => {
+  const handleToggle = (tab: "scared" | "bull") => {
     setActiveTab(tab);
-    if (tab === "cash") {
+    if (tab === "bull") {
       setShowCelebration(true);
       setTimeout(() => setShowCelebration(false), 2000);
     }
   };
 
   return (
-    <section id="story" className="relative py-20 sm:py-28 bg-[#050806] overflow-hidden">
+    <section id="story" className="relative py-20 sm:py-28 bg-[#FCFAF6] overflow-hidden">
       {/* Absolute Decorative elements */}
-      <div className="absolute inset-0 pointer-events-none select-none opacity-20">
-        <div className="absolute top-[30%] left-[-5%] w-64 h-64 bg-[#10B981] rounded-full blur-3xl"></div>
-        <div className="absolute bottom-[10%] right-[-5%] w-72 h-72 bg-[#F59E0B] rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 pointer-events-none select-none opacity-30">
+        <div className="absolute top-[30%] left-[-5%] w-64 h-64 bg-amber-200 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-[10%] right-[-5%] w-72 h-72 bg-yellow-200 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#10B981] bg-zinc-900 px-3.5 py-2 rounded-full border border-white/10">
-            🐱 The Legend of Cat wif Cash
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-amber-800 bg-amber-100 px-3.5 py-2 rounded-full border border-amber-200 shadow-sm">
+            🐕 The Legend of The Bull Dog
           </span>
-          <h2 className="font-display text-4xl sm:text-5xl font-black text-white uppercase italic tracking-tight">
-            How He Went From Broke to Filthy Rich
+          <h2 className="font-display text-4xl sm:text-5xl font-black text-[#451A03] uppercase italic tracking-tight">
+            From Trembling Pup to King of the Yard
           </h2>
-          <p className="text-zinc-400 font-sans font-medium text-base">
-            Every legend has a beginning. Witness the transformation of the decade: Broke Cat is gone forever.
+          <p className="text-amber-950/80 font-sans font-medium text-base">
+            Every legend starts with a choice. Trembling paws are gone forever. The most bullish dog in crypto is in complete control.
           </p>
         </div>
 
         {/* Interactive Mood Toggle Swapper */}
         <div className="max-w-4xl mx-auto mb-16">
-          <div className="bg-zinc-900/90 p-2 rounded-2xl flex max-w-md mx-auto border border-white/10">
+          <div className="bg-amber-100/50 p-2 rounded-2xl flex max-w-md mx-auto border border-amber-200">
             <button
-              onClick={() => handleToggle("broke")}
+              onClick={() => handleToggle("scared")}
               className={`flex-1 py-3 px-4 rounded-xl font-display font-black text-sm transition-all flex items-center justify-center gap-2 cursor-pointer ${
-                activeTab === "broke"
-                  ? "bg-red-500/20 border border-red-500/30 text-red-400 shadow"
-                  : "text-zinc-400 hover:text-zinc-200"
+                activeTab === "scared"
+                  ? "bg-amber-500/15 border border-amber-500/30 text-amber-800 shadow-sm"
+                  : "text-amber-800/60 hover:text-amber-800"
               }`}
             >
-              <Frown className={`w-4 h-4 ${activeTab === "broke" ? "text-red-400" : ""}`} />
-              Sad Broke Cat
+              <Frown className={`w-4 h-4 ${activeTab === "scared" ? "text-amber-700" : ""}`} />
+              Trembling Pup
             </button>
             <button
-              onClick={() => handleToggle("cash")}
+              onClick={() => handleToggle("bull")}
               className={`flex-1 py-3 px-4 rounded-xl font-display font-black text-sm transition-all flex items-center justify-center gap-2 cursor-pointer ${
-                activeTab === "cash"
-                  ? "bg-[#10B981]/20 border border-[#10B981]/30 text-[#10B981] shadow"
-                  : "text-zinc-400 hover:text-[#10B981]"
+                activeTab === "bull"
+                  ? "bg-amber-600/15 border border-amber-600/30 text-amber-800 shadow-sm"
+                  : "text-amber-800/60 hover:text-amber-800"
               }`}
             >
-              <Smile className={`w-4 h-4 ${activeTab === "cash" ? "text-[#10B981]" : ""}`} />
-              Cat wif Cash
+              <Smile className={`w-4 h-4 ${activeTab === "bull" ? "text-amber-700" : ""}`} />
+              The Bull Dog
             </button>
           </div>
         </div>
@@ -69,12 +69,12 @@ export default function Story() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch max-w-5xl mx-auto">
           
           {/* Visual Transformation Side */}
-          <div className="lg:col-span-5 flex flex-col justify-between p-8 rounded-3xl border transition-all relative overflow-hidden bg-zinc-900/80 border-white/10 shadow-2xl backdrop-blur-md">
+          <div className="lg:col-span-5 flex flex-col justify-between p-8 rounded-3xl border transition-all relative overflow-hidden bg-[#FDFBF7] border-amber-200/80 shadow-xl">
             
             <AnimatePresence mode="wait">
-              {activeTab === "broke" ? (
+              {activeTab === "scared" ? (
                 <motion.div
-                  key="broke-side"
+                  key="scared-side"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
@@ -82,33 +82,33 @@ export default function Story() {
                   className="space-y-6 flex-1 flex flex-col justify-between"
                 >
                   <div className="space-y-4">
-                    <div className="inline-block p-3 rounded-2xl bg-zinc-800 text-red-400">
+                    <div className="inline-block p-3 rounded-2xl bg-amber-50 text-amber-600 border border-amber-100">
                       <Frown className="w-8 h-8" />
                     </div>
-                    <h3 className="font-display text-2xl font-black text-white uppercase italic">
-                      Sad Broke Cat Era
+                    <h3 className="font-display text-2xl font-black text-amber-900 uppercase italic">
+                      Scared Paper-Hand Era
                     </h3>
-                    <p className="text-sm text-zinc-400 font-sans leading-relaxed">
-                      Sigh... holding physical paper fiat that depreciates 10% a year. Watching banks block transactions. Depressed feline struggling with empty pockets and zero tokens.
+                    <p className="text-sm text-amber-950/70 font-sans leading-relaxed">
+                      Eek! Shaking, looking around in panic, panicking over minor red candles. Checking Twitter influencers for permission to breathe. Zero diamond teeth, empty bags, and weak chattering jaws.
                     </p>
                   </div>
 
-                  <div className="bg-black/40 p-4 rounded-2xl border border-white/5">
-                    <div className="flex justify-between text-xs font-bold text-zinc-500 mb-2">
-                      <span>BANK ACCOUNT BALANCE</span>
-                      <span className="text-red-500">$0.00 (EMPTY)</span>
+                  <div className="bg-amber-50/50 p-4 rounded-2xl border border-amber-100">
+                    <div className="flex justify-between text-xs font-bold text-amber-800/60 mb-2">
+                      <span>PORTFOLIO CONVICTION</span>
+                      <span className="text-amber-600">0% (SCALED OFF)</span>
                     </div>
-                    <div className="h-2 w-full bg-zinc-800 rounded-full overflow-hidden">
-                      <div className="h-full w-1 bg-red-500"></div>
+                    <div className="h-2 w-full bg-amber-100 rounded-full overflow-hidden">
+                      <div className="h-full w-1 bg-amber-500"></div>
                     </div>
-                    <p className="mt-3 text-[11px] font-mono text-red-400 text-center font-bold">
-                      🚫 "How will I afford my premium catnip? *sad meow*"
+                    <p className="mt-3 text-[11px] font-mono text-amber-600 text-center font-bold">
+                      🚫 "Is the dev online? I'm trembling! *scared whimper*"
                     </p>
                   </div>
                 </motion.div>
               ) : (
                 <motion.div
-                  key="cash-side"
+                  key="bull-side"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
@@ -116,32 +116,32 @@ export default function Story() {
                   className="space-y-6 flex-1 flex flex-col justify-between"
                 >
                   <div className="space-y-4">
-                    <div className="inline-block p-3 rounded-2xl bg-[#10B981]/10 text-[#10B981] animate-bounce">
+                    <div className="inline-block p-3 rounded-2xl bg-amber-100 text-amber-700 border border-amber-200 animate-bounce">
                       <Smile className="w-8 h-8" />
                     </div>
-                    <h3 className="font-display text-2xl font-black text-[#10B981] uppercase italic flex items-center gap-2">
-                      Money King Era <Sparkles className="w-5 h-5 text-yellow-400 animate-spin" />
+                    <h3 className="font-display text-2xl font-black text-amber-700 uppercase italic flex items-center gap-2">
+                      Unstoppable King <Sparkles className="w-5 h-5 text-amber-500 animate-spin" />
                     </h3>
-                    <p className="text-sm text-zinc-300 font-sans leading-relaxed">
-                      Tail wagging, designer sunglasses on, surrounded by stacks of green bills and bags of gold. Constantly grinning because his Solana portfolio keeps printing money!
+                    <p className="text-sm text-amber-950/80 font-sans leading-relaxed">
+                      Heavy heavy golden chains, spike collar locked, designer sunglasses on. Sitting on piles of cash, laughing as the charts print vertical green skyscrapers because he holds forever!
                     </p>
                   </div>
 
                   {/* Fun Live Cash Counter Gauge */}
-                  <div className="bg-black/40 p-4 rounded-2xl border border-[#10B981]/10 shadow-md">
-                    <div className="flex justify-between text-xs font-bold text-[#10B981] mb-2">
-                      <span>CASH COUNTING SPEED</span>
-                      <span className="text-[#10B981]">MAX SPEED 🔥</span>
+                  <div className="bg-amber-50 p-4 rounded-2xl border border-amber-200 shadow-sm">
+                    <div className="flex justify-between text-xs font-bold text-amber-800 mb-2">
+                      <span>BULLISH CHARGING VELOCITY</span>
+                      <span className="text-amber-700 font-bold">MAX SPEED 🔥</span>
                     </div>
-                    <div className="h-2 w-full bg-zinc-800 rounded-full overflow-hidden">
+                    <div className="h-2 w-full bg-amber-100 rounded-full overflow-hidden">
                       <motion.div 
-                        animate={{ width: ["40%", "95%", "75%", "100%", "50%", "95%"] }} 
+                        animate={{ width: ["35%", "98%", "80%", "100%", "60%", "98%"] }} 
                         transition={{ duration: 2, repeat: Infinity }} 
-                        className="h-full bg-gradient-to-r from-[#10B981] to-[#F59E0B]"
+                        className="h-full bg-gradient-to-r from-amber-500 to-amber-700"
                       ></motion.div>
                     </div>
-                    <p className="mt-3 text-[11px] font-mono text-[#10B981] text-center font-bold">
-                      💰 "STACKS ON STACKS ON STACKS"
+                    <p className="mt-3 text-[11px] font-mono text-amber-700 text-center font-bold">
+                      🚀 "DIAMOND PAWS ALWAYS WIN"
                     </p>
                   </div>
                 </motion.div>
@@ -154,77 +154,77 @@ export default function Story() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute inset-0 bg-[#10B981]/10 backdrop-blur-[1px] flex items-center justify-center pointer-events-none"
+                className="absolute inset-0 bg-amber-500/10 backdrop-blur-[1px] flex items-center justify-center pointer-events-none"
               >
-                <span className="text-3xl font-display font-black text-black rotate-[-5deg] bg-[#10B981] px-4 py-2 rounded-xl shadow-[0_0_20px_rgba(16,185,129,0.5)] border-2 border-white/25">
-                  CASH RICH! 💸💰
+                <span className="text-3xl font-display font-black text-white rotate-[-5deg] bg-amber-600 px-4 py-2 rounded-xl shadow-[0_0_20px_rgba(217,119,6,0.3)] border-2 border-white/25">
+                  BULL POWER! 🐕💎
                 </span>
               </motion.div>
             )}
           </div>
 
-          {/* Text Story Side - Verbatim story text as requested */}
-          <div className="lg:col-span-7 bg-zinc-900/80 p-8 sm:p-10 rounded-3xl border border-white/10 flex flex-col justify-between shadow-2xl backdrop-blur-md">
+          {/* Text Story Side - Verbatim story text but adapted to bulldog */}
+          <div className="lg:col-span-7 bg-[#FDFBF7] p-8 sm:p-10 rounded-3xl border border-amber-200 flex flex-col justify-between shadow-xl">
             
             <div className="space-y-8">
               {/* Quote icon styling */}
-              <div className="text-[#10B981]/20">
+              <div className="text-amber-200">
                 <Quote className="w-12 h-12 fill-current" />
               </div>
 
-              {/* Story Content verbatim */}
-              <div className="space-y-6 font-sans text-zinc-300 font-medium">
-                <p className="text-lg leading-relaxed text-zinc-200">
-                  He is no longer <span className="bg-red-500/10 text-red-400 font-black px-2 py-0.5 rounded border border-red-500/20">Broke Cat</span>.
+              {/* Story Content adapted */}
+              <div className="space-y-6 font-sans text-amber-950 font-medium">
+                <p className="text-lg leading-relaxed text-amber-900">
+                  He is no longer a <span className="bg-amber-100 text-amber-800 border border-amber-200 font-black px-2 py-0.5 rounded">Trembling Pup</span>.
                 </p>
-                <p className="text-xl sm:text-2xl font-display font-black text-white leading-tight uppercase italic">
-                  He is <span className="text-[#10B981]">Cat wif Cash</span> — the wealthiest cat in the entire blockchain.
+                <p className="text-xl sm:text-2xl font-display font-black text-amber-950 leading-tight uppercase italic">
+                  He is <span className="text-amber-600">The Bull Dog</span> — the most bullish and tenacious dog in the entire blockchain.
                 </p>
-                <p className="text-base leading-relaxed">
-                  Tail wagging, designer sunglasses on, surrounded by Lambos, golden coins, and fat stacks of cash. Constantly grinning because his portfolio is printing money. Every green candle makes him richer. He went from depressed meowing cat to degen money king.
+                <p className="text-base leading-relaxed text-amber-950/80">
+                  Heavy heavy golden chains, spike collar locked, designer sunglasses on. Sitting on piles of cash, laughing as the charts print vertical green skyscrapers because he holds forever! Every green candle charges him up. He went from a trembling backyard pet to the degen king of the yard.
                 </p>
-                <p className="text-lg font-display font-black tracking-tight text-[#10B981]">
-                  From sad meows to loud PURRRRRRS.
+                <p className="text-lg font-display font-black tracking-tight text-amber-700">
+                  From scared whimpers to powerful, roaring BARKS!
                 </p>
-                <p className="text-base leading-relaxed">
-                  Cat wif Cash doesn’t chase money anymore… <br />
-                  <span className="text-[#F59E0B] font-black text-lg italic">The money chases him.</span>
+                <p className="text-base leading-relaxed text-amber-950/80">
+                  The Bull Dog doesn’t chase the market anymore… <br />
+                  <span className="text-amber-600 font-black text-lg italic">The market follows him.</span>
                 </p>
 
                 {/* Moral Highlight */}
-                <div className="bg-black/50 p-5 rounded-2xl border-l-4 border-[#10B981] border-t border-r border-b border-white/5 space-y-2">
-                  <span className="block text-xs font-bold text-[#10B981] uppercase tracking-wider font-mono">
+                <div className="bg-amber-50/50 p-5 rounded-2xl border-l-4 border-amber-600 border-t border-r border-b border-amber-100/60 space-y-2">
+                  <span className="block text-xs font-bold text-amber-700 uppercase tracking-wider font-mono">
                     Moral of the story:
                   </span>
-                  <p className="text-sm font-sans text-zinc-400 italic">
-                    Even the saddest cat can become a legend once he finds the right chain and gets rich wif cash.
+                  <p className="text-sm font-sans text-amber-900/80 italic">
+                    Even the most scared pup can become an absolute legend once he grows diamond teeth and joins $bulldog on Solana.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Footer story slogan verbatim */}
-            <div className="pt-8 mt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            {/* Footer story slogan */}
+            <div className="pt-8 mt-8 border-t border-amber-200/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
-                <span className="block text-[11px] font-black text-zinc-500 tracking-wider uppercase font-mono">
+                <span className="block text-[11px] font-black text-amber-800/40 tracking-wider uppercase font-mono">
                   THE FINAL VERDICT
                 </span>
-                <p className="font-display font-black text-lg text-white">
-                  $WIFCASH — <span className="text-[#10B981]">From broke to based.</span>
+                <p className="font-display font-black text-lg text-amber-950">
+                  $BULLDOG — <span className="text-amber-600">The king of the yard.</span>
                 </p>
               </div>
 
               <button
                 onClick={() => {
-                  setActiveTab("cash");
+                  setActiveTab("bull");
                   setShowCelebration(true);
                   setTimeout(() => setShowCelebration(false), 2000);
                   const element = document.getElementById("interactive-cat");
                   if (element) element.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="w-full sm:w-auto px-5 py-3 rounded-xl bg-black hover:bg-[#10B981] hover:text-black text-[#10B981] border border-[#10B981]/20 hover:border-transparent font-display font-black text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full sm:w-auto px-5 py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-display font-black text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer border-none"
               >
-                Become Cash Rich Now ➔
+                Join the Bull Dog Pack ➔
               </button>
             </div>
 
@@ -232,28 +232,29 @@ export default function Story() {
 
         </div>
 
-        {/* Verbatim Question Box */}
-        <div className="mt-16 bg-gradient-to-r from-[#F59E0B] to-[#10B981] text-black p-8 sm:p-12 rounded-3xl max-w-4xl mx-auto shadow-[0_0_35px_rgba(245,158,11,0.4)] text-center relative overflow-hidden">
+        {/* Verbatim Question Box adapted to real Telegram link */}
+        <div className="mt-16 bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 text-white p-8 sm:p-12 rounded-3xl max-w-4xl mx-auto shadow-[0_0_35px_rgba(217,119,6,0.25)] text-center relative overflow-hidden">
           <div className="absolute top-[-20%] right-[-10%] w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
           <div className="relative z-10 space-y-6">
             <h4 className="font-display text-2xl sm:text-3xl font-black text-white uppercase italic drop-shadow-md">
-              Are you still a sad Broke Cat… or are you ready to become a Cat wif Cash?
+              Are you still a trembling paper-handed pup… or are you ready to become a powerful, cash-rich Bull Dog?
             </h4>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
               <button
                 onClick={() => {
                   const element = document.getElementById("how-to-buy");
                   if (element) element.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="px-8 py-3.5 rounded-full bg-black text-[#10B981] font-display font-black text-sm shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white text-amber-800 hover:text-amber-950 font-display font-black text-sm shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border-none"
               >
-                Get $WIFCASH Now 🚀
+                Get $BULLDOG Now 🚀
               </button>
+              {/* Actual Telegram Link */}
               <a
-                href="https://t.me/wifcashonsol"
+                href="https://t.me/THEBULLDOGSOL"
                 target="_blank"
-                rel="noreferrer"
-                className="px-8 py-3.5 rounded-full bg-zinc-950 text-white hover:bg-zinc-900 font-display font-black text-sm shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-1.5"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#78350F] text-white hover:bg-[#5C250A] font-display font-black text-sm shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-1.5"
               >
                 Join Telegram Chat
               </a>
