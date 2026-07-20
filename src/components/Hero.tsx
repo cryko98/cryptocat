@@ -173,15 +173,17 @@ export default function Hero({ contractAddress }: HeroProps) {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="flex flex-wrap justify-center lg:justify-start gap-4 relative"
             >
-              {/* Telegram Coming Soon Link */}
-              <button
-                onClick={handleTelegramClick}
+              {/* Telegram Link */}
+              <a
+                href="https://t.me/thealbinoraccoon"
+                target="_blank"
+                rel="noopener noreferrer"
                 id="tg-hero-cta"
                 className="px-8 py-4 rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-950 font-display font-black shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 border border-rose-200 cursor-pointer"
               >
-                Join Telegram (Soon)
+                Join Telegram
                 <Send className="w-5 h-5 text-rose-500 fill-current" />
-              </button>
+              </a>
 
               <a
                 href="https://dexscreener.com"
@@ -192,21 +194,6 @@ export default function Hero({ contractAddress }: HeroProps) {
               >
                 Live Chart <TrendingUp className="w-5 h-5 text-rose-500" />
               </a>
-
-              {/* Telegram Info Box */}
-              <AnimatePresence>
-                {showTelegramAlert && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    className="absolute left-0 bottom-16 bg-white border border-rose-200 text-rose-950 px-4 py-3 rounded-2xl shadow-xl z-50 text-xs font-mono font-bold w-64"
-                  >
-                    💬 Telegram is coming very soon!<br />
-                    <span className="text-rose-500 font-bold">Stay tuned, launch is imminent!</span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </motion.div>
 
             {/* Soft trust tags */}

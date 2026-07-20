@@ -99,15 +99,17 @@ export default function Navbar({ contractAddress }: NavbarProps) {
 
             {/* Socials + CTA */}
             <div className="hidden md:flex items-center space-x-4 relative">
-              {/* Telegram Button (Majd később popup alert) */}
-              <button
-                onClick={handleTelegramClick}
+              {/* Telegram Button */}
+              <a
+                href="https://t.me/thealbinoraccoon"
+                target="_blank"
+                rel="noopener noreferrer"
                 id="telegram-header-btn"
-                className="p-2.5 rounded-full bg-rose-50 hover:bg-rose-100 text-rose-700 hover:text-rose-800 border border-rose-100 hover:scale-105 active:scale-95 transition-all duration-200 shadow-sm relative cursor-pointer"
-                title="Telegram Group (Coming Soon!)"
+                className="p-2.5 rounded-full bg-rose-50 hover:bg-rose-100 text-rose-700 hover:text-rose-800 border border-rose-100 hover:scale-105 active:scale-95 transition-all duration-200 shadow-sm relative cursor-pointer flex items-center justify-center"
+                title="Join Official Telegram"
               >
                 <Send className="w-5 h-5 fill-current text-rose-500" />
-              </button>
+              </a>
 
               {/* Buy CTA */}
               <button
@@ -117,21 +119,6 @@ export default function Navbar({ contractAddress }: NavbarProps) {
               >
                 Buy $Casper <ArrowUpRight className="w-4 h-4 stroke-[3]" />
               </button>
-
-              {/* Telegram Alert Popup */}
-              <AnimatePresence>
-                {showTelegramAlert && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                    className="absolute right-0 top-16 bg-white border border-rose-200 text-rose-950 px-4 py-3 rounded-2xl shadow-xl z-50 text-xs font-mono font-bold w-64"
-                  >
-                    💬 Telegram is coming very soon!<br />
-                    <span className="text-rose-500 font-bold">Stay tuned, launch is imminent!</span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
 
             {/* Mobile menu button */}
@@ -193,13 +180,15 @@ export default function Navbar({ contractAddress }: NavbarProps) {
               </nav>
 
               <div className="pt-4 border-t border-rose-200/40 flex items-center justify-between">
-                <button
-                  onClick={handleTelegramClick}
-                  className="p-2.5 rounded-full bg-rose-50 text-rose-700 hover:bg-rose-100 transition-colors flex items-center gap-2 text-xs font-mono font-bold"
+                <a
+                  href="https://t.me/thealbinoraccoon"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-full bg-rose-50 text-rose-700 hover:bg-rose-100 transition-colors flex items-center gap-2 text-xs font-mono font-bold border border-rose-100"
                 >
                   <Send className="w-4 h-4 fill-current text-rose-500" />
-                  Telegram (Soon)
-                </button>
+                  Telegram Group
+                </a>
 
                 <button
                   onClick={() => scrollToSection("how-to-buy")}
@@ -208,13 +197,6 @@ export default function Navbar({ contractAddress }: NavbarProps) {
                   Buy $Casper
                 </button>
               </div>
-
-              {/* Mobile Telegram Alert */}
-              {showTelegramAlert && (
-                <div className="bg-rose-50/80 border border-rose-100 text-rose-950 px-3 py-2 rounded-xl text-xs font-mono font-bold">
-                  💬 Telegram group is coming very soon!
-                </div>
-              )}
             </motion.div>
           )}
         </AnimatePresence>

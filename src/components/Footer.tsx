@@ -45,15 +45,17 @@ export default function Footer() {
           {/* Social Icons Links */}
           <div className="md:col-span-6 flex flex-wrap justify-center md:justify-end gap-4 relative">
             
-            {/* Telegram Link (coming soon alert trigger) */}
-            <button
-              onClick={handleTelegramClick}
+            {/* Telegram Link */}
+            <a
+              href="https://t.me/thealbinoraccoon"
+              target="_blank"
+              rel="noopener noreferrer"
               id="tg-footer"
               className="px-5 py-3 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-850 font-mono font-bold text-xs transition-all flex items-center gap-2 border border-rose-150 shadow-sm cursor-pointer"
             >
               <Send className="w-4 h-4 text-rose-500 fill-current" />
-              Telegram (Soon)
-            </button>
+              Telegram Channel
+            </a>
 
             {/* Swap Buy */}
             <a
@@ -63,21 +65,6 @@ export default function Footer() {
             >
               Swap on Solana <ArrowUpRight className="w-4 h-4" />
             </a>
-
-            {/* Telegram Alert */}
-            <AnimatePresence>
-              {showTelegramAlert && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                  className="absolute right-0 bottom-16 bg-white border border-rose-200 text-rose-950 px-4 py-3 rounded-2xl shadow-xl z-50 text-xs font-mono font-bold w-64 text-center md:text-left"
-                >
-                  💬 Telegram group is coming very soon!<br />
-                  <span className="text-rose-500 font-bold">Stay tuned for the announcement!</span>
-                </motion.div>
-              )}
-            </AnimatePresence>
 
           </div>
 
