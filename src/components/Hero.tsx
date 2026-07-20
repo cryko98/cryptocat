@@ -97,14 +97,36 @@ export default function Hero({ contractAddress }: HeroProps) {
             </div>
 
             {/* Slogan */}
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg text-rose-950/80 font-sans max-w-2xl mx-auto lg:mx-0 leading-relaxed font-semibold"
-            >
-              The odds of seeing an albino raccoon are 1 in 750,000. For those familiar with statistics, you have a better chance of being struck by lightning. Casper is the ultimate, rarest luck magnet on the Solana blockchain. No fear, no doubts—only pure albino magic and unstoppable diamond-paw gains! 🦝✨💎
-            </motion.p>
+            <div className="space-y-4">
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-lg text-rose-950/80 font-sans max-w-2xl mx-auto lg:mx-0 leading-relaxed font-semibold"
+              >
+                The odds of seeing an albino raccoon are 1 in 750,000. For those familiar with statistics, you have a better chance of being struck by lightning. Casper is the ultimate, rarest luck magnet on the Solana blockchain. No fear, no doubts—only pure albino magic and unstoppable diamond-paw gains! 🦝✨💎
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.35 }}
+                className="flex justify-center lg:justify-start"
+              >
+                <a
+                  href="https://www.obermountain.com/activities/wildlife/raccoons"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-800 text-xs font-mono font-bold border border-rose-200/60 shadow-sm transition-all hover:scale-[1.02]"
+                >
+                  <span className="flex h-2 w-2 relative">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  <span>Verified 1-in-750,000 Rarity Proof ➔</span>
+                </a>
+              </motion.div>
+            </div>
 
             {/* Interactive Contract Address Block */}
             <motion.div
