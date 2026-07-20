@@ -1,63 +1,83 @@
-import React from "react";
-import { ArrowUpRight } from "lucide-react";
+import React, { useState } from "react";
+import { ArrowUpRight, Send } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 export default function Footer() {
+  const [showTelegramAlert, setShowTelegramAlert] = useState(false);
+
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleTelegramClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowTelegramAlert(true);
+    setTimeout(() => setShowTelegramAlert(false), 3000);
+  };
+
   return (
-    <footer className="bg-[#FCFAF6] text-amber-800/50 py-16 border-t border-amber-200/50">
+    <footer className="bg-[#FFFDFD] text-rose-800/60 py-16 border-t border-rose-100 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Block */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pb-12 border-b border-amber-200/30">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pb-12 border-b border-rose-200/30">
           
           {/* Logo & Slogan */}
-          <div className="md:col-span-5 space-y-4 text-center md:text-left">
+          <div className="md:col-span-6 space-y-4 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start space-x-3 cursor-pointer group" onClick={handleScrollToTop}>
-              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-amber-600 shadow-[0_0_15px_rgba(217,119,6,0.2)]">
+              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-rose-400 shadow-[0_0_15px_rgba(244,63,94,0.2)]">
                 <img
-                  src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/thebulldog.png?v=1784136622"
-                  alt="The Bull Dog"
+                  src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/casper.png?v=1784562261"
+                  alt="The Albino Raccoon Casper"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="font-display font-black text-xl tracking-tight text-[#451A03] uppercase italic">
-                The Bull <span className="text-amber-600">Dog</span>
+              <span className="font-display font-black text-xl tracking-tight text-[#4C0519] uppercase italic">
+                The Albino <span className="text-rose-500">Raccoon</span>
               </span>
             </div>
-            <p className="text-sm text-amber-950/60 max-w-sm font-sans font-medium">
-              From trembling pup to king of the yard. The most bullish canine on Solana, guarding the yard and printing heavy green candles! 🐕🔥💎
+            <p className="text-sm text-rose-950/70 max-w-md font-sans font-semibold">
+              The rarest 1-in-750,000 miracle on Solana. Surviving wild dog attacks, Casper healed his hip, retired to his safe cozy haven, and turned his limited left paw into the strongest Diamond Paw in crypto! 🦝✨🍀
             </p>
           </div>
 
           {/* Social Icons Links */}
-          <div className="md:col-span-7 flex flex-wrap justify-center md:justify-end gap-4">
+          <div className="md:col-span-6 flex flex-wrap justify-center md:justify-end gap-4 relative">
             
-            {/* Real Telegram Link */}
-            <a
-              href="https://t.me/THEBULLDOGSOL"
-              target="_blank"
-              rel="noopener noreferrer"
+            {/* Telegram Link (coming soon alert trigger) */}
+            <button
+              onClick={handleTelegramClick}
               id="tg-footer"
-              className="px-5 py-3 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-800 font-mono font-bold text-xs transition-all flex items-center gap-2 border border-amber-200 shadow-sm"
+              className="px-5 py-3 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-850 font-mono font-bold text-xs transition-all flex items-center gap-2 border border-rose-150 shadow-sm cursor-pointer"
             >
-              <svg className="w-4 h-4 fill-current text-amber-700" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.53-1.39.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.46-.42-1.4-.88.03-.24.37-.49 1.03-.75 4.04-1.76 6.74-2.92 8.1-3.48 3.84-1.6 4.64-1.88 5.16-1.89.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.2-.04.22z"/>
-              </svg>
-              Telegram
-            </a>
+              <Send className="w-4 h-4 text-rose-500 fill-current" />
+              Telegram (Soon)
+            </button>
 
             {/* Swap Buy */}
             <a
               href="#how-to-buy"
               id="buy-footer"
-              className="px-5 py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-mono font-black text-xs transition-all flex items-center gap-1.5 shadow-md border-none"
+              className="px-5 py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-mono font-black text-xs transition-all flex items-center gap-1.5 shadow-md border-none"
             >
               Swap on Solana <ArrowUpRight className="w-4 h-4" />
             </a>
+
+            {/* Telegram Alert */}
+            <AnimatePresence>
+              {showTelegramAlert && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  className="absolute right-0 bottom-16 bg-white border border-rose-200 text-rose-950 px-4 py-3 rounded-2xl shadow-xl z-50 text-xs font-mono font-bold w-64 text-center md:text-left"
+                >
+                  💬 Telegram group is coming very soon!<br />
+                  <span className="text-rose-500 font-bold">Stay tuned for the announcement!</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
           </div>
 
@@ -66,17 +86,17 @@ export default function Footer() {
         {/* Disclaimer Block */}
         <div className="pt-12 space-y-6 text-center md:text-left">
           <div className="space-y-2">
-            <span className="text-[10px] font-mono font-bold text-amber-800/40 uppercase tracking-widest block">
-              ⚠️ MEMECOIN DISCLAIMER
+            <span className="text-[10px] font-mono font-bold text-rose-800/50 uppercase tracking-widest block">
+              ⚠️ CASPER ($Casper) MEMECOIN DISCLAIMER
             </span>
-            <p className="text-[11px] leading-relaxed text-amber-800/30 font-sans font-medium">
-              $bulldog is a digital memecoin launched on the Solana blockchain strictly for entertainment, amusement, and community building. It carries zero utility, has no formal investment guarantee, and is purely community-driven. Fictional narratives and interactive gamified features do not constitute financial advice. Purchasing cryptocurrencies involves significant risks, extreme volatility, and potential total loss of capital. Invest responsibly, do your own research, and only trade with funds you can afford to lose.
+            <p className="text-[11px] leading-relaxed text-rose-800/40 font-sans font-semibold">
+              $Casper is a digital memecoin launched on the Solana blockchain strictly for entertainment, amusement, and community building. Casper the Raccoon is a real, beloved albino raccoon, but this token is not directly affiliated with any professional wildlife reserve or medical entity, and carries zero utility or formal financial guarantees. Fictionalized crypto narratives and interactive gamified features do not constitute financial advice. Purchasing cryptocurrencies involves significant risks, extreme volatility, and potential total loss of capital. Invest responsibly, do your own research, and only trade with funds you can afford to lose.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-between items-center pt-6 text-[11px] text-amber-800/30 font-semibold gap-4">
-            <span>© 2026 The Bull Dog ($bulldog). Guarding the yard. All rights reserved.</span>
-            <button onClick={handleScrollToTop} className="hover:text-amber-600 transition-colors cursor-pointer font-mono border-none bg-transparent">
+          <div className="flex flex-col sm:flex-row justify-between items-center pt-6 text-[11px] text-rose-800/40 font-bold gap-4">
+            <span>© 2026 The Albino Raccoon ($Casper). Keeping the yard lucky. All rights reserved.</span>
+            <button onClick={handleScrollToTop} className="hover:text-rose-600 transition-colors cursor-pointer font-mono border-none bg-transparent">
               Back to Top ↑
             </button>
           </div>

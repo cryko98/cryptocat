@@ -1,66 +1,66 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Sparkles, Frown, Smile, Quote } from "lucide-react";
+import { Sparkles, ShieldCheck, Heart, Quote, Star, Eye } from "lucide-react";
 
 export default function Story() {
-  const [activeTab, setActiveTab] = useState<"scared" | "bull">("bull");
+  const [activeTab, setActiveTab] = useState<"wild" | "safe">("safe");
   const [showCelebration, setShowCelebration] = useState(false);
 
-  const handleToggle = (tab: "scared" | "bull") => {
+  const handleToggle = (tab: "wild" | "safe") => {
     setActiveTab(tab);
-    if (tab === "bull") {
+    if (tab === "safe") {
       setShowCelebration(true);
       setTimeout(() => setShowCelebration(false), 2000);
     }
   };
 
   return (
-    <section id="story" className="relative py-20 sm:py-28 bg-[#FCFAF6] overflow-hidden">
-      {/* Absolute Decorative elements */}
+    <section id="story" className="relative py-20 sm:py-28 bg-[#FFFDFD] overflow-hidden">
+      {/* Decorative ambient blobs */}
       <div className="absolute inset-0 pointer-events-none select-none opacity-30">
-        <div className="absolute top-[30%] left-[-5%] w-64 h-64 bg-amber-200 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-[10%] right-[-5%] w-72 h-72 bg-yellow-200 rounded-full blur-3xl"></div>
+        <div className="absolute top-[30%] left-[-5%] w-64 h-64 bg-rose-100 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-[10%] right-[-5%] w-72 h-72 bg-rose-50 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-amber-800 bg-amber-100 px-3.5 py-2 rounded-full border border-amber-200 shadow-sm">
-            🐕 The Legend of The Bull Dog
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-rose-800 bg-rose-50 px-3.5 py-2 rounded-full border border-rose-100 shadow-sm">
+            🦝 The Story of Casper
           </span>
-          <h2 className="font-display text-4xl sm:text-5xl font-black text-[#451A03] uppercase italic tracking-tight">
-            From Trembling Pup to King of the Yard
+          <h2 className="font-display text-4xl sm:text-5xl font-black text-[#4C0519] uppercase italic tracking-tight">
+            The 1-in-750,000 Miracle of the Yard
           </h2>
-          <p className="text-amber-950/80 font-sans font-medium text-base">
-            Every legend starts with a choice. Trembling paws are gone forever. The most bullish dog in crypto is in complete control.
+          <p className="text-rose-950/85 font-sans font-semibold text-base">
+            From surviving a dog attack in the wild to becoming the ultimate luck talisman of the Solana ecosystem.
           </p>
         </div>
 
-        {/* Interactive Mood Toggle Swapper */}
+        {/* Interactive Story Era Toggle Swapper */}
         <div className="max-w-4xl mx-auto mb-16">
-          <div className="bg-amber-100/50 p-2 rounded-2xl flex max-w-md mx-auto border border-amber-200">
+          <div className="bg-rose-50/50 p-2 rounded-2xl flex max-w-md mx-auto border border-rose-100">
             <button
-              onClick={() => handleToggle("scared")}
-              className={`flex-1 py-3 px-4 rounded-xl font-display font-black text-sm transition-all flex items-center justify-center gap-2 cursor-pointer ${
-                activeTab === "scared"
-                  ? "bg-amber-500/15 border border-amber-500/30 text-amber-800 shadow-sm"
-                  : "text-amber-800/60 hover:text-amber-800"
+              onClick={() => handleToggle("wild")}
+              className={`flex-1 py-3 px-4 rounded-xl font-display font-black text-sm transition-all flex items-center justify-center gap-2 cursor-pointer border-none ${
+                activeTab === "wild"
+                  ? "bg-rose-100 border border-rose-200 text-rose-900 shadow-sm"
+                  : "text-rose-950/60 hover:text-rose-950"
               }`}
             >
-              <Frown className={`w-4 h-4 ${activeTab === "scared" ? "text-amber-700" : ""}`} />
-              Trembling Pup
+              <Eye className="w-4 h-4" />
+              The Wild Risk
             </button>
             <button
-              onClick={() => handleToggle("bull")}
-              className={`flex-1 py-3 px-4 rounded-xl font-display font-black text-sm transition-all flex items-center justify-center gap-2 cursor-pointer ${
-                activeTab === "bull"
-                  ? "bg-amber-600/15 border border-amber-600/30 text-amber-800 shadow-sm"
-                  : "text-amber-800/60 hover:text-amber-800"
+              onClick={() => handleToggle("safe")}
+              className={`flex-1 py-3 px-4 rounded-xl font-display font-black text-sm transition-all flex items-center justify-center gap-2 cursor-pointer border-none ${
+                activeTab === "safe"
+                  ? "bg-rose-600/10 border border-rose-600/20 text-rose-900 shadow-sm"
+                  : "text-rose-950/60 hover:text-rose-950"
               }`}
             >
-              <Smile className={`w-4 h-4 ${activeTab === "bull" ? "text-amber-700" : ""}`} />
-              The Bull Dog
+              <Heart className="w-4 h-4 text-rose-600" />
+              Safe Solana Haven
             </button>
           </div>
         </div>
@@ -69,12 +69,12 @@ export default function Story() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch max-w-5xl mx-auto">
           
           {/* Visual Transformation Side */}
-          <div className="lg:col-span-5 flex flex-col justify-between p-8 rounded-3xl border transition-all relative overflow-hidden bg-[#FDFBF7] border-amber-200/80 shadow-xl">
+          <div className="lg:col-span-5 flex flex-col justify-between p-8 rounded-3xl border transition-all relative overflow-hidden bg-white border-rose-100 shadow-lg">
             
             <AnimatePresence mode="wait">
-              {activeTab === "scared" ? (
+              {activeTab === "wild" ? (
                 <motion.div
-                  key="scared-side"
+                  key="wild-era"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
@@ -82,33 +82,33 @@ export default function Story() {
                   className="space-y-6 flex-1 flex flex-col justify-between"
                 >
                   <div className="space-y-4">
-                    <div className="inline-block p-3 rounded-2xl bg-amber-50 text-amber-600 border border-amber-100">
-                      <Frown className="w-8 h-8" />
+                    <div className="inline-block p-3 rounded-2xl bg-rose-50 text-rose-600 border border-rose-100">
+                      <Star className="w-8 h-8 text-rose-400" />
                     </div>
-                    <h3 className="font-display text-2xl font-black text-amber-900 uppercase italic">
-                      Scared Paper-Hand Era
+                    <h3 className="font-display text-2xl font-black text-rose-900 uppercase italic">
+                      Survival Odds in the Wild
                     </h3>
-                    <p className="text-sm text-amber-950/70 font-sans leading-relaxed">
-                      Eek! Shaking, looking around in panic, panicking over minor red candles. Checking Twitter influencers for permission to breathe. Zero diamond teeth, empty bags, and weak chattering jaws.
+                    <p className="text-sm text-rose-950/70 font-sans leading-relaxed">
+                      Albino raccoons rarely survive to adulthood in the wild because they lack camouflage. Casper was born wild but was attacked by a dog when he was very young. He sustained injuries to his hip and left front leg.
                     </p>
                   </div>
 
-                  <div className="bg-amber-50/50 p-4 rounded-2xl border border-amber-100">
-                    <div className="flex justify-between text-xs font-bold text-amber-800/60 mb-2">
-                      <span>PORTFOLIO CONVICTION</span>
-                      <span className="text-amber-600">0% (SCALED OFF)</span>
+                  <div className="bg-rose-50/50 p-4 rounded-2xl border border-rose-100">
+                    <div className="flex justify-between text-xs font-bold text-rose-800/60 mb-2 font-mono">
+                      <span>WILD CAMOUFLAGE STATUS</span>
+                      <span className="text-rose-600">UNPROTECTED</span>
                     </div>
-                    <div className="h-2 w-full bg-amber-100 rounded-full overflow-hidden">
-                      <div className="h-full w-1 bg-amber-500"></div>
+                    <div className="h-2 w-full bg-rose-100 rounded-full overflow-hidden">
+                      <div className="h-full w-1/12 bg-rose-500"></div>
                     </div>
-                    <p className="mt-3 text-[11px] font-mono text-amber-600 text-center font-bold">
-                      🚫 "Is the dev online? I'm trembling! *scared whimper*"
+                    <p className="mt-3 text-[11px] font-mono text-rose-600 text-center font-bold">
+                      ⚠️ Survival in the wild is extremely risky!
                     </p>
                   </div>
                 </motion.div>
               ) : (
                 <motion.div
-                  key="bull-side"
+                  key="safe-solana-era"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
@@ -116,115 +116,114 @@ export default function Story() {
                   className="space-y-6 flex-1 flex flex-col justify-between"
                 >
                   <div className="space-y-4">
-                    <div className="inline-block p-3 rounded-2xl bg-amber-100 text-amber-700 border border-amber-200 animate-bounce">
-                      <Smile className="w-8 h-8" />
+                    <div className="inline-block p-3 rounded-2xl bg-rose-50 text-rose-600 border border-rose-100 animate-pulse">
+                      <ShieldCheck className="w-8 h-8 text-rose-500" />
                     </div>
-                    <h3 className="font-display text-2xl font-black text-amber-700 uppercase italic flex items-center gap-2">
-                      Unstoppable King <Sparkles className="w-5 h-5 text-amber-500 animate-spin" />
+                    <h3 className="font-display text-2xl font-black text-rose-700 uppercase italic flex items-center gap-2">
+                      Non-Releasable Champion <Sparkles className="w-5 h-5 text-rose-400 animate-spin" />
                     </h3>
-                    <p className="text-sm text-amber-950/80 font-sans leading-relaxed">
-                      Heavy heavy golden chains, spike collar locked, designer sunglasses on. Sitting on piles of cash, laughing as the charts print vertical green skyscrapers because he holds forever!
+                    <p className="text-sm text-rose-950/80 font-sans leading-relaxed">
+                      Although his hip healed under a wildlife rehabilitator's care, limited use of his left paw deemed him non-releasable. Now, he's forever protected, comfy, and has converted his limited left paw into a <strong>Diamond Paw</strong> that holds $Casper tokens forever!
                     </p>
                   </div>
 
-                  {/* Fun Live Cash Counter Gauge */}
-                  <div className="bg-amber-50 p-4 rounded-2xl border border-amber-200 shadow-sm">
-                    <div className="flex justify-between text-xs font-bold text-amber-800 mb-2">
-                      <span>BULLISH CHARGING VELOCITY</span>
-                      <span className="text-amber-700 font-bold">MAX SPEED 🔥</span>
+                  {/* Cash/Meme protection metrics */}
+                  <div className="bg-rose-50 p-4 rounded-2xl border border-rose-100 shadow-sm">
+                    <div className="flex justify-between text-xs font-bold text-rose-800 mb-2 font-mono">
+                      <span>SOLANA SHIELD STRENGTH</span>
+                      <span className="text-rose-700 font-bold">RENOUNCED & LOCKED 🔥</span>
                     </div>
-                    <div className="h-2 w-full bg-amber-100 rounded-full overflow-hidden">
+                    <div className="h-2 w-full bg-rose-100 rounded-full overflow-hidden">
                       <motion.div 
-                        animate={{ width: ["35%", "98%", "80%", "100%", "60%", "98%"] }} 
+                        animate={{ width: ["70%", "100%", "95%", "100%", "85%", "100%"] }} 
                         transition={{ duration: 2, repeat: Infinity }} 
-                        className="h-full bg-gradient-to-r from-amber-500 to-amber-700"
+                        className="h-full bg-gradient-to-r from-rose-400 to-rose-600"
                       ></motion.div>
                     </div>
-                    <p className="mt-3 text-[11px] font-mono text-amber-700 text-center font-bold">
-                      🚀 "DIAMOND PAWS ALWAYS WIN"
+                    <p className="mt-3 text-[11px] font-mono text-rose-700 text-center font-bold">
+                      🔒 "Mint Revoked, LP Keys Burned"
                     </p>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
 
-            {/* Micro Celebratory Confetti Banner */}
+            {/* Custom Celebration Splash */}
             {showCelebration && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute inset-0 bg-amber-500/10 backdrop-blur-[1px] flex items-center justify-center pointer-events-none"
+                className="absolute inset-0 bg-rose-500/10 backdrop-blur-[1px] flex items-center justify-center pointer-events-none"
               >
-                <span className="text-3xl font-display font-black text-white rotate-[-5deg] bg-amber-600 px-4 py-2 rounded-xl shadow-[0_0_20px_rgba(217,119,6,0.3)] border-2 border-white/25">
-                  BULL POWER! 🐕💎
+                <span className="text-2xl font-display font-black text-white rotate-[-5deg] bg-rose-600 px-4 py-2 rounded-xl shadow-lg border-2 border-white/20">
+                  CASPER IS COZY! 🦝🍀
                 </span>
               </motion.div>
             )}
           </div>
 
-          {/* Text Story Side - Verbatim story text but adapted to bulldog */}
-          <div className="lg:col-span-7 bg-[#FDFBF7] p-8 sm:p-10 rounded-3xl border border-amber-200 flex flex-col justify-between shadow-xl">
+          {/* Text Story Side - Verbatim Casper story text formatted beautifully with Solana context */}
+          <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-rose-100 flex flex-col justify-between shadow-lg">
             
             <div className="space-y-8">
               {/* Quote icon styling */}
-              <div className="text-amber-200">
+              <div className="text-rose-200">
                 <Quote className="w-12 h-12 fill-current" />
               </div>
 
               {/* Story Content adapted */}
-              <div className="space-y-6 font-sans text-amber-950 font-medium">
-                <p className="text-lg leading-relaxed text-amber-900">
-                  He is no longer a <span className="bg-amber-100 text-amber-800 border border-amber-200 font-black px-2 py-0.5 rounded">Trembling Pup</span>.
+              <div className="space-y-6 font-sans text-rose-950 font-semibold">
+                <p className="text-lg leading-relaxed text-rose-900">
+                  Meet <span className="bg-rose-50 text-rose-800 border border-rose-100 font-bold px-2 py-0.5 rounded">Casper</span>, a 4-year-old male Albino Northern Raccoon.
                 </p>
-                <p className="text-xl sm:text-2xl font-display font-black text-amber-950 leading-tight uppercase italic">
-                  He is <span className="text-amber-600">The Bull Dog</span> — the most bullish and tenacious dog in the entire blockchain.
+                <p className="text-xl sm:text-2xl font-display font-black text-rose-950 leading-tight uppercase italic">
+                  "Only <span className="text-rose-500">one in every 10,000 to 20,000</span> raccoons is born with an albino mutation."
                 </p>
-                <p className="text-base leading-relaxed text-amber-950/80">
-                  Heavy heavy golden chains, spike collar locked, designer sunglasses on. Sitting on piles of cash, laughing as the charts print vertical green skyscrapers because he holds forever! Every green candle charges him up. He went from a trembling backyard pet to the degen king of the yard.
+                <p className="text-base leading-relaxed text-rose-950/80">
+                  But the real mind-blowing statistic is that the odds of seeing an albino raccoon in adulthood are about <strong>one in 750,000</strong>! You have a better chance of being struck by lightning. Casper beat all odds after surviving a dog attack in his youth, receiving expert veterinary care, and retiring comfortably as a non-releasable legend.
                 </p>
-                <p className="text-lg font-display font-black tracking-tight text-amber-700">
-                  From scared whimpers to powerful, roaring BARKS!
+                <p className="text-lg font-display font-black tracking-tight text-rose-700">
+                  The ultimate lucky mascot on Solana!
                 </p>
-                <p className="text-base leading-relaxed text-amber-950/80">
-                  The Bull Dog doesn’t chase the market anymore… <br />
-                  <span className="text-amber-600 font-black text-lg italic">The market follows him.</span>
+                <p className="text-base leading-relaxed text-rose-950/80">
+                  By bringing Casper onto the blockchain as <span className="text-rose-500 font-black italic">$Casper</span>, we build a community that honors this survivor's rare luck. His limited left front paw is now a legendary diamond glove that never drops a bag!
                 </p>
 
-                {/* Moral Highlight */}
-                <div className="bg-amber-50/50 p-5 rounded-2xl border-l-4 border-amber-600 border-t border-r border-b border-amber-100/60 space-y-2">
-                  <span className="block text-xs font-bold text-amber-700 uppercase tracking-wider font-mono">
-                    Moral of the story:
+                {/* Statistical highlight box */}
+                <div className="bg-rose-50/40 p-5 rounded-2xl border-l-4 border-rose-500 border-t border-r border-b border-rose-100 space-y-2">
+                  <span className="block text-xs font-bold text-rose-700 uppercase tracking-wider font-mono">
+                    🍀 Lucky Charm Odds:
                   </span>
-                  <p className="text-sm font-sans text-amber-900/80 italic">
-                    Even the most scared pup can become an absolute legend once he grows diamond teeth and joins $bulldog on Solana.
+                  <p className="text-sm font-sans text-rose-950/80 italic">
+                    Hitting a 1000x on a normal token is hard. HODLing a 1-in-750,000 miracle like $Casper is the easiest way to secure lightning-fast luck.
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Footer story slogan */}
-            <div className="pt-8 mt-8 border-t border-amber-200/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div className="pt-8 mt-8 border-t border-rose-200/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
-                <span className="block text-[11px] font-black text-amber-800/40 tracking-wider uppercase font-mono">
-                  THE FINAL VERDICT
+                <span className="block text-[11px] font-black text-rose-800/40 tracking-wider uppercase font-mono">
+                  MINT PERMISSIONS & SECURITY
                 </span>
-                <p className="font-display font-black text-lg text-amber-950">
-                  $BULLDOG — <span className="text-amber-600">The king of the yard.</span>
+                <p className="font-display font-black text-lg text-rose-950">
+                  $Casper — <span className="text-rose-500">Non-releasable & fully locked.</span>
                 </p>
               </div>
 
               <button
                 onClick={() => {
-                  setActiveTab("bull");
+                  setActiveTab("safe");
                   setShowCelebration(true);
                   setTimeout(() => setShowCelebration(false), 2000);
-                  const element = document.getElementById("interactive-cat");
+                  const element = document.getElementById("interactive-raccoon");
                   if (element) element.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="w-full sm:w-auto px-5 py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-display font-black text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer border-none"
+                className="w-full sm:w-auto px-5 py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-display font-black text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer border-none"
               >
-                Join the Bull Dog Pack ➔
+                Pet Casper to Activate Luck ➔
               </button>
             </div>
 
@@ -232,12 +231,12 @@ export default function Story() {
 
         </div>
 
-        {/* Verbatim Question Box adapted to real Telegram link */}
-        <div className="mt-16 bg-gradient-to-r from-amber-500 via-amber-600 to-amber-700 text-white p-8 sm:p-12 rounded-3xl max-w-4xl mx-auto shadow-[0_0_35px_rgba(217,119,6,0.25)] text-center relative overflow-hidden">
+        {/* Question Box */}
+        <div className="mt-16 bg-gradient-to-r from-rose-400 via-rose-500 to-rose-600 text-white p-8 sm:p-12 rounded-3xl max-w-4xl mx-auto shadow-[0_0_35px_rgba(244,63,94,0.2)] text-center relative overflow-hidden">
           <div className="absolute top-[-20%] right-[-10%] w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
           <div className="relative z-10 space-y-6">
             <h4 className="font-display text-2xl sm:text-3xl font-black text-white uppercase italic drop-shadow-md">
-              Are you still a trembling paper-handed pup… or are you ready to become a powerful, cash-rich Bull Dog?
+              Are you going to let the rare 1-in-750,000 miracle slip away, or are you ready to claim Casper's lucky diamond paws?
             </h4>
             <div className="flex flex-col sm:flex-row justify-center gap-4 items-center">
               <button
@@ -245,19 +244,20 @@ export default function Story() {
                   const element = document.getElementById("how-to-buy");
                   if (element) element.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white text-amber-800 hover:text-amber-950 font-display font-black text-sm shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border-none"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white text-rose-800 hover:text-rose-950 font-display font-black text-sm shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border-none"
               >
-                Get $BULLDOG Now 🚀
+                Acquire $Casper Now ⚡
               </button>
-              {/* Actual Telegram Link */}
-              <a
-                href="https://t.me/THEBULLDOGSOL"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#78350F] text-white hover:bg-[#5C250A] font-display font-black text-sm shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-1.5"
+              
+              <button
+                onClick={() => {
+                  const element = document.getElementById("interactive-raccoon");
+                  if (element) element.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#4C0519] text-white hover:bg-[#31020E] font-display font-black text-sm shadow-xl hover:scale-105 active:scale-95 transition-all border-none cursor-pointer"
               >
-                Join Telegram Chat
-              </a>
+                Interact With Casper 🦝
+              </button>
             </div>
           </div>
         </div>
