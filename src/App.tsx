@@ -12,7 +12,7 @@ import Tokenomics from "./components/Tokenomics";
 import HowToBuy from "./components/HowToBuy";
 import Footer from "./components/Footer";
 
-const CONTRACT_ADDRESS = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+const CONTRACT_ADDRESS = "HGBxfAM4hDrKTagryTNwKsjPHShdM8coP9Ve9jE6pump";
 
 export default function App() {
   return (
