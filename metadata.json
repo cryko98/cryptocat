@@ -1,6 +1,6 @@
 {
-  "name": "The Albino Raccoon",
-  "description": "Casper the Albino Raccoon ($Casper) on Solana. The rarest 1-in-750,000 lucky charm with diamond paws!",
+  "name": "Shark Cat",
+  "description": "Shark Cat ($sharkcat) on Solana. The ultimate razor-sharp ocean apex predator hunting paper hands and printing green candles!",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Copy, Check, TrendingUp, ShieldCheck, Heart, Sparkles, Send } from "lucide-react";
+import { motion } from "motion/react";
+import { Copy, Check, TrendingUp, ShieldCheck, Send, Waves, Skull, Zap } from "lucide-react";
 
 interface HeroProps {
   contractAddress: string;
@@ -8,7 +8,6 @@ interface HeroProps {
 
 export default function Hero({ contractAddress }: HeroProps) {
   const [copied, setCopied] = useState(false);
-  const [showTelegramAlert, setShowTelegramAlert] = useState(false);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(contractAddress);
@@ -16,42 +15,38 @@ export default function Hero({ contractAddress }: HeroProps) {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleTelegramClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setShowTelegramAlert(true);
-    setTimeout(() => setShowTelegramAlert(false), 3000);
-  };
-
   return (
-    <section className="relative overflow-hidden bg-[#FFFDFD] pt-12 pb-20 sm:pb-28">
-      {/* Dynamic Background Elements */}
+    <section className="relative overflow-hidden bg-slate-900 text-white pt-12 pb-20 sm:pb-28">
+      {/* Dynamic Ocean & Grid Background */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        {/* Faint Grid Layer */}
-        <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#e11d48_1px,transparent_1px),linear-gradient(to_bottom,#e11d48_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        {/* Deep Ocean Grid */}
+        <div className="absolute inset-0 opacity-[0.07] bg-[linear-gradient(to_right,#38bdf8_1px,transparent_1px),linear-gradient(to_bottom,#38bdf8_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
-        {/* Floating Casper Bubble 1 */}
-        <div className="absolute top-[12%] left-[8%] md:left-[15%] w-14 h-14 md:w-16 md:h-16 rounded-full border border-rose-100 bg-white/90 backdrop-blur-sm flex flex-col items-center justify-center shadow-sm animate-float-slow">
-          <span className="text-xs font-mono font-bold text-rose-500">🍀 1 in</span>
-          <span className="text-[10px] font-mono font-bold text-rose-800">750k</span>
+        {/* Ambient ocean blue glow spheres */}
+        <div className="absolute top-[-10%] left-[20%] w-[500px] h-[500px] bg-sky-600/20 rounded-full blur-[140px]"></div>
+        <div className="absolute bottom-[10%] right-[10%] w-[450px] h-[450px] bg-blue-600/15 rounded-full blur-[130px]"></div>
+
+        {/* Floating Stat Badges */}
+        <div className="absolute top-[12%] left-[5%] md:left-[12%] w-16 h-16 rounded-2xl border border-sky-500/30 bg-slate-800/90 backdrop-blur-md flex flex-col items-center justify-center shadow-lg animate-float-slow">
+          <span className="text-xs font-mono font-bold text-sky-400">🦈 APEX</span>
+          <span className="text-[10px] font-mono font-bold text-slate-300">PREDATOR</span>
         </div>
 
-        {/* Floating Ethereum / Solana Bubble */}
-        <div className="absolute top-[8%] right-[10%] md:right-[32%] w-12 h-12 md:h-14 md:w-14 rounded-full border border-rose-100 bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-sm animate-float-slower">
-          <span className="text-lg md:text-xl font-bold text-rose-400">⚡</span>
+        <div className="absolute top-[8%] right-[8%] md:right-[30%] w-14 h-14 rounded-2xl border border-blue-500/30 bg-slate-800/90 backdrop-blur-md flex items-center justify-center shadow-lg animate-float-slower">
+          <span className="text-xl font-bold text-sky-400">⚡</span>
         </div>
 
-        {/* Extra Luck Bubble */}
-        <div className="absolute bottom-[20%] left-[5%] md:left-[10%] w-10 h-10 md:w-12 md:h-12 rounded-full border border-rose-100 bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-sm animate-float-slower">
-          <span className="text-xs font-mono font-bold text-rose-600">$Casper</span>
+        <div className="absolute bottom-[20%] left-[4%] md:left-[8%] w-14 h-14 rounded-2xl border border-sky-500/30 bg-slate-800/90 backdrop-blur-md flex items-center justify-center shadow-lg animate-float-slower">
+          <span className="text-xs font-mono font-bold text-sky-300">$sharkcat</span>
         </div>
 
-        {/* Floating Rose/Crimson Candlesticks */}
-        <div className="absolute bottom-[10%] right-[5%] md:right-[15%] w-32 h-24 opacity-25 animate-float-chart hidden sm:block">
+        {/* Floating Candlestick Visualizer */}
+        <div className="absolute bottom-[10%] right-[5%] md:right-[12%] w-32 h-24 opacity-30 animate-float-chart hidden sm:block">
           <div className="flex items-end space-x-2 h-full">
-            <div className="w-4 bg-rose-200 h-[20%] rounded-sm"></div>
-            <div className="w-4 bg-rose-300 h-[35%] rounded-sm"></div>
-            <div className="w-4 bg-rose-400/80 h-[60%] rounded-sm"></div>
-            <div className="w-4 bg-rose-500 h-[90%] rounded-sm"></div>
+            <div className="w-4 bg-sky-500/40 h-[30%] rounded-sm"></div>
+            <div className="w-4 bg-sky-400/60 h-[55%] rounded-sm"></div>
+            <div className="w-4 bg-sky-400 h-[80%] rounded-sm"></div>
+            <div className="w-4 bg-emerald-400 h-[100%] rounded-sm shadow-[0_0_10px_#10b981]"></div>
           </div>
         </div>
       </div>
@@ -66,23 +61,23 @@ export default function Hero({ contractAddress }: HeroProps) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-rose-50 border border-rose-100 text-rose-900 text-xs font-mono font-bold uppercase tracking-wider shadow-sm"
+              className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-slate-800/90 border border-sky-500/40 text-sky-300 text-xs font-mono font-bold uppercase tracking-wider shadow-md"
             >
-              <Sparkles className="w-3.5 h-3.5 text-rose-500 animate-spin" />
-              <span>THE ULTIMATE SOLANA LUCKY CHARM</span>
+              <Zap className="w-3.5 h-3.5 text-sky-400 animate-spin" />
+              <span>THE BLOODTHIRSTY SOLANA APEX PREDATOR</span>
             </motion.div>
 
             {/* Main Title & Ticker */}
-            <div className="space-y-4">
+            <div className="space-y-3">
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="font-display text-5xl sm:text-7xl lg:text-8xl font-black text-[#4C0519] tracking-tight leading-none uppercase italic"
+                className="font-display text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-none uppercase italic"
               >
-                The Albino <br className="hidden sm:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-rose-500 to-rose-700 drop-shadow-[0_0_20px_rgba(244,63,94,0.15)]">
-                  Raccoon
+                Shark <br className="hidden sm:block" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-400 to-indigo-300 drop-shadow-[0_0_25px_rgba(56,189,248,0.3)]">
+                  Cat
                 </span>
               </motion.h1>
 
@@ -90,21 +85,21 @@ export default function Hero({ contractAddress }: HeroProps) {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="font-display font-black text-3xl sm:text-5xl text-rose-900 tracking-tight"
+                className="font-display font-black text-3xl sm:text-5xl text-slate-200 tracking-tight"
               >
-                Ticker: <span className="text-rose-500 uppercase italic">$Casper</span>
+                Ticker: <span className="text-sky-400 uppercase italic">$sharkcat</span>
               </motion.p>
             </div>
 
-            {/* Slogan */}
+            {/* Story Slogan */}
             <div className="space-y-4">
               <motion.p
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-lg text-rose-950/80 font-sans max-w-2xl mx-auto lg:mx-0 leading-relaxed font-semibold"
+                className="text-base sm:text-lg text-slate-300 font-sans max-w-2xl mx-auto lg:mx-0 leading-relaxed font-semibold"
               >
-                The odds of seeing an albino raccoon are 1 in 750,000. For those familiar with statistics, you have a better chance of being struck by lightning. Casper is the ultimate, rarest luck magnet on the Solana blockchain. No fear, no doubts—only pure albino magic and unstoppable diamond-paw gains! 🦝✨💎
+                Armed with razor-sharp shark jaws and relentless feline stealth, Shark Cat rules the deep waters of Solana. It hunts down bears, tears paper hands to shreds, and drags holders to unbelievable green heights! Fear the fin, embrace the claw, and claim your spot in the ocean feeding frenzy! 🦈🩸💎
               </motion.p>
 
               <motion.div
@@ -113,18 +108,13 @@ export default function Hero({ contractAddress }: HeroProps) {
                 transition={{ duration: 0.6, delay: 0.35 }}
                 className="flex justify-center lg:justify-start"
               >
-                <a
-                  href="https://www.obermountain.com/activities/wildlife/raccoons"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-800 text-xs font-mono font-bold border border-rose-200/60 shadow-sm transition-all hover:scale-[1.02]"
-                >
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800/90 border border-sky-500/30 text-sky-300 text-xs font-mono font-bold shadow-md">
                   <span className="flex h-2 w-2 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
                   </span>
-                  <span>Verified 1-in-750,000 Rarity Proof ➔</span>
-                </a>
+                  <span>Solana Ocean Feeding Frenzy is ACTIVE</span>
+                </div>
               </motion.div>
             </div>
 
@@ -135,22 +125,22 @@ export default function Hero({ contractAddress }: HeroProps) {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="max-w-xl mx-auto lg:mx-0"
             >
-              <div className="bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-rose-150 shadow-lg flex flex-col sm:flex-row items-center gap-4">
+              <div className="bg-slate-800/90 backdrop-blur-md p-4 rounded-2xl border border-slate-700 shadow-xl flex flex-col sm:flex-row items-center gap-4">
                 <div className="w-full text-left">
-                  <span className="block text-[10px] font-bold text-rose-800/60 uppercase tracking-wider mb-1">
-                    OFFICIAL MINT CONTRACT ADDRESS
+                  <span className="block text-[10px] font-bold text-sky-400 uppercase tracking-wider mb-1">
+                    OFFICIAL CONTRACT ADDRESS (CA)
                   </span>
-                  <div className="font-mono text-sm font-semibold text-rose-800 bg-rose-50/40 px-3 py-2.5 rounded-lg border border-rose-100 overflow-hidden text-ellipsis whitespace-nowrap">
+                  <div className="font-mono text-sm font-semibold text-slate-200 bg-slate-900/80 px-3 py-2.5 rounded-xl border border-slate-700 overflow-hidden text-ellipsis whitespace-nowrap">
                     {contractAddress}
                   </div>
                 </div>
                 <button
                   onClick={handleCopy}
                   id="copy-ca-hero"
-                  className={`w-full sm:w-auto h-12 px-6 rounded-xl flex items-center justify-center gap-2 font-display font-black text-sm transition-all cursor-pointer border-none ${
+                  className={`w-full sm:w-auto h-12 px-6 rounded-xl flex items-center justify-center gap-2 font-display font-black text-sm transition-all cursor-pointer border-none shrink-0 ${
                     copied
-                      ? "bg-rose-700 text-white shadow-md scale-95"
-                      : "bg-rose-600 hover:bg-rose-700 text-white shadow-[0_0_15px_rgba(244,63,94,0.15)] hover:shadow-[0_0_25px_rgba(244,63,94,0.3)] active:scale-95"
+                      ? "bg-emerald-500 text-slate-950 shadow-md scale-95"
+                      : "bg-sky-500 hover:bg-sky-400 text-slate-950 shadow-[0_0_20px_rgba(14,165,233,0.3)] hover:shadow-[0_0_30px_rgba(14,165,233,0.5)] active:scale-95"
                   }`}
                 >
                   {copied ? (
@@ -175,14 +165,14 @@ export default function Hero({ contractAddress }: HeroProps) {
             >
               {/* Telegram Link */}
               <a
-                href="https://t.me/thealbinoraccoon"
+                href="https://t.me/sharkcattonsol"
                 target="_blank"
                 rel="noopener noreferrer"
                 id="tg-hero-cta"
-                className="px-8 py-4 rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-950 font-display font-black shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 border border-rose-200 cursor-pointer"
+                className="px-8 py-4 rounded-2xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-display font-black shadow-[0_0_20px_rgba(14,165,233,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer border-none"
               >
                 Join Telegram
-                <Send className="w-5 h-5 text-rose-500 fill-current" />
+                <Send className="w-5 h-5 fill-current" />
               </a>
 
               <a
@@ -190,49 +180,48 @@ export default function Hero({ contractAddress }: HeroProps) {
                 target="_blank"
                 rel="noreferrer"
                 id="chart-hero-cta"
-                className="px-8 py-4 rounded-2xl bg-white border-2 border-rose-100 hover:border-rose-400 hover:text-rose-700 text-rose-800 font-display font-bold shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2"
+                className="px-8 py-4 rounded-2xl bg-slate-800 hover:bg-slate-700 border-2 border-slate-700 hover:border-sky-500 text-slate-200 hover:text-white font-display font-bold shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2"
               >
-                Live Chart <TrendingUp className="w-5 h-5 text-rose-500" />
+                Live Chart <TrendingUp className="w-5 h-5 text-sky-400" />
               </a>
             </motion.div>
 
-            {/* Soft trust tags */}
+            {/* Trust Badges */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-wrap justify-center lg:justify-start gap-y-2 gap-x-6 pt-4 text-xs font-bold text-rose-900/70"
+              className="flex flex-wrap justify-center lg:justify-start gap-y-2 gap-x-6 pt-2 text-xs font-bold text-slate-400"
             >
-              <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-rose-500" /> Liquidity Pool Burned</span>
-              <span className="flex items-center gap-1.5"><Heart className="w-4 h-4 text-rose-400" /> 1-in-750,000 Rare Luck</span>
-              <span className="flex items-center gap-1.5"><Sparkles className="w-4 h-4 text-rose-500" /> No Team Allocation</span>
+              <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-sky-400" /> Mint Renounced</span>
+              <span className="flex items-center gap-1.5"><Waves className="w-4 h-4 text-sky-400" /> Liquidity Pool Burned</span>
+              <span className="flex items-center gap-1.5"><Skull className="w-4 h-4 text-sky-400" /> 0% Buy / Sell Taxes</span>
             </motion.div>
 
           </div>
 
-          {/* Hero Right Content - Casper Image */}
+          {/* Hero Right Content - Shark Cat Image */}
           <div className="lg:col-span-5 relative flex justify-center z-10">
-            {/* Soft glowing radial background behind raccoon */}
-            <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-rose-300/20 to-rose-100/10 blur-3xl opacity-80 animate-pulse-subtle"></div>
+            {/* Glowing ocean blue aura */}
+            <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-sky-500/30 to-blue-600/20 blur-3xl opacity-80 animate-pulse-subtle"></div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
+              initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
-              className="relative w-full max-w-md sm:max-w-lg aspect-square rounded-3xl overflow-hidden border-4 border-rose-200 bg-white/50 backdrop-blur-sm animate-float-slow shadow-xl"
+              className="relative w-full max-w-md sm:max-w-lg aspect-square rounded-3xl overflow-hidden border-4 border-sky-400/40 bg-slate-800/80 backdrop-blur-sm animate-float-slow shadow-2xl"
             >
-              {/* Outer frame matching the layout style */}
               <img
-                src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/casper.png?v=1784562261"
-                alt="Casper the Albino Raccoon"
+                src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/shark.png?v=1785074178"
+                alt="Shark Cat Apex Predator"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover rounded-[20px]"
               />
 
-              {/* Extra Floating Badge */}
-              <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-md border border-rose-100 text-rose-900 px-4 py-2 rounded-2xl shadow-md flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>
-                <span className="text-xs font-mono font-bold">CASPER IS WATCHING OVER! 🦝🍀</span>
+              {/* Floating Badge */}
+              <div className="absolute bottom-4 right-4 bg-slate-900/95 backdrop-blur-md border border-sky-500/40 text-sky-300 px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-sky-400 animate-ping"></span>
+                <span className="text-xs font-mono font-bold uppercase tracking-wide">SHARK CAT IS HUNTING 🦈</span>
               </div>
             </motion.div>
           </div>
