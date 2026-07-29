@@ -1,6 +1,6 @@
 {
-  "name": "Shark Cat",
-  "description": "Shark Cat ($sharkcat) on Solana. The ultimate razor-sharp ocean apex predator hunting paper hands and printing green candles!",
+  "name": "Pipe Dog",
+  "description": "Pipe Dog ($pipedog) on Solana. The legendary gentleman dog with ultimate wisdom, classic composure, and tobacco pipe elegance!",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
