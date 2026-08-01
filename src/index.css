@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Cinzel", serif;
+  --font-display: "Space Grotesk", sans-serif;
 }
 
 @keyframes float-slow {
@@ -65,12 +65,12 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #1c130e;
+  background: #0f0705;
 }
 ::-webkit-scrollbar-thumb {
-  background: #92400e;
+  background: #c2410c;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d97706;
+  background: #f97316;
 }

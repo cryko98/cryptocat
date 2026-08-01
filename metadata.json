@@ -1,6 +1,6 @@
 {
-  "name": "Pipe Dog",
-  "description": "Pipe Dog ($pipedog) on Solana. The legendary gentleman dog with ultimate wisdom, classic composure, and tobacco pipe elegance!",
+  "name": "Mars Cat",
+  "description": "Mars Cat ($marscat) on Solana. The cosmic feline pioneer conquering the Red Planet and reaching interplanetary heights!",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
