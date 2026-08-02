@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "motion/react";
-import { TrendingUp, ShieldCheck, Flame, Sparkles, Zap, Eye } from "lucide-react";
+import { TrendingUp, ShieldCheck, Flame, Sparkles, Zap, Eye, Copy, Check } from "lucide-react";
 
 export default function Hero() {
+  const [copied, setCopied] = useState(false);
+  const contractAddress = "6wfbCEwBDE8D75QaQCSgawiNfKwJDCyAYA32F768pump";
+
+  const handleCopyCA = () => {
+    navigator.clipboard.writeText(contractAddress);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -129,6 +138,52 @@ export default function Hero() {
               >
                 Live Chart <TrendingUp className="w-5 h-5 text-purple-400" />
               </a>
+            </motion.div>
+
+            {/* Copyable Solana Contract Address Box */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="w-full max-w-xl mx-auto lg:mx-0 pt-3"
+            >
+              <div
+                onClick={handleCopyCA}
+                className="group relative flex items-center justify-between gap-3 p-3.5 sm:p-4 rounded-2xl bg-[#130726]/95 border-2 border-purple-500/50 hover:border-purple-400 shadow-[0_0_25px_rgba(168,85,247,0.3)] hover:shadow-[0_0_35px_rgba(168,85,247,0.5)] cursor-pointer transition-all duration-200 select-none overflow-hidden"
+              >
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <span className="flex-shrink-0 px-2.5 py-1 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 text-[10px] sm:text-xs font-mono font-black text-white uppercase tracking-wider shadow">
+                    SOL CA
+                  </span>
+                  <span className="font-mono text-xs sm:text-sm font-bold text-purple-100 group-hover:text-white truncate">
+                    {contractAddress}
+                  </span>
+                </div>
+
+                <div className="flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#200b42] group-hover:bg-purple-600 text-xs font-mono font-bold text-purple-200 group-hover:text-white transition-all">
+                  {copied ? (
+                    <>
+                      <Check className="w-4 h-4 text-cyan-300" />
+                      <span className="text-cyan-300 font-black">COPIED!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>COPY CA</span>
+                    </>
+                  )}
+                </div>
+
+                {/* Subtle Iridescent glow effect on copy */}
+                {copied && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-cyan-500/20 pointer-events-none"
+                  />
+                )}
+              </div>
             </motion.div>
 
             {/* Trust Badges */}

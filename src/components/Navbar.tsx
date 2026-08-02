@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, Sparkles, Zap, Eye } from "lucide-react";
+import { Menu, X, Sparkles, Zap, Eye, Copy, Check } from "lucide-react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [copiedCA, setCopiedCA] = useState(false);
+
+  const contractAddress = "6wfbCEwBDE8D75QaQCSgawiNfKwJDCyAYA32F768pump";
+
+  const handleCopyCA = () => {
+    navigator.clipboard.writeText(contractAddress);
+    setCopiedCA(true);
+    setTimeout(() => setCopiedCA(false), 2000);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,12 +36,13 @@ export default function Navbar() {
       {/* Top Ticker Tape - Iridescent Aura Vibe */}
       <div id="top-ticker" className="w-full bg-[#0d041e] text-purple-200 py-2 px-4 text-xs font-mono font-bold tracking-wider overflow-hidden select-none whitespace-nowrap border-b border-purple-900/40">
         <div className="inline-block animate-[marquee_22s_linear_infinite] whitespace-nowrap">
+          <span className="mx-4 text-cyan-300 font-black">⚡ CA: {contractAddress}</span>
           <span className="mx-4">✨ AURA CAT ($AURACAT) RADIATES INFINITE VIBRATION ON SOLANA!</span>
           <span className="mx-4">👁️ THE HIGHEST FREQUENCY FELINE IN THE COSMOS</span>
           <span className="mx-4">⚡ ZERO TAX, 100% SERENE COMMUNITY AURA</span>
-          <span className="mx-4">🔮 ALIGN YOUR FREQUENCY & EMBRACE THE RADIANCY</span>
+          <span className="mx-4 text-pink-300 font-black">🔮 CA: {contractAddress}</span>
           <span className="mx-4">👑 ENTER THE AURA SANCTUARY & GROW YOUR PURR-ENERGY!</span>
-          <span className="mx-4">✨ AURA CAT ($AURACAT) RADIATES INFINITE VIBRATION ON SOLANA!</span>
+          <span className="mx-4 text-cyan-300 font-black">⚡ CA: {contractAddress}</span>
         </div>
       </div>
 
@@ -83,7 +93,25 @@ export default function Navbar() {
             </nav>
 
             {/* Aura CTA */}
-            <div className="hidden md:flex items-center space-x-4 relative">
+            <div className="hidden md:flex items-center space-x-3 relative">
+              <button
+                onClick={handleCopyCA}
+                title="Copy Official Solana Contract Address"
+                className="px-3.5 py-2 rounded-full bg-[#160830] hover:bg-[#250d4e] border border-[#3b186b] hover:border-purple-400 text-purple-200 hover:text-white font-mono font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer"
+              >
+                {copiedCA ? (
+                  <>
+                    <Check className="w-3.5 h-3.5 text-cyan-300" />
+                    <span className="text-cyan-300">COPIED</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-3.5 h-3.5 text-purple-400" />
+                    <span>CA: {contractAddress.slice(0, 4)}...{contractAddress.slice(-4)}</span>
+                  </>
+                )}
+              </button>
+
               <button
                 onClick={() => scrollToSection("interactive-lounge")}
                 id="explore-aura-btn-header"
@@ -142,7 +170,24 @@ export default function Navbar() {
                 </button>
               </nav>
 
-              <div className="pt-4 border-t border-[#3b186b] flex items-center justify-center">
+              <div className="pt-4 border-t border-[#3b186b] flex flex-col gap-2.5">
+                <button
+                  onClick={handleCopyCA}
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#160830] hover:bg-[#250d4e] border border-[#3b186b] text-purple-200 font-mono font-bold text-xs flex items-center justify-center gap-2"
+                >
+                  {copiedCA ? (
+                    <>
+                      <Check className="w-4 h-4 text-cyan-300" />
+                      <span className="text-cyan-300">CA COPIED TO CLIPBOARD!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-4 h-4 text-purple-400" />
+                      <span>COPY CA: {contractAddress.slice(0, 6)}...{contractAddress.slice(-4)}</span>
+                    </>
+                  )}
+                </button>
+
                 <button
                   onClick={() => scrollToSection("interactive-lounge")}
                   className="w-full px-5 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-display font-black text-sm shadow-md border-none flex items-center justify-center gap-2"
