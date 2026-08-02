@@ -1,43 +1,43 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Award, Calculator, Coins, RefreshCw, Flame, Sparkles } from "lucide-react";
+import { Award, Calculator, Sparkles, RefreshCw, Eye, Zap, Flame } from "lucide-react";
 
-interface FloatingSmoke {
+interface FloatingAura {
   id: number;
   x: number;
   y: number;
-  height: number;
+  size: number;
   text: string;
 }
 
 export default function InteractiveApp() {
-  const [puffCount, setPuffCount] = useState(0);
-  const [gentlemanRank, setGentlemanRank] = useState("Junior Pipe Enthusiast");
+  const [auraCount, setAuraCount] = useState(0);
+  const [auraRank, setAuraRank] = useState("Junior Feline Resonator");
   const [solInvestment, setSolInvestment] = useState(1);
-  const [floatingSmokes, setFloatingSmokes] = useState<FloatingSmoke[]>([]);
-  const smokeIdRef = useRef(0);
+  const [floatingAuras, setFloatingAuras] = useState<FloatingAura[]>([]);
+  const auraIdRef = useRef(0);
 
-  const pipeQuotes = [
-    "PUFF WISDOM!",
-    "CLASSIC COMPOSURE!",
-    "GREEN SMOKE!",
-    "$pipedog!",
-    "UNSHAKEABLE HOLD!",
-    "NOISE IGNORED!",
-    "GENTLEMAN KING!",
-    "SOLANA APEX!",
-    "SOLANA GENTLEMAN!",
-    "DIAMOND PIPE!"
+  const auraQuotes = [
+    "432 HZ RESONANCE!",
+    "PURE AURA!",
+    "IRIDESCENT ABUNDANCE!",
+    "$auracat!",
+    "SERENE CONVICTION!",
+    "NOISE TRANSMUTED!",
+    "SOLANA APEX AURA!",
+    "HIGH VIBRATION!",
+    "COSMIC HARMONY!",
+    "INFINITE LIGHT!"
   ];
 
-  const handlePuff = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setPuffCount((prev) => {
+  const handleResonate = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setAuraCount((prev) => {
       const newCount = prev + 1;
-      if (newCount >= 100) setGentlemanRank("👑 LORD PIPE DOG APEX TITAN");
-      else if (newCount >= 50) setGentlemanRank("📜 High Gentleman Lounge Master");
-      else if (newCount >= 25) setGentlemanRank("💼 Distinguished Pipe Connoisseur");
-      else if (newCount >= 10) setGentlemanRank("🍂 Vintage Pipe Enthusiast");
-      else setGentlemanRank("Junior Pipe Enthusiast");
+      if (newCount >= 100) setAuraRank("👑 SUPREME COSMIC AURA TITAN");
+      else if (newCount >= 50) setAuraRank("🔮 High Sanctuary Master");
+      else if (newCount >= 25) setAuraRank("✨ Distinguished Vibrational Guardian");
+      else if (newCount >= 10) setAuraRank("🐾 Radiant Aura Initiate");
+      else setAuraRank("Junior Feline Resonator");
       return newCount;
     });
 
@@ -45,55 +45,55 @@ export default function InteractiveApp() {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     
-    const randomText = pipeQuotes[Math.floor(Math.random() * pipeQuotes.length)];
-    const randomHeight = Math.floor(Math.random() * 40) + 25;
+    const randomText = auraQuotes[Math.floor(Math.random() * auraQuotes.length)];
+    const randomSize = Math.floor(Math.random() * 30) + 25;
 
-    const newSmoke: FloatingSmoke = {
-      id: smokeIdRef.current++,
+    const newAura: FloatingAura = {
+      id: auraIdRef.current++,
       x,
       y: y - 20,
-      height: randomHeight,
+      size: randomSize,
       text: randomText,
     };
 
-    setFloatingSmokes((prev) => [...prev, newSmoke]);
+    setFloatingAuras((prev) => [...prev, newAura]);
 
     setTimeout(() => {
-      setFloatingSmokes((prev) => prev.filter((s) => s.id !== newSmoke.id));
+      setFloatingAuras((prev) => prev.filter((s) => s.id !== newAura.id));
     }, 1500);
   };
 
   const calculateStats = (sol: number) => {
-    const pipedogTokens = Math.floor(sol * 8500000);
-    const gentlemanComposure = Math.min(100, 80 + sol * 0.25).toFixed(1);
-    const paperHandsOutclassed = Math.floor(sol * 1450);
-    const greenSmokePower = (sol * 15.0).toFixed(1);
-    return { pipedogTokens, gentlemanComposure, paperHandsOutclassed, greenSmokePower };
+    const auracatTokens = Math.floor(sol * 9800000);
+    const auraHarmony = Math.min(100, 85 + sol * 0.2).toFixed(1);
+    const noiseTransmuted = Math.floor(sol * 1680);
+    const frequencyMultiplier = (sol * 18.0).toFixed(1);
+    return { auracatTokens, auraHarmony, noiseTransmuted, frequencyMultiplier };
   };
 
   const stats = calculateStats(solInvestment);
 
   return (
-    <section id="interactive-lounge" className="relative py-20 sm:py-28 bg-[#180f0a] text-[#fbf0da] overflow-hidden border-t border-b border-[#2d1b11]">
+    <section id="interactive-lounge" className="relative py-20 sm:py-28 bg-[#090314] text-white overflow-hidden border-t border-b border-[#3b186b]">
       
-      {/* Background amber glow */}
+      {/* Background Iridescent Aura Glow */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        <div className="absolute top-[20%] left-[10%] w-72 h-72 rounded-full bg-[#92400e]/20 blur-[130px]"></div>
-        <div className="absolute bottom-[20%] right-[10%] w-72 h-72 rounded-full bg-[#d97706]/20 blur-[130px]"></div>
+        <div className="absolute top-[20%] left-[10%] w-72 h-72 rounded-full bg-purple-600/25 blur-[140px] animate-aura-shift"></div>
+        <div className="absolute bottom-[20%] right-[10%] w-72 h-72 rounded-full bg-pink-600/20 blur-[140px] animate-aura-shift"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#f59e0b] bg-[#251710] px-4 py-2 rounded-full border border-[#d97706]/40 shadow-md">
-            🎮 INTERACTIVE PIPE LOUNGE
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-purple-300 bg-[#160830] px-4 py-2 rounded-full border border-purple-500/40 shadow-[0_0_20px_rgba(168,85,247,0.3)]">
+            ✨ INTERACTIVE AURA SANCTUARY
           </span>
-          <h2 className="font-display text-4xl sm:text-6xl font-black text-[#fbf0da] uppercase tracking-tight">
-            Pipe Dog <span className="text-[#f59e0b]">Wisdom Simulator</span>
+          <h2 className="font-display text-4xl sm:text-6xl font-black text-white uppercase tracking-tight">
+            Aura Cat <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">Resonance Simulator</span>
           </h2>
-          <p className="text-[#e4cbaf] font-sans font-semibold text-base sm:text-lg">
-            Puff the pipe to unlock gentleman wisdom, level up your rank, and calculate your $pipedog token power!
+          <p className="text-purple-200/80 font-sans font-semibold text-base sm:text-lg">
+            Tap Aura Cat to elevate your vibrational frequency, unlock sovereign ranks, and calculate your $auracat energy potential!
           </p>
         </div>
 
@@ -101,68 +101,66 @@ export default function InteractiveApp() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto items-stretch">
           
           {/* Interactive Clicker Game */}
-          <div className="lg:col-span-6 bg-[#251710]/95 p-6 sm:p-8 rounded-3xl border border-[#4a2e1d] shadow-2xl flex flex-col justify-between relative overflow-hidden text-[#fbf0da]">
+          <div className="lg:col-span-6 bg-[#130726]/95 p-6 sm:p-8 rounded-3xl border border-[#3b186b] shadow-2xl flex flex-col justify-between relative overflow-hidden text-white">
             
             <div className="space-y-6">
               <div className="flex justify-between items-center">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#140b07] text-[#f59e0b] text-xs font-mono font-bold border border-[#3e271a]">
-                  <Award className="w-3.5 h-3.5 text-[#f59e0b]" /> Pipe Lounge Arena
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0d041c] text-purple-300 text-xs font-mono font-bold border border-[#3b186b]">
+                  <Award className="w-3.5 h-3.5 text-purple-400" /> Frequency Lounge
                 </span>
-                <span className="text-xs font-mono font-bold text-[#d4bca0] uppercase tracking-widest">
-                  Live Puff Counter
+                <span className="text-xs font-mono font-bold text-purple-300 uppercase tracking-widest">
+                  Live Resonance Counter
                 </span>
               </div>
 
               <div className="text-center space-y-2">
-                <h3 className="font-display text-base font-bold text-[#e4cbaf]">Total Wisdom Puffs Exhaled</h3>
-                <div className="font-display font-black text-5xl sm:text-6xl text-[#f59e0b] tabular-nums drop-shadow-[0_0_20px_rgba(245,158,11,0.3)]">
-                  {puffCount.toLocaleString()}
+                <h3 className="font-display text-base font-bold text-purple-200">Total Harmonic Pulses Resonated</h3>
+                <div className="font-display font-black text-5xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 tabular-nums drop-shadow-[0_0_25px_rgba(168,85,247,0.4)]">
+                  {auraCount.toLocaleString()}
                 </div>
-                <p className="text-xs font-semibold text-[#fef3c7] bg-[#140b07]/90 inline-block px-3.5 py-1.5 rounded-full border border-[#d97706]/40">
-                  Gentleman Rank: <span className="text-[#f59e0b] font-black">{gentlemanRank}</span>
+                <p className="text-xs font-semibold text-purple-100 bg-[#0d041c]/90 inline-block px-3.5 py-1.5 rounded-full border border-purple-500/40">
+                  Vibrational Rank: <span className="text-pink-400 font-black">{auraRank}</span>
                 </p>
               </div>
 
               {/* Clicker Button Area */}
-              <div className="relative h-64 bg-[#140b07] rounded-2xl border border-[#3e271a] flex items-center justify-center group overflow-hidden">
+              <div className="relative h-64 bg-[#0d041c] rounded-2xl border border-[#3b186b] flex items-center justify-center group overflow-hidden">
                 
                 <button
-                  onClick={handlePuff}
-                  id="puff-pipedog-main-btn"
-                  className="relative z-10 w-44 h-44 rounded-full overflow-hidden border-4 border-[#d97706] shadow-[0_0_25px_rgba(217,119,6,0.4)] focus:outline-none focus:ring-4 focus:ring-[#f59e0b] group-hover:scale-105 active:scale-95 transition-all duration-150 cursor-pointer bg-[#251710]"
+                  onClick={handleResonate}
+                  id="resonate-auracat-main-btn"
+                  className="relative z-10 w-44 h-44 rounded-full overflow-hidden border-4 border-purple-500 shadow-[0_0_35px_rgba(168,85,247,0.5)] focus:outline-none focus:ring-4 focus:ring-purple-400 group-hover:scale-105 active:scale-95 transition-all duration-150 cursor-pointer bg-[#130726]"
                 >
                   <img
-                    src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-07-29_11-30-45.jpg?v=1785313952"
-                    alt="Pipe Dog Puff Simulator"
+                    src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/auracat.png?v=1785688369"
+                    alt="Aura Cat Resonance Simulator"
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover rounded-full"
                   />
-                  <div className="absolute inset-0 bg-[#d97706]/10 group-hover:bg-transparent transition-colors"></div>
+                  <div className="absolute inset-0 bg-purple-500/10 group-hover:bg-transparent transition-colors"></div>
                 </button>
 
-                <span className="absolute bottom-3 text-xs font-mono font-bold text-[#f59e0b] select-none animate-pulse text-center px-4">
-                  🖱️ CLICK PIPE DOG TO PUFF WISDOM & EXHALE GREEN CANDLE SMOKE!
+                <span className="absolute bottom-3 text-xs font-mono font-bold text-purple-300 select-none animate-pulse text-center px-4">
+                  🖱️ CLICK AURA CAT TO RADIATE 432 HZ ENERGY & HARMONY!
                 </span>
 
-                {/* Floating Smoke Animations */}
+                {/* Floating Aura Animations */}
                 <AnimatePresence>
-                  {floatingSmokes.map((smoke) => (
+                  {floatingAuras.map((aura) => (
                     <motion.div
-                      key={smoke.id}
-                      initial={{ opacity: 1, y: smoke.y, x: smoke.x, scale: 0.8 }}
-                      animate={{ opacity: 0, y: smoke.y - 120, scale: 1.2, x: smoke.x + (Math.random() * 40 - 20) }}
+                      key={aura.id}
+                      initial={{ opacity: 1, y: aura.y, x: aura.x, scale: 0.8 }}
+                      animate={{ opacity: 0, y: aura.y - 120, scale: 1.2, x: aura.x + (Math.random() * 40 - 20) }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 1, ease: "easeOut" }}
                       className="absolute z-20 flex flex-col items-center pointer-events-none"
                     >
                       <div 
-                        style={{ height: `${smoke.height}px` }}
-                        className="w-3 bg-[#f59e0b] rounded-sm relative flex justify-center shadow-[0_0_12px_#f59e0b]"
-                      >
-                        <div className="absolute top-[-8px] w-0.5 h-[calc(100%+16px)] bg-[#fef3c7]"></div>
-                      </div>
-                      <span className="mt-2 text-[10px] font-mono font-black text-[#120b08] bg-[#f59e0b] px-2 py-0.5 rounded-md shadow-xl uppercase tracking-tight select-none border border-white font-bold">
-                        {smoke.text}
+                        style={{ height: `${aura.size}px`, width: `${aura.size}px` }}
+                        className="rounded-full bg-gradient-to-tr from-purple-500 via-pink-500 to-cyan-400 relative flex justify-center shadow-[0_0_18px_rgba(168,85,247,0.8)] opacity-75"
+                      ></div>
+                      <span className="mt-2 text-[10px] font-mono font-black text-white bg-purple-600 px-2 py-0.5 rounded-md shadow-xl uppercase tracking-tight select-none border border-white font-bold">
+                        {aura.text}
                       </span>
                     </motion.div>
                   ))}
@@ -171,16 +169,16 @@ export default function InteractiveApp() {
 
             </div>
 
-            <div className="pt-6 mt-6 border-t border-[#3e271a] flex justify-between items-center">
-              <span className="text-xs text-[#d4bca0] font-sans font-semibold">
-                Click Pipe Dog to exhale green candle smoke!
+            <div className="pt-6 mt-6 border-t border-[#3b186b] flex justify-between items-center">
+              <span className="text-xs text-purple-300 font-sans font-semibold">
+                Tap Aura Cat to radiate cosmic serenity!
               </span>
               <button
                 onClick={() => {
-                  setPuffCount(0);
-                  setGentlemanRank("Junior Pipe Enthusiast");
+                  setAuraCount(0);
+                  setAuraRank("Junior Feline Resonator");
                 }}
-                className="text-xs text-[#d4bca0] hover:text-[#f59e0b] font-bold flex items-center gap-1 cursor-pointer border-none bg-transparent"
+                className="text-xs text-purple-300 hover:text-purple-100 font-bold flex items-center gap-1 cursor-pointer border-none bg-transparent"
               >
                 <RefreshCw className="w-3 h-3" /> Reset
               </button>
@@ -189,30 +187,30 @@ export default function InteractiveApp() {
           </div>
 
           {/* Calculator */}
-          <div className="lg:col-span-6 bg-[#251710]/95 p-6 sm:p-8 rounded-3xl border border-[#4a2e1d] shadow-2xl flex flex-col justify-between text-[#fbf0da]">
+          <div className="lg:col-span-6 bg-[#130726]/95 p-6 sm:p-8 rounded-3xl border border-[#3b186b] shadow-2xl flex flex-col justify-between text-white">
             
             <div className="space-y-6">
               <div className="flex justify-between items-center">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#140b07] text-[#f59e0b] text-xs font-mono font-bold border border-[#3e271a]">
-                  <Calculator className="w-3.5 h-3.5 text-[#f59e0b]" /> Gentleman Profit Simulator
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0d041c] text-purple-300 text-xs font-mono font-bold border border-[#3b186b]">
+                  <Calculator className="w-3.5 h-3.5 text-purple-400" /> Abundance Simulator
                 </span>
-                <span className="text-xs font-mono font-bold text-[#d4bca0] uppercase tracking-widest">
-                  $pipedog Calculator
+                <span className="text-xs font-mono font-bold text-purple-300 uppercase tracking-widest">
+                  $auracat Calculator
                 </span>
               </div>
 
               <div className="space-y-2">
-                <h3 className="font-display text-base font-bold text-[#fbf0da]">Simulate Your SOL Bags</h3>
-                <p className="text-xs text-[#e4cbaf] leading-relaxed font-semibold">
-                  Adjust the SOL amount to calculate your estimated $pipedog token power and gentleman composure rating!
+                <h3 className="font-display text-base font-bold text-white">Simulate Your Vibrational Alignment</h3>
+                <p className="text-xs text-purple-200 leading-relaxed font-semibold">
+                  Adjust the SOL amount to calculate your estimated $auracat token resonance and composure rating!
                 </p>
               </div>
 
               {/* Slider */}
-              <div className="bg-[#140b07] p-5 rounded-2xl border border-[#3e271a] space-y-4">
+              <div className="bg-[#0d041c] p-5 rounded-2xl border border-[#3b186b] space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-xs font-bold text-[#d4bca0]">SIMULATED DEPOSIT</span>
-                  <span className="font-display font-black text-xl text-[#f59e0b]">{solInvestment} SOL</span>
+                  <span className="text-xs font-bold text-purple-300">SIMULATED POSITION</span>
+                  <span className="font-display font-black text-xl text-purple-400">{solInvestment} SOL</span>
                 </div>
                 <input
                   type="range"
@@ -221,54 +219,54 @@ export default function InteractiveApp() {
                   step="0.1"
                   value={solInvestment}
                   onChange={(e) => setSolInvestment(parseFloat(e.target.value))}
-                  className="w-full h-2 bg-[#251710] rounded-lg appearance-none cursor-pointer accent-[#f59e0b]"
+                  className="w-full h-2 bg-[#1b0a38] rounded-lg appearance-none cursor-pointer accent-purple-500"
                 />
-                <div className="flex justify-between text-[10px] text-[#d4bca0] font-bold font-mono">
+                <div className="flex justify-between text-[10px] text-purple-300 font-bold font-mono">
                   <span>0.1 SOL</span>
                   <span>50 SOL</span>
-                  <span>100 SOL (Lord Pipe Dog)</span>
+                  <span>100 SOL (Supreme Aura)</span>
                 </div>
               </div>
 
               {/* Stats Metrics */}
               <div className="grid grid-cols-2 gap-4">
                 
-                <div className="p-4 rounded-xl bg-[#140b07] border border-[#3e271a] text-center space-y-1">
-                  <span className="block text-[10px] font-bold text-[#d4bca0] uppercase tracking-wider font-mono">$pipedog TOKENS</span>
-                  <span className="font-display font-black text-xl sm:text-2xl text-[#f59e0b]">{stats.pipedogTokens.toLocaleString()}</span>
+                <div className="p-4 rounded-xl bg-[#0d041c] border border-[#3b186b] text-center space-y-1">
+                  <span className="block text-[10px] font-bold text-purple-300 uppercase tracking-wider font-mono">$auracat TOKENS</span>
+                  <span className="font-display font-black text-xl sm:text-2xl text-purple-400">{stats.auracatTokens.toLocaleString()}</span>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#140b07] border border-[#3e271a] text-center space-y-1">
-                  <span className="block text-[10px] font-bold text-[#d4bca0] uppercase tracking-wider font-mono">COMPOSURE RATING</span>
-                  <span className="font-display font-black text-xl sm:text-2xl text-emerald-400">{stats.gentlemanComposure}% 📜</span>
+                <div className="p-4 rounded-xl bg-[#0d041c] border border-[#3b186b] text-center space-y-1">
+                  <span className="block text-[10px] font-bold text-purple-300 uppercase tracking-wider font-mono">AURA HARMONY</span>
+                  <span className="font-display font-black text-xl sm:text-2xl text-pink-400">{stats.auraHarmony}% ✨</span>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#140b07] border border-[#3e271a] text-center space-y-1">
-                  <span className="block text-[10px] font-bold text-[#d4bca0] uppercase tracking-wider font-mono">PAPER HANDS OUTCLASSED</span>
-                  <span className="font-display font-black text-xl sm:text-2xl text-[#fbf0da]">{stats.paperHandsOutclassed} 🍂</span>
+                <div className="p-4 rounded-xl bg-[#0d041c] border border-[#3b186b] text-center space-y-1">
+                  <span className="block text-[10px] font-bold text-purple-300 uppercase tracking-wider font-mono">NOISE TRANSMUTED</span>
+                  <span className="font-display font-black text-xl sm:text-2xl text-cyan-300">{stats.noiseTransmuted} 🔮</span>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#140b07] border border-[#3e271a] text-center space-y-1">
-                  <span className="block text-[10px] font-bold text-[#d4bca0] uppercase tracking-wider font-mono">GREEN SMOKE POWER</span>
-                  <span className="font-display font-black text-xl sm:text-2xl text-[#fef3c7]">{stats.greenSmokePower}x 💨</span>
+                <div className="p-4 rounded-xl bg-[#0d041c] border border-[#3b186b] text-center space-y-1">
+                  <span className="block text-[10px] font-bold text-purple-300 uppercase tracking-wider font-mono">VIBRATION POWER</span>
+                  <span className="font-display font-black text-xl sm:text-2xl text-purple-200">{stats.frequencyMultiplier}x ⚡</span>
                 </div>
 
               </div>
 
             </div>
 
-            <div className="pt-6 mt-6 border-t border-[#3e271a] flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-xs text-[#d4bca0] font-sans font-semibold text-center sm:text-left">
-                Join the gentleman's lounge and secure your $pipedog position!
+            <div className="pt-6 mt-6 border-t border-[#3b186b] flex flex-col sm:flex-row items-center justify-between gap-4">
+              <span className="text-xs text-purple-300 font-sans font-semibold text-center sm:text-left">
+                Align your frequency and join the Aura Cat sanctuary!
               </span>
               <button
                 onClick={() => {
-                  const element = document.getElementById("how-to-buy");
+                  const element = document.getElementById("roadmap");
                   if (element) element.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#d97706] to-[#b45309] hover:from-[#f59e0b] hover:to-[#d97706] text-[#120b08] font-display font-black text-xs shadow-lg transition-all flex items-center justify-center gap-1.5 cursor-pointer border-none"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 hover:from-purple-500 hover:to-pink-500 text-white font-display font-black text-xs shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all flex items-center justify-center gap-1.5 cursor-pointer border-none"
               >
-                <Coins className="w-4 h-4" /> Swap {solInvestment} SOL Now
+                <Sparkles className="w-4 h-4" /> View Aura Roadmap
               </button>
             </div>
 

@@ -1,6 +1,6 @@
 {
-  "name": "Mars Cat",
-  "description": "Mars Cat ($marscat) on Solana. The cosmic feline pioneer conquering the Red Planet and reaching interplanetary heights!",
+  "name": "Aura Cat",
+  "description": "Aura Cat ($auracat) on Solana. The feline of infinite vibration, iridescent energy, and radiant cosmic aura!",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

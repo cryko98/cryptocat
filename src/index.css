@@ -40,7 +40,16 @@
   }
   50% {
     opacity: 1;
-    transform: scale(1.03);
+    transform: scale(1.04);
+  }
+}
+
+@keyframes aura-shift {
+  0%, 100% {
+    filter: hue-rotate(0deg) brightness(1.1);
+  }
+  50% {
+    filter: hue-rotate(45deg) brightness(1.3);
   }
 }
 
@@ -60,17 +69,22 @@
   animation: pulse-subtle 3s ease-in-out infinite;
 }
 
+.animate-aura-shift {
+  animation: aura-shift 8s ease-in-out infinite;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f0705;
+  background: #090514;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c2410c;
+  background: #9333ea;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #f97316;
+  background: #c084fc;
 }
+
