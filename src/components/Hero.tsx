@@ -1,15 +1,39 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { TrendingUp, ShieldCheck, Flame, Sparkles, Zap, Eye, Copy, Check } from "lucide-react";
+import { Sparkles, TrendingUp, BookOpen, Volume2, VolumeX, Compass, Heart, Share2 } from "lucide-react";
 
 export default function Hero() {
-  const [copied, setCopied] = useState(false);
-  const contractAddress = "6wfbCEwBDE8D75QaQCSgawiNfKwJDCyAYA32F768pump";
+  const [soundEnabled, setSoundEnabled] = useState(false);
+  const [likedCount, setLikedCount] = useState(742);
+  const [hasLiked, setHasLiked] = useState(false);
 
-  const handleCopyCA = () => {
-    navigator.clipboard.writeText(contractAddress);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const toggleSound = () => {
+    setSoundEnabled(!soundEnabled);
+    if (!soundEnabled) {
+      // Play a soft serene bell tone using web audio API
+      try {
+        const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(432, audioCtx.currentTime); // 432 Hz serene golden frequency
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.5);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 1.5);
+      } catch (e) {
+        // audio context fallback
+      }
+    }
+  };
+
+  const handleLike = () => {
+    if (!hasLiked) {
+      setLikedCount((prev) => prev + 1);
+      setHasLiked(true);
+    }
   };
 
   const scrollToSection = (id: string) => {
@@ -20,216 +44,299 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#080312] text-white pt-12 pb-20 sm:pb-28">
-      {/* Radiant Iridescent Aura Background Glows */}
+    <section
+      id="hero"
+      className="relative min-h-[92vh] bg-[#f8edd1] text-[#1c1305] overflow-hidden border-b-2 border-[#b48c3c]/50 pt-8 pb-16 lg:py-20 vintage-ledger-grid selection:bg-[#fde047] selection:text-[#1c1305]"
+    >
+      {/* Golden Aura ambient glows */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        {/* Subtle Violet Grid */}
-        <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(to_right,#a855f7_1px,transparent_1px),linear-gradient(to_bottom,#a855f7_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[550px] sm:w-[750px] h-[550px] sm:h-[750px] bg-[#fbbf24] rounded-full blur-[140px] opacity-45 animate-pulse-subtle"></div>
+        <div className="absolute top-[5%] right-[10%] w-[350px] h-[350px] bg-[#f59e0b] rounded-full blur-[120px] opacity-35"></div>
+        <div className="absolute bottom-[10%] left-[5%] w-[380px] h-[380px] bg-[#d97706] rounded-full blur-[130px] opacity-30"></div>
+      </div>
 
-        {/* Iridescent aura glow spheres */}
-        <div className="absolute top-[-10%] left-[15%] w-[550px] h-[550px] bg-purple-600/30 rounded-full blur-[160px] animate-aura-shift"></div>
-        <div className="absolute bottom-[10%] right-[10%] w-[500px] h-[500px] bg-pink-600/25 rounded-full blur-[150px] animate-aura-shift"></div>
-        <div className="absolute top-[30%] right-[30%] w-[400px] h-[400px] bg-cyan-500/20 rounded-full blur-[140px]"></div>
-
-        {/* Floating Aura Badges */}
-        <div className="absolute top-[12%] left-[5%] md:left-[10%] px-4 py-2 rounded-2xl border border-purple-500/40 bg-[#140828]/90 backdrop-blur-md flex flex-col items-center justify-center shadow-2xl animate-float-slow">
-          <span className="text-sm font-display font-bold text-purple-300">✨ 100% AURA</span>
-          <span className="text-[10px] font-mono font-bold text-purple-200/80">RADIANCY</span>
-        </div>
-
-        <div className="absolute top-[8%] right-[8%] md:right-[28%] w-16 h-16 rounded-2xl border border-pink-500/40 bg-[#140828]/90 backdrop-blur-md flex items-center justify-center shadow-2xl animate-float-slower">
-          <span className="text-2xl">🔮</span>
-        </div>
-
-        <div className="absolute bottom-[18%] left-[4%] md:left-[8%] px-4 py-2 rounded-2xl border border-cyan-500/40 bg-[#140828]/90 backdrop-blur-md flex items-center justify-center shadow-2xl animate-float-slower">
-          <span className="text-xs font-mono font-bold text-cyan-300">$auracat</span>
-        </div>
+      {/* Decorative 4-pointed golden sparkle stars as in original artwork */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
+        <span className="absolute top-[12%] left-[18%] text-[#d97706] text-xl animate-sparkle">✦</span>
+        <span className="absolute top-[24%] right-[22%] text-[#eab308] text-2xl animate-sparkle" style={{ animationDelay: "1s" }}>✦</span>
+        <span className="absolute bottom-[28%] left-[28%] text-[#b45309] text-base animate-sparkle" style={{ animationDelay: "2s" }}>✦</span>
+        <span className="absolute bottom-[18%] right-[15%] text-[#ca8a04] text-xl animate-sparkle" style={{ animationDelay: "1.5s" }}>✦</span>
+        <span className="absolute top-[48%] left-[12%] text-[#d97706] text-sm animate-sparkle" style={{ animationDelay: "0.5s" }}>✦</span>
+        <span className="absolute top-[52%] right-[10%] text-[#eab308] text-lg animate-sparkle" style={{ animationDelay: "2.5s" }}>✦</span>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        {/* Main Title Badge Header */}
+        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14 space-y-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fae8b8] border border-[#b48c3c] shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-[#d97706] animate-ping"></span>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#78350f]">
+              📜 HISTORIC MARKET SANCTUARY • SOLANA
+            </span>
+          </div>
+
+          <h1 className="font-serif font-black text-4xl sm:text-6xl lg:text-7xl text-[#1c1305] tracking-tight uppercase leading-[1.08]">
+            Cash<span className="text-[#b45309]">cate</span>
+          </h1>
+
+          <p className="font-serif italic text-lg sm:text-2xl text-[#78350f] font-semibold max-w-2xl mx-auto">
+            “A Cat Walked Into the Market — Curiosity Sparked a Legend”
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+            <button
+              onClick={toggleSound}
+              className="px-3.5 py-1.5 rounded-full bg-[#fdf3d7] hover:bg-[#fae8b8] border border-[#b48c3c] text-xs font-mono font-bold text-[#78350f] transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
+            >
+              {soundEnabled ? <Volume2 className="w-3.5 h-3.5 text-[#b45309]" /> : <VolumeX className="w-3.5 h-3.5 text-[#92400e]" />}
+              <span>{soundEnabled ? "432 Hz Resonance On" : "Enable Serene Chime"}</span>
+            </button>
+
+            <button
+              onClick={handleLike}
+              className="px-3.5 py-1.5 rounded-full bg-[#fdf3d7] hover:bg-[#fae8b8] border border-[#b48c3c] text-xs font-mono font-bold text-[#78350f] transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
+            >
+              <Heart className={`w-3.5 h-3.5 ${hasLiked ? "fill-[#b45309] text-[#b45309]" : "text-[#92400e]"}`} />
+              <span>{likedCount} Paws of Respect</span>
+            </button>
+          </div>
+        </div>
+
+        {/* ------------------------------------------------------------- */}
+        {/* EXACT VISUAL RECREATION OF THE ATTACHED ARTWORK COMPOSITION   */}
+        {/* ------------------------------------------------------------- */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
-          {/* Hero Left Content */}
-          <div className="lg:col-span-7 space-y-8 text-center lg:text-left">
-            {/* Promo Tag */}
+          {/* LEFT COLUMN: 2 Pinned Lore Clippings */}
+          <div className="lg:col-span-4 space-y-6">
+            
+            {/* Note 1: Market Lore • Est. Long Ago */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-[#130726]/90 border border-purple-500/40 text-purple-100 text-xs font-mono font-bold uppercase tracking-wider shadow-[0_0_20px_rgba(168,85,247,0.3)]"
+              initial={{ opacity: 0, x: -25 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="relative p-6 sm:p-7 rounded-sm bg-[#fcf6e8] border border-[#cbb07a] shadow-[0_10px_25px_rgba(58,38,7,0.18)] rotate-[-1deg] hover:rotate-0 transition-transform duration-300 group"
             >
-              <Sparkles className="w-3.5 h-3.5 text-purple-400" />
-              <span>THE FELINE OF INFINITE VIBRATION</span>
-            </motion.div>
+              {/* Yellow Masking Tape on Top-Left Corner */}
+              <div className="absolute -top-3.5 -left-3.5 w-14 h-7 bg-[#fef08a]/90 border border-[#eab308]/60 rotate-[-25deg] shadow-sm pointer-events-none z-20"></div>
 
-            {/* Main Title & Ticker */}
-            <div className="space-y-3">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="font-display text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight leading-none uppercase"
-              >
-                Aura <br className="hidden sm:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 drop-shadow-[0_0_35px_rgba(168,85,247,0.45)]">
-                  Cat
+              {/* Pushpin at top left */}
+              <div className="absolute top-2 left-3 w-4 h-4 rounded-full bg-[#1c1305] border-2 border-[#78350f] shadow-[0_2px_4px_rgba(0,0,0,0.4)] z-20"></div>
+
+              <div className="space-y-3 pt-2">
+                <span className="inline-block text-[11px] font-mono font-bold text-[#78350f] uppercase tracking-wider border-b border-[#cbb07a] pb-1">
+                  MARKET LORE • EST. LONG AGO
                 </span>
-              </motion.h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="font-display font-black text-3xl sm:text-5xl text-white tracking-tight"
-              >
-                Ticker: <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 uppercase">$auracat</span>
-              </motion.p>
-            </div>
+                <h3 className="font-serif font-black text-xl sm:text-2xl text-[#1c1305] leading-tight">
+                  A Cat Walked Into the Market— Curiosity Sparked a Legend
+                </h3>
 
-            {/* Story Slogan */}
-            <div className="space-y-4">
-              <motion.p
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-base sm:text-lg text-purple-100/90 font-sans max-w-2xl mx-auto lg:mx-0 leading-relaxed font-semibold"
-              >
-                Aura Cat is the sovereign guardian of feline energy on Solana! Emitting a mystical iridescent glow, pure 432 Hz frequency, and unshakeable serenity, $auracat aligns your portfolio with high-vibration cosmic abundance! ✨🔮🐾
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.35 }}
-                className="flex justify-center lg:justify-start"
-              >
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#130726]/90 border border-purple-500/30 text-purple-100 text-xs font-mono font-bold shadow-md">
-                  <span className="flex h-2 w-2 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-400"></span>
-                  </span>
-                  <span>Aura Sanctuary is Resonating LIVE</span>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Call to Actions */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap justify-center lg:justify-start gap-4 relative pt-2"
-            >
-              <button
-                onClick={() => scrollToSection("interactive-lounge")}
-                id="explore-base-hero-cta"
-                className="px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 hover:from-purple-500 hover:to-pink-500 text-white font-display font-black shadow-[0_0_30px_rgba(168,85,247,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2 cursor-pointer border-none"
-              >
-                Explore Aura Sanctuary
-                <Sparkles className="w-5 h-5" />
-              </button>
-
-              <a
-                href="https://dexscreener.com"
-                target="_blank"
-                rel="noreferrer"
-                id="chart-hero-cta"
-                className="px-8 py-4 rounded-2xl bg-[#160830] hover:bg-[#200c46] border-2 border-[#3b186b] hover:border-purple-400 text-white font-display font-bold shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2"
-              >
-                Live Chart <TrendingUp className="w-5 h-5 text-purple-400" />
-              </a>
-            </motion.div>
-
-            {/* Copyable Solana Contract Address Box */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
-              className="w-full max-w-xl mx-auto lg:mx-0 pt-3"
-            >
-              <div
-                onClick={handleCopyCA}
-                className="group relative flex items-center justify-between gap-3 p-3.5 sm:p-4 rounded-2xl bg-[#130726]/95 border-2 border-purple-500/50 hover:border-purple-400 shadow-[0_0_25px_rgba(168,85,247,0.3)] hover:shadow-[0_0_35px_rgba(168,85,247,0.5)] cursor-pointer transition-all duration-200 select-none overflow-hidden"
-              >
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <span className="flex-shrink-0 px-2.5 py-1 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 text-[10px] sm:text-xs font-mono font-black text-white uppercase tracking-wider shadow">
-                    SOL CA
-                  </span>
-                  <span className="font-mono text-xs sm:text-sm font-bold text-purple-100 group-hover:text-white truncate">
-                    {contractAddress}
-                  </span>
-                </div>
-
-                <div className="flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#200b42] group-hover:bg-purple-600 text-xs font-mono font-bold text-purple-200 group-hover:text-white transition-all">
-                  {copied ? (
-                    <>
-                      <Check className="w-4 h-4 text-cyan-300" />
-                      <span className="text-cyan-300 font-black">COPIED!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3.5 h-3.5" />
-                      <span>COPY CA</span>
-                    </>
-                  )}
-                </div>
-
-                {/* Subtle Iridescent glow effect on copy */}
-                {copied && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-cyan-500/20 pointer-events-none"
-                  />
-                )}
+                <p className="font-serif text-sm sm:text-base text-[#38260d] leading-relaxed">
+                  They say a curious cat named <span className="highlight-yellow">CASHCATE</span> wandered into the market at dawn. No one knows where she came from, but she had a way of showing up at the right moment. From that day on, the legend of <span className="highlight-yellow">CASHCATE</span> began.
+                </p>
               </div>
             </motion.div>
 
-            {/* Trust Badges */}
+            {/* Note 2: Founders' Note • Passed Down */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex flex-wrap justify-center lg:justify-start gap-y-2 gap-x-6 pt-2 text-xs font-bold text-purple-200/80"
+              initial={{ opacity: 0, x: -25 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative p-6 sm:p-7 rounded-sm bg-[#fcf6e8] border border-[#cbb07a] shadow-[0_10px_25px_rgba(58,38,7,0.18)] rotate-[1.2deg] hover:rotate-0 transition-transform duration-300 group"
             >
-              <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-purple-400" /> Mint Renounced</span>
-              <span className="flex items-center gap-1.5"><Flame className="w-4 h-4 text-pink-400" /> Liquidity Pool Burned</span>
-              <span className="flex items-center gap-1.5"><Sparkles className="w-4 h-4 text-cyan-400" /> 0% Tax Forever</span>
+              {/* Yellow Masking Tape on Bottom-Left Corner */}
+              <div className="absolute -bottom-3.5 -left-3.5 w-14 h-7 bg-[#fef08a]/90 border border-[#eab308]/60 rotate-[28deg] shadow-sm pointer-events-none z-20"></div>
+
+              {/* Pushpin at top left */}
+              <div className="absolute top-2 left-3 w-4 h-4 rounded-full bg-[#1c1305] border-2 border-[#78350f] shadow-[0_2px_4px_rgba(0,0,0,0.4)] z-20"></div>
+
+              {/* Dot Grid accent as on the left margin */}
+              <div className="absolute left-2 top-10 flex flex-col gap-1.5 opacity-30 text-[#78350f] text-[8px] font-mono select-none">
+                <span>• • •</span>
+                <span>• • •</span>
+                <span>• • •</span>
+                <span>• • •</span>
+              </div>
+
+              <div className="space-y-3 pl-4 pt-1">
+                <span className="inline-block text-[11px] font-mono font-bold text-[#78350f] uppercase tracking-wider border-b border-[#cbb07a] pb-1">
+                  FOUNDERS' NOTE • PASSED DOWN
+                </span>
+
+                <h3 className="font-serif font-black text-xl sm:text-2xl text-[#1c1305] leading-tight">
+                  “Curiosity Creates Opportunity,” — That’s Why We Love <span className="highlight-yellow">CASHCATE</span>.
+                </h3>
+
+                <p className="font-serif text-sm sm:text-base text-[#38260d] leading-relaxed">
+                  Some called her lucky. Some called it fate. But those who saw her knew—she had a spark. <span className="highlight-yellow">CASHCATE</span> reminds us that curiosity can turn the ordinary into the extraordinary.
+                </p>
+              </div>
             </motion.div>
 
           </div>
 
-          {/* Hero Right Content - Aura Cat Image */}
-          <div className="lg:col-span-5 relative flex justify-center z-10">
-            {/* Glowing Iridescent aura */}
-            <div className="absolute -inset-6 rounded-full bg-gradient-to-tr from-purple-600/45 via-pink-600/35 to-cyan-500/30 blur-3xl opacity-90 animate-pulse-subtle"></div>
-
+          {/* CENTER COLUMN: The Golden Coin Medallion with large engraved "C" & Golden Cat */}
+          <div className="lg:col-span-4 flex flex-col items-center justify-center my-4 lg:my-0">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
-              className="relative w-full max-w-md sm:max-w-lg aspect-square rounded-3xl overflow-hidden border-4 border-purple-500/60 bg-[#160830]/90 backdrop-blur-sm animate-float-slow shadow-[0_0_50px_rgba(168,85,247,0.35)]"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.7 }}
+              className="relative group select-none"
             >
-              <img
-                src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/auracat.png?v=1785688369"
-                alt="Aura Cat - Feline of Infinite Radiance"
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover rounded-[20px]"
-              />
+              {/* Outer Golden Ray Concentric Ring */}
+              <div className="absolute -inset-6 sm:-inset-8 rounded-full border-2 border-dashed border-[#d97706]/40 animate-[spin_60s_linear_infinite] pointer-events-none"></div>
+              <div className="absolute -inset-3 sm:-inset-4 rounded-full border border-[#f59e0b]/50 pointer-events-none"></div>
 
-              {/* Floating Badge */}
-              <div className="absolute bottom-4 right-4 bg-[#080312]/95 backdrop-blur-md border border-purple-500/50 text-white px-4 py-2.5 rounded-2xl shadow-2xl flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-purple-400 animate-ping"></span>
-                <span className="text-xs font-mono font-bold uppercase tracking-wide">432 HZ AURA RESONANCE ✨</span>
+              {/* Main Golden Embossed Coin Frame */}
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full p-2 bg-gradient-to-tr from-[#92400e] via-[#f59e0b] to-[#fef08a] shadow-[0_0_50px_rgba(217,119,6,0.5),0_15px_35px_rgba(0,0,0,0.35)] animate-gold-glow flex items-center justify-center overflow-hidden">
+                
+                {/* Golden Relief Ring */}
+                <div className="w-full h-full rounded-full border-4 border-[#b45309] bg-[#d97706] p-1.5 flex items-center justify-center overflow-hidden relative shadow-inner">
+                  
+                  {/* Outer Golden Coin Texture */}
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-08-07_20-34-51.jpg?v=1786124116"
+                    alt="Cashcate Golden Coin Medallion"
+                    className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-500"
+                  />
+
+                  {/* Gentle shimmering reflection */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none group-hover:opacity-40 transition-opacity"></div>
+                </div>
+
+              </div>
+
+              {/* Golden Coin Sub-Label Badge */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full bg-[#1c1305] text-[#fef08a] border-2 border-[#eab308] shadow-lg flex items-center gap-2 whitespace-nowrap">
+                <Sparkles className="w-3.5 h-3.5 text-[#facc15]" />
+                <span className="font-mono font-black text-xs uppercase tracking-widest">
+                  THE GOLDEN EMBLEM • $CASHCATE
+                </span>
               </div>
             </motion.div>
+          </div>
+
+          {/* RIGHT COLUMN: 2 Pinned Chronicle Clippings with Vintage Illustrations */}
+          <div className="lg:col-span-4 space-y-6">
+            
+            {/* Note 3: Windowsill Chronicle */}
+            <motion.div
+              initial={{ opacity: 0, x: 25 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="relative p-6 sm:p-7 rounded-sm bg-[#fcf6e8] border border-[#cbb07a] shadow-[0_10px_25px_rgba(58,38,7,0.18)] rotate-[0.8deg] hover:rotate-0 transition-transform duration-300 group"
+            >
+              {/* Pushpin at top right */}
+              <div className="absolute top-2 right-3 w-4 h-4 rounded-full bg-[#1c1305] border-2 border-[#78350f] shadow-[0_2px_4px_rgba(0,0,0,0.4)] z-20"></div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-start">
+                <div className="sm:col-span-8 space-y-2.5">
+                  <span className="inline-block text-[11px] font-mono font-bold text-[#78350f] uppercase tracking-wider border-b border-[#cbb07a] pb-1">
+                    WINDOWSILL CHRONICLE
+                  </span>
+
+                  <h3 className="font-serif font-black text-xl sm:text-2xl text-[#1c1305] leading-tight">
+                    A Golden Figure on the Windowsill Sees What Others Miss
+                  </h3>
+
+                  <p className="font-serif text-sm text-[#38260d] leading-relaxed">
+                    Every morning, a golden cat appears. She watches in silence, sees what others overlook, and finds beauty in the quiet details. The newcomer has a name: <span className="highlight-yellow">CASHCATE</span>.
+                  </p>
+                </div>
+
+                {/* Vintage Woodcut Cat on Windowsill Thumbnail */}
+                <div className="sm:col-span-4 flex justify-center">
+                  <div className="relative p-1 bg-[#faebd0] border border-[#b48c3c] shadow-inner rounded-sm overflow-hidden w-24 h-24 sm:w-28 sm:h-28">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-08-07_20-34-51.jpg?v=1786124116"
+                      alt="Windowsill Cat Chronicle"
+                      className="w-full h-full object-cover grayscale contrast-125 sepia hover:grayscale-0 transition-all duration-300"
+                    />
+                    <div className="absolute bottom-0 inset-x-0 bg-[#1c1305]/80 text-[#fef08a] text-[8px] font-mono text-center py-0.5">
+                      Windowsill View
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Note 4: Market Chronicles • Vol. 1 • No. 7 */}
+            <motion.div
+              initial={{ opacity: 0, x: 25 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="relative p-6 sm:p-7 rounded-sm bg-[#fcf6e8] border border-[#cbb07a] shadow-[0_10px_25px_rgba(58,38,7,0.18)] rotate-[-1.5deg] hover:rotate-0 transition-transform duration-300 group"
+            >
+              {/* Yellow Masking Tape on Bottom-Right Corner */}
+              <div className="absolute -bottom-3.5 -right-3.5 w-14 h-7 bg-[#fef08a]/90 border border-[#eab308]/60 rotate-[-28deg] shadow-sm pointer-events-none z-20"></div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-start">
+                <div className="sm:col-span-8 space-y-2.5">
+                  <div className="flex justify-between items-center border-b border-[#cbb07a] pb-1">
+                    <span className="text-[11px] font-mono font-bold text-[#78350f] uppercase tracking-wider">
+                      MARKET CHRONICLES
+                    </span>
+                    <span className="text-[10px] font-mono font-bold text-[#92400e] uppercase">
+                      VOL. 1 • NO. 7
+                    </span>
+                  </div>
+
+                  <h3 className="font-serif font-black text-xl sm:text-2xl text-[#1c1305] leading-tight">
+                    <span className="highlight-yellow">CASHCATE</span> Roams the Market Still— A Legend in Every Pawstep.
+                  </h3>
+
+                  <p className="font-serif text-sm text-[#38260d] leading-relaxed">
+                    She explores every corner, from busy streets to quiet alleys. Through every season, through every change, <span className="highlight-yellow">CASHCATE</span> is here—curious, calm, and timeless.
+                  </p>
+                </div>
+
+                {/* Vintage Woodcut Alley Thumbnail */}
+                <div className="sm:col-span-4 flex justify-center">
+                  <div className="relative p-1 bg-[#faebd0] border border-[#b48c3c] shadow-inner rounded-sm overflow-hidden w-24 h-24 sm:w-28 sm:h-28">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-08-07_20-34-51.jpg?v=1786124116"
+                      alt="Market Street Wanderer"
+                      className="w-full h-full object-cover grayscale contrast-125 sepia hover:grayscale-0 transition-all duration-300"
+                    />
+                    <div className="absolute bottom-0 inset-x-0 bg-[#1c1305]/80 text-[#fef08a] text-[8px] font-mono text-center py-0.5">
+                      Market Alley
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
           </div>
 
         </div>
+
+        {/* Bottom Interactive Navigation & Action Bar */}
+        <div className="mt-14 pt-8 border-t border-[#b48c3c]/40 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-3 text-[#78350f] font-mono text-xs font-bold">
+            <span className="w-3 h-3 rounded-full bg-[#eab308]"></span>
+            <span>NO TAX • 100% BURNED LP • IMMUTABLE CONTRACT • PURE COMMUNITY SANCTUARY</span>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <button
+              onClick={() => scrollToSection("market-lore")}
+              className="px-5 py-2.5 rounded-xl bg-[#261a08] hover:bg-[#38260d] text-[#fef08a] font-mono font-bold text-xs shadow-md transition-all flex items-center gap-2 border border-[#785317]"
+            >
+              <BookOpen className="w-4 h-4 text-[#facc15]" /> Read Full Lore
+            </button>
+
+            <button
+              onClick={() => scrollToSection("interactive-lounge")}
+              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#eab308] hover:from-[#b45309] hover:to-[#d97706] text-[#1c1305] font-display font-black text-xs shadow-lg transition-all flex items-center gap-2"
+            >
+              <Sparkles className="w-4 h-4" /> Golden Opportunity Lounge
+            </button>
+          </div>
+        </div>
+
       </div>
     </section>
   );
 }
-
-

@@ -14,31 +14,31 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#06020e] text-[#f3e8ff] font-sans selection:bg-[#a855f7] selection:text-[#06020e] antialiased overflow-x-hidden relative">
-      {/* Background ambient glowing Iridescent Aura blobs */}
-      <div className="absolute inset-0 pointer-events-none opacity-35 z-0 overflow-hidden">
-        <div className="absolute top-[-5%] right-[-10%] w-[600px] h-[600px] bg-[#9333ea] rounded-full blur-[160px] animate-aura-shift"></div>
-        <div className="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-[#ec4899] rounded-full blur-[160px] animate-aura-shift"></div>
-        <div className="absolute top-[40%] left-[20%] w-[400px] h-[400px] bg-[#06b6d4] rounded-full blur-[150px] opacity-25"></div>
-        <div className="absolute bottom-[5%] right-[10%] w-[500px] h-[500px] bg-[#8b5cf6] rounded-full blur-[150px]"></div>
+    <div className="min-h-screen bg-[#f8edd1] text-[#1c1305] font-serif selection:bg-[#fde047] selection:text-[#1c1305] antialiased overflow-x-hidden relative vintage-ledger-grid">
+      {/* Background ambient warm golden glowing lights */}
+      <div className="absolute inset-0 pointer-events-none opacity-40 z-0 overflow-hidden">
+        <div className="absolute top-[-5%] right-[-10%] w-[600px] h-[600px] bg-[#fbbf24] rounded-full blur-[160px]"></div>
+        <div className="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-[#f59e0b] rounded-full blur-[160px]"></div>
+        <div className="absolute top-[40%] left-[20%] w-[400px] h-[400px] bg-[#d97706] rounded-full blur-[150px] opacity-25"></div>
+        <div className="absolute bottom-[5%] right-[10%] w-[500px] h-[500px] bg-[#ca8a04] rounded-full blur-[150px]"></div>
       </div>
 
       {/* Navigation */}
       <Navbar />
 
-      {/* Hero Header Section */}
+      {/* Hero Header Section with exact artwork layout */}
       <Hero />
 
-      {/* Story / Transformational Section */}
+      {/* Complete Market Lore & Chronicles Section */}
       <Story />
 
-      {/* Play & Interactive Clicker & Calculator Section */}
+      {/* Interactive Curiosity Lounge & Calculator */}
       <InteractiveApp />
 
-      {/* Tokenomics dashboard */}
+      {/* Golden Market Ledger & Tokenomics */}
       <Tokenomics />
 
-      {/* Aura frequency roadmap */}
+      {/* Market Volumes & Roadmap */}
       <AuraRoadmap />
 
       {/* Footer & Disclaimer */}

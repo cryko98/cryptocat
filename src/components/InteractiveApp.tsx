@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Award, Calculator, Sparkles, RefreshCw, Eye, Zap, Flame } from "lucide-react";
+import { Award, Calculator, Sparkles, RefreshCw, Coins, Compass, Heart, Feather } from "lucide-react";
 
-interface FloatingAura {
+interface FloatingSpark {
   id: number;
   x: number;
   y: number;
@@ -11,33 +11,33 @@ interface FloatingAura {
 }
 
 export default function InteractiveApp() {
-  const [auraCount, setAuraCount] = useState(0);
-  const [auraRank, setAuraRank] = useState("Junior Feline Resonator");
+  const [sparkCount, setSparkCount] = useState(0);
+  const [curiosityRank, setCuriosityRank] = useState("Dawn Market Wanderer");
   const [solInvestment, setSolInvestment] = useState(1);
-  const [floatingAuras, setFloatingAuras] = useState<FloatingAura[]>([]);
-  const auraIdRef = useRef(0);
+  const [floatingSparks, setFloatingSparks] = useState<FloatingSpark[]>([]);
+  const sparkIdRef = useRef(0);
 
-  const auraQuotes = [
-    "432 HZ RESONANCE!",
-    "PURE AURA!",
-    "IRIDESCENT ABUNDANCE!",
-    "$auracat!",
-    "SERENE CONVICTION!",
-    "NOISE TRANSMUTED!",
-    "SOLANA APEX AURA!",
-    "HIGH VIBRATION!",
-    "COSMIC HARMONY!",
-    "INFINITE LIGHT!"
+  const marketLoreQuotes = [
+    "CURIOSITY CREATES OPPORTUNITY!",
+    "A LEGEND IN EVERY PAWSTEP!",
+    "SEES WHAT OTHERS MISS!",
+    "WANDERED INTO THE MARKET AT DAWN!",
+    "CURIOUS, CALM, AND TIMELESS!",
+    "TURNING ORDINARY INTO EXTRAORDINARY!",
+    "A SPARK OF FELINE LUCK!",
+    "A GOLDEN FIGURE ON THE WINDOWSILL!",
+    "NO ONE KNOWS WHERE SHE CAME FROM!",
+    "PATIENCE IN THE QUIET DETAILS!"
   ];
 
-  const handleResonate = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setAuraCount((prev) => {
+  const handleSparkTap = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setSparkCount((prev) => {
       const newCount = prev + 1;
-      if (newCount >= 100) setAuraRank("👑 SUPREME COSMIC AURA TITAN");
-      else if (newCount >= 50) setAuraRank("🔮 High Sanctuary Master");
-      else if (newCount >= 25) setAuraRank("✨ Distinguished Vibrational Guardian");
-      else if (newCount >= 10) setAuraRank("🐾 Radiant Aura Initiate");
-      else setAuraRank("Junior Feline Resonator");
+      if (newCount >= 100) setCuriosityRank("👑 Legendary Market Pioneer");
+      else if (newCount >= 50) setCuriosityRank("✨ Golden Opportunity Master");
+      else if (newCount >= 25) setCuriosityRank("📜 Curious Alley Explorer");
+      else if (newCount >= 10) setCuriosityRank("🐾 Windowsill Observer");
+      else setCuriosityRank("Dawn Market Wanderer");
       return newCount;
     });
 
@@ -45,122 +45,133 @@ export default function InteractiveApp() {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     
-    const randomText = auraQuotes[Math.floor(Math.random() * auraQuotes.length)];
-    const randomSize = Math.floor(Math.random() * 30) + 25;
+    const randomQuote = marketLoreQuotes[Math.floor(Math.random() * marketLoreQuotes.length)];
+    const randomSize = Math.floor(Math.random() * 24) + 20;
 
-    const newAura: FloatingAura = {
-      id: auraIdRef.current++,
+    const newSpark: FloatingSpark = {
+      id: sparkIdRef.current++,
       x,
       y: y - 20,
       size: randomSize,
-      text: randomText,
+      text: randomQuote,
     };
 
-    setFloatingAuras((prev) => [...prev, newAura]);
+    setFloatingSparks((prev) => [...prev, newSpark]);
 
     setTimeout(() => {
-      setFloatingAuras((prev) => prev.filter((s) => s.id !== newAura.id));
-    }, 1500);
+      setFloatingSparks((prev) => prev.filter((s) => s.id !== newSpark.id));
+    }, 1600);
   };
 
   const calculateStats = (sol: number) => {
-    const auracatTokens = Math.floor(sol * 9800000);
-    const auraHarmony = Math.min(100, 85 + sol * 0.2).toFixed(1);
-    const noiseTransmuted = Math.floor(sol * 1680);
-    const frequencyMultiplier = (sol * 18.0).toFixed(1);
-    return { auracatTokens, auraHarmony, noiseTransmuted, frequencyMultiplier };
+    const cashcateTokens = Math.floor(sol * 10000000);
+    const curiosityIndex = Math.min(100, 95 + sol * 0.05).toFixed(1);
+    const opportunitySparks = Math.floor(sol * 1750);
+    const timelessMultiplier = (sol * 12.5).toFixed(1);
+    return { cashcateTokens, curiosityIndex, opportunitySparks, timelessMultiplier };
   };
 
   const stats = calculateStats(solInvestment);
 
   return (
-    <section id="interactive-lounge" className="relative py-20 sm:py-28 bg-[#090314] text-white overflow-hidden border-t border-b border-[#3b186b]">
+    <section id="interactive-lounge" className="relative py-20 sm:py-28 bg-[#f8edd1] text-[#1c1305] overflow-hidden border-t-2 border-b-2 border-[#b48c3c] vintage-ledger-grid selection:bg-[#fde047] selection:text-[#1c1305]">
       
-      {/* Background Iridescent Aura Glow */}
+      {/* Background warm golden ambient glows */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        <div className="absolute top-[20%] left-[10%] w-72 h-72 rounded-full bg-purple-600/25 blur-[140px] animate-aura-shift"></div>
-        <div className="absolute bottom-[20%] right-[10%] w-72 h-72 rounded-full bg-pink-600/20 blur-[140px] animate-aura-shift"></div>
+        <div className="absolute top-[20%] left-[10%] w-72 h-72 rounded-full bg-[#f59e0b]/25 blur-[140px]"></div>
+        <div className="absolute bottom-[20%] right-[10%] w-72 h-72 rounded-full bg-[#fbbf24]/30 blur-[140px]"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-purple-300 bg-[#160830] px-4 py-2 rounded-full border border-purple-500/40 shadow-[0_0_20px_rgba(168,85,247,0.3)]">
-            ✨ INTERACTIVE AURA SANCTUARY
-          </span>
-          <h2 className="font-display text-4xl sm:text-6xl font-black text-white uppercase tracking-tight">
-            Aura Cat <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">Resonance Simulator</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fcf6e8] border border-[#b48c3c] shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-[#b45309]" />
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#78350f]">
+              INTERACTIVE SANCTUARY
+            </span>
+          </div>
+
+          <h2 className="font-serif font-black text-4xl sm:text-6xl text-[#1c1305] tracking-tight uppercase">
+            Curiosity & Opportunity <span className="text-[#b45309]">Lounge</span>
           </h2>
-          <p className="text-purple-200/80 font-sans font-semibold text-base sm:text-lg">
-            Tap Aura Cat to elevate your vibrational frequency, unlock sovereign ranks, and calculate your $auracat energy potential!
+          <p className="font-serif italic text-base sm:text-lg text-[#78350f] font-semibold max-w-2xl mx-auto">
+            Tap the Golden Cashcate Medallion to unleash market sparks, unlock timeless ranks, and simulate your $cashcate curiosity potential!
           </p>
         </div>
 
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto items-stretch">
           
-          {/* Interactive Clicker Game */}
-          <div className="lg:col-span-6 bg-[#130726]/95 p-6 sm:p-8 rounded-3xl border border-[#3b186b] shadow-2xl flex flex-col justify-between relative overflow-hidden text-white">
+          {/* Interactive Tap & Lore Spark Generator */}
+          <div className="lg:col-span-6 parchment-card p-6 sm:p-8 rounded-sm border-2 border-[#b48c3c] shadow-xl flex flex-col justify-between relative overflow-hidden text-[#1c1305]">
             
+            {/* Top pushpins on corners */}
+            <div className="absolute top-3 left-3 w-3.5 h-3.5 rounded-full bg-[#1c1305] border-2 border-[#78350f]"></div>
+            <div className="absolute top-3 right-3 w-3.5 h-3.5 rounded-full bg-[#1c1305] border-2 border-[#78350f]"></div>
+
             <div className="space-y-6">
-              <div className="flex justify-between items-center">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0d041c] text-purple-300 text-xs font-mono font-bold border border-[#3b186b]">
-                  <Award className="w-3.5 h-3.5 text-purple-400" /> Frequency Lounge
+              <div className="flex justify-between items-center border-b border-[#cbb07a] pb-3">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#faedd0] text-[#78350f] text-xs font-mono font-bold border border-[#b48c3c]">
+                  <Award className="w-3.5 h-3.5 text-[#b45309]" /> Curiosity Resonator
                 </span>
-                <span className="text-xs font-mono font-bold text-purple-300 uppercase tracking-widest">
-                  Live Resonance Counter
+                <span className="text-xs font-mono font-bold text-[#92400e] uppercase tracking-wider">
+                  Live Market Sparks
                 </span>
               </div>
 
               <div className="text-center space-y-2">
-                <h3 className="font-display text-base font-bold text-purple-200">Total Harmonic Pulses Resonated</h3>
-                <div className="font-display font-black text-5xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 tabular-nums drop-shadow-[0_0_25px_rgba(168,85,247,0.4)]">
-                  {auraCount.toLocaleString()}
+                <h3 className="font-serif text-sm sm:text-base font-bold text-[#78350f]">
+                  Golden Curiosity Sparks Generated
+                </h3>
+                <div className="font-serif font-black text-5xl sm:text-6xl text-[#b45309] tabular-nums drop-shadow-sm">
+                  {sparkCount.toLocaleString()}
                 </div>
-                <p className="text-xs font-semibold text-purple-100 bg-[#0d041c]/90 inline-block px-3.5 py-1.5 rounded-full border border-purple-500/40">
-                  Vibrational Rank: <span className="text-pink-400 font-black">{auraRank}</span>
-                </p>
+                <div className="inline-block px-4 py-1.5 rounded bg-[#fef08a] border border-[#eab308] shadow-sm">
+                  <span className="text-xs font-mono font-bold text-[#1c1305]">
+                    Honorary Rank: <span className="text-[#b45309] font-black">{curiosityRank}</span>
+                  </span>
+                </div>
               </div>
 
-              {/* Clicker Button Area */}
-              <div className="relative h-64 bg-[#0d041c] rounded-2xl border border-[#3b186b] flex items-center justify-center group overflow-hidden">
+              {/* Clicker Coin Area */}
+              <div className="relative h-64 bg-[#faebd0]/80 rounded-sm border-2 border-dashed border-[#b48c3c] flex items-center justify-center group overflow-hidden">
                 
                 <button
-                  onClick={handleResonate}
-                  id="resonate-auracat-main-btn"
-                  className="relative z-10 w-44 h-44 rounded-full overflow-hidden border-4 border-purple-500 shadow-[0_0_35px_rgba(168,85,247,0.5)] focus:outline-none focus:ring-4 focus:ring-purple-400 group-hover:scale-105 active:scale-95 transition-all duration-150 cursor-pointer bg-[#130726]"
+                  onClick={handleSparkTap}
+                  id="spark-cashcate-btn"
+                  className="relative z-10 w-44 h-44 rounded-full p-2 bg-gradient-to-tr from-[#92400e] via-[#f59e0b] to-[#fef08a] shadow-[0_0_35px_rgba(217,119,6,0.45)] focus:outline-none group-hover:scale-105 active:scale-95 transition-all duration-150 cursor-pointer border-none"
                 >
                   <img
-                    src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/auracat.png?v=1785688369"
-                    alt="Aura Cat Resonance Simulator"
-                    referrerPolicy="no-referrer"
+                    src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-08-07_20-34-51.jpg?v=1786124116"
+                    alt="Cashcate Spark Clicker"
                     className="w-full h-full object-cover rounded-full"
                   />
-                  <div className="absolute inset-0 bg-purple-500/10 group-hover:bg-transparent transition-colors"></div>
+                  <div className="absolute inset-0 bg-[#eab308]/10 group-hover:bg-transparent rounded-full transition-colors"></div>
                 </button>
 
-                <span className="absolute bottom-3 text-xs font-mono font-bold text-purple-300 select-none animate-pulse text-center px-4">
-                  🖱️ CLICK AURA CAT TO RADIATE 432 HZ ENERGY & HARMONY!
+                <span className="absolute bottom-3 text-xs font-mono font-bold text-[#78350f] select-none text-center px-4">
+                  🪙 TAP CASHCATE TO SPARK GOLDEN MARKET CURIOSITY!
                 </span>
 
-                {/* Floating Aura Animations */}
+                {/* Floating Lore Sparks */}
                 <AnimatePresence>
-                  {floatingAuras.map((aura) => (
+                  {floatingSparks.map((spark) => (
                     <motion.div
-                      key={aura.id}
-                      initial={{ opacity: 1, y: aura.y, x: aura.x, scale: 0.8 }}
-                      animate={{ opacity: 0, y: aura.y - 120, scale: 1.2, x: aura.x + (Math.random() * 40 - 20) }}
+                      key={spark.id}
+                      initial={{ opacity: 1, y: spark.y, x: spark.x, scale: 0.8 }}
+                      animate={{ opacity: 0, y: spark.y - 120, scale: 1.15, x: spark.x + (Math.random() * 40 - 20) }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 1, ease: "easeOut" }}
+                      transition={{ duration: 1.2, ease: "easeOut" }}
                       className="absolute z-20 flex flex-col items-center pointer-events-none"
                     >
                       <div 
-                        style={{ height: `${aura.size}px`, width: `${aura.size}px` }}
-                        className="rounded-full bg-gradient-to-tr from-purple-500 via-pink-500 to-cyan-400 relative flex justify-center shadow-[0_0_18px_rgba(168,85,247,0.8)] opacity-75"
+                        style={{ height: `${spark.size}px`, width: `${spark.size}px` }}
+                        className="rounded-full bg-gradient-to-tr from-[#d97706] to-[#fde047] shadow-[0_0_15px_rgba(234,179,8,0.8)] opacity-80"
                       ></div>
-                      <span className="mt-2 text-[10px] font-mono font-black text-white bg-purple-600 px-2 py-0.5 rounded-md shadow-xl uppercase tracking-tight select-none border border-white font-bold">
-                        {aura.text}
+                      <span className="mt-2 text-[10px] font-mono font-black text-[#1c1305] bg-[#fef08a] px-2.5 py-1 rounded shadow-md uppercase tracking-tight select-none border border-[#ca8a04]">
+                        {spark.text}
                       </span>
                     </motion.div>
                   ))}
@@ -169,16 +180,16 @@ export default function InteractiveApp() {
 
             </div>
 
-            <div className="pt-6 mt-6 border-t border-[#3b186b] flex justify-between items-center">
-              <span className="text-xs text-purple-300 font-sans font-semibold">
-                Tap Aura Cat to radiate cosmic serenity!
+            <div className="pt-5 mt-5 border-t border-[#cbb07a] flex justify-between items-center text-xs font-mono text-[#78350f]">
+              <span className="font-semibold">
+                “Curiosity can turn the ordinary into the extraordinary.”
               </span>
               <button
                 onClick={() => {
-                  setAuraCount(0);
-                  setAuraRank("Junior Feline Resonator");
+                  setSparkCount(0);
+                  setCuriosityRank("Dawn Market Wanderer");
                 }}
-                className="text-xs text-purple-300 hover:text-purple-100 font-bold flex items-center gap-1 cursor-pointer border-none bg-transparent"
+                className="hover:text-[#1c1305] font-bold flex items-center gap-1 cursor-pointer border-none bg-transparent"
               >
                 <RefreshCw className="w-3 h-3" /> Reset
               </button>
@@ -186,31 +197,37 @@ export default function InteractiveApp() {
 
           </div>
 
-          {/* Calculator */}
-          <div className="lg:col-span-6 bg-[#130726]/95 p-6 sm:p-8 rounded-3xl border border-[#3b186b] shadow-2xl flex flex-col justify-between text-white">
+          {/* Golden Opportunity Calculator */}
+          <div className="lg:col-span-6 parchment-card p-6 sm:p-8 rounded-sm border-2 border-[#b48c3c] shadow-xl flex flex-col justify-between text-[#1c1305] relative">
             
+            {/* Pushpins */}
+            <div className="absolute top-3 left-3 w-3.5 h-3.5 rounded-full bg-[#1c1305] border-2 border-[#78350f]"></div>
+            <div className="absolute top-3 right-3 w-3.5 h-3.5 rounded-full bg-[#1c1305] border-2 border-[#78350f]"></div>
+
             <div className="space-y-6">
-              <div className="flex justify-between items-center">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#0d041c] text-purple-300 text-xs font-mono font-bold border border-[#3b186b]">
-                  <Calculator className="w-3.5 h-3.5 text-purple-400" /> Abundance Simulator
+              <div className="flex justify-between items-center border-b border-[#cbb07a] pb-3">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#faedd0] text-[#78350f] text-xs font-mono font-bold border border-[#b48c3c]">
+                  <Calculator className="w-3.5 h-3.5 text-[#b45309]" /> Opportunity Simulator
                 </span>
-                <span className="text-xs font-mono font-bold text-purple-300 uppercase tracking-widest">
-                  $auracat Calculator
+                <span className="text-xs font-mono font-bold text-[#92400e] uppercase tracking-wider">
+                  $cashcate Ledger
                 </span>
               </div>
 
               <div className="space-y-2">
-                <h3 className="font-display text-base font-bold text-white">Simulate Your Vibrational Alignment</h3>
-                <p className="text-xs text-purple-200 leading-relaxed font-semibold">
-                  Adjust the SOL amount to calculate your estimated $auracat token resonance and composure rating!
+                <h3 className="font-serif text-lg font-black text-[#1c1305]">
+                  Simulate Your Market Conviction
+                </h3>
+                <p className="text-xs font-serif text-[#78350f] leading-relaxed font-semibold">
+                  Adjust the SOL slider to calculate estimated $cashcate tokens, serenity index, and golden opportunity multiplier!
                 </p>
               </div>
 
               {/* Slider */}
-              <div className="bg-[#0d041c] p-5 rounded-2xl border border-[#3b186b] space-y-4">
+              <div className="bg-[#faebd0]/90 p-5 rounded border border-[#cbb07a] space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-xs font-bold text-purple-300">SIMULATED POSITION</span>
-                  <span className="font-display font-black text-xl text-purple-400">{solInvestment} SOL</span>
+                  <span className="text-xs font-mono font-bold text-[#78350f]">SIMULATED SOL ALLOCATION</span>
+                  <span className="font-serif font-black text-2xl text-[#b45309]">{solInvestment} SOL</span>
                 </div>
                 <input
                   type="range"
@@ -219,54 +236,54 @@ export default function InteractiveApp() {
                   step="0.1"
                   value={solInvestment}
                   onChange={(e) => setSolInvestment(parseFloat(e.target.value))}
-                  className="w-full h-2 bg-[#1b0a38] rounded-lg appearance-none cursor-pointer accent-purple-500"
+                  className="w-full h-2.5 bg-[#e5d2a8] rounded-lg appearance-none cursor-pointer accent-[#b45309]"
                 />
-                <div className="flex justify-between text-[10px] text-purple-300 font-bold font-mono">
-                  <span>0.1 SOL</span>
-                  <span>50 SOL</span>
-                  <span>100 SOL (Supreme Aura)</span>
+                <div className="flex justify-between text-[10px] text-[#78350f] font-bold font-mono">
+                  <span>0.1 SOL (Wanderer)</span>
+                  <span>50 SOL (Windowsill)</span>
+                  <span>100 SOL (Pioneer)</span>
                 </div>
               </div>
 
-              {/* Stats Metrics */}
+              {/* Stats Metrics Grid */}
               <div className="grid grid-cols-2 gap-4">
                 
-                <div className="p-4 rounded-xl bg-[#0d041c] border border-[#3b186b] text-center space-y-1">
-                  <span className="block text-[10px] font-bold text-purple-300 uppercase tracking-wider font-mono">$auracat TOKENS</span>
-                  <span className="font-display font-black text-xl sm:text-2xl text-purple-400">{stats.auracatTokens.toLocaleString()}</span>
+                <div className="p-4 rounded bg-[#fcf6e8] border border-[#cbb07a] text-center space-y-1 shadow-sm">
+                  <span className="block text-[10px] font-bold text-[#78350f] uppercase tracking-wider font-mono">$cashcate TOKENS</span>
+                  <span className="font-serif font-black text-xl sm:text-2xl text-[#b45309]">{stats.cashcateTokens.toLocaleString()}</span>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#0d041c] border border-[#3b186b] text-center space-y-1">
-                  <span className="block text-[10px] font-bold text-purple-300 uppercase tracking-wider font-mono">AURA HARMONY</span>
-                  <span className="font-display font-black text-xl sm:text-2xl text-pink-400">{stats.auraHarmony}% ✨</span>
+                <div className="p-4 rounded bg-[#fcf6e8] border border-[#cbb07a] text-center space-y-1 shadow-sm">
+                  <span className="block text-[10px] font-bold text-[#78350f] uppercase tracking-wider font-mono">CURIOSITY INDEX</span>
+                  <span className="font-serif font-black text-xl sm:text-2xl text-[#d97706]">{stats.curiosityIndex}% 📜</span>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#0d041c] border border-[#3b186b] text-center space-y-1">
-                  <span className="block text-[10px] font-bold text-purple-300 uppercase tracking-wider font-mono">NOISE TRANSMUTED</span>
-                  <span className="font-display font-black text-xl sm:text-2xl text-cyan-300">{stats.noiseTransmuted} 🔮</span>
+                <div className="p-4 rounded bg-[#fcf6e8] border border-[#cbb07a] text-center space-y-1 shadow-sm">
+                  <span className="block text-[10px] font-bold text-[#78350f] uppercase tracking-wider font-mono">COMPOSURE RATING</span>
+                  <span className="font-serif font-black text-xl sm:text-2xl text-[#1c1305]">100% Serene</span>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#0d041c] border border-[#3b186b] text-center space-y-1">
-                  <span className="block text-[10px] font-bold text-purple-300 uppercase tracking-wider font-mono">VIBRATION POWER</span>
-                  <span className="font-display font-black text-xl sm:text-2xl text-purple-200">{stats.frequencyMultiplier}x ⚡</span>
+                <div className="p-4 rounded bg-[#fcf6e8] border border-[#cbb07a] text-center space-y-1 shadow-sm">
+                  <span className="block text-[10px] font-bold text-[#78350f] uppercase tracking-wider font-mono">OPPORTUNITY POWER</span>
+                  <span className="font-serif font-black text-xl sm:text-2xl text-[#b45309]">{stats.timelessMultiplier}x ⚡</span>
                 </div>
 
               </div>
 
             </div>
 
-            <div className="pt-6 mt-6 border-t border-[#3b186b] flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-xs text-purple-300 font-sans font-semibold text-center sm:text-left">
-                Align your frequency and join the Aura Cat sanctuary!
+            <div className="pt-5 mt-5 border-t border-[#cbb07a] flex flex-col sm:flex-row items-center justify-between gap-4">
+              <span className="text-xs text-[#78350f] font-serif font-semibold text-center sm:text-left">
+                Join the Cashcate sanctuary on Solana!
               </span>
               <button
                 onClick={() => {
-                  const element = document.getElementById("roadmap");
+                  const element = document.getElementById("tokenomics");
                   if (element) element.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 hover:from-purple-500 hover:to-pink-500 text-white font-display font-black text-xs shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all flex items-center justify-center gap-1.5 cursor-pointer border-none"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#261a08] hover:bg-[#38260d] text-[#fef08a] font-mono font-bold text-xs shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-[#785317]"
               >
-                <Sparkles className="w-4 h-4" /> View Aura Roadmap
+                <Coins className="w-4 h-4 text-[#facc15]" /> View Golden Ledger
               </button>
             </div>
 

@@ -1,6 +1,7 @@
 {
-  "name": "Aura Cat",
-  "description": "Aura Cat ($auracat) on Solana. The feline of infinite vibration, iridescent energy, and radiant cosmic aura!",
+  "name": "Cashcate",
+  "description": "Cashcate ($cashcate) — A Cat Walked Into the Market, Curiosity Sparked a Legend. The iconic golden feline of timeless market curiosity and opportunity on Solana.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
+

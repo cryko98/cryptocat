@@ -1,138 +1,158 @@
 import React from "react";
 import { motion } from "motion/react";
-import { Sparkles, Zap, Shield, Eye, Orbit, Crown } from "lucide-react";
+import { BookOpen, Compass, Sparkles, Feather, Clock, Award, Eye } from "lucide-react";
 
 export default function AuraRoadmap() {
-  const phases = [
+  const volumes = [
     {
-      num: "01",
-      title: "Vibrational Awakening",
-      description: "Opening the feline third eye. Aura Cat emits its first iridescent frequency pulse across the Solana blockchain, aligning cosmic energy.",
-      icon: <Eye className="w-6 h-6 text-purple-400" />,
-      tag: "COMPLETED",
-      color: "from-purple-500 to-indigo-500",
+      num: "VOL. I",
+      title: "The Genesis at Dawn",
+      subtitle: "Curiosity Sparks a Legend",
+      description: "A curious cat named Cashcate walks into the market at dawn. Whispers spread of her composure as Solana traders discover the golden feline.",
+      icon: <Eye className="w-5 h-5 text-[#b45309]" />,
+      tag: "INSCRIBED",
+      badgeColor: "bg-[#fef08a] text-[#78350f] border-[#eab308]",
     },
     {
-      num: "02",
-      title: "Radiant Resonance",
-      description: "Expanding the neon aura sphere. Building the highest-vibration community on Solana with zero friction and infinite serenity.",
-      icon: <Sparkles className="w-6 h-6 text-pink-400 animate-pulse" />,
-      tag: "IN PROGRESS",
-      color: "from-pink-500 to-purple-500",
+      num: "VOL. II",
+      title: "The Windowsill View",
+      subtitle: "Seeing What Others Miss",
+      description: "High on the sunlit stone windowsill, Cashcate watches the market with serene patience. Launching community chronicles, interactive lounges, and memes.",
+      icon: <Sparkles className="w-5 h-5 text-[#d97706]" />,
+      tag: "ACTIVE CHAPTER",
+      badgeColor: "bg-[#fde047] text-[#1c1305] border-[#ca8a04]",
     },
     {
-      num: "03",
-      title: "Harmonic Convergence",
-      description: "Unlocking aura-enhanced tools, real-time frequency visualizers, and decentralized community governance for all $auracat holders.",
-      icon: <Zap className="w-6 h-6 text-cyan-400" />,
+      num: "VOL. III",
+      title: "Roams the Market Still",
+      subtitle: "A Legend in Every Pawstep",
+      description: "Exploring every busy corner and quiet alley. Tier-1 exchange listings, cross-ecosystem collaborations, and physical golden commemorative tokens.",
+      icon: <Compass className="w-5 h-5 text-[#b45309]" />,
       tag: "UPCOMING",
-      color: "from-cyan-400 to-purple-500",
+      badgeColor: "bg-[#faedd0] text-[#78350f] border-[#cbb07a]",
     },
     {
-      num: "04",
-      title: "Omnipresent Aura",
-      description: "Aura Cat transcends standard charts to become an eternal symbol of calm, high-energy abundance throughout the entire crypto galaxy!",
-      icon: <Crown className="w-6 h-6 text-amber-300" />,
-      tag: "UPCOMING",
-      color: "from-amber-400 to-pink-500",
+      num: "VOL. IV",
+      title: "Timeless Composure",
+      subtitle: "Turning Ordinary into Extraordinary",
+      description: "Establishing Cashcate as the immortal symbol of curiosity, opportunity, and calm conviction across global decentralized culture.",
+      icon: <Award className="w-5 h-5 text-[#92400e]" />,
+      tag: "HORIZON",
+      badgeColor: "bg-[#faedd0] text-[#78350f] border-[#cbb07a]",
     },
   ];
 
   return (
-    <section id="aura-roadmap" className="relative py-20 sm:py-28 bg-[#080312] text-[#f3e8ff] overflow-hidden border-t border-[#2e1065]">
+    <section id="roadmap" className="relative py-20 sm:py-28 bg-[#f5e6be] text-[#1c1305] overflow-hidden border-t-2 border-[#b48c3c] vintage-ledger-grid selection:bg-[#fde047] selection:text-[#1c1305]">
       
-      {/* Radiant Iridescent Background Aura Glows */}
+      {/* Background warm golden ambient glows */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        <div className="absolute top-[30%] left-[-5%] w-80 h-80 bg-purple-600 rounded-full blur-[150px] opacity-25 animate-aura-shift"></div>
-        <div className="absolute bottom-[10%] right-[-5%] w-80 h-80 bg-pink-600 rounded-full blur-[160px] opacity-25 animate-aura-shift"></div>
-        <div className="absolute top-[60%] right-[30%] w-72 h-72 bg-cyan-500 rounded-full blur-[160px] opacity-20"></div>
+        <div className="absolute top-[30%] left-[-5%] w-80 h-80 bg-[#f59e0b] rounded-full blur-[150px] opacity-25"></div>
+        <div className="absolute bottom-[10%] right-[-5%] w-80 h-80 bg-[#fbbf24] rounded-full blur-[160px] opacity-30"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-purple-300 bg-[#140826] px-4 py-2 rounded-full border border-purple-500/40 shadow-[0_0_20px_rgba(168,85,247,0.25)]">
-            ✨ HARMONIC FREQUENCY ROADMAP
-          </span>
-          <h2 className="font-display text-4xl sm:text-6xl font-black text-white uppercase tracking-tight">
-            Aura Cat <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">Evolution</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fcf6e8] border border-[#b48c3c] shadow-sm">
+            <BookOpen className="w-3.5 h-3.5 text-[#b45309]" />
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#78350f]">
+              CHRONICLES OF ASCENSION
+            </span>
+          </div>
+
+          <h2 className="font-serif font-black text-4xl sm:text-6xl text-[#1c1305] uppercase tracking-tight">
+            The Volumes of <span className="text-[#b45309]">Cashcate</span>
           </h2>
-          <p className="text-purple-200/80 font-sans font-semibold text-base sm:text-lg">
-            Follow the 4 phases of vibrational ascension as Aura Cat illuminates the Solana ecosystem!
+          <p className="font-serif italic text-base sm:text-lg text-[#78350f] font-semibold max-w-2xl mx-auto">
+            “Through every season, through every change, Cashcate is here—curious, calm, and timeless.”
           </p>
         </div>
 
-        {/* Steps Layout Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {phases.map((phase, idx) => (
+        {/* 4 Volume Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {volumes.map((vol, idx) => (
             <motion.div
-              key={phase.num}
+              key={vol.num}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="relative bg-[#110624]/90 p-6 rounded-3xl border border-[#3b186b] shadow-xl flex flex-col justify-between group hover:border-purple-400 hover:shadow-[0_0_35px_rgba(168,85,247,0.3)] transition-all duration-300 text-white"
+              className="parchment-card p-6 rounded-sm border-2 border-[#b48c3c] shadow-lg flex flex-col justify-between group hover:border-[#92400e] hover:shadow-[0_8px_25px_rgba(58,38,7,0.2)] hover:scale-[1.02] transition-all duration-300 relative text-[#1c1305]"
             >
-              <div className="space-y-6">
+              {/* Pushpin */}
+              <div className="absolute top-2.5 right-2.5 w-3.5 h-3.5 rounded-full bg-[#1c1305] border border-[#78350f]"></div>
+
+              <div className="space-y-4">
                 
-                <div className="flex justify-between items-center">
-                  <span className="font-display font-black text-4xl text-[#3b186b] group-hover:text-purple-400/50 transition-colors">
-                    {phase.num}
+                <div className="flex justify-between items-center border-b border-[#cbb07a] pb-3">
+                  <span className="font-serif font-black text-2xl text-[#b45309]">
+                    {vol.num}
                   </span>
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono font-bold uppercase px-2.5 py-0.5 rounded-full bg-[#0b0318] border border-[#3b186b] text-purple-300">
-                      {phase.tag}
+                  <div className="flex items-center gap-1.5">
+                    <span className={`text-[9px] font-mono font-bold uppercase px-2 py-0.5 rounded border shadow-sm ${vol.badgeColor}`}>
+                      {vol.tag}
                     </span>
-                    <div className="p-3 rounded-2xl border border-[#3b186b] bg-[#0b0318] shadow-inner">
-                      {phase.icon}
-                    </div>
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <h3 className="font-display font-bold text-xl text-white">
-                    {phase.title}
+                <div className="space-y-1.5">
+                  <span className="text-[10px] font-mono font-bold text-[#78350f] uppercase tracking-wider block">
+                    {vol.subtitle}
+                  </span>
+                  <h3 className="font-serif font-black text-xl text-[#1c1305] leading-snug">
+                    {vol.title}
                   </h3>
-                  <p className="text-xs text-purple-200/80 font-sans leading-relaxed font-semibold">
-                    {phase.description}
+                  <p className="text-xs text-[#38260d] font-serif leading-relaxed font-semibold pt-1">
+                    {vol.description}
                   </p>
                 </div>
 
+              </div>
+
+              <div className="pt-4 mt-4 border-t border-[#cbb07a] flex items-center justify-between text-[11px] font-mono font-bold text-[#78350f]">
+                <span>Archived Chapter</span>
+                <Feather className="w-3.5 h-3.5 text-[#b45309]" />
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Aura Frequency Telemetry Bottom block */}
-        <div className="max-w-4xl mx-auto bg-[#110624]/95 border border-[#3b186b] p-8 sm:p-10 rounded-3xl shadow-2xl text-center space-y-6 relative overflow-hidden">
-          {/* subtle aura border glow */}
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-32 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 rounded-full blur-3xl opacity-25 pointer-events-none"></div>
-
-          <div className="space-y-2 relative z-10">
-            <span className="text-[10px] font-mono font-black text-purple-400 uppercase tracking-widest block">
-              VIBRATIONAL TELEMETRY
+        {/* Golden Market Manifesto Card */}
+        <div className="max-w-4xl mx-auto parchment-card border-2 border-[#b48c3c] p-8 sm:p-10 rounded-sm shadow-2xl text-center space-y-6 relative overflow-hidden">
+          
+          {/* Masking tape on top center */}
+          <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 w-36 h-7 bg-[#fef08a] border border-[#eab308] rotate-[1deg] shadow-sm pointer-events-none flex items-center justify-center">
+            <span className="text-[10px] font-mono font-bold text-[#78350f] uppercase">
+              FOUNDERS' CREED
             </span>
-            <h4 className="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-wide">
-              Radiating Infinite Feline Frequency
+          </div>
+
+          <div className="space-y-2 relative z-10 pt-2">
+            <span className="text-[10px] font-mono font-bold text-[#78350f] uppercase tracking-widest block">
+              THE CASHCATE PHILOSOPHY
+            </span>
+            <h4 className="font-serif font-black text-2xl sm:text-3xl text-[#1c1305] uppercase tracking-wide">
+              “Curiosity Creates Opportunity”
             </h4>
-            <p className="text-xs sm:text-sm text-purple-200/80 max-w-2xl mx-auto font-sans font-semibold">
-              Aura Cat ($auracat) is engineered for permanent high-frequency resonance. No stress, no FUD—just pure iridescent serenity and community momentum.
+            <p className="text-xs sm:text-sm text-[#38260d] max-w-2xl mx-auto font-serif font-semibold leading-relaxed">
+              Some called her lucky. Some called it fate. But those who saw her knew—she had a spark. Cashcate reminds us that curiosity can turn the ordinary into the extraordinary.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 relative z-10">
-            <div className="p-4 rounded-2xl bg-[#090316] border border-[#3b186b] text-center">
-              <span className="block text-[10px] font-mono font-bold text-purple-300 uppercase">Frequency</span>
-              <span className="font-display font-black text-lg text-white">432 Hz / 0% FUD</span>
+            <div className="p-4 rounded bg-[#fcf6e8] border border-[#cbb07a] text-center shadow-sm">
+              <span className="block text-[10px] font-mono font-bold text-[#78350f] uppercase">Market Lore</span>
+              <span className="font-serif font-black text-lg text-[#1c1305]">Est. Long Ago</span>
             </div>
-            <div className="p-4 rounded-2xl bg-[#090316] border border-[#3b186b] text-center">
-              <span className="block text-[10px] font-mono font-bold text-purple-300 uppercase">Aura Energy</span>
-              <span className="font-display font-black text-lg text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">100% Radiant</span>
+            <div className="p-4 rounded bg-[#fcf6e8] border border-[#cbb07a] text-center shadow-sm">
+              <span className="block text-[10px] font-mono font-bold text-[#78350f] uppercase">Composure</span>
+              <span className="font-serif font-black text-lg text-[#b45309]">100% Serene</span>
             </div>
-            <div className="p-4 rounded-2xl bg-[#090316] border border-[#3b186b] text-center">
-              <span className="block text-[10px] font-mono font-bold text-purple-300 uppercase">Serenity Index</span>
-              <span className="font-display font-black text-lg text-cyan-300">Unshakeable Zen</span>
+            <div className="p-4 rounded bg-[#fcf6e8] border border-[#cbb07a] text-center shadow-sm">
+              <span className="block text-[10px] font-mono font-bold text-[#78350f] uppercase">Taxation</span>
+              <span className="font-serif font-black text-lg text-[#1c1305]">0% Forever</span>
             </div>
           </div>
         </div>

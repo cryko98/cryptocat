@@ -1,247 +1,263 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Sparkles, ShieldCheck, Quote, Flame, Zap, Eye, Crown, Radio } from "lucide-react";
+import { BookOpen, Compass, Sparkles, Feather, Clock, Quote, Heart, Award, Eye } from "lucide-react";
 
 export default function Story() {
-  const [activeTab, setActiveTab] = useState<"radiancy" | "frequency">("frequency");
-  const [showAuraPulse, setShowAuraPulse] = useState(false);
+  const [selectedChronicle, setSelectedChronicle] = useState<number>(0);
 
-  const handleToggle = (tab: "radiancy" | "frequency") => {
-    setActiveTab(tab);
-    if (tab === "frequency") {
-      setShowAuraPulse(true);
-      setTimeout(() => setShowAuraPulse(false), 2200);
-    }
-  };
+  const chronicles = [
+    {
+      id: "lore-1",
+      tag: "MARKET LORE • EST. LONG AGO",
+      title: "A Cat Walked Into the Market— Curiosity Sparked a Legend",
+      subtitle: "The Genesis at Dawn",
+      quote: "No one knows where she came from, but she had a way of showing up at the right moment.",
+      fullText: [
+        "They say a curious cat named CASHCATE wandered into the market at dawn. No one knows where she came from, but she had a way of showing up at the right moment. From that day on, the legend of CASHCATE began.",
+        "Traders in the morning mist noticed how she walked with serene confidence, stepping lightly between stalls of spices, silk, and gold. She never hurried, never panicked when the crowds surged, and always seemed to anticipate the rhythm of the day.",
+        "To this day, market veterans speak of her arrival as the turning point: the moment when ordinary commerce was touched by a spark of feline serendipity.",
+      ],
+      highlightPhrase: "Curiosity sparked a legend in every pawstep",
+      stat: "EST. LONG AGO • SOLANA",
+    },
+    {
+      id: "lore-2",
+      tag: "FOUNDERS' NOTE • PASSED DOWN",
+      title: "“Curiosity Creates Opportunity,” — That’s Why We Love CASHCATE.",
+      subtitle: "The Timeless Philosophy",
+      quote: "Curiosity can turn the ordinary into the extraordinary.",
+      fullText: [
+        "Some called her lucky. Some called it fate. But those who saw her knew—she had a spark. CASHCATE reminds us that curiosity can turn the ordinary into the extraordinary.",
+        "While other traders rushed blindly after rumors, those who watched CASHCATE learned the virtue of patient observation. She taught the market that genuine opportunity doesn't come from chaos, but from quiet, inquisitive composure.",
+        "We hold CASHCATE because she stands for unshakeable belief, transparent community, and the timeless truth that an open mind discovers what everyone else walks right past.",
+      ],
+      highlightPhrase: "Curiosity creates opportunity, composure creates legacy",
+      stat: "100% COMMUNITY RESONANCE",
+    },
+    {
+      id: "lore-3",
+      tag: "WINDOWSILL CHRONICLE",
+      title: "A Golden Figure on the Windowsill Sees What Others Miss",
+      subtitle: "The High Vantage Point",
+      quote: "She watches in silence, sees what others overlook, and finds beauty in the quiet details.",
+      fullText: [
+        "Every morning, a golden cat appears. She watches in silence, sees what others overlook, and finds beauty in the quiet details. The newcomer has a name: CASHCATE.",
+        "Perched high on the sunlit stone windowsill overlooking the busy square, her golden fur catching the early sunlight, CASHCATE looks down with timeless grace. The gold coins stacked below her tell the story of patience rewarded.",
+        "In a market full of noise, her calm presence is an anchor. Those who look up to the windowsill are reminded to pause, breathe, and see the bigger picture.",
+      ],
+      highlightPhrase: "Seeing what others miss from the golden windowsill",
+      stat: "SILENT PERCEPTION • 432 HZ",
+    },
+    {
+      id: "lore-4",
+      tag: "MARKET CHRONICLES • VOL. 1 • NO. 7",
+      title: "CASHCATE Roams the Market Still— A Legend in Every Pawstep.",
+      subtitle: "The Living Legend",
+      quote: "Through every season, through every change, CASHCATE is here—curious, calm, and timeless.",
+      fullText: [
+        "She explores every corner, from busy streets to quiet alleys. Through every season, through every change, CASHCATE is here—curious, calm, and timeless.",
+        "Bull markets, bear markets, sunny dawns, or stormy afternoons: CASHCATE's pawsteps remain steady. She belongs to no single merchant, but is beloved by everyone who values sincerity and wonder.",
+        "Her story is written into the stones of the market, passed down through whispers, ledger entries, and now, immortalized forever on the Solana blockchain.",
+      ],
+      highlightPhrase: "Curious, calm, and timeless in every pawstep",
+      stat: "VOL. 1 • NO. 7 • IMMORTALIZED",
+    },
+  ];
 
   return (
-    <section id="story" className="relative py-20 sm:py-28 bg-[#090314] text-white overflow-hidden border-t border-[#3b186b]">
-      {/* Background Iridescent Aura Glows */}
-      <div className="absolute inset-0 pointer-events-none select-none opacity-25">
-        <div className="absolute top-[20%] left-[-5%] w-80 h-80 bg-purple-600 rounded-full blur-[150px] animate-aura-shift"></div>
-        <div className="absolute bottom-[10%] right-[-5%] w-96 h-96 bg-pink-600 rounded-full blur-[160px] animate-aura-shift"></div>
-        <div className="absolute top-[50%] right-[10%] w-80 h-80 bg-cyan-500 rounded-full blur-[150px] opacity-20"></div>
+    <section
+      id="chronicles"
+      className="relative py-20 sm:py-28 bg-[#f5e6be] text-[#1c1305] overflow-hidden border-t-2 border-[#b48c3c] vintage-ledger-grid selection:bg-[#fde047] selection:text-[#1c1305]"
+    >
+      {/* Warm parchment ambient light */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0">
+        <div className="absolute top-[30%] left-[10%] w-[450px] h-[450px] bg-[#f59e0b] rounded-full blur-[160px] opacity-25"></div>
+        <div className="absolute bottom-[20%] right-[10%] w-[450px] h-[450px] bg-[#fbbf24] rounded-full blur-[150px] opacity-35"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <span className="text-xs font-mono font-bold uppercase tracking-widest text-purple-300 bg-[#160830] px-4 py-2 rounded-full border border-purple-500/40 shadow-[0_0_20px_rgba(168,85,247,0.3)]">
-            ✨ THE FELINE ENERGY FIELD
-          </span>
-          <h2 className="font-display text-4xl sm:text-6xl font-black text-white uppercase tracking-tight">
-            The Feline of <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">Radiant Aura</span>
+        <div id="market-lore" className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fcf6e8] border border-[#b48c3c] shadow-sm">
+            <BookOpen className="w-3.5 h-3.5 text-[#b45309]" />
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#78350f]">
+              THE COMPLETE MARKET CHRONICLES
+            </span>
+          </div>
+
+          <h2 className="font-serif font-black text-4xl sm:text-6xl text-[#1c1305] tracking-tight uppercase">
+            The Lore of <span className="text-[#b45309]">Cashcate</span>
           </h2>
-          <p className="text-purple-200/80 font-sans font-semibold text-base sm:text-lg">
-            An eternal symbol of 432 Hz frequency, sovereign composure, and unstoppable iridescent abundance on Solana.
+          <p className="font-serif italic text-base sm:text-xl text-[#78350f] font-semibold max-w-2xl mx-auto">
+            Read the handwritten chronicles and timeless notes passed down through generations of market traders.
           </p>
         </div>
 
-        {/* Interactive Stance Toggle */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <div className="bg-[#160830]/90 p-2 rounded-2xl flex max-w-md mx-auto border border-[#3b186b] shadow-2xl">
-            <button
-              onClick={() => handleToggle("radiancy")}
-              className={`flex-1 py-3 px-4 rounded-xl font-display font-black text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer border-none ${
-                activeTab === "radiancy"
-                  ? "bg-[#25104d] text-purple-300 border border-purple-500/40 shadow-md"
-                  : "text-purple-200/60 hover:text-white"
-              }`}
-            >
-              <Eye className="w-4 h-4 text-purple-400" />
-              Cosmic Radiancy
-            </button>
-            <button
-              onClick={() => handleToggle("frequency")}
-              className={`flex-1 py-3 px-4 rounded-xl font-display font-black text-xs sm:text-sm transition-all flex items-center justify-center gap-2 cursor-pointer border-none ${
-                activeTab === "frequency"
-                  ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white font-black shadow-lg"
-                  : "text-purple-200/60 hover:text-white"
-              }`}
-            >
-              <Radio className="w-4 h-4" />
-              432 Hz Serenity
-            </button>
-          </div>
+        {/* 4 Interactive Parchment Tabs */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          {chronicles.map((item, idx) => {
+            const isSelected = selectedChronicle === idx;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setSelectedChronicle(idx)}
+                className={`text-left p-5 rounded-sm border transition-all duration-300 relative cursor-pointer ${
+                  isSelected
+                    ? "bg-[#fcf6e8] border-[#92400e] shadow-[0_8px_25px_rgba(58,38,7,0.2)] scale-[1.02] ring-2 ring-[#d97706]/40"
+                    : "bg-[#faedd0]/80 border-[#cbb07a] hover:bg-[#fcf6e8] hover:border-[#b48c3c] opacity-80 hover:opacity-100"
+                }`}
+              >
+                {/* Yellow tape effect if selected */}
+                {isSelected && (
+                  <div className="absolute -top-3 right-4 w-12 h-5 bg-[#fef08a] border border-[#eab308] rotate-[-8deg] shadow-sm pointer-events-none"></div>
+                )}
+
+                <div className="space-y-2">
+                  <span className="block text-[10px] font-mono font-bold text-[#92400e] uppercase tracking-wider">
+                    {item.tag}
+                  </span>
+                  <h3 className="font-serif font-black text-lg text-[#1c1305] line-clamp-2 leading-snug">
+                    {item.title}
+                  </h3>
+                  <span className="block text-xs font-serif italic text-[#78350f] font-semibold">
+                    {item.subtitle}
+                  </span>
+                </div>
+              </button>
+            );
+          })}
         </div>
 
-        {/* Main Content Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch max-w-5xl mx-auto">
-          
-          {/* Visual Stance Card */}
-          <div className="lg:col-span-5 flex flex-col justify-between p-8 rounded-3xl border transition-all relative overflow-hidden bg-[#130726]/95 border-[#3b186b] shadow-2xl">
-            
-            <AnimatePresence mode="wait">
-              {activeTab === "radiancy" ? (
-                <motion.div
-                  key="radiancy-mode"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
-                  transition={{ duration: 0.3 }}
-                  className="space-y-6 flex-1 flex flex-col justify-between"
-                >
-                  <div className="space-y-4">
-                    <div className="inline-block p-3.5 rounded-2xl bg-[#0b0318] text-purple-400 border border-[#3b186b]">
-                      <Eye className="w-8 h-8 text-purple-400" />
-                    </div>
-                    <h3 className="font-display text-2xl font-black text-white uppercase">
-                      Unshakeable Radiancy
-                    </h3>
-                    <p className="text-sm text-purple-100/80 font-sans leading-relaxed font-medium">
-                      Market volatility? FUD waves? Noise in the timeline? Aura Cat remains entirely composed. Protected by an iridescent energy field, our community glows brighter with every candle.
-                    </p>
-                  </div>
+        {/* Selected Chronicle Reading Stand */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={chronicles[selectedChronicle].id}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.4 }}
+            className="parchment-card p-8 sm:p-12 rounded-sm border-2 border-[#b48c3c] shadow-2xl relative"
+          >
+            {/* Top pushpins on parchment corners */}
+            <div className="absolute top-4 left-4 w-4 h-4 rounded-full bg-[#1c1305] border-2 border-[#78350f] shadow-md"></div>
+            <div className="absolute top-4 right-4 w-4 h-4 rounded-full bg-[#1c1305] border-2 border-[#78350f] shadow-md"></div>
 
-                  <div className="bg-[#0b0318]/90 p-4 rounded-2xl border border-[#3b186b]">
-                    <div className="flex justify-between text-xs font-bold text-purple-200 mb-2 font-mono">
-                      <span>AURA INTENSITY</span>
-                      <span className="text-purple-400">100% SUPREME</span>
-                    </div>
-                    <div className="h-2 w-full bg-[#1c0b36] rounded-full overflow-hidden">
-                      <div className="h-full w-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-[0_0_12px_#a855f7]"></div>
-                    </div>
-                    <p className="mt-3 text-[11px] font-mono text-purple-300 text-center font-bold">
-                      ✨ "When your aura is calm, the entire market aligns."
-                    </p>
-                  </div>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="frequency-mode"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="space-y-6 flex-1 flex flex-col justify-between"
-                >
-                  <div className="space-y-4">
-                    <div className="inline-block p-3.5 rounded-2xl bg-[#200b42] text-pink-400 border border-purple-500/40 animate-pulse">
-                      <Radio className="w-8 h-8 text-pink-400" />
-                    </div>
-                    <h3 className="font-display text-2xl font-black text-pink-400 uppercase flex items-center gap-2">
-                      432 Hz Harmonic Pulse <Sparkles className="w-5 h-5 text-cyan-300" />
-                    </h3>
-                    <p className="text-sm text-purple-100/80 font-sans leading-relaxed font-medium">
-                      Tuned to the frequency of cosmic peace, Aura Cat transforms panic into clarity! Every holder becomes a beacon of positive vibration and long-term conviction on Solana.
-                    </p>
-                  </div>
-
-                  <div className="bg-[#0b0318] p-4 rounded-2xl border border-purple-500/40 shadow-lg">
-                    <div className="flex justify-between text-xs font-bold text-purple-200 mb-2 font-mono">
-                      <span>VIBRATIONAL PULSE</span>
-                      <span className="text-pink-400 font-bold">INFINITE 🔮</span>
-                    </div>
-                    <div className="h-2 w-full bg-[#1c0b36] rounded-full overflow-hidden">
-                      <motion.div 
-                        animate={{ width: ["80%", "100%", "92%", "100%"] }} 
-                        transition={{ duration: 1.8, repeat: Infinity }} 
-                        className="h-full bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-400 shadow-[0_0_18px_rgba(236,72,153,0.6)]"
-                      ></motion.div>
-                    </div>
-                    <p className="mt-3 text-[11px] font-mono text-cyan-300 text-center font-bold">
-                      🔮 "Align your frequency, embrace the feline energy."
-                    </p>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Custom Aura Pulse Effect */}
-            {showAuraPulse && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                className="absolute inset-0 bg-purple-600/25 backdrop-blur-[2px] flex items-center justify-center pointer-events-none z-20"
-              >
-                <span className="text-xl sm:text-2xl font-display font-black text-white bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 rounded-2xl shadow-2xl border-2 border-white">
-                  ✨ HARMONIC 432 HZ AURA ACTIVATED! 🔮
-                </span>
-              </motion.div>
-            )}
-          </div>
-
-          {/* Text Story Side */}
-          <div className="lg:col-span-7 bg-[#130726]/95 p-8 sm:p-10 rounded-3xl border border-[#3b186b] flex flex-col justify-between shadow-2xl">
-            
-            <div className="space-y-8">
-              <div className="text-purple-400/40">
-                <Quote className="w-12 h-12 fill-current" />
-              </div>
-
-              <div className="space-y-6 font-sans text-purple-100/80 font-semibold">
-                <p className="text-lg leading-relaxed text-white">
-                  While ordinary memes burn out on short-term hype, <span className="bg-[#200b42] text-purple-300 border border-purple-500/40 font-bold px-2.5 py-1 rounded-lg">$auracat</span> builds a permanent sanctuary of high vibration!
-                </p>
-                <p className="text-2xl sm:text-3xl font-display font-black text-white leading-tight uppercase">
-                  "Ordinary tokens chase charts. <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">Aura Cat is the energy.</span>"
-                </p>
-                <p className="text-base leading-relaxed text-purple-200/80">
-                  Aura Cat is built on unshakeable serenity: 0% tax, 100% community resonance, and renounced contract authority. No hidden friction—just pure upward frequency lighting up the Solana ecosystem.
-                </p>
-
-                <div className="bg-[#0b0318]/90 p-5 rounded-2xl border-l-4 border-purple-500 border-y border-r border-[#3b186b] space-y-2">
-                  <span className="block text-xs font-bold text-purple-300 uppercase tracking-wider font-mono flex items-center gap-1.5">
-                    <Crown className="w-4 h-4 text-purple-400" /> Sovereign Aura Rule:
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+              
+              {/* Left text column */}
+              <div className="lg:col-span-8 space-y-6">
+                
+                <div className="border-b border-[#cbb07a] pb-4 space-y-2">
+                  <span className="text-xs font-mono font-bold text-[#b45309] uppercase tracking-widest block">
+                    {chronicles[selectedChronicle].tag}
                   </span>
-                  <p className="text-sm font-sans text-purple-100 italic">
-                    "Hold with serene conviction, radiate positive energy, and watch our collective aura become a legend across Solana."
+                  <h3 className="font-serif font-black text-2xl sm:text-4xl text-[#1c1305] leading-tight">
+                    {chronicles[selectedChronicle].title}
+                  </h3>
+                  <span className="inline-block text-xs font-mono font-bold text-[#78350f] bg-[#fef08a] px-2.5 py-0.5 rounded border border-[#eab308]">
+                    {chronicles[selectedChronicle].stat}
+                  </span>
+                </div>
+
+                {/* Highlighted Quote Box */}
+                <div className="p-5 rounded bg-[#f5e8c4] border-l-4 border-[#b45309] border-y border-r border-[#cbb07a] shadow-inner flex items-start gap-3.5">
+                  <Quote className="w-8 h-8 text-[#b45309] flex-shrink-0 opacity-80" />
+                  <p className="font-serif italic text-lg sm:text-xl font-bold text-[#1c1305] leading-snug">
+                    “{chronicles[selectedChronicle].quote}”
                   </p>
                 </div>
+
+                {/* Body Paragraphs */}
+                <div className="space-y-4 font-serif text-base sm:text-lg text-[#38260d] leading-relaxed">
+                  {chronicles[selectedChronicle].fullText.map((p, pIdx) => (
+                    <p key={pIdx}>
+                      {p.includes("CASHCATE") ? (
+                        <>
+                          {p.split("CASHCATE").map((chunk, cIdx, arr) => (
+                            <React.Fragment key={cIdx}>
+                              {chunk}
+                              {cIdx < arr.length - 1 && (
+                                <span className="highlight-yellow">CASHCATE</span>
+                              )}
+                            </React.Fragment>
+                          ))}
+                        </>
+                      ) : (
+                        p
+                      )}
+                    </p>
+                  ))}
+                </div>
+
+                {/* Signature of the chronicler */}
+                <div className="pt-4 border-t border-[#cbb07a] flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#78350f]">
+                    <Feather className="w-4 h-4 text-[#b45309]" />
+                    <span>Archived in the Cashcate Ledger • Volume 1</span>
+                  </div>
+                  <span className="font-serif italic font-bold text-sm text-[#92400e]">
+                    ~ The Market Scribe
+                  </span>
+                </div>
+
               </div>
-            </div>
 
-            {/* Footer story CTA */}
-            <div className="pt-8 mt-8 border-t border-[#3b186b] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <div>
-                <span className="block text-[11px] font-black text-purple-300/70 tracking-wider uppercase font-mono">
-                  IRIDESCENT SOLANA MEME
-                </span>
-                <p className="font-display font-black text-lg text-white">
-                  $auracat — <span className="text-purple-400">The Frequency of Abundance.</span>
-                </p>
+              {/* Right column: Archival Coin & Stamp Exhibit */}
+              <div className="lg:col-span-4 flex flex-col items-center space-y-6">
+                
+                <div className="p-4 rounded bg-[#fdf8ee] border-2 border-[#b48c3c] shadow-lg text-center space-y-4 w-full">
+                  <div className="relative w-44 h-44 mx-auto rounded-full p-2 bg-gradient-to-tr from-[#92400e] via-[#f59e0b] to-[#fef08a] shadow-[0_0_25px_rgba(217,119,6,0.4)]">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-08-07_20-34-51.jpg?v=1786124116"
+                      alt="Cashcate Seal"
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  </div>
+
+                  <div className="space-y-1">
+                    <span className="font-serif font-black text-xl text-[#1c1305] block">
+                      Cashcate ($cashcate)
+                    </span>
+                    <span className="text-[11px] font-mono font-bold text-[#78350f] block">
+                      The Golden Market Feline
+                    </span>
+                  </div>
+
+                  <div className="p-3 bg-[#f5e8c4] rounded border border-[#cbb07a] text-left text-xs font-mono space-y-1 text-[#38260d]">
+                    <div className="flex justify-between">
+                      <span className="text-[#78350f]">Composure:</span>
+                      <span className="font-bold text-[#1c1305]">100% Serene</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-[#78350f]">Tax:</span>
+                      <span className="font-bold text-[#1c1305]">0% Forever</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-[#78350f]">Curiosity:</span>
+                      <span className="font-bold text-[#b45309]">Infinite</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Archival Wax Seal / Badge */}
+                <div className="w-full p-4 rounded bg-[#f7eed4] border border-[#cbb07a] text-center space-y-2">
+                  <span className="text-[10px] font-mono font-bold text-[#78350f] uppercase tracking-widest block">
+                    SANCTUARY RULE
+                  </span>
+                  <p className="font-serif italic font-bold text-sm text-[#1c1305]">
+                    “Curiosity Creates Opportunity — That’s Why We Love Cashcate.”
+                  </p>
+                </div>
+
               </div>
 
-              <button
-                onClick={() => {
-                  const element = document.getElementById("interactive-lounge");
-                  if (element) element.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 hover:from-purple-500 hover:to-pink-500 text-white font-display font-black text-xs shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer border-none"
-              >
-                Enter Sanctuary ➔
-              </button>
             </div>
 
-          </div>
-
-        </div>
-
-        {/* Callout Banner */}
-        <div className="mt-16 bg-gradient-to-r from-[#190936] via-[#2a105c] to-[#190936] border border-purple-500/40 text-white p-8 sm:p-12 rounded-3xl max-w-4xl mx-auto shadow-[0_0_40px_rgba(168,85,247,0.3)] text-center relative overflow-hidden">
-          <div className="relative z-10 space-y-6">
-            <h4 className="font-display text-2xl sm:text-3xl font-black text-white uppercase drop-shadow-md">
-              Are you ready to align your frequency with the most radiant cat on Solana?
-            </h4>
-            <div className="flex justify-center items-center">
-              <button
-                onClick={() => {
-                  const element = document.getElementById("interactive-lounge");
-                  if (element) element.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-500 text-white font-display font-black text-sm shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer border-none flex items-center gap-2"
-              >
-                Explore Aura Sanctuary <Sparkles className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-        </div>
+          </motion.div>
+        </AnimatePresence>
 
       </div>
     </section>
   );
 }
-
-

@@ -1,19 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, Sparkles, Zap, Eye, Copy, Check } from "lucide-react";
+import { Menu, X, Sparkles, TrendingUp, BookOpen, Coins, Compass } from "lucide-react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [copiedCA, setCopiedCA] = useState(false);
-
-  const contractAddress = "6wfbCEwBDE8D75QaQCSgawiNfKwJDCyAYA32F768pump";
-
-  const handleCopyCA = () => {
-    navigator.clipboard.writeText(contractAddress);
-    setCopiedCA(true);
-    setTimeout(() => setCopiedCA(false), 2000);
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,103 +24,113 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top Ticker Tape - Iridescent Aura Vibe */}
-      <div id="top-ticker" className="w-full bg-[#0d041e] text-purple-200 py-2 px-4 text-xs font-mono font-bold tracking-wider overflow-hidden select-none whitespace-nowrap border-b border-purple-900/40">
-        <div className="inline-block animate-[marquee_22s_linear_infinite] whitespace-nowrap">
-          <span className="mx-4 text-cyan-300 font-black">⚡ CA: {contractAddress}</span>
-          <span className="mx-4">✨ AURA CAT ($AURACAT) RADIATES INFINITE VIBRATION ON SOLANA!</span>
-          <span className="mx-4">👁️ THE HIGHEST FREQUENCY FELINE IN THE COSMOS</span>
-          <span className="mx-4">⚡ ZERO TAX, 100% SERENE COMMUNITY AURA</span>
-          <span className="mx-4 text-pink-300 font-black">🔮 CA: {contractAddress}</span>
-          <span className="mx-4">👑 ENTER THE AURA SANCTUARY & GROW YOUR PURR-ENERGY!</span>
-          <span className="mx-4 text-cyan-300 font-black">⚡ CA: {contractAddress}</span>
+      {/* Top Ticker Tape - Golden Market Lore Marquee */}
+      <div id="top-ticker" className="w-full bg-[#1c1305] text-[#fef08a] py-2 px-4 text-xs font-mono font-bold tracking-wider overflow-hidden select-none whitespace-nowrap border-b border-[#785317]/60">
+        <div className="inline-block animate-[marquee_25s_linear_infinite] whitespace-nowrap">
+          <span className="mx-4 text-[#fde047] font-black">✨ MARKET LORE • EST. LONG AGO</span>
+          <span className="mx-4 text-white">“CURIOSITY CREATES OPPORTUNITY” — THAT'S WHY WE LOVE CASHCATE</span>
+          <span className="mx-4 text-[#facc15]">📜 A GOLDEN FIGURE ON THE WINDOWSILL SEES WHAT OTHERS MISS</span>
+          <span className="mx-4 text-white">🐾 A LEGEND IN EVERY PAWSTEP • $CASHCATE</span>
+          <span className="mx-4 text-[#fde047] font-black">🪙 0% TAX • 100% BURNED LP • PURE GOLDEN CURIOSITY</span>
+          <span className="mx-4 text-white">🐱 THEY SAY A CURIOUS CAT NAMED CASHCATE WANDERED INTO THE MARKET AT DAWN</span>
+          <span className="mx-4 text-[#fde047] font-black">✨ MARKET LORE • EST. LONG AGO</span>
         </div>
       </div>
 
+      {/* Main Navbar */}
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           scrolled
-            ? "bg-[#080314]/95 backdrop-blur-md border-b border-[#3b186b] shadow-xl py-2 text-white"
-            : "bg-[#0b041a]/90 backdrop-blur-md border-b border-[#2d1154] py-3 text-white"
+            ? "bg-[#1c1406]/95 backdrop-blur-md border-b border-[#785317] shadow-[0_8px_30px_rgba(0,0,0,0.6)] py-2 text-white"
+            : "bg-[#261a08]/90 backdrop-blur-md border-b border-[#785317]/50 py-3 text-white"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
+            
             {/* Logo */}
             <div 
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} 
               className="flex items-center space-x-3 cursor-pointer group"
             >
-              <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-purple-500 shadow-[0_0_20px_rgba(168,85,247,0.45)] group-hover:scale-105 transition-transform bg-[#160830]">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#eab308] shadow-[0_0_20px_rgba(234,179,8,0.45)] group-hover:scale-105 transition-transform bg-[#2e1f0a]">
                 <img
-                  src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/auracat.png?v=1785688369"
-                  alt="Aura Cat Logo"
-                  referrerPolicy="no-referrer"
+                  src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-08-07_20-34-51.jpg?v=1786124116"
+                  alt="Cashcate Golden Coin"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-display font-black text-2xl tracking-tight text-white uppercase group-hover:text-purple-400 transition-colors flex items-center gap-1.5">
-                  Aura <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400">Cat</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="font-serif font-black text-2xl tracking-tight text-white uppercase italic group-hover:text-[#facc15] transition-colors">
+                    Cash<span className="text-[#facc15]">cate</span>
+                  </span>
+                  <span className="text-[10px] font-mono font-black text-[#1c1305] bg-[#facc15] px-1.5 py-0.5 rounded shadow-sm">
+                    $cashcate
+                  </span>
+                </div>
+                <span className="text-[10px] font-mono text-[#fde047]/80 font-bold -mt-0.5 tracking-widest">
+                  Curiosity Creates Opportunity
                 </span>
-                <span className="text-[10px] font-mono text-purple-300/80 font-bold -mt-1 tracking-widest">$auracat • SOLANA</span>
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8 font-sans font-bold text-sm text-purple-100/80">
-              <button onClick={() => scrollToSection("story")} className="hover:text-purple-400 transition-colors cursor-pointer">
-                The Aura
+            <nav className="hidden lg:flex items-center space-x-7 font-mono font-bold text-xs uppercase tracking-wider text-[#fde047]/90">
+              <button onClick={() => scrollToSection("market-lore")} className="hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
+                <BookOpen className="w-3.5 h-3.5 text-[#facc15]" />
+                Market Lore
               </button>
-              <button onClick={() => scrollToSection("interactive-lounge")} className="hover:text-purple-400 transition-colors cursor-pointer flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-pink-400" /> Sanctuary
+              <button onClick={() => scrollToSection("chronicles")} className="hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
+                <Compass className="w-3.5 h-3.5 text-[#facc15]" />
+                Chronicles
               </button>
-              <button onClick={() => scrollToSection("tokenomics")} className="hover:text-purple-400 transition-colors cursor-pointer">
-                Tokenomics
+              <button onClick={() => scrollToSection("interactive-lounge")} className="hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
+                <Sparkles className="w-3.5 h-3.5 text-[#facc15]" />
+                Opportunity Lounge
               </button>
-              <button onClick={() => scrollToSection("aura-roadmap")} className="hover:text-purple-400 transition-colors cursor-pointer">
-                Roadmap
+              <button onClick={() => scrollToSection("tokenomics")} className="hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
+                <Coins className="w-3.5 h-3.5 text-[#facc15]" />
+                Golden Ledger
+              </button>
+              <button onClick={() => scrollToSection("roadmap")} className="hover:text-white transition-colors cursor-pointer border-none bg-transparent">
+                Volumes
               </button>
             </nav>
 
-            {/* Aura CTA */}
+            {/* CTA Buttons */}
             <div className="hidden md:flex items-center space-x-3 relative">
-              <button
-                onClick={handleCopyCA}
-                title="Copy Official Solana Contract Address"
-                className="px-3.5 py-2 rounded-full bg-[#160830] hover:bg-[#250d4e] border border-[#3b186b] hover:border-purple-400 text-purple-200 hover:text-white font-mono font-bold text-xs transition-all flex items-center gap-1.5 cursor-pointer"
+              <a
+                href="https://dexscreener.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-xl bg-[#2e1f0a] hover:bg-[#3d2a0d] border border-[#785317] hover:border-[#eab308] text-[#fde047] hover:text-white font-mono font-bold text-xs transition-all flex items-center gap-1.5 shadow-md"
               >
-                {copiedCA ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-cyan-300" />
-                    <span className="text-cyan-300">COPIED</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5 text-purple-400" />
-                    <span>CA: {contractAddress.slice(0, 4)}...{contractAddress.slice(-4)}</span>
-                  </>
-                )}
-              </button>
+                <TrendingUp className="w-3.5 h-3.5 text-[#facc15]" />
+                Live Chart
+              </a>
 
               <button
                 onClick={() => scrollToSection("interactive-lounge")}
-                id="explore-aura-btn-header"
-                className="px-6 py-2.5 rounded-full bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 hover:from-purple-500 hover:to-pink-500 text-white font-display font-black text-sm shadow-[0_0_25px_rgba(168,85,247,0.4)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-200 cursor-pointer flex items-center gap-2 border-none"
+                id="explore-cashcate-header-btn"
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#eab308] hover:from-[#b45309] hover:to-[#d97706] text-[#1c1305] font-display font-black text-xs shadow-[0_0_20px_rgba(234,179,8,0.4)] hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer border-none"
               >
-                Enter Sanctuary <Sparkles className="w-4 h-4" />
+                <Sparkles className="w-4 h-4 text-[#1c1305]" />
+                Explore Lore
               </button>
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden flex items-center space-x-2">
+            <div className="lg:hidden flex items-center space-x-2">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-lg text-white hover:bg-[#1c0a3b] hover:text-purple-400 border border-[#3b186b] transition-colors"
+                className="p-2 rounded-xl bg-[#2e1f0a] text-[#facc15] hover:text-white border border-[#785317] focus:outline-none cursor-pointer"
+                aria-label="Toggle mobile menu"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-white" />}
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
+
           </div>
         </div>
 
@@ -141,58 +142,56 @@ export default function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden bg-[#080314] border-b border-[#3b186b] shadow-xl px-4 pt-2 pb-6 space-y-4"
+              className="lg:hidden bg-[#1c1406] border-b border-[#785317] shadow-xl px-4 pt-2 pb-6 space-y-4"
             >
-              <nav className="flex flex-col space-y-3 font-sans font-medium text-white">
+              <nav className="flex flex-col space-y-3 font-mono font-medium text-[#fde047]">
                 <button
-                  onClick={() => scrollToSection("story")}
-                  className="text-left py-2 px-3 rounded-lg hover:bg-[#1c0a3b] hover:text-purple-400 transition-all text-sm"
+                  onClick={() => scrollToSection("market-lore")}
+                  className="text-left py-2 px-3 rounded-lg hover:bg-[#2e1f0a] hover:text-white transition-all text-sm flex items-center gap-2 border-none bg-transparent"
                 >
-                  The Aura
+                  <BookOpen className="w-4 h-4 text-[#facc15]" /> Market Lore
+                </button>
+                <button
+                  onClick={() => scrollToSection("chronicles")}
+                  className="text-left py-2 px-3 rounded-lg hover:bg-[#2e1f0a] hover:text-white transition-all text-sm flex items-center gap-2 border-none bg-transparent"
+                >
+                  <Compass className="w-4 h-4 text-[#facc15]" /> Chronicles
                 </button>
                 <button
                   onClick={() => scrollToSection("interactive-lounge")}
-                  className="text-left py-2 px-3 rounded-lg hover:bg-[#1c0a3b] hover:text-purple-400 transition-all text-sm flex items-center gap-2"
+                  className="text-left py-2 px-3 rounded-lg hover:bg-[#2e1f0a] hover:text-white transition-all text-sm flex items-center gap-2 border-none bg-transparent"
                 >
-                  <Sparkles className="w-4 h-4 text-pink-400" /> Sanctuary
+                  <Sparkles className="w-4 h-4 text-[#facc15]" /> Opportunity Lounge
                 </button>
                 <button
                   onClick={() => scrollToSection("tokenomics")}
-                  className="text-left py-2 px-3 rounded-lg hover:bg-[#1c0a3b] hover:text-purple-400 transition-all text-sm"
+                  className="text-left py-2 px-3 rounded-lg hover:bg-[#2e1f0a] hover:text-white transition-all text-sm flex items-center gap-2 border-none bg-transparent"
                 >
-                  Tokenomics
+                  <Coins className="w-4 h-4 text-[#facc15]" /> Golden Ledger
                 </button>
                 <button
-                  onClick={() => scrollToSection("aura-roadmap")}
-                  className="text-left py-2 px-3 rounded-lg hover:bg-[#1c0a3b] hover:text-purple-400 transition-all text-sm"
+                  onClick={() => scrollToSection("roadmap")}
+                  className="text-left py-2 px-3 rounded-lg hover:bg-[#2e1f0a] hover:text-white transition-all text-sm flex items-center gap-2 border-none bg-transparent"
                 >
-                  Roadmap
+                  📜 Volumes & Milestones
                 </button>
               </nav>
 
-              <div className="pt-4 border-t border-[#3b186b] flex flex-col gap-2.5">
-                <button
-                  onClick={handleCopyCA}
-                  className="w-full px-4 py-2.5 rounded-xl bg-[#160830] hover:bg-[#250d4e] border border-[#3b186b] text-purple-200 font-mono font-bold text-xs flex items-center justify-center gap-2"
+              <div className="pt-4 border-t border-[#785317] flex flex-col gap-2.5">
+                <a
+                  href="https://dexscreener.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#2e1f0a] border border-[#785317] text-[#fde047] font-mono font-bold text-xs flex items-center justify-center gap-2"
                 >
-                  {copiedCA ? (
-                    <>
-                      <Check className="w-4 h-4 text-cyan-300" />
-                      <span className="text-cyan-300">CA COPIED TO CLIPBOARD!</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-4 h-4 text-purple-400" />
-                      <span>COPY CA: {contractAddress.slice(0, 6)}...{contractAddress.slice(-4)}</span>
-                    </>
-                  )}
-                </button>
+                  <TrendingUp className="w-4 h-4 text-[#facc15]" /> DexScreener Chart
+                </a>
 
                 <button
                   onClick={() => scrollToSection("interactive-lounge")}
-                  className="w-full px-5 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-display font-black text-sm shadow-md border-none flex items-center justify-center gap-2"
+                  className="w-full px-5 py-3 rounded-xl bg-gradient-to-r from-[#d97706] to-[#eab308] text-[#1c1305] font-display font-black text-sm shadow-md border-none flex items-center justify-center gap-2"
                 >
-                  Enter Sanctuary <Sparkles className="w-4 h-4" />
+                  <Sparkles className="w-4 h-4" /> Explore Opportunity Lounge
                 </button>
               </div>
             </motion.div>
@@ -202,4 +201,3 @@ export default function Navbar() {
     </>
   );
 }
-
