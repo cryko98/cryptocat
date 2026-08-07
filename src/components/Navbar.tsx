@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, Sparkles, TrendingUp, BookOpen, Coins, Compass } from "lucide-react";
+import { Menu, X, Sparkles, TrendingUp, BookOpen, Coins, Compass, Copy, Check, ExternalLink } from "lucide-react";
+import { CASHCATE_CA, DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL } from "../constants";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,6 +15,12 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleCopyCA = () => {
+    navigator.clipboard.writeText(CASHCATE_CA);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
@@ -24,12 +32,12 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top Ticker Tape - Golden Market Lore Marquee */}
+      {/* Top Ticker Tape - Golden Market Lore Marquee with Live CA */}
       <div id="top-ticker" className="w-full bg-[#1c1305] text-[#fef08a] py-2 px-4 text-xs font-mono font-bold tracking-wider overflow-hidden select-none whitespace-nowrap border-b border-[#785317]/60">
         <div className="inline-block animate-[marquee_25s_linear_infinite] whitespace-nowrap">
           <span className="mx-4 text-[#fde047] font-black">✨ MARKET LORE • EST. LONG AGO</span>
           <span className="mx-4 text-white">“CURIOSITY CREATES OPPORTUNITY” — THAT'S WHY WE LOVE CASHCATE</span>
-          <span className="mx-4 text-[#facc15]">📜 A GOLDEN FIGURE ON THE WINDOWSILL SEES WHAT OTHERS MISS</span>
+          <span className="mx-4 text-[#facc15]">📜 CA: {CASHCATE_CA}</span>
           <span className="mx-4 text-white">🐾 A LEGEND IN EVERY PAWSTEP • $CASHCATE</span>
           <span className="mx-4 text-[#fde047] font-black">🪙 0% TAX • 100% BURNED LP • PURE GOLDEN CURIOSITY</span>
           <span className="mx-4 text-white">🐱 THEY SAY A CURIOUS CAT NAMED CASHCATE WANDERED INTO THE MARKET AT DAWN</span>
@@ -76,7 +84,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-7 font-mono font-bold text-xs uppercase tracking-wider text-[#fde047]/90">
+            <nav className="hidden lg:flex items-center space-x-6 font-mono font-bold text-xs uppercase tracking-wider text-[#fde047]/90">
               <button onClick={() => scrollToSection("market-lore")} className="hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
                 <BookOpen className="w-3.5 h-3.5 text-[#facc15]" />
                 Market Lore
@@ -98,24 +106,45 @@ export default function Navbar() {
               </button>
             </nav>
 
-            {/* CTA Buttons */}
-            <div className="hidden md:flex items-center space-x-3 relative">
+            {/* Quick CA Copy & Action Buttons */}
+            <div className="hidden md:flex items-center space-x-2.5 relative">
+              {/* Copyable CA pill */}
+              <button
+                onClick={handleCopyCA}
+                title="Click to copy Contract Address"
+                className="px-3 py-1.5 rounded-lg bg-[#1a1104] hover:bg-[#2c1d06] border border-[#785317] text-[11px] font-mono font-bold text-[#fde047] flex items-center gap-1.5 transition-all shadow-inner cursor-pointer"
+              >
+                <span className="text-[#a16207]">CA:</span>
+                <span className="text-[#facc15]">{CASHCATE_CA.slice(0, 4)}...{CASHCATE_CA.slice(-4)}</span>
+                {copied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5 text-[#facc15]" />}
+              </button>
+
               <a
-                href="https://dexscreener.com"
+                href={DEXSCREENER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-xl bg-[#2e1f0a] hover:bg-[#3d2a0d] border border-[#785317] hover:border-[#eab308] text-[#fde047] hover:text-white font-mono font-bold text-xs transition-all flex items-center gap-1.5 shadow-md"
+                className="px-3.5 py-2 rounded-xl bg-[#2e1f0a] hover:bg-[#3d2a0d] border border-[#785317] hover:border-[#eab308] text-[#fde047] hover:text-white font-mono font-bold text-xs transition-all flex items-center gap-1.5 shadow-md"
               >
                 <TrendingUp className="w-3.5 h-3.5 text-[#facc15]" />
-                Live Chart
+                Chart
+              </a>
+
+              <a
+                href={PUMPFUN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3.5 py-2 rounded-xl bg-[#1c2912] hover:bg-[#243816] border border-[#3f6212] text-[#86efac] font-mono font-bold text-xs transition-all flex items-center gap-1.5 shadow-md"
+              >
+                <span>💊</span>
+                Pump.fun
               </a>
 
               <button
                 onClick={() => scrollToSection("interactive-lounge")}
                 id="explore-cashcate-header-btn"
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#eab308] hover:from-[#b45309] hover:to-[#d97706] text-[#1c1305] font-display font-black text-xs shadow-[0_0_20px_rgba(234,179,8,0.4)] hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer border-none"
+                className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#eab308] hover:from-[#b45309] hover:to-[#d97706] text-[#1c1305] font-display font-black text-xs shadow-[0_0_20px_rgba(234,179,8,0.4)] hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer border-none"
               >
-                <Sparkles className="w-4 h-4 text-[#1c1305]" />
+                <Sparkles className="w-3.5 h-3.5 text-[#1c1305]" />
                 Explore Lore
               </button>
             </div>
@@ -144,6 +173,23 @@ export default function Navbar() {
               transition={{ duration: 0.2 }}
               className="lg:hidden bg-[#1c1406] border-b border-[#785317] shadow-xl px-4 pt-2 pb-6 space-y-4"
             >
+              {/* Mobile CA pill */}
+              <div className="p-3 rounded-lg bg-[#2e1f0a] border border-[#785317] flex items-center justify-between">
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-mono text-[#a16207]">CONTRACT ADDRESS</span>
+                  <span className="text-xs font-mono font-bold text-[#facc15] truncate max-w-[200px]">
+                    {CASHCATE_CA}
+                  </span>
+                </div>
+                <button
+                  onClick={handleCopyCA}
+                  className="px-2.5 py-1.5 rounded bg-[#1c1305] text-[#facc15] text-xs font-mono font-bold flex items-center gap-1 border border-[#785317]"
+                >
+                  {copied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
+                  {copied ? "Copied" : "Copy"}
+                </button>
+              </div>
+
               <nav className="flex flex-col space-y-3 font-mono font-medium text-[#fde047]">
                 <button
                   onClick={() => scrollToSection("market-lore")}
@@ -179,12 +225,21 @@ export default function Navbar() {
 
               <div className="pt-4 border-t border-[#785317] flex flex-col gap-2.5">
                 <a
-                  href="https://dexscreener.com"
+                  href={DEXSCREENER_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full px-4 py-2.5 rounded-xl bg-[#2e1f0a] border border-[#785317] text-[#fde047] font-mono font-bold text-xs flex items-center justify-center gap-2"
                 >
                   <TrendingUp className="w-4 h-4 text-[#facc15]" /> DexScreener Chart
+                </a>
+
+                <a
+                  href={PUMPFUN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#1c2912] border border-[#3f6212] text-[#86efac] font-mono font-bold text-xs flex items-center justify-center gap-2"
+                >
+                  <span>💊</span> Buy on Pump.fun
                 </a>
 
                 <button

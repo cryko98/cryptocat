@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "motion/react";
-import { ShieldCheck, Flame, CirclePercent, Coins, Lock, Award, Sparkles, BookOpen } from "lucide-react";
+import { ShieldCheck, Flame, CirclePercent, Coins, Lock, Award, Sparkles, BookOpen, Copy, Check, ExternalLink } from "lucide-react";
+import { CASHCATE_CA, DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL, RAYDIUM_URL } from "../constants";
 
 export default function Tokenomics() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyCA = () => {
+    navigator.clipboard.writeText(CASHCATE_CA);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   const stats = [
     {
       title: "TOTAL SUPPLY",
@@ -56,6 +65,55 @@ export default function Tokenomics() {
           <p className="font-serif italic text-base sm:text-lg text-[#78350f] font-semibold max-w-2xl mx-auto">
             No insider allocations, no hidden VC reserves, 0% tax. Pure golden curiosity engineered for long-term composure on Solana!
           </p>
+        </div>
+
+        {/* Dedicated Verified Contract Address Card */}
+        <div className="max-w-4xl mx-auto mb-12 parchment-card p-6 sm:p-7 rounded-sm border-2 border-[#b48c3c] shadow-xl relative">
+          <div className="absolute top-2.5 right-2.5 w-3.5 h-3.5 rounded-full bg-[#1c1305] border border-[#78350f]"></div>
+          
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="space-y-1 text-center md:text-left">
+              <span className="text-[10px] font-mono font-bold text-[#b45309] uppercase tracking-widest block">
+                VERIFIED SOLANA CONTRACT ADDRESS (CA)
+              </span>
+              <div className="font-mono font-black text-xs sm:text-sm md:text-base text-[#1c1305] bg-[#faebd0] px-3.5 py-2 rounded border border-[#cbb07a] select-all break-all">
+                {CASHCATE_CA}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-2.5 flex-shrink-0">
+              <button
+                onClick={handleCopyCA}
+                className={`px-4 py-2.5 rounded-xl font-mono font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer shadow-md ${
+                  copied
+                    ? "bg-green-700 text-white"
+                    : "bg-[#261a08] hover:bg-[#38260d] text-[#fef08a] border border-[#785317]"
+                }`}
+              >
+                {copied ? <Check className="w-4 h-4 text-white" /> : <Copy className="w-4 h-4 text-[#facc15]" />}
+                <span>{copied ? "Copied CA!" : "Copy Address"}</span>
+              </button>
+
+              <a
+                href={DEXSCREENER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3.5 py-2.5 rounded-xl bg-[#faedd0] hover:bg-[#fcf6e8] border border-[#b48c3c] text-[#78350f] font-mono font-bold text-xs flex items-center gap-1 shadow-sm transition-all"
+              >
+                <ExternalLink className="w-3.5 h-3.5" />
+                <span>DexScreener</span>
+              </a>
+
+              <a
+                href={PUMPFUN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3.5 py-2.5 rounded-xl bg-[#1c2912] hover:bg-[#243816] border border-[#3f6212] text-[#86efac] font-mono font-bold text-xs flex items-center gap-1 shadow-sm transition-all"
+              >
+                <span>💊 Pump.fun</span>
+              </a>
+            </div>
+          </div>
         </div>
 
         {/* 4 Ledger Cards */}

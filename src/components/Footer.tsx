@@ -1,7 +1,16 @@
-import React from "react";
-import { ArrowUpRight, Sparkles, TrendingUp, BookOpen, Compass } from "lucide-react";
+import React, { useState } from "react";
+import { ArrowUpRight, Sparkles, TrendingUp, BookOpen, Compass, Copy, Check } from "lucide-react";
+import { CASHCATE_CA, DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL, RAYDIUM_URL } from "../constants";
 
 export default function Footer() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyCA = () => {
+    navigator.clipboard.writeText(CASHCATE_CA);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -35,30 +44,66 @@ export default function Footer() {
             <p className="text-sm text-[#fde047]/90 max-w-md font-serif font-semibold leading-relaxed">
               “Curiosity Creates Opportunity.” A golden figure on the windowsill sees what others miss. The timeless market cat on Solana with 0% tax and 100% community composure. 📜🪙🐾
             </p>
+
+            {/* Footer CA Copy Box */}
+            <div className="pt-2 flex flex-col sm:flex-row items-center gap-2">
+              <div className="text-[11px] font-mono text-[#facc15] bg-[#2e1f0a] px-3 py-1.5 rounded border border-[#785317] truncate max-w-full sm:max-w-xs">
+                CA: {CASHCATE_CA}
+              </div>
+              <button
+                onClick={handleCopyCA}
+                className="px-3 py-1.5 rounded bg-[#38260d] hover:bg-[#4a3312] text-[#fef08a] text-xs font-mono font-bold flex items-center gap-1 border border-[#785317] cursor-pointer"
+              >
+                {copied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5 text-[#facc15]" />}
+                {copied ? "Copied" : "Copy"}
+              </button>
+            </div>
           </div>
 
           {/* External Ecosystem Links */}
-          <div className="md:col-span-6 flex flex-wrap justify-center md:justify-end gap-4 relative">
+          <div className="md:col-span-6 flex flex-wrap justify-center md:justify-end gap-3.5 relative">
             
             <a
-              href="https://dexscreener.com"
+              href={DEXSCREENER_URL}
               target="_blank"
               rel="noopener noreferrer"
               id="chart-footer"
-              className="px-5 py-3 rounded-xl bg-[#2e1f0a] hover:bg-[#3d2a0d] text-[#fde047] font-mono font-bold text-xs transition-all flex items-center gap-2 border border-[#785317] shadow-md cursor-pointer"
+              className="px-4 py-2.5 rounded-xl bg-[#2e1f0a] hover:bg-[#3d2a0d] text-[#fde047] font-mono font-bold text-xs transition-all flex items-center gap-2 border border-[#785317] shadow-md cursor-pointer"
             >
               <TrendingUp className="w-4 h-4 text-[#facc15]" />
-              DexScreener Chart
+              DexScreener
             </a>
 
             <a
-              href="https://raydium.io"
+              href={PUMPFUN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="pumpfun-footer"
+              className="px-4 py-2.5 rounded-xl bg-[#1c2912] hover:bg-[#243816] text-[#86efac] font-mono font-bold text-xs transition-all flex items-center gap-2 border border-[#3f6212] shadow-md cursor-pointer"
+            >
+              <span>💊</span>
+              Pump.fun
+            </a>
+
+            <a
+              href={SOLSCAN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              id="solscan-footer"
+              className="px-4 py-2.5 rounded-xl bg-[#2e1f0a] hover:bg-[#3d2a0d] text-[#fde047] font-mono font-bold text-xs transition-all flex items-center gap-2 border border-[#785317] shadow-md cursor-pointer"
+            >
+              <ArrowUpRight className="w-4 h-4 text-[#facc15]" />
+              Solscan
+            </a>
+
+            <a
+              href={RAYDIUM_URL}
               target="_blank"
               rel="noopener noreferrer"
               id="raydium-footer"
-              className="px-5 py-3 rounded-xl bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#eab308] hover:from-[#b45309] hover:to-[#d97706] text-[#1c1305] font-display font-black text-xs transition-all flex items-center gap-1.5 shadow-lg border-none"
+              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#eab308] hover:from-[#b45309] hover:to-[#d97706] text-[#1c1305] font-display font-black text-xs transition-all flex items-center gap-1.5 shadow-lg border-none"
             >
-              Raydium DEX <ArrowUpRight className="w-4 h-4 stroke-[3]" />
+              Raydium Swap <ArrowUpRight className="w-4 h-4 stroke-[3]" />
             </a>
 
           </div>
