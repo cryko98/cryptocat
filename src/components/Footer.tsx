@@ -1,16 +1,8 @@
-import React, { useState } from "react";
-import { ArrowUpRight, Sparkles, TrendingUp, BookOpen, Compass, Copy, Check } from "lucide-react";
-import { CASHCATE_CA, DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL, RAYDIUM_URL } from "../constants";
+import React from "react";
+import { ArrowUpRight, Sparkles, TrendingUp, BookOpen, Compass } from "lucide-react";
+import { DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL, RAYDIUM_URL } from "../constants";
 
 export default function Footer() {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyCA = () => {
-    navigator.clipboard.writeText(CASHCATE_CA);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -44,20 +36,6 @@ export default function Footer() {
             <p className="text-sm text-[#fde047]/90 max-w-md font-serif font-semibold leading-relaxed">
               “Curiosity Creates Opportunity.” A golden figure on the windowsill sees what others miss. The timeless market cat on Solana with 0% tax and 100% community composure. 📜🪙🐾
             </p>
-
-            {/* Footer CA Copy Box */}
-            <div className="pt-2 flex flex-col sm:flex-row items-center gap-2">
-              <div className="text-[11px] font-mono text-[#facc15] bg-[#2e1f0a] px-3 py-1.5 rounded border border-[#785317] truncate max-w-full sm:max-w-xs">
-                CA: {CASHCATE_CA}
-              </div>
-              <button
-                onClick={handleCopyCA}
-                className="px-3 py-1.5 rounded bg-[#38260d] hover:bg-[#4a3312] text-[#fef08a] text-xs font-mono font-bold flex items-center gap-1 border border-[#785317] cursor-pointer"
-              >
-                {copied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5 text-[#facc15]" />}
-                {copied ? "Copied" : "Copy"}
-              </button>
-            </div>
           </div>
 
           {/* External Ecosystem Links */}

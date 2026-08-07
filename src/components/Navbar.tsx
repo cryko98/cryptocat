@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, Sparkles, TrendingUp, BookOpen, Coins, Compass, Copy, Check, ExternalLink } from "lucide-react";
-import { CASHCATE_CA, DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL } from "../constants";
+import { Menu, X, Sparkles, TrendingUp, BookOpen, Coins, Compass, ExternalLink } from "lucide-react";
+import { DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL } from "../constants";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,12 +14,6 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleCopyCA = () => {
-    navigator.clipboard.writeText(CASHCATE_CA);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
@@ -32,13 +25,12 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top Ticker Tape - Golden Market Lore Marquee with Live CA */}
+      {/* Top Ticker Tape - Golden Market Lore Marquee */}
       <div id="top-ticker" className="w-full bg-[#1c1305] text-[#fef08a] py-2 px-4 text-xs font-mono font-bold tracking-wider overflow-hidden select-none whitespace-nowrap border-b border-[#785317]/60">
         <div className="inline-block animate-[marquee_25s_linear_infinite] whitespace-nowrap">
           <span className="mx-4 text-[#fde047] font-black">✨ MARKET LORE • EST. LONG AGO</span>
           <span className="mx-4 text-white">“CURIOSITY CREATES OPPORTUNITY” — THAT'S WHY WE LOVE CASHCATE</span>
-          <span className="mx-4 text-[#facc15]">📜 CA: {CASHCATE_CA}</span>
-          <span className="mx-4 text-white">🐾 A LEGEND IN EVERY PAWSTEP • $CASHCATE</span>
+          <span className="mx-4 text-[#facc15]">🐾 A LEGEND IN EVERY PAWSTEP • $CASHCATE</span>
           <span className="mx-4 text-[#fde047] font-black">🪙 0% TAX • 100% BURNED LP • PURE GOLDEN CURIOSITY</span>
           <span className="mx-4 text-white">🐱 THEY SAY A CURIOUS CAT NAMED CASHCATE WANDERED INTO THE MARKET AT DAWN</span>
           <span className="mx-4 text-[#fde047] font-black">✨ MARKET LORE • EST. LONG AGO</span>
@@ -106,19 +98,8 @@ export default function Navbar() {
               </button>
             </nav>
 
-            {/* Quick CA Copy & Action Buttons */}
+            {/* Action Buttons */}
             <div className="hidden md:flex items-center space-x-2.5 relative">
-              {/* Copyable CA pill */}
-              <button
-                onClick={handleCopyCA}
-                title="Click to copy Contract Address"
-                className="px-3 py-1.5 rounded-lg bg-[#1a1104] hover:bg-[#2c1d06] border border-[#785317] text-[11px] font-mono font-bold text-[#fde047] flex items-center gap-1.5 transition-all shadow-inner cursor-pointer"
-              >
-                <span className="text-[#a16207]">CA:</span>
-                <span className="text-[#facc15]">{CASHCATE_CA.slice(0, 4)}...{CASHCATE_CA.slice(-4)}</span>
-                {copied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5 text-[#facc15]" />}
-              </button>
-
               <a
                 href={DEXSCREENER_URL}
                 target="_blank"
@@ -173,23 +154,6 @@ export default function Navbar() {
               transition={{ duration: 0.2 }}
               className="lg:hidden bg-[#1c1406] border-b border-[#785317] shadow-xl px-4 pt-2 pb-6 space-y-4"
             >
-              {/* Mobile CA pill */}
-              <div className="p-3 rounded-lg bg-[#2e1f0a] border border-[#785317] flex items-center justify-between">
-                <div className="flex flex-col">
-                  <span className="text-[10px] font-mono text-[#a16207]">CONTRACT ADDRESS</span>
-                  <span className="text-xs font-mono font-bold text-[#facc15] truncate max-w-[200px]">
-                    {CASHCATE_CA}
-                  </span>
-                </div>
-                <button
-                  onClick={handleCopyCA}
-                  className="px-2.5 py-1.5 rounded bg-[#1c1305] text-[#facc15] text-xs font-mono font-bold flex items-center gap-1 border border-[#785317]"
-                >
-                  {copied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
-                  {copied ? "Copied" : "Copy"}
-                </button>
-              </div>
-
               <nav className="flex flex-col space-y-3 font-mono font-medium text-[#fde047]">
                 <button
                   onClick={() => scrollToSection("market-lore")}
@@ -256,3 +220,4 @@ export default function Navbar() {
     </>
   );
 }
+

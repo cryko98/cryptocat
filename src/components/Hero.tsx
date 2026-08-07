@@ -1,19 +1,12 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { Sparkles, TrendingUp, BookOpen, Volume2, VolumeX, Compass, Heart, Copy, Check, ExternalLink } from "lucide-react";
-import { CASHCATE_CA, DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL, RAYDIUM_URL } from "../constants";
+import { Sparkles, TrendingUp, BookOpen, Volume2, VolumeX, Compass, Heart, ExternalLink } from "lucide-react";
+import { DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL, RAYDIUM_URL } from "../constants";
 
 export default function Hero() {
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [likedCount, setLikedCount] = useState(742);
   const [hasLiked, setHasLiked] = useState(false);
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyCA = () => {
-    navigator.clipboard.writeText(CASHCATE_CA);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   const toggleSound = () => {
     setSoundEnabled(!soundEnabled);
@@ -76,7 +69,7 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Main Title Badge Header */}
-        <div className="text-center max-w-4xl mx-auto mb-8 sm:mb-10 space-y-3">
+        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12 space-y-3">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fae8b8] border border-[#b48c3c] shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#d97706] animate-ping"></span>
             <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#78350f]">
@@ -92,7 +85,7 @@ export default function Hero() {
             “A Cat Walked Into the Market — Curiosity Sparked a Legend”
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <button
               onClick={toggleSound}
               className="px-3.5 py-1.5 rounded-full bg-[#fdf3d7] hover:bg-[#fae8b8] border border-[#b48c3c] text-xs font-mono font-bold text-[#78350f] transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
@@ -108,55 +101,26 @@ export default function Hero() {
               <Heart className={`w-3.5 h-3.5 ${hasLiked ? "fill-[#b45309] text-[#b45309]" : "text-[#92400e]"}`} />
               <span>{likedCount} Paws of Respect</span>
             </button>
-          </div>
-        </div>
 
-        {/* PROMINENT CONTRACT ADDRESS BANNER */}
-        <div className="max-w-3xl mx-auto mb-10">
-          <div className="parchment-card p-3.5 sm:p-4 rounded-xl border-2 border-[#b48c3c] shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#fcf6e8]">
-            <div className="flex items-center gap-2.5 w-full sm:w-auto overflow-hidden">
-              <span className="px-2.5 py-1 rounded bg-[#261a08] text-[#facc15] font-mono font-black text-[10px] tracking-wider uppercase flex-shrink-0">
-                OFFICIAL CA
-              </span>
-              <span className="font-mono text-xs sm:text-sm font-bold text-[#1c1305] truncate select-all">
-                {CASHCATE_CA}
-              </span>
-            </div>
+            <a
+              href={DEXSCREENER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-1.5 rounded-full bg-[#fdf3d7] hover:bg-[#fae8b8] border border-[#b48c3c] text-xs font-mono font-bold text-[#78350f] transition-all flex items-center gap-1.5 shadow-sm"
+            >
+              <TrendingUp className="w-3.5 h-3.5 text-[#b45309]" />
+              <span>DexScreener</span>
+            </a>
 
-            <div className="flex items-center gap-2 w-full sm:w-auto justify-end flex-shrink-0">
-              <button
-                onClick={handleCopyCA}
-                id="copy-ca-hero-btn"
-                className={`px-4 py-2 rounded-lg font-mono font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer border ${
-                  copied
-                    ? "bg-green-700 text-white border-green-600 shadow-md"
-                    : "bg-[#261a08] hover:bg-[#3d2a0d] text-[#fef08a] border-[#785317] shadow-sm hover:scale-105"
-                }`}
-              >
-                {copied ? <Check className="w-3.5 h-3.5 text-white" /> : <Copy className="w-3.5 h-3.5 text-[#facc15]" />}
-                <span>{copied ? "Copied to Clipboard!" : "Copy CA"}</span>
-              </button>
-
-              <a
-                href={DEXSCREENER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3.5 py-2 rounded-lg bg-[#fdf3d7] hover:bg-[#fae8b8] border border-[#b48c3c] text-[#78350f] font-mono font-bold text-xs flex items-center gap-1 transition-all shadow-sm"
-              >
-                <TrendingUp className="w-3.5 h-3.5 text-[#b45309]" />
-                <span>Chart</span>
-              </a>
-
-              <a
-                href={PUMPFUN_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3.5 py-2 rounded-lg bg-[#1c2912] hover:bg-[#243816] border border-[#3f6212] text-[#86efac] font-mono font-bold text-xs flex items-center gap-1 transition-all shadow-sm"
-              >
-                <span>💊</span>
-                <span>Pump</span>
-              </a>
-            </div>
+            <a
+              href={PUMPFUN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3.5 py-1.5 rounded-full bg-[#1c2912] hover:bg-[#243816] border border-[#3f6212] text-[#86efac] text-xs font-mono font-bold transition-all flex items-center gap-1.5 shadow-sm"
+            >
+              <span>💊</span>
+              <span>Pump.fun</span>
+            </a>
           </div>
         </div>
 
