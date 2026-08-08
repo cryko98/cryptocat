@@ -109,11 +109,11 @@ export default function Hero() {
           </div>
 
           <h1 className="font-display font-black text-5xl sm:text-7xl md:text-8xl tracking-tight text-white drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]">
-            Just a chill <span className="text-[#74c69d] animate-pulse">Toad</span>
+            Chill Toad <span className="text-[#74c69d] animate-pulse">Pepe</span>
           </h1>
 
           <p className="font-sans font-medium text-lg sm:text-2xl text-[#b7e4c7] max-w-2xl mx-auto leading-relaxed">
-            “A Toad Sat on a Lily Pad — Unbothered, Relaxed, and Vibing on Solana”
+            “Chill Toad Pepe Sat on a Lily Pad — Unbothered, Relaxed, and Vibing on Solana”
           </p>
 
           {/* Interactive Chill Controls */}
@@ -179,7 +179,7 @@ export default function Hero() {
                   <div className="relative w-72 sm:w-84 md:w-96 aspect-square rounded-2xl overflow-hidden border-4 border-[#74c69d] shadow-[0_20px_50px_rgba(0,0,0,0.8)] bg-[#081c15]">
                     <img
                       src={CHILLTOAD_LOGO}
-                      alt="Just a chill Toad Artwork"
+                      alt="Chill Toad Pepe Artwork"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     

@@ -20,13 +20,13 @@ export default function Footer() {
               <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#74c69d] shadow-md bg-[#081c15]">
                 <img
                   src={CHILLTOAD_LOGO}
-                  alt="Just a chill Toad Logo"
+                  alt="Chill Toad Pepe Logo"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div>
                 <span className="font-display font-black text-2xl text-white tracking-tight">
-                  Just a chill <span className="text-[#74c69d]">Toad</span>
+                  Chill Toad <span className="text-[#74c69d]">Pepe</span>
                 </span>
                 <div className="text-[10px] font-mono text-[#74c69d] font-bold">
                   {CHILLTOAD_TICKER} • POND LORE ON SOLANA

@@ -88,7 +88,7 @@ export default function Story() {
           </div>
 
           <h2 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tight uppercase">
-            The Lore of <span className="text-[#74c69d]">Chill Toad</span>
+            The Lore of <span className="text-[#74c69d]">Chill Toad Pepe</span>
           </h2>
           <p className="font-sans text-base sm:text-xl text-[#b7e4c7] font-medium max-w-2xl mx-auto">
             Discover how a simple green amphibian on a floating lily pad became the patron saint of unbothered composure on Solana.

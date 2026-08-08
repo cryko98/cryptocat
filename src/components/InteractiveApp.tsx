@@ -95,7 +95,7 @@ export default function InteractiveApp() {
           </div>
 
           <h2 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tight uppercase">
-            The Chill Toad <span className="text-[#74c69d]">Lounge</span>
+            The Chill Toad Pepe <span className="text-[#74c69d]">Lounge</span>
           </h2>
           <p className="font-sans text-base sm:text-lg text-[#b7e4c7] font-medium max-w-2xl mx-auto">
             Tap the sacred Lily Pad to unleash serene vibes, upgrade your honorary Marsh Rank, and calculate your ultimate zero-stress $chilltoad bag!
@@ -161,7 +161,7 @@ export default function InteractiveApp() {
                   <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-white/50 mb-1 shadow-md">
                     <img
                       src={CHILLTOAD_LOGO}
-                      alt="Just a chill Toad"
+                      alt="Chill Toad Pepe"
                       className="w-full h-full object-cover group-hover:rotate-6 transition-transform"
                     />
                   </div>

@@ -9,7 +9,7 @@ export default function AuraRoadmap() {
       step: "LILY PAD 1",
       title: "The First Ribbit",
       status: "COMPLETED",
-      description: "Genesis of the Chill Toad, fair launch on Solana, Telegram sanctuary establishment, and initial vibes.",
+      description: "Genesis of Chill Toad Pepe, fair launch on Solana, Telegram sanctuary establishment, and initial vibes.",
       items: [
         "Fair launch with 0% tax",
         "100% LP Burned permanently",

@@ -143,7 +143,7 @@ export default function Tokenomics() {
             “No Rush, No Rugs, Just Calm Pond Vibes”
           </h3>
           <p className="font-sans text-sm sm:text-base text-[#d8f3dc] max-w-2xl mx-auto leading-relaxed">
-            The Chill Toad was created to be the most relaxing meme token on Solana. Mint authority revoked, freeze authority revoked, liquidity burned to a crisp, and community empowered.
+            Chill Toad Pepe was created to be the most relaxing meme token on Solana. Mint authority revoked, freeze authority revoked, liquidity burned to a crisp, and community empowered.
           </p>
           <div className="pt-2">
             <a

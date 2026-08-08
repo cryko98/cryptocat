@@ -28,7 +28,7 @@ export default function Navbar() {
       {/* Top Ticker Tape - Serene Pond Lore & Zen Toad Marquee */}
       <div id="top-ticker" className="w-full bg-[#081c15] text-[#b7e4c7] py-2 px-4 text-xs font-mono font-bold tracking-wider overflow-hidden select-none whitespace-nowrap border-b border-[#2d6a4f]/60">
         <div className="inline-block animate-[marquee_25s_linear_infinite] whitespace-nowrap">
-          <span className="mx-4 text-[#74c69d] font-black">🐸 POND LORE • JUST A CHILL TOAD</span>
+          <span className="mx-4 text-[#74c69d] font-black">🐸 POND LORE • CHILL TOAD PEPE</span>
           <span className="mx-4 text-white">“WHY STRESS WHEN YOU CAN SIT ON A LILY PAD?” — UNBOTHERED VIBES ONLY</span>
           <span className="mx-4 text-[#ffd166]">🌿 $CHILLTOAD • SOLANA</span>
           <span className="mx-4 text-white">🍃 PURE ZEN ENERGY • ZERO DRAMA • IMMUTABLE CHILL</span>
@@ -57,14 +57,14 @@ export default function Navbar() {
               <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#74c69d] shadow-[0_0_20px_rgba(116,198,157,0.45)] group-hover:scale-105 transition-transform bg-[#081c15]">
                 <img
                   src={CHILLTOAD_LOGO}
-                  alt="Just a chill Toad Logo"
+                  alt="Chill Toad Pepe Logo"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="flex flex-col">
                 <div className="flex items-center gap-1.5">
                   <span className="font-display font-black text-xl sm:text-2xl tracking-tight text-white group-hover:text-[#74c69d] transition-colors">
-                    Just a chill <span className="text-[#74c69d]">Toad</span>
+                    Chill Toad <span className="text-[#74c69d]">Pepe</span>
                   </span>
                   <span className="text-[10px] font-mono font-black text-[#081c15] bg-[#74c69d] px-2 py-0.5 rounded-full shadow-sm">
                     {CHILLTOAD_TICKER}
