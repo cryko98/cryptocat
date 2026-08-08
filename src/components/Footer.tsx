@@ -1,8 +1,16 @@
-import React from "react";
-import { ArrowUpRight, Sparkles, TrendingUp, BookOpen, Compass, Send, Leaf } from "lucide-react";
-import { CHILLTOAD_NAME, CHILLTOAD_TICKER, CHILLTOAD_LOGO, TELEGRAM_URL, DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL, RAYDIUM_URL } from "../constants";
+import React, { useState } from "react";
+import { ArrowUpRight, Sparkles, TrendingUp, BookOpen, Compass, Send, Leaf, Copy, Check, ExternalLink } from "lucide-react";
+import { CHILLTOAD_NAME, CHILLTOAD_TICKER, CHILLTOAD_LOGO, CHILLTOAD_CA, TELEGRAM_URL, DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL, RAYDIUM_URL } from "../constants";
 
 export default function Footer() {
+  const [copiedCA, setCopiedCA] = useState(false);
+
+  const handleCopyCA = () => {
+    navigator.clipboard.writeText(CHILLTOAD_CA);
+    setCopiedCA(true);
+    setTimeout(() => setCopiedCA(false), 2000);
+  };
+
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -160,6 +168,31 @@ export default function Footer() {
             </div>
           </div>
 
+        </div>
+
+        {/* CA Copy Bar in Footer */}
+        <div className="py-6 border-b border-[#1b4332] flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#52b788] animate-ping"></span>
+            <span className="font-mono text-xs font-bold text-[#74c69d]">OFFICIAL SOLANA CONTRACT ADDRESS:</span>
+          </div>
+
+          <div className="flex items-center gap-2 max-w-xl w-full md:w-auto">
+            <div className="bg-[#081c15] px-3 py-1.5 rounded-lg border border-[#2d6a4f] font-mono text-xs text-[#d8f3dc] truncate flex-1 select-all">
+              {CHILLTOAD_CA}
+            </div>
+            <button
+              onClick={handleCopyCA}
+              className={`px-3.5 py-1.5 rounded-lg font-mono font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer ${
+                copiedCA
+                  ? "bg-[#52b788] text-[#081c15] border border-[#74c69d]"
+                  : "bg-[#1b4332] hover:bg-[#2d6a4f] text-white border border-[#52b788]"
+              }`}
+            >
+              {copiedCA ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+              <span>{copiedCA ? "Copied!" : "Copy CA"}</span>
+            </button>
+          </div>
         </div>
 
         {/* Bottom Disclaimer */}

@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "motion/react";
-import { ShieldCheck, Flame, CirclePercent, Coins, Lock, Sparkles, BookOpen, ExternalLink, TrendingUp, Send } from "lucide-react";
-import { TELEGRAM_URL, DEXSCREENER_URL, PUMPFUN_URL, RAYDIUM_URL } from "../constants";
+import { ShieldCheck, Flame, CirclePercent, Coins, Lock, Sparkles, BookOpen, ExternalLink, TrendingUp, Send, Copy, Check } from "lucide-react";
+import { CHILLTOAD_CA, TELEGRAM_URL, DEXSCREENER_URL, PUMPFUN_URL, RAYDIUM_URL, SOLSCAN_URL } from "../constants";
 
 export default function Tokenomics() {
+  const [copiedCA, setCopiedCA] = useState(false);
+
+  const handleCopyCA = () => {
+    navigator.clipboard.writeText(CHILLTOAD_CA);
+    setCopiedCA(true);
+    setTimeout(() => setCopiedCA(false), 2000);
+  };
+
   const stats = [
     {
       title: "TOTAL SUPPLY",
@@ -92,6 +100,44 @@ export default function Tokenomics() {
               <span>💊</span>
               <span>Pump.fun Market</span>
             </a>
+          </div>
+        </div>
+
+        {/* Verified Solana Contract Address Highlight Box */}
+        <div className="max-w-4xl mx-auto mb-12 pond-card p-6 sm:p-7 rounded-2xl border-2 border-[#52b788] shadow-2xl space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#2d6a4f] pb-3">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#52b788] animate-ping"></span>
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#74c69d]">
+                OFFICIAL SOLANA CONTRACT ADDRESS (CA)
+              </span>
+            </div>
+            <a
+              href={SOLSCAN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs font-mono font-bold text-[#b7e4c7] hover:text-white flex items-center gap-1 underline"
+            >
+              View on Solscan <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            <div className="w-full flex-1 bg-[#081c15] px-4 py-3 rounded-xl border border-[#2d6a4f] font-mono text-xs sm:text-sm text-white select-all break-all sm:truncate">
+              {CHILLTOAD_CA}
+            </div>
+
+            <button
+              onClick={handleCopyCA}
+              className={`w-full sm:w-auto px-6 py-3 rounded-xl font-mono font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer ${
+                copiedCA
+                  ? "bg-[#52b788] text-[#081c15] border border-[#74c69d]"
+                  : "bg-[#1b4332] hover:bg-[#2d6a4f] text-white border border-[#52b788]"
+              }`}
+            >
+              {copiedCA ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+              <span>{copiedCA ? "Copied to Clipboard!" : "Copy Contract Address"}</span>
+            </button>
           </div>
         </div>
 

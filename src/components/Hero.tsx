@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import { Sparkles, TrendingUp, Volume2, VolumeX, Send, Heart, ExternalLink, Leaf, Coffee, Smile } from "lucide-react";
-import { CHILLTOAD_NAME, CHILLTOAD_TICKER, CHILLTOAD_LOGO, TELEGRAM_URL, DEXSCREENER_URL, PUMPFUN_URL, RAYDIUM_URL } from "../constants";
+import { Sparkles, TrendingUp, Volume2, VolumeX, Send, Heart, Copy, Check, ExternalLink, Leaf, Coffee, Smile, Coins } from "lucide-react";
+import { CHILLTOAD_NAME, CHILLTOAD_TICKER, CHILLTOAD_LOGO, CHILLTOAD_CA, TELEGRAM_URL, DEXSCREENER_URL, PUMPFUN_URL, RAYDIUM_URL, SOLSCAN_URL } from "../constants";
 
 export default function Hero() {
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [likedCount, setLikedCount] = useState(42069);
   const [hasLiked, setHasLiked] = useState(false);
   const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+  const [copiedCA, setCopiedCA] = useState(false);
+
+  const handleCopyCA = () => {
+    navigator.clipboard.writeText(CHILLTOAD_CA);
+    setCopiedCA(true);
+    setTimeout(() => setCopiedCA(false), 2000);
+  };
 
   const chillWisdoms = [
     "“Why stress when the lily pad is wide and the water is calm?”",
@@ -229,6 +236,34 @@ export default function Hero() {
                   <p className="font-serif italic text-base sm:text-lg text-white font-medium">
                     {chillWisdoms[currentQuoteIndex]}
                   </p>
+                </div>
+
+                {/* Dedicated Solana Contract Address Copy Box */}
+                <div className="p-4 rounded-xl bg-[#081c15] border-2 border-[#52b788] shadow-md space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-mono font-bold text-[#74c69d] uppercase tracking-wider flex items-center gap-1.5">
+                      <Coins className="w-3.5 h-3.5 text-[#52b788]" /> SOLANA CONTRACT ADDRESS (CA)
+                    </span>
+                    <span className="text-[10px] font-mono text-[#b7e4c7] font-semibold">100% PURE & VERIFIED</span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 bg-[#0b2419] px-3 py-2 rounded-lg border border-[#2d6a4f] font-mono text-xs text-[#d8f3dc] truncate select-all">
+                      {CHILLTOAD_CA}
+                    </div>
+
+                    <button
+                      onClick={handleCopyCA}
+                      className={`px-4 py-2 rounded-lg font-mono font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer ${
+                        copiedCA
+                          ? "bg-[#52b788] text-[#081c15] border border-[#74c69d]"
+                          : "bg-[#1b4332] hover:bg-[#2d6a4f] text-white border border-[#52b788]"
+                      }`}
+                    >
+                      {copiedCA ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                      <span>{copiedCA ? "Copied!" : "Copy CA"}</span>
+                    </button>
+                  </div>
                 </div>
 
                 {/* Key Pillars Highlights */}

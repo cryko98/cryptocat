@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, Sparkles, TrendingUp, BookOpen, Coins, Compass, Send, ExternalLink, Leaf } from "lucide-react";
-import { CHILLTOAD_NAME, CHILLTOAD_TICKER, CHILLTOAD_LOGO, TELEGRAM_URL, DEXSCREENER_URL, PUMPFUN_URL } from "../constants";
+import { Menu, X, Sparkles, TrendingUp, BookOpen, Coins, Compass, Send, Copy, Check, Leaf } from "lucide-react";
+import { CHILLTOAD_NAME, CHILLTOAD_TICKER, CHILLTOAD_LOGO, CHILLTOAD_CA, TELEGRAM_URL, DEXSCREENER_URL, PUMPFUN_URL } from "../constants";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [copiedCA, setCopiedCA] = useState(false);
+
+  const handleCopyCA = () => {
+    navigator.clipboard.writeText(CHILLTOAD_CA);
+    setCopiedCA(true);
+    setTimeout(() => setCopiedCA(false), 2000);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,12 +36,12 @@ export default function Navbar() {
       <div id="top-ticker" className="w-full bg-[#081c15] text-[#b7e4c7] py-2 px-4 text-xs font-mono font-bold tracking-wider overflow-hidden select-none whitespace-nowrap border-b border-[#2d6a4f]/60">
         <div className="inline-block animate-[marquee_25s_linear_infinite] whitespace-nowrap">
           <span className="mx-4 text-[#74c69d] font-black">🐸 POND LORE • CHILL TOAD PEPE</span>
+          <span className="mx-4 text-[#ffd166]">🌿 CA: {CHILLTOAD_CA}</span>
           <span className="mx-4 text-white">“WHY STRESS WHEN YOU CAN SIT ON A LILY PAD?” — UNBOTHERED VIBES ONLY</span>
-          <span className="mx-4 text-[#ffd166]">🌿 $CHILLTOAD • SOLANA</span>
-          <span className="mx-4 text-white">🍃 PURE ZEN ENERGY • ZERO DRAMA • IMMUTABLE CHILL</span>
-          <span className="mx-4 text-[#74c69d] font-black">🪙 0% TAX • 100% BURNED LP • LILY PAD LIQUIDITY</span>
-          <span className="mx-4 text-white">💧 JOIN THE CHILL POND TELEGRAM: t.me/chilltoad</span>
-          <span className="mx-4 text-[#ffd166]">🪷 A TOAD SAT ON A LILY PAD AT DAWN AND NEVER FUMBLED</span>
+          <span className="mx-4 text-[#74c69d]">🍃 $CHILLTOAD • SOLANA</span>
+          <span className="mx-4 text-white">🪙 0% TAX • 100% BURNED LP • LILY PAD LIQUIDITY</span>
+          <span className="mx-4 text-[#70d6ff]">💧 JOIN THE CHILL POND TELEGRAM: t.me/chilltoad</span>
+          <span className="mx-4 text-[#ffd166]">🪷 CONTRACT: {CHILLTOAD_CA}</span>
         </div>
       </div>
 
@@ -99,8 +106,20 @@ export default function Navbar() {
               </button>
             </nav>
 
-            {/* Quick Telegram & Action Buttons */}
-            <div className="hidden md:flex items-center space-x-2.5 relative">
+            {/* Quick Telegram, CA & Action Buttons */}
+            <div className="hidden md:flex items-center space-x-2 relative">
+              {/* Copy CA Button */}
+              <button
+                onClick={handleCopyCA}
+                title="Copy Contract Address"
+                className="px-3 py-2 rounded-xl bg-[#112d20] hover:bg-[#163824] border border-[#52b788] text-[#d8f3dc] font-mono font-bold text-xs transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
+              >
+                {copiedCA ? <Check className="w-3.5 h-3.5 text-[#74c69d]" /> : <Copy className="w-3.5 h-3.5 text-[#74c69d]" />}
+                <span className="hidden xl:inline text-[#74c69d]">CA:</span>
+                <span>{CHILLTOAD_CA.slice(0, 4)}...{CHILLTOAD_CA.slice(-4)}</span>
+                {copiedCA && <span className="text-[10px] text-[#74c69d] font-bold">Copied!</span>}
+              </button>
+
               {/* Telegram Official Pill */}
               <a
                 href={TELEGRAM_URL}
@@ -167,7 +186,23 @@ export default function Navbar() {
               transition={{ duration: 0.2 }}
               className="lg:hidden bg-[#0c261b] border-b border-[#2d6a4f] shadow-xl px-4 pt-2 pb-6 space-y-4"
             >
-              {/* Telegram Banner for Mobile */}
+              {/* Contract Address & Telegram Banner for Mobile */}
+              <button
+                onClick={handleCopyCA}
+                className="w-full p-3 rounded-xl bg-[#112d20] border border-[#52b788] flex items-center justify-between text-[#d8f3dc] cursor-pointer"
+              >
+                <div className="flex items-center gap-2">
+                  {copiedCA ? <Check className="w-4 h-4 text-[#74c69d]" /> : <Copy className="w-4 h-4 text-[#74c69d]" />}
+                  <div className="text-left">
+                    <span className="text-[10px] font-mono text-[#74c69d] block font-bold">SOLANA CONTRACT ADDRESS</span>
+                    <span className="text-xs font-mono font-bold text-white">{CHILLTOAD_CA.slice(0, 8)}...{CHILLTOAD_CA.slice(-8)}</span>
+                  </div>
+                </div>
+                <span className="text-xs font-mono font-bold bg-[#1b4332] text-[#74c69d] px-2.5 py-1 rounded border border-[#52b788]">
+                  {copiedCA ? "Copied!" : "Copy CA"}
+                </span>
+              </button>
+
               <a
                 href={TELEGRAM_URL}
                 target="_blank"
