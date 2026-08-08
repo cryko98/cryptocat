@@ -1,71 +1,85 @@
 import React from "react";
 import { motion } from "motion/react";
-import { ShieldCheck, Flame, CirclePercent, Coins, Lock, Sparkles, BookOpen, ExternalLink, TrendingUp } from "lucide-react";
-import { DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL, RAYDIUM_URL } from "../constants";
+import { ShieldCheck, Flame, CirclePercent, Coins, Lock, Sparkles, BookOpen, ExternalLink, TrendingUp, Send } from "lucide-react";
+import { TELEGRAM_URL, DEXSCREENER_URL, PUMPFUN_URL, RAYDIUM_URL } from "../constants";
 
 export default function Tokenomics() {
   const stats = [
     {
       title: "TOTAL SUPPLY",
       value: "1,000,000,000",
-      description: "1 Billion $cashcate tokens inscribed on Solana",
-      icon: <Coins className="w-6 h-6 text-[#b45309]" />,
+      description: "Fixed 1 Billion $chilltoad minted once in the pond",
+      icon: Coins,
+      highlight: "100% In Circulation",
+    },
+    {
+      title: "BUY / SELL TAX",
+      value: "0% / 0%",
+      description: "Zero fees, zero friction, maximum peace of mind",
+      icon: CirclePercent,
+      highlight: "Pure Zero Tax",
     },
     {
       title: "LIQUIDITY POOL",
       value: "100% BURNED",
-      description: "LP tokens burned forever in immutable market flame",
-      icon: <Flame className="w-6 h-6 text-[#d97706] animate-pulse" />,
+      description: "LP tokens sent to the incinerator forever",
+      icon: Flame,
+      highlight: "Immutable Security",
     },
     {
-      title: "MARKET TAX",
-      value: "0% TAXES",
-      description: "0% buy, 0% sell. Pure golden opportunity",
-      icon: <CirclePercent className="w-6 h-6 text-[#ca8a04]" />,
-    },
-    {
-      title: "MINT AUTHORITY",
+      title: "CONTRACT OWNERSHIP",
       value: "RENOUNCED",
-      description: "Mint permissions revoked — immutable code forever",
-      icon: <ShieldCheck className="w-6 h-6 text-[#b45309]" />,
+      description: "Owned purely by the community and the water spirits",
+      icon: ShieldCheck,
+      highlight: "Community Owned",
     },
   ];
 
   return (
-    <section id="tokenomics" className="relative py-20 sm:py-28 bg-[#f5e6be] text-[#1c1305] overflow-hidden border-t-2 border-[#b48c3c] vintage-ledger-grid selection:bg-[#fde047] selection:text-[#1c1305]">
+    <section id="tokenomics" className="relative py-20 sm:py-28 bg-[#0b2419] text-white overflow-hidden border-b-2 border-[#2d6a4f] pond-water-grid selection:bg-[#74c69d] selection:text-[#081c15]">
       
-      {/* Background amber glow */}
-      <div className="absolute inset-0 pointer-events-none select-none opacity-30 z-0">
-        <div className="absolute top-[20%] right-[-5%] w-80 h-80 bg-[#f59e0b] rounded-full blur-[150px]"></div>
-        <div className="absolute bottom-[20%] left-[-5%] w-80 h-80 bg-[#fbbf24] rounded-full blur-[150px]"></div>
+      {/* Background ambient glow */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0">
+        <div className="absolute top-[25%] right-[15%] w-80 h-80 rounded-full bg-[#52b788]/20 blur-[150px]"></div>
+        <div className="absolute bottom-[25%] left-[15%] w-80 h-80 rounded-full bg-[#2d6a4f]/25 blur-[150px]"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fcf6e8] border border-[#b48c3c] shadow-sm">
-            <BookOpen className="w-3.5 h-3.5 text-[#b45309]" />
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#78350f]">
-              THE GOLDEN LEDGER & TOKENOMICS
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#112d20] border border-[#52b788]/60 shadow-sm">
+            <Coins className="w-3.5 h-3.5 text-[#74c69d]" />
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#d8f3dc]">
+              THE POND LEDGER & TOKENOMICS
             </span>
           </div>
 
-          <h2 className="font-serif font-black text-4xl sm:text-6xl text-[#1c1305] uppercase tracking-tight">
-            100% Fair <span className="text-[#b45309]">Market Tokenomics</span>
+          <h2 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tight uppercase">
+            Pond <span className="text-[#74c69d]">Tokenomics</span>
           </h2>
-          <p className="font-serif italic text-base sm:text-lg text-[#78350f] font-semibold max-w-2xl mx-auto">
-            No insider allocations, no hidden VC reserves, 0% tax. Pure golden curiosity engineered for long-term composure on Solana!
+          <p className="font-sans text-base sm:text-lg text-[#b7e4c7] font-medium max-w-2xl mx-auto leading-relaxed">
+            No insider allocations, no hidden VC reserves, 0% tax. Pure unbothered toad energy engineered for everlasting composure on Solana!
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3 pt-4">
             <a
+              href={TELEGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 rounded-xl bg-[#0088cc] hover:bg-[#0099e6] text-white font-mono font-bold text-xs flex items-center gap-2 shadow-md transition-all"
+            >
+              <Send className="w-4 h-4" />
+              <span>Telegram: t.me/chilltoad</span>
+            </a>
+
+            <a
               href={DEXSCREENER_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-xl bg-[#faedd0] hover:bg-[#fcf6e8] border border-[#b48c3c] text-[#78350f] font-mono font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all"
+              className="px-4 py-2.5 rounded-xl bg-[#1b4332] hover:bg-[#2d6a4f] border border-[#52b788] text-white font-mono font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all"
             >
-              <TrendingUp className="w-3.5 h-3.5 text-[#b45309]" />
+              <TrendingUp className="w-3.5 h-3.5 text-[#74c69d]" />
               <span>DexScreener Chart</span>
             </a>
 
@@ -73,161 +87,74 @@ export default function Tokenomics() {
               href={PUMPFUN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-xl bg-[#1c2912] hover:bg-[#243816] border border-[#3f6212] text-[#86efac] font-mono font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all"
+              className="px-4 py-2.5 rounded-xl bg-[#143621] hover:bg-[#1e4a30] border border-[#2d6a4f] text-[#86efac] font-mono font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all"
             >
               <span>💊</span>
               <span>Pump.fun Market</span>
             </a>
+          </div>
+        </div>
 
+        {/* 4 Large Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-16">
+          {stats.map((stat, idx) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={idx}
+                className="pond-card p-6 sm:p-7 rounded-2xl border-2 border-[#52b788] shadow-xl flex flex-col justify-between relative group hover:scale-[1.02] transition-transform duration-300"
+              >
+                {/* Decorative Pin */}
+                <div className="absolute top-3 right-3 w-3 h-3 rounded-full bg-[#52b788] border border-[#d8f3dc]"></div>
+
+                <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-xl bg-[#163824] border border-[#52b788] flex items-center justify-center text-[#74c69d] shadow-sm">
+                    <Icon className="w-6 h-6" />
+                  </div>
+
+                  <div>
+                    <span className="text-[10px] font-mono font-bold text-[#74c69d] uppercase tracking-wider block">
+                      {stat.title}
+                    </span>
+                    <div className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight">
+                      {stat.value}
+                    </div>
+                  </div>
+
+                  <p className="font-sans text-xs text-[#b7e4c7] font-medium leading-relaxed">
+                    {stat.description}
+                  </p>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-[#2d6a4f] flex items-center justify-between">
+                  <span className="text-[11px] font-mono font-bold text-[#74c69d]">
+                    {stat.highlight}
+                  </span>
+                  <span className="text-sm">🐸</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Trust & Transparency Banner */}
+        <div className="max-w-4xl mx-auto pond-card p-8 rounded-2xl border-2 border-[#52b788] text-center space-y-4">
+          <h3 className="font-display font-black text-2xl sm:text-3xl text-white">
+            “No Rush, No Rugs, Just Calm Pond Vibes”
+          </h3>
+          <p className="font-sans text-sm sm:text-base text-[#d8f3dc] max-w-2xl mx-auto leading-relaxed">
+            The Chill Toad was created to be the most relaxing meme token on Solana. Mint authority revoked, freeze authority revoked, liquidity burned to a crisp, and community empowered.
+          </p>
+          <div className="pt-2">
             <a
-              href={RAYDIUM_URL}
+              href={TELEGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#d97706] to-[#eab308] text-[#1c1305] font-display font-black text-xs flex items-center gap-1.5 shadow-md transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0088cc] hover:bg-[#0099e6] text-white font-display font-black text-xs shadow-lg transition-all"
             >
-              <span>Raydium Swap</span>
-              <ExternalLink className="w-3.5 h-3.5" />
+              <Send className="w-4 h-4" />
+              <span>Connect with Fellow Chillers on Telegram</span>
             </a>
-          </div>
-        </div>
-
-        {/* 4 Ledger Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {stats.map((stat, idx) => (
-            <motion.div
-              key={stat.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="parchment-card p-6 rounded-sm border-2 border-[#b48c3c] shadow-lg hover:border-[#92400e] hover:shadow-[0_8px_25px_rgba(58,38,7,0.2)] hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between relative"
-            >
-              {/* Pushpin */}
-              <div className="absolute top-2.5 right-2.5 w-3.5 h-3.5 rounded-full bg-[#1c1305] border border-[#78350f]"></div>
-
-              <div className="flex justify-between items-start mb-6">
-                <span className="text-xs font-mono font-bold text-[#78350f] tracking-widest uppercase">
-                  {stat.title}
-                </span>
-                <div className="p-2 rounded bg-[#fdf3d7] border border-[#cbb07a] shadow-inner">
-                  {stat.icon}
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <span className="block font-serif font-black text-2xl sm:text-3xl text-[#1c1305] leading-none">
-                  {stat.value}
-                </span>
-                <span className="block text-xs text-[#38260d] font-serif font-semibold">
-                  {stat.description}
-                </span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Ledger Distribution Card */}
-        <div className="max-w-4xl mx-auto parchment-card p-8 sm:p-10 rounded-sm border-2 border-[#b48c3c] shadow-2xl relative">
-          
-          {/* Top Tape Header Accent */}
-          <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#fef08a] border border-[#eab308] rotate-[-1deg] shadow-sm pointer-events-none flex items-center justify-center">
-            <span className="text-[10px] font-mono font-bold text-[#78350f] uppercase">
-              OFFICIAL LEDGER
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pt-2">
-            
-            {/* SVG Doughnut Gauge with Golden Palette */}
-            <div className="md:col-span-5 flex justify-center">
-              <div className="relative w-48 h-48 flex items-center justify-center">
-                
-                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="40"
-                    fill="transparent"
-                    stroke="#e5d2a8"
-                    strokeWidth="10"
-                  />
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="40"
-                    fill="transparent"
-                    stroke="#b45309"
-                    strokeWidth="10"
-                    strokeDasharray="251.2"
-                    strokeDashoffset="12.56" /* 5% */
-                  />
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="40"
-                    fill="transparent"
-                    stroke="#eab308"
-                    strokeWidth="10"
-                    strokeDasharray="251.2"
-                    strokeDashoffset="238.64" /* 95% */
-                  />
-                </svg>
-
-                <div className="absolute text-center">
-                  <span className="block font-serif font-black text-3xl text-[#1c1305]">95%</span>
-                  <span className="block text-[10px] font-mono font-bold text-[#78350f] uppercase tracking-widest">
-                    Raydium LP
-                  </span>
-                </div>
-
-              </div>
-            </div>
-
-            {/* Distribution Legend Information */}
-            <div className="md:col-span-7 space-y-6 text-[#38260d]">
-              <div>
-                <h4 className="font-serif text-2xl font-black text-[#1c1305] uppercase italic">
-                  Supply Allocation
-                </h4>
-                <p className="text-sm text-[#78350f] font-serif mt-1 font-semibold">
-                  100% transparent and designed for long-term composure across the Solana ecosystem.
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-4 h-4 rounded-full bg-[#eab308] mt-1 flex-shrink-0 shadow-sm border border-[#ca8a04]"></div>
-                  <div>
-                    <span className="block font-serif font-bold text-sm text-[#1c1305]">
-                      95% — Fair Launch Liquidity Pool
-                    </span>
-                    <span className="block text-xs text-[#78350f] font-serif font-semibold">
-                      Directly deposited to Raydium DEX Liquidity Pool and burned upon token launch.
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-4 h-4 rounded-full bg-[#b45309] mt-1 flex-shrink-0 shadow-sm border border-[#78350f]"></div>
-                  <div>
-                    <span className="block font-serif font-bold text-sm text-[#1c1305]">
-                      5% — Community Chronicles & Sanctuary Archive
-                    </span>
-                    <span className="block text-xs text-[#78350f] font-serif font-semibold">
-                      Reserved strictly for exchange listings, market scribe chronicles, and community initiatives.
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-3.5 rounded bg-[#faedd0] border border-[#cbb07a] flex items-center gap-3">
-                <Lock className="w-5 h-5 text-[#b45309] flex-shrink-0" />
-                <span className="text-xs font-mono font-bold text-[#78350f]">
-                  Immutable Code: Solana Token Program mint authority is 100% revoked. No new tokens can ever be created.
-                </span>
-              </div>
-            </div>
-
           </div>
         </div>
 

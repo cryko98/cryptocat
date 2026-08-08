@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, Sparkles, TrendingUp, BookOpen, Coins, Compass, ExternalLink } from "lucide-react";
-import { DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL } from "../constants";
+import { Menu, X, Sparkles, TrendingUp, BookOpen, Coins, Compass, Send, ExternalLink, Leaf } from "lucide-react";
+import { CHILLTOAD_NAME, CHILLTOAD_TICKER, CHILLTOAD_LOGO, TELEGRAM_URL, DEXSCREENER_URL, PUMPFUN_URL } from "../constants";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -25,15 +25,16 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top Ticker Tape - Golden Market Lore Marquee */}
-      <div id="top-ticker" className="w-full bg-[#1c1305] text-[#fef08a] py-2 px-4 text-xs font-mono font-bold tracking-wider overflow-hidden select-none whitespace-nowrap border-b border-[#785317]/60">
+      {/* Top Ticker Tape - Serene Pond Lore & Zen Toad Marquee */}
+      <div id="top-ticker" className="w-full bg-[#081c15] text-[#b7e4c7] py-2 px-4 text-xs font-mono font-bold tracking-wider overflow-hidden select-none whitespace-nowrap border-b border-[#2d6a4f]/60">
         <div className="inline-block animate-[marquee_25s_linear_infinite] whitespace-nowrap">
-          <span className="mx-4 text-[#fde047] font-black">✨ MARKET LORE • EST. LONG AGO</span>
-          <span className="mx-4 text-white">“CURIOSITY CREATES OPPORTUNITY” — THAT'S WHY WE LOVE CASHCATE</span>
-          <span className="mx-4 text-[#facc15]">🐾 A LEGEND IN EVERY PAWSTEP • $CASHCATE</span>
-          <span className="mx-4 text-[#fde047] font-black">🪙 0% TAX • 100% BURNED LP • PURE GOLDEN CURIOSITY</span>
-          <span className="mx-4 text-white">🐱 THEY SAY A CURIOUS CAT NAMED CASHCATE WANDERED INTO THE MARKET AT DAWN</span>
-          <span className="mx-4 text-[#fde047] font-black">✨ MARKET LORE • EST. LONG AGO</span>
+          <span className="mx-4 text-[#74c69d] font-black">🐸 POND LORE • JUST A CHILL TOAD</span>
+          <span className="mx-4 text-white">“WHY STRESS WHEN YOU CAN SIT ON A LILY PAD?” — UNBOTHERED VIBES ONLY</span>
+          <span className="mx-4 text-[#ffd166]">🌿 $CHILLTOAD • SOLANA</span>
+          <span className="mx-4 text-white">🍃 PURE ZEN ENERGY • ZERO DRAMA • IMMUTABLE CHILL</span>
+          <span className="mx-4 text-[#74c69d] font-black">🪙 0% TAX • 100% BURNED LP • LILY PAD LIQUIDITY</span>
+          <span className="mx-4 text-white">💧 JOIN THE CHILL POND TELEGRAM: t.me/chilltoad</span>
+          <span className="mx-4 text-[#ffd166]">🪷 A TOAD SAT ON A LILY PAD AT DAWN AND NEVER FUMBLED</span>
         </div>
       </div>
 
@@ -41,8 +42,8 @@ export default function Navbar() {
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           scrolled
-            ? "bg-[#1c1406]/95 backdrop-blur-md border-b border-[#785317] shadow-[0_8px_30px_rgba(0,0,0,0.6)] py-2 text-white"
-            : "bg-[#261a08]/90 backdrop-blur-md border-b border-[#785317]/50 py-3 text-white"
+            ? "bg-[#0b2419]/95 backdrop-blur-md border-b border-[#2d6a4f] shadow-[0_8px_30px_rgba(0,0,0,0.6)] py-2 text-white"
+            : "bg-[#0f2d20]/90 backdrop-blur-md border-b border-[#2d6a4f]/50 py-3 text-white"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,80 +54,92 @@ export default function Navbar() {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} 
               className="flex items-center space-x-3 cursor-pointer group"
             >
-              <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#eab308] shadow-[0_0_20px_rgba(234,179,8,0.45)] group-hover:scale-105 transition-transform bg-[#2e1f0a]">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#74c69d] shadow-[0_0_20px_rgba(116,198,157,0.45)] group-hover:scale-105 transition-transform bg-[#081c15]">
                 <img
-                  src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-08-07_20-34-51.jpg?v=1786124116"
-                  alt="Cashcate Golden Coin"
+                  src={CHILLTOAD_LOGO}
+                  alt="Just a chill Toad Logo"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="flex flex-col">
                 <div className="flex items-center gap-1.5">
-                  <span className="font-serif font-black text-2xl tracking-tight text-white uppercase italic group-hover:text-[#facc15] transition-colors">
-                    Cash<span className="text-[#facc15]">cate</span>
+                  <span className="font-display font-black text-xl sm:text-2xl tracking-tight text-white group-hover:text-[#74c69d] transition-colors">
+                    Just a chill <span className="text-[#74c69d]">Toad</span>
                   </span>
-                  <span className="text-[10px] font-mono font-black text-[#1c1305] bg-[#facc15] px-1.5 py-0.5 rounded shadow-sm">
-                    $cashcate
+                  <span className="text-[10px] font-mono font-black text-[#081c15] bg-[#74c69d] px-2 py-0.5 rounded-full shadow-sm">
+                    {CHILLTOAD_TICKER}
                   </span>
                 </div>
-                <span className="text-[10px] font-mono text-[#fde047]/80 font-bold -mt-0.5 tracking-widest">
-                  Curiosity Creates Opportunity
+                <span className="text-[10px] font-mono text-[#b7e4c7]/80 font-bold -mt-0.5 tracking-widest flex items-center gap-1">
+                  <Leaf className="w-2.5 h-2.5 text-[#52b788]" /> Unbothered on the Lily Pad
                 </span>
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-6 font-mono font-bold text-xs uppercase tracking-wider text-[#fde047]/90">
-              <button onClick={() => scrollToSection("market-lore")} className="hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
-                <BookOpen className="w-3.5 h-3.5 text-[#facc15]" />
-                Market Lore
+            <nav className="hidden lg:flex items-center space-x-6 font-mono font-bold text-xs uppercase tracking-wider text-[#d8f3dc]/90">
+              <button onClick={() => scrollToSection("pond-lore")} className="hover:text-[#74c69d] transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
+                <BookOpen className="w-3.5 h-3.5 text-[#52b788]" />
+                Pond Lore
               </button>
-              <button onClick={() => scrollToSection("chronicles")} className="hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
-                <Compass className="w-3.5 h-3.5 text-[#facc15]" />
-                Chronicles
+              <button onClick={() => scrollToSection("chronicles")} className="hover:text-[#74c69d] transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
+                <Compass className="w-3.5 h-3.5 text-[#52b788]" />
+                Toad Wisdom
               </button>
-              <button onClick={() => scrollToSection("interactive-lounge")} className="hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
-                <Sparkles className="w-3.5 h-3.5 text-[#facc15]" />
-                Opportunity Lounge
+              <button onClick={() => scrollToSection("chill-lounge")} className="hover:text-[#74c69d] transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
+                <Sparkles className="w-3.5 h-3.5 text-[#52b788]" />
+                Chill Lounge
               </button>
-              <button onClick={() => scrollToSection("tokenomics")} className="hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
-                <Coins className="w-3.5 h-3.5 text-[#facc15]" />
-                Golden Ledger
+              <button onClick={() => scrollToSection("tokenomics")} className="hover:text-[#74c69d] transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
+                <Coins className="w-3.5 h-3.5 text-[#52b788]" />
+                Pond Ledger
               </button>
-              <button onClick={() => scrollToSection("roadmap")} className="hover:text-white transition-colors cursor-pointer border-none bg-transparent">
-                Volumes
+              <button onClick={() => scrollToSection("roadmap")} className="hover:text-[#74c69d] transition-colors cursor-pointer border-none bg-transparent">
+                Lilypad Roadmap
               </button>
             </nav>
 
-            {/* Action Buttons */}
+            {/* Quick Telegram & Action Buttons */}
             <div className="hidden md:flex items-center space-x-2.5 relative">
+              {/* Telegram Official Pill */}
+              <a
+                href={TELEGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                id="header-telegram-btn"
+                className="px-3.5 py-2 rounded-xl bg-[#0088cc]/20 hover:bg-[#0088cc]/35 border border-[#0088cc]/60 text-[#70d6ff] hover:text-white font-mono font-bold text-xs transition-all flex items-center gap-1.5 shadow-md group"
+              >
+                <Send className="w-3.5 h-3.5 text-[#00a8ff] group-hover:rotate-12 transition-transform" />
+                <span>Telegram</span>
+              </a>
+
               <a
                 href={DEXSCREENER_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3.5 py-2 rounded-xl bg-[#2e1f0a] hover:bg-[#3d2a0d] border border-[#785317] hover:border-[#eab308] text-[#fde047] hover:text-white font-mono font-bold text-xs transition-all flex items-center gap-1.5 shadow-md"
+                className="px-3.5 py-2 rounded-xl bg-[#1b4332] hover:bg-[#2d6a4f] border border-[#52b788]/60 text-[#d8f3dc] hover:text-white font-mono font-bold text-xs transition-all flex items-center gap-1.5 shadow-md"
               >
-                <TrendingUp className="w-3.5 h-3.5 text-[#facc15]" />
-                Chart
+                <TrendingUp className="w-3.5 h-3.5 text-[#74c69d]" />
+                <span>Chart</span>
               </a>
 
               <a
                 href={PUMPFUN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3.5 py-2 rounded-xl bg-[#1c2912] hover:bg-[#243816] border border-[#3f6212] text-[#86efac] font-mono font-bold text-xs transition-all flex items-center gap-1.5 shadow-md"
+                className="px-3.5 py-2 rounded-xl bg-[#143621] hover:bg-[#1e4a30] border border-[#2d6a4f] text-[#86efac] font-mono font-bold text-xs transition-all flex items-center gap-1.5 shadow-md"
               >
                 <span>💊</span>
-                Pump.fun
+                <span>Pump.fun</span>
               </a>
 
               <button
-                onClick={() => scrollToSection("interactive-lounge")}
-                id="explore-cashcate-header-btn"
-                className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#eab308] hover:from-[#b45309] hover:to-[#d97706] text-[#1c1305] font-display font-black text-xs shadow-[0_0_20px_rgba(234,179,8,0.4)] hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer border-none"
+                onClick={() => scrollToSection("chill-lounge")}
+                id="explore-chill-lounge-header-btn"
+                className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#2d6a4f] via-[#52b788] to-[#74c69d] hover:from-[#1b4332] hover:to-[#52b788] text-[#081c15] font-display font-black text-xs shadow-[0_0_20px_rgba(82,183,136,0.4)] hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer border-none"
               >
-                <Sparkles className="w-3.5 h-3.5 text-[#1c1305]" />
-                Explore Lore
+                <Sparkles className="w-3.5 h-3.5 text-[#081c15]" />
+                Vibe Lounge
               </button>
             </div>
 
@@ -134,7 +147,7 @@ export default function Navbar() {
             <div className="lg:hidden flex items-center space-x-2">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-xl bg-[#2e1f0a] text-[#facc15] hover:text-white border border-[#785317] focus:outline-none cursor-pointer"
+                className="p-2 rounded-xl bg-[#1b4332] text-[#74c69d] hover:text-white border border-[#2d6a4f] focus:outline-none cursor-pointer"
                 aria-label="Toggle mobile menu"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -152,65 +165,90 @@ export default function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="lg:hidden bg-[#1c1406] border-b border-[#785317] shadow-xl px-4 pt-2 pb-6 space-y-4"
+              className="lg:hidden bg-[#0c261b] border-b border-[#2d6a4f] shadow-xl px-4 pt-2 pb-6 space-y-4"
             >
-              <nav className="flex flex-col space-y-3 font-mono font-medium text-[#fde047]">
+              {/* Telegram Banner for Mobile */}
+              <a
+                href={TELEGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-xl bg-[#0088cc]/20 border border-[#0088cc]/50 flex items-center justify-between text-[#70d6ff]"
+              >
+                <div className="flex items-center gap-2">
+                  <Send className="w-4 h-4 text-[#00a8ff]" />
+                  <span className="text-xs font-mono font-bold">Official Telegram Community</span>
+                </div>
+                <span className="text-xs font-mono font-bold text-white bg-[#0088cc] px-2 py-1 rounded">
+                  Join t.me/chilltoad
+                </span>
+              </a>
+
+              <nav className="flex flex-col space-y-3 font-mono font-medium text-[#d8f3dc]">
                 <button
-                  onClick={() => scrollToSection("market-lore")}
-                  className="text-left py-2 px-3 rounded-lg hover:bg-[#2e1f0a] hover:text-white transition-all text-sm flex items-center gap-2 border-none bg-transparent"
+                  onClick={() => scrollToSection("pond-lore")}
+                  className="text-left py-2 px-3 rounded-lg hover:bg-[#1b4332] hover:text-white transition-all text-sm flex items-center gap-2 border-none bg-transparent"
                 >
-                  <BookOpen className="w-4 h-4 text-[#facc15]" /> Market Lore
+                  <BookOpen className="w-4 h-4 text-[#74c69d]" /> Pond Lore
                 </button>
                 <button
                   onClick={() => scrollToSection("chronicles")}
-                  className="text-left py-2 px-3 rounded-lg hover:bg-[#2e1f0a] hover:text-white transition-all text-sm flex items-center gap-2 border-none bg-transparent"
+                  className="text-left py-2 px-3 rounded-lg hover:bg-[#1b4332] hover:text-white transition-all text-sm flex items-center gap-2 border-none bg-transparent"
                 >
-                  <Compass className="w-4 h-4 text-[#facc15]" /> Chronicles
+                  <Compass className="w-4 h-4 text-[#74c69d]" /> Toad Wisdom
                 </button>
                 <button
-                  onClick={() => scrollToSection("interactive-lounge")}
-                  className="text-left py-2 px-3 rounded-lg hover:bg-[#2e1f0a] hover:text-white transition-all text-sm flex items-center gap-2 border-none bg-transparent"
+                  onClick={() => scrollToSection("chill-lounge")}
+                  className="text-left py-2 px-3 rounded-lg hover:bg-[#1b4332] hover:text-white transition-all text-sm flex items-center gap-2 border-none bg-transparent"
                 >
-                  <Sparkles className="w-4 h-4 text-[#facc15]" /> Opportunity Lounge
+                  <Sparkles className="w-4 h-4 text-[#74c69d]" /> Chill Lounge & Vibe-o-Meter
                 </button>
                 <button
                   onClick={() => scrollToSection("tokenomics")}
-                  className="text-left py-2 px-3 rounded-lg hover:bg-[#2e1f0a] hover:text-white transition-all text-sm flex items-center gap-2 border-none bg-transparent"
+                  className="text-left py-2 px-3 rounded-lg hover:bg-[#1b4332] hover:text-white transition-all text-sm flex items-center gap-2 border-none bg-transparent"
                 >
-                  <Coins className="w-4 h-4 text-[#facc15]" /> Golden Ledger
+                  <Coins className="w-4 h-4 text-[#74c69d]" /> Pond Ledger
                 </button>
                 <button
                   onClick={() => scrollToSection("roadmap")}
-                  className="text-left py-2 px-3 rounded-lg hover:bg-[#2e1f0a] hover:text-white transition-all text-sm flex items-center gap-2 border-none bg-transparent"
+                  className="text-left py-2 px-3 rounded-lg hover:bg-[#1b4332] hover:text-white transition-all text-sm flex items-center gap-2 border-none bg-transparent"
                 >
-                  📜 Volumes & Milestones
+                  🌿 Lilypad Roadmap
                 </button>
               </nav>
 
-              <div className="pt-4 border-t border-[#785317] flex flex-col gap-2.5">
+              <div className="pt-4 border-t border-[#2d6a4f] flex flex-col gap-2.5">
+                <a
+                  href={TELEGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#0088cc] text-white font-mono font-bold text-xs flex items-center justify-center gap-2 shadow-md"
+                >
+                  <Send className="w-4 h-4" /> Telegram: t.me/chilltoad
+                </a>
+
                 <a
                   href={DEXSCREENER_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full px-4 py-2.5 rounded-xl bg-[#2e1f0a] border border-[#785317] text-[#fde047] font-mono font-bold text-xs flex items-center justify-center gap-2"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#1b4332] border border-[#2d6a4f] text-[#d8f3dc] font-mono font-bold text-xs flex items-center justify-center gap-2"
                 >
-                  <TrendingUp className="w-4 h-4 text-[#facc15]" /> DexScreener Chart
+                  <TrendingUp className="w-4 h-4 text-[#74c69d]" /> DexScreener Chart
                 </a>
 
                 <a
                   href={PUMPFUN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full px-4 py-2.5 rounded-xl bg-[#1c2912] border border-[#3f6212] text-[#86efac] font-mono font-bold text-xs flex items-center justify-center gap-2"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#143621] border border-[#2d6a4f] text-[#86efac] font-mono font-bold text-xs flex items-center justify-center gap-2"
                 >
-                  <span>💊</span> Buy on Pump.fun
+                  <span>💊</span> Pump.fun
                 </a>
 
                 <button
-                  onClick={() => scrollToSection("interactive-lounge")}
-                  className="w-full px-5 py-3 rounded-xl bg-gradient-to-r from-[#d97706] to-[#eab308] text-[#1c1305] font-display font-black text-sm shadow-md border-none flex items-center justify-center gap-2"
+                  onClick={() => scrollToSection("chill-lounge")}
+                  className="w-full px-5 py-3 rounded-xl bg-gradient-to-r from-[#2d6a4f] to-[#74c69d] text-[#081c15] font-display font-black text-sm shadow-md border-none flex items-center justify-center gap-2"
                 >
-                  <Sparkles className="w-4 h-4" /> Explore Opportunity Lounge
+                  <Sparkles className="w-4 h-4" /> Enter Chill Lounge
                 </button>
               </div>
             </motion.div>
@@ -220,4 +258,3 @@ export default function Navbar() {
     </>
   );
 }
-

@@ -1,8 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -14,31 +9,31 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#f8edd1] text-[#1c1305] font-serif selection:bg-[#fde047] selection:text-[#1c1305] antialiased overflow-x-hidden relative vintage-ledger-grid">
-      {/* Background ambient warm golden glowing lights */}
+    <div className="min-h-screen bg-[#061811] text-[#d8f3dc] font-sans selection:bg-[#74c69d] selection:text-[#081c15] antialiased overflow-x-hidden relative pond-water-grid">
+      {/* Background ambient serene pond glow */}
       <div className="absolute inset-0 pointer-events-none opacity-40 z-0 overflow-hidden">
-        <div className="absolute top-[-5%] right-[-10%] w-[600px] h-[600px] bg-[#fbbf24] rounded-full blur-[160px]"></div>
-        <div className="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-[#f59e0b] rounded-full blur-[160px]"></div>
-        <div className="absolute top-[40%] left-[20%] w-[400px] h-[400px] bg-[#d97706] rounded-full blur-[150px] opacity-25"></div>
-        <div className="absolute bottom-[5%] right-[10%] w-[500px] h-[500px] bg-[#ca8a04] rounded-full blur-[150px]"></div>
+        <div className="absolute top-[-5%] right-[-10%] w-[600px] h-[600px] bg-[#2d6a4f] rounded-full blur-[160px]"></div>
+        <div className="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-[#1b4332] rounded-full blur-[160px]"></div>
+        <div className="absolute top-[40%] left-[20%] w-[400px] h-[400px] bg-[#52b788] rounded-full blur-[150px] opacity-25"></div>
+        <div className="absolute bottom-[5%] right-[10%] w-[500px] h-[500px] bg-[#74c69d] rounded-full blur-[150px] opacity-20"></div>
       </div>
 
       {/* Navigation */}
       <Navbar />
 
-      {/* Hero Header Section with exact artwork layout */}
+      {/* Hero Header Section with exact artwork layout & Telegram */}
       <Hero />
 
-      {/* Complete Market Lore & Chronicles Section */}
+      {/* Complete Pond Lore & Chronicles of the Chill Toad Section */}
       <Story />
 
-      {/* Interactive Curiosity Lounge & Calculator */}
+      {/* Interactive Chill Toad Lounge & Vibe-o-Meter */}
       <InteractiveApp />
 
-      {/* Golden Market Ledger & Tokenomics */}
+      {/* Pond Ledger & Tokenomics */}
       <Tokenomics />
 
-      {/* Market Volumes & Roadmap */}
+      {/* Lily Pad Hop Roadmap */}
       <AuraRoadmap />
 
       {/* Footer & Disclaimer */}

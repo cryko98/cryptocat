@@ -2,133 +2,153 @@
 
 @theme {
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", Georgia, Cambria, serif;
-  --font-display: "Cinzel", "Playfair Display", Georgia, serif;
-  --font-mono: "Courier Prime", "Space Grotesk", monospace;
+  --font-display: "Fredoka", "Gaegu", "Plus Jakarta Sans", cursive, sans-serif;
+  --font-mono: "Space Grotesk", "Courier Prime", monospace;
 }
 
-/* Vintage Paper & Gold Animations */
-@keyframes float-slow {
+/* Chill Toad Pond Animations */
+@keyframes float-pad {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);
   }
   50% {
-    transform: translateY(-8px) rotate(0.8deg);
+    transform: translateY(-8px) rotate(1.2deg);
   }
 }
 
-@keyframes float-slower {
+@keyframes float-gentle {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);
   }
   50% {
-    transform: translateY(-12px) rotate(-1deg);
+    transform: translateY(-12px) rotate(-1.5deg);
   }
 }
 
-@keyframes gold-spin-glow {
-  0%, 100% {
-    box-shadow: 0 0 35px rgba(234, 179, 8, 0.45), 0 0 80px rgba(217, 119, 6, 0.25);
-    transform: scale(1);
+@keyframes water-ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(82, 183, 136, 0.5), 0 0 0 0 rgba(45, 106, 79, 0.3);
   }
-  50% {
-    box-shadow: 0 0 55px rgba(234, 179, 8, 0.7), 0 0 110px rgba(217, 119, 6, 0.45);
-    transform: scale(1.02);
+  70% {
+    box-shadow: 0 0 0 25px rgba(82, 183, 136, 0), 0 0 0 45px rgba(45, 106, 79, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(82, 183, 136, 0), 0 0 0 0 rgba(45, 106, 79, 0);
   }
 }
 
-@keyframes sparkle-twinkle {
+@keyframes firefly-glow {
   0%, 100% {
     opacity: 0.3;
-    transform: scale(0.8) rotate(0deg);
+    transform: scale(0.8) translate(0, 0);
   }
   50% {
-    opacity: 1;
-    transform: scale(1.2) rotate(180deg);
+    opacity: 0.95;
+    transform: scale(1.2) translate(10px, -15px);
   }
 }
 
-@keyframes subtle-wobble {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-0.5deg); }
-  75% { transform: rotate(0.5deg); }
+@keyframes pulse-chill {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 25px rgba(82, 183, 136, 0.4));
+  }
+  50% {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 45px rgba(116, 198, 157, 0.7));
+  }
 }
 
-.animate-float-slow {
-  animation: float-slow 7s ease-in-out infinite;
+.animate-float-pad {
+  animation: float-pad 6s ease-in-out infinite;
 }
 
-.animate-float-slower {
-  animation: float-slower 10s ease-in-out infinite;
+.animate-float-gentle {
+  animation: float-gentle 9s ease-in-out infinite;
 }
 
-.animate-gold-glow {
-  animation: gold-spin-glow 5s ease-in-out infinite;
+.animate-water-ripple {
+  animation: water-ripple 3.5s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 
-.animate-sparkle {
-  animation: sparkle-twinkle 3.5s ease-in-out infinite;
+.animate-firefly {
+  animation: firefly-glow 4s ease-in-out infinite;
 }
 
-/* Vintage Yellow Highlighter Effect */
-.highlight-yellow {
-  background-color: #fef08a;
-  color: #1c1503;
+.animate-chill-glow {
+  animation: pulse-chill 4s ease-in-out infinite;
+}
+
+/* Chill Toad Highlighters */
+.highlight-green {
+  background-color: #74c69d;
+  color: #081c15;
   padding: 0.12em 0.4em;
-  border-radius: 2px;
+  border-radius: 4px;
   font-weight: 800;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   display: inline;
 }
 
-.highlight-amber {
-  background-color: #fde047;
-  color: #1c1503;
+.highlight-mint {
+  background-color: #d8f3dc;
+  color: #081c15;
   padding: 0.12em 0.45em;
-  border-radius: 2px;
+  border-radius: 4px;
   font-weight: 800;
   box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   display: inline;
 }
 
-/* Vintage Paper & Parchment Styles */
-.parchment-card {
-  background-color: #fcf6e8;
-  background-image: radial-gradient(#e5d2a8 0.75px, transparent 0.75px), radial-gradient(#e5d2a8 0.75px, #fcf6e8 0.75px);
-  background-size: 30px 30px;
-  background-position: 0 0, 15px 15px;
-  box-shadow: 0 12px 35px -8px rgba(58, 38, 7, 0.25), 0 4px 12px rgba(0,0,0,0.08);
+.highlight-lotus {
+  background-color: #ffd166;
+  color: #081c15;
+  padding: 0.12em 0.4em;
+  border-radius: 4px;
+  font-weight: 800;
+  display: inline;
 }
 
-.parchment-card-dark {
-  background-color: #1f1607;
-  border: 1px solid #785317;
-  box-shadow: 0 15px 40px -10px rgba(0,0,0,0.7);
-}
-
-/* Subtle Millimeter Ledger Grid */
-.vintage-ledger-grid {
+/* Pond Marsh & Lily Pad Cards */
+.pond-card {
+  background-color: #112d20;
+  background-image: radial-gradient(#1b4332 0.75px, transparent 0.75px), radial-gradient(#1b4332 0.75px, #112d20 0.75px);
   background-size: 24px 24px;
-  background-image: 
-    linear-gradient(to right, rgba(180, 140, 60, 0.15) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(180, 140, 60, 0.15) 1px, transparent 1px);
+  background-position: 0 0, 12px 12px;
+  border: 1px solid rgba(82, 183, 136, 0.3);
+  box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.6), 0 4px 12px rgba(82, 183, 136, 0.08);
 }
 
-/* Custom Gold Scrollbar */
+.pond-card-light {
+  background-color: #e9f5ed;
+  background-image: radial-gradient(#b7e4c7 0.8px, transparent 0.8px), radial-gradient(#b7e4c7 0.8px, #e9f5ed 0.8px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+  border: 1px solid #74c69d;
+  box-shadow: 0 10px 30px -8px rgba(13, 40, 24, 0.15);
+}
+
+/* Pond Water Grid */
+.pond-water-grid {
+  background-size: 28px 28px;
+  background-image: 
+    linear-gradient(to right, rgba(82, 183, 136, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(82, 183, 136, 0.08) 1px, transparent 1px);
+}
+
+/* Custom Chill Green Scrollbar */
 ::-webkit-scrollbar {
   width: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: #1c1406;
+  background: #081c15;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d97706;
+  background: #2d6a4f;
   border-radius: 4px;
-  border: 2px solid #1c1406;
+  border: 2px solid #081c15;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #f59e0b;
+  background: #52b788;
 }
-
-

@@ -1,8 +1,9 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Award, Calculator, Sparkles, RefreshCw, Coins, Compass, Heart, Feather } from "lucide-react";
+import { Award, Sparkles, RefreshCw, Send, Heart, Leaf, Smile, Waves } from "lucide-react";
+import { TELEGRAM_URL, CHILLTOAD_LOGO } from "../constants";
 
-interface FloatingSpark {
+interface FloatingVibe {
   id: number;
   x: number;
   y: number;
@@ -11,33 +12,33 @@ interface FloatingSpark {
 }
 
 export default function InteractiveApp() {
-  const [sparkCount, setSparkCount] = useState(0);
-  const [curiosityRank, setCuriosityRank] = useState("Dawn Market Wanderer");
+  const [vibeCount, setVibeCount] = useState(0);
+  const [chillRank, setChillRank] = useState("Tadpole Chiller");
   const [solInvestment, setSolInvestment] = useState(1);
-  const [floatingSparks, setFloatingSparks] = useState<FloatingSpark[]>([]);
-  const sparkIdRef = useRef(0);
+  const [floatingVibes, setFloatingVibes] = useState<FloatingVibe[]>([]);
+  const vibeIdRef = useRef(0);
 
-  const marketLoreQuotes = [
-    "CURIOSITY CREATES OPPORTUNITY!",
-    "A LEGEND IN EVERY PAWSTEP!",
-    "SEES WHAT OTHERS MISS!",
-    "WANDERED INTO THE MARKET AT DAWN!",
-    "CURIOUS, CALM, AND TIMELESS!",
-    "TURNING ORDINARY INTO EXTRAORDINARY!",
-    "A SPARK OF FELINE LUCK!",
-    "A GOLDEN FIGURE ON THE WINDOWSILL!",
-    "NO ONE KNOWS WHERE SHE CAME FROM!",
-    "PATIENCE IN THE QUIET DETAILS!"
+  const toadQuotes = [
+    "JUST CHILL, BRO!",
+    "NO STRESS ON THE LILY PAD!",
+    "VIBES ARE IMMACULATE!",
+    "SERENE AS THE MORNING POND!",
+    "UNBOTHERED & UNSTOPPABLE!",
+    "0% TAX, 100% RELAXATION!",
+    "CROAKING WITH PURE PEACE!",
+    "PATIENCE WINS THE RACE!",
+    "NEVER FUMBLED, JUST CHILLED!",
+    "WATER IS CLEAR, MINDS ARE CALM!"
   ];
 
-  const handleSparkTap = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setSparkCount((prev) => {
+  const handleVibeTap = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setVibeCount((prev) => {
       const newCount = prev + 1;
-      if (newCount >= 100) setCuriosityRank("👑 Legendary Market Pioneer");
-      else if (newCount >= 50) setCuriosityRank("✨ Golden Opportunity Master");
-      else if (newCount >= 25) setCuriosityRank("📜 Curious Alley Explorer");
-      else if (newCount >= 10) setCuriosityRank("🐾 Windowsill Observer");
-      else setCuriosityRank("Dawn Market Wanderer");
+      if (newCount >= 100) setChillRank("👑 Ultimate Zen Toad Monarch");
+      else if (newCount >= 50) setChillRank("🪷 Grand Lilypad Sage");
+      else if (newCount >= 25) setChillRank("🍃 Serene Marsh Master");
+      else if (newCount >= 10) setChillRank("🐸 Reed Lounger");
+      else setChillRank("Tadpole Chiller");
       return newCount;
     });
 
@@ -45,151 +46,140 @@ export default function InteractiveApp() {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     
-    const randomQuote = marketLoreQuotes[Math.floor(Math.random() * marketLoreQuotes.length)];
-    const randomSize = Math.floor(Math.random() * 24) + 20;
+    const randomQuote = toadQuotes[Math.floor(Math.random() * toadQuotes.length)];
+    const randomSize = Math.floor(Math.random() * 20) + 18;
 
-    const newSpark: FloatingSpark = {
-      id: sparkIdRef.current++,
+    const newVibe: FloatingVibe = {
+      id: vibeIdRef.current++,
       x,
       y: y - 20,
       size: randomSize,
       text: randomQuote,
     };
 
-    setFloatingSparks((prev) => [...prev, newSpark]);
+    setFloatingVibes((prev) => [...prev, newVibe]);
 
     setTimeout(() => {
-      setFloatingSparks((prev) => prev.filter((s) => s.id !== newSpark.id));
+      setFloatingVibes((prev) => prev.filter((s) => s.id !== newVibe.id));
     }, 1600);
   };
 
   const calculateStats = (sol: number) => {
-    const cashcateTokens = Math.floor(sol * 10000000);
-    const curiosityIndex = Math.min(100, 95 + sol * 0.05).toFixed(1);
-    const opportunitySparks = Math.floor(sol * 1750);
-    const timelessMultiplier = (sol * 12.5).toFixed(1);
-    return { cashcateTokens, curiosityIndex, opportunitySparks, timelessMultiplier };
+    const chillTokens = Math.floor(sol * 1000000);
+    const serenityScore = Math.min(100, 96 + sol * 0.04).toFixed(1);
+    const stressFreeHours = Math.floor(sol * 240);
+    const chillMultiplier = (sol * 15.2).toFixed(1);
+    return { chillTokens, serenityScore, stressFreeHours, chillMultiplier };
   };
 
   const stats = calculateStats(solInvestment);
 
   return (
-    <section id="interactive-lounge" className="relative py-20 sm:py-28 bg-[#f8edd1] text-[#1c1305] overflow-hidden border-t-2 border-b-2 border-[#b48c3c] vintage-ledger-grid selection:bg-[#fde047] selection:text-[#1c1305]">
+    <section id="chill-lounge" className="relative py-20 sm:py-28 bg-[#081c15] text-white overflow-hidden border-t-2 border-b-2 border-[#2d6a4f] pond-water-grid selection:bg-[#74c69d] selection:text-[#081c15]">
       
-      {/* Background warm golden ambient glows */}
+      {/* Background ambient glows */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        <div className="absolute top-[20%] left-[10%] w-72 h-72 rounded-full bg-[#f59e0b]/25 blur-[140px]"></div>
-        <div className="absolute bottom-[20%] right-[10%] w-72 h-72 rounded-full bg-[#fbbf24]/30 blur-[140px]"></div>
+        <div className="absolute top-[20%] left-[10%] w-72 h-72 rounded-full bg-[#2d6a4f]/30 blur-[140px]"></div>
+        <div className="absolute bottom-[20%] right-[10%] w-72 h-72 rounded-full bg-[#52b788]/20 blur-[140px]"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fcf6e8] border border-[#b48c3c] shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#b45309]" />
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#78350f]">
-              INTERACTIVE SANCTUARY
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#112d20] border border-[#52b788]/60 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-[#74c69d]" />
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#d8f3dc]">
+              INTERACTIVE CHILL SANCTUARY
             </span>
           </div>
 
-          <h2 className="font-serif font-black text-4xl sm:text-6xl text-[#1c1305] tracking-tight uppercase">
-            Curiosity & Opportunity <span className="text-[#b45309]">Lounge</span>
+          <h2 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tight uppercase">
+            The Chill Toad <span className="text-[#74c69d]">Lounge</span>
           </h2>
-          <p className="font-serif italic text-base sm:text-lg text-[#78350f] font-semibold max-w-2xl mx-auto">
-            Tap the Golden Cashcate Medallion to unleash market sparks, unlock timeless ranks, and simulate your $cashcate curiosity potential!
+          <p className="font-sans text-base sm:text-lg text-[#b7e4c7] font-medium max-w-2xl mx-auto">
+            Tap the sacred Lily Pad to unleash serene vibes, upgrade your honorary Marsh Rank, and calculate your ultimate zero-stress $chilltoad bag!
           </p>
         </div>
 
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto items-stretch">
           
-          {/* Interactive Tap & Lore Spark Generator */}
-          <div className="lg:col-span-6 parchment-card p-6 sm:p-8 rounded-sm border-2 border-[#b48c3c] shadow-xl flex flex-col justify-between relative overflow-hidden text-[#1c1305]">
+          {/* Interactive Tap & Vibe Generator */}
+          <div className="lg:col-span-6 pond-card p-6 sm:p-8 rounded-2xl border-2 border-[#52b788] shadow-xl flex flex-col justify-between relative overflow-hidden text-white">
             
-            {/* Top pushpins on corners */}
-            <div className="absolute top-3 left-3 w-3.5 h-3.5 rounded-full bg-[#1c1305] border-2 border-[#78350f]"></div>
-            <div className="absolute top-3 right-3 w-3.5 h-3.5 rounded-full bg-[#1c1305] border-2 border-[#78350f]"></div>
-
             <div className="space-y-6">
-              <div className="flex justify-between items-center border-b border-[#cbb07a] pb-3">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#faedd0] text-[#78350f] text-xs font-mono font-bold border border-[#b48c3c]">
-                  <Award className="w-3.5 h-3.5 text-[#b45309]" /> Curiosity Resonator
+              <div className="flex justify-between items-center border-b border-[#2d6a4f] pb-3">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#163824] text-[#74c69d] text-xs font-mono font-bold border border-[#52b788]">
+                  <Award className="w-3.5 h-3.5" /> Chill-O-Meter
                 </span>
-                <span className="text-xs font-mono font-bold text-[#92400e] uppercase tracking-wider">
-                  Live Market Sparks
+                <span className="text-xs font-mono font-bold text-[#b7e4c7] uppercase tracking-wider">
+                  Live Pond Ripples
                 </span>
               </div>
 
               <div className="text-center space-y-2">
-                <h3 className="font-serif text-sm sm:text-base font-bold text-[#78350f]">
-                  Golden Curiosity Sparks Generated
+                <h3 className="font-display text-sm sm:text-base font-bold text-[#b7e4c7]">
+                  Serene Toad Vibes Generated
                 </h3>
-                <div className="font-serif font-black text-5xl sm:text-6xl text-[#b45309] tabular-nums drop-shadow-sm">
-                  {sparkCount.toLocaleString()}
+                <div className="font-display font-black text-5xl sm:text-6xl text-[#74c69d] tabular-nums drop-shadow-sm">
+                  {vibeCount.toLocaleString()}
                 </div>
-                <div className="inline-block px-4 py-1.5 rounded bg-[#fef08a] border border-[#eab308] shadow-sm">
-                  <span className="text-xs font-mono font-bold text-[#1c1305]">
-                    Honorary Rank: <span className="text-[#b45309] font-black">{curiosityRank}</span>
+                <div className="inline-block px-4 py-1.5 rounded-full bg-[#112d20] border border-[#52b788] shadow-sm">
+                  <span className="text-xs font-mono font-bold text-white">
+                    Honorary Rank: <span className="text-[#74c69d] font-black">{chillRank}</span>
                   </span>
                 </div>
               </div>
 
-              {/* Clicker Coin Area */}
-              <div className="relative h-64 bg-[#faebd0]/80 rounded-sm border-2 border-dashed border-[#b48c3c] flex items-center justify-center group overflow-hidden">
+              {/* Clicker Lilypad Area */}
+              <div className="relative h-64 bg-[#0c261b] rounded-xl border-2 border-dashed border-[#52b788]/60 flex items-center justify-center group overflow-hidden">
                 
-                <button
-                  onClick={handleSparkTap}
-                  id="spark-cashcate-btn"
-                  className="relative z-10 w-44 h-44 rounded-full p-2 bg-gradient-to-tr from-[#92400e] via-[#f59e0b] to-[#fef08a] shadow-[0_0_35px_rgba(217,119,6,0.45)] focus:outline-none group-hover:scale-105 active:scale-95 transition-all duration-150 cursor-pointer border-none"
-                >
-                  <img
-                    src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-08-07_20-34-51.jpg?v=1786124116"
-                    alt="Cashcate Spark Clicker"
-                    className="w-full h-full object-cover rounded-full"
-                  />
-                  <div className="absolute inset-0 bg-[#eab308]/10 group-hover:bg-transparent rounded-full transition-colors"></div>
-                </button>
-
-                <span className="absolute bottom-3 text-xs font-mono font-bold text-[#78350f] select-none text-center px-4">
-                  🪙 TAP CASHCATE TO SPARK GOLDEN MARKET CURIOSITY!
-                </span>
-
-                {/* Floating Lore Sparks */}
+                {/* Floating Vibes on click */}
                 <AnimatePresence>
-                  {floatingSparks.map((spark) => (
+                  {floatingVibes.map((item) => (
                     <motion.div
-                      key={spark.id}
-                      initial={{ opacity: 1, y: spark.y, x: spark.x, scale: 0.8 }}
-                      animate={{ opacity: 0, y: spark.y - 120, scale: 1.15, x: spark.x + (Math.random() * 40 - 20) }}
+                      key={item.id}
+                      initial={{ opacity: 1, y: item.y, x: item.x, scale: 0.8 }}
+                      animate={{ opacity: 0, y: item.y - 120, x: item.x + (Math.random() * 40 - 20), scale: 1.2 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 1.2, ease: "easeOut" }}
-                      className="absolute z-20 flex flex-col items-center pointer-events-none"
+                      transition={{ duration: 1.5, ease: "easeOut" }}
+                      className="absolute pointer-events-none z-30 font-display font-black text-[#74c69d] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] whitespace-nowrap"
+                      style={{ fontSize: `${item.size}px` }}
                     >
-                      <div 
-                        style={{ height: `${spark.size}px`, width: `${spark.size}px` }}
-                        className="rounded-full bg-gradient-to-tr from-[#d97706] to-[#fde047] shadow-[0_0_15px_rgba(234,179,8,0.8)] opacity-80"
-                      ></div>
-                      <span className="mt-2 text-[10px] font-mono font-black text-[#1c1305] bg-[#fef08a] px-2.5 py-1 rounded shadow-md uppercase tracking-tight select-none border border-[#ca8a04]">
-                        {spark.text}
-                      </span>
+                      {item.text}
                     </motion.div>
                   ))}
                 </AnimatePresence>
-              </div>
 
+                {/* Big Lilypad Tap Button */}
+                <button
+                  onClick={handleVibeTap}
+                  className="relative z-20 w-44 h-44 rounded-full bg-gradient-to-tr from-[#163824] via-[#2d6a4f] to-[#52b788] border-4 border-[#74c69d] shadow-[0_0_40px_rgba(82,183,136,0.4)] flex flex-col items-center justify-center p-3 text-center cursor-pointer hover:scale-105 active:scale-95 transition-transform group"
+                  aria-label="Tap to generate chill toad vibes"
+                >
+                  <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-white/50 mb-1 shadow-md">
+                    <img
+                      src={CHILLTOAD_LOGO}
+                      alt="Just a chill Toad"
+                      className="w-full h-full object-cover group-hover:rotate-6 transition-transform"
+                    />
+                  </div>
+                  <span className="text-[11px] font-mono font-black text-[#081c15] bg-[#d8f3dc] px-2 py-0.5 rounded-full uppercase tracking-wider">
+                    TAP THE TOAD
+                  </span>
+                </button>
+              </div>
             </div>
 
-            <div className="pt-5 mt-5 border-t border-[#cbb07a] flex justify-between items-center text-xs font-mono text-[#78350f]">
-              <span className="font-semibold">
-                “Curiosity can turn the ordinary into the extraordinary.”
-              </span>
+            <div className="mt-6 pt-4 border-t border-[#2d6a4f] flex items-center justify-between text-xs font-mono text-[#b7e4c7]">
+              <span>Tap target: 100 vibes for Sage Rank</span>
               <button
                 onClick={() => {
-                  setSparkCount(0);
-                  setCuriosityRank("Dawn Market Wanderer");
+                  setVibeCount(0);
+                  setChillRank("Tadpole Chiller");
                 }}
-                className="hover:text-[#1c1305] font-bold flex items-center gap-1 cursor-pointer border-none bg-transparent"
+                className="hover:text-white flex items-center gap-1 underline cursor-pointer bg-transparent border-none"
               >
                 <RefreshCw className="w-3 h-3" /> Reset
               </button>
@@ -197,94 +187,96 @@ export default function InteractiveApp() {
 
           </div>
 
-          {/* Golden Opportunity Calculator */}
-          <div className="lg:col-span-6 parchment-card p-6 sm:p-8 rounded-sm border-2 border-[#b48c3c] shadow-xl flex flex-col justify-between text-[#1c1305] relative">
+          {/* $chilltoad Serenity Bag Calculator */}
+          <div className="lg:col-span-6 pond-card p-6 sm:p-8 rounded-2xl border-2 border-[#52b788] shadow-xl flex flex-col justify-between text-white">
             
-            {/* Pushpins */}
-            <div className="absolute top-3 left-3 w-3.5 h-3.5 rounded-full bg-[#1c1305] border-2 border-[#78350f]"></div>
-            <div className="absolute top-3 right-3 w-3.5 h-3.5 rounded-full bg-[#1c1305] border-2 border-[#78350f]"></div>
-
             <div className="space-y-6">
-              <div className="flex justify-between items-center border-b border-[#cbb07a] pb-3">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#faedd0] text-[#78350f] text-xs font-mono font-bold border border-[#b48c3c]">
-                  <Calculator className="w-3.5 h-3.5 text-[#b45309]" /> Opportunity Simulator
+              <div className="flex justify-between items-center border-b border-[#2d6a4f] pb-3">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#163824] text-[#74c69d] text-xs font-mono font-bold border border-[#52b788]">
+                  <Waves className="w-3.5 h-3.5" /> Serenity Calculator
                 </span>
-                <span className="text-xs font-mono font-bold text-[#92400e] uppercase tracking-wider">
-                  $cashcate Ledger
+                <span className="text-xs font-mono font-bold text-[#b7e4c7]">
+                  SOL to $CHILLTOAD
                 </span>
               </div>
 
-              <div className="space-y-2">
-                <h3 className="font-serif text-lg font-black text-[#1c1305]">
-                  Simulate Your Market Conviction
-                </h3>
-                <p className="text-xs font-serif text-[#78350f] leading-relaxed font-semibold">
-                  Adjust the SOL slider to calculate estimated $cashcate tokens, serenity index, and golden opportunity multiplier!
-                </p>
-              </div>
-
-              {/* Slider */}
-              <div className="bg-[#faebd0]/90 p-5 rounded border border-[#cbb07a] space-y-4">
+              <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-xs font-mono font-bold text-[#78350f]">SIMULATED SOL ALLOCATION</span>
-                  <span className="font-serif font-black text-2xl text-[#b45309]">{solInvestment} SOL</span>
+                  <label className="font-display font-bold text-sm text-[#d8f3dc]">
+                    Choose Your SOL Commitment:
+                  </label>
+                  <span className="font-mono font-black text-lg text-[#74c69d] bg-[#112d20] px-3 py-1 rounded-lg border border-[#2d6a4f]">
+                    {solInvestment} SOL
+                  </span>
                 </div>
+
                 <input
                   type="range"
                   min="0.1"
-                  max="100"
+                  max="50"
                   step="0.1"
                   value={solInvestment}
                   onChange={(e) => setSolInvestment(parseFloat(e.target.value))}
-                  className="w-full h-2.5 bg-[#e5d2a8] rounded-lg appearance-none cursor-pointer accent-[#b45309]"
+                  className="w-full h-3 bg-[#112d20] rounded-lg appearance-none cursor-pointer accent-[#52b788]"
                 />
-                <div className="flex justify-between text-[10px] text-[#78350f] font-bold font-mono">
-                  <span>0.1 SOL (Wanderer)</span>
-                  <span>50 SOL (Windowsill)</span>
-                  <span>100 SOL (Pioneer)</span>
+
+                <div className="flex justify-between text-[11px] font-mono text-[#b7e4c7]">
+                  <span>0.1 SOL (Casual Chill)</span>
+                  <span>10 SOL (Marsh Guru)</span>
+                  <span>50 SOL (Lilypad Legend)</span>
                 </div>
               </div>
 
-              {/* Stats Metrics Grid */}
-              <div className="grid grid-cols-2 gap-4">
-                
-                <div className="p-4 rounded bg-[#fcf6e8] border border-[#cbb07a] text-center space-y-1 shadow-sm">
-                  <span className="block text-[10px] font-bold text-[#78350f] uppercase tracking-wider font-mono">$cashcate TOKENS</span>
-                  <span className="font-serif font-black text-xl sm:text-2xl text-[#b45309]">{stats.cashcateTokens.toLocaleString()}</span>
+              {/* Calculated Outputs */}
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <div className="p-4 rounded-xl bg-[#0b2419] border border-[#2d6a4f]">
+                  <span className="text-[10px] font-mono text-[#74c69d] uppercase font-bold block">
+                    Estimated $chilltoad Bag
+                  </span>
+                  <span className="font-display font-black text-xl sm:text-2xl text-white">
+                    {stats.chillTokens.toLocaleString()}
+                  </span>
                 </div>
 
-                <div className="p-4 rounded bg-[#fcf6e8] border border-[#cbb07a] text-center space-y-1 shadow-sm">
-                  <span className="block text-[10px] font-bold text-[#78350f] uppercase tracking-wider font-mono">CURIOSITY INDEX</span>
-                  <span className="font-serif font-black text-xl sm:text-2xl text-[#d97706]">{stats.curiosityIndex}% 📜</span>
+                <div className="p-4 rounded-xl bg-[#0b2419] border border-[#2d6a4f]">
+                  <span className="text-[10px] font-mono text-[#74c69d] uppercase font-bold block">
+                    Peace of Mind Score
+                  </span>
+                  <span className="font-display font-black text-xl sm:text-2xl text-[#74c69d]">
+                    {stats.serenityScore}%
+                  </span>
                 </div>
 
-                <div className="p-4 rounded bg-[#fcf6e8] border border-[#cbb07a] text-center space-y-1 shadow-sm">
-                  <span className="block text-[10px] font-bold text-[#78350f] uppercase tracking-wider font-mono">COMPOSURE RATING</span>
-                  <span className="font-serif font-black text-xl sm:text-2xl text-[#1c1305]">100% Serene</span>
+                <div className="p-4 rounded-xl bg-[#0b2419] border border-[#2d6a4f]">
+                  <span className="text-[10px] font-mono text-[#74c69d] uppercase font-bold block">
+                    Stress-Free Hours Unlocked
+                  </span>
+                  <span className="font-display font-black text-xl sm:text-2xl text-white">
+                    {stats.stressFreeHours.toLocaleString()} hrs
+                  </span>
                 </div>
 
-                <div className="p-4 rounded bg-[#fcf6e8] border border-[#cbb07a] text-center space-y-1 shadow-sm">
-                  <span className="block text-[10px] font-bold text-[#78350f] uppercase tracking-wider font-mono">OPPORTUNITY POWER</span>
-                  <span className="font-serif font-black text-xl sm:text-2xl text-[#b45309]">{stats.timelessMultiplier}x ⚡</span>
+                <div className="p-4 rounded-xl bg-[#0b2419] border border-[#2d6a4f]">
+                  <span className="text-[10px] font-mono text-[#74c69d] uppercase font-bold block">
+                    Zen Multiplier
+                  </span>
+                  <span className="font-display font-black text-xl sm:text-2xl text-[#74c69d]">
+                    {stats.chillMultiplier}x
+                  </span>
                 </div>
-
               </div>
-
             </div>
 
-            <div className="pt-5 mt-5 border-t border-[#cbb07a] flex flex-col sm:flex-row items-center justify-between gap-4">
-              <span className="text-xs text-[#78350f] font-serif font-semibold text-center sm:text-left">
-                Join the Cashcate sanctuary on Solana!
-              </span>
-              <button
-                onClick={() => {
-                  const element = document.getElementById("tokenomics");
-                  if (element) element.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#261a08] hover:bg-[#38260d] text-[#fef08a] font-mono font-bold text-xs shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-[#785317]"
+            <div className="mt-6 pt-4 border-t border-[#2d6a4f]">
+              <a
+                href={TELEGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3.5 rounded-xl bg-[#0088cc] hover:bg-[#0099e6] text-white font-display font-black text-sm flex items-center justify-center gap-2 shadow-lg transition-all"
               >
-                <Coins className="w-4 h-4 text-[#facc15]" /> View Golden Ledger
-              </button>
+                <Send className="w-4 h-4" />
+                <span>Join Official Telegram & Vibe with the Pond</span>
+              </a>
             </div>
 
           </div>

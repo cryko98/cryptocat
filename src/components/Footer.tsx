@@ -1,6 +1,6 @@
 import React from "react";
-import { ArrowUpRight, Sparkles, TrendingUp, BookOpen, Compass } from "lucide-react";
-import { DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL, RAYDIUM_URL } from "../constants";
+import { ArrowUpRight, Sparkles, TrendingUp, BookOpen, Compass, Send, Leaf } from "lucide-react";
+import { CHILLTOAD_NAME, CHILLTOAD_TICKER, CHILLTOAD_LOGO, TELEGRAM_URL, DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL, RAYDIUM_URL } from "../constants";
 
 export default function Footer() {
   const handleScrollToTop = () => {
@@ -8,103 +8,169 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#1c1305] text-[#fef08a] py-16 border-t-2 border-[#785317] relative selection:bg-[#fde047] selection:text-[#1c1305]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="relative bg-[#05140e] text-[#d8f3dc] pt-16 pb-12 border-t-2 border-[#2d6a4f] overflow-hidden">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
-        {/* Main Footer Block */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pb-12 border-b border-[#785317]/60">
+        {/* Main Footer Row */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#1b4332]">
           
-          {/* Logo & Description */}
-          <div className="md:col-span-6 space-y-4 text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start space-x-3 cursor-pointer group" onClick={handleScrollToTop}>
-              <div className="w-11 h-11 rounded-full overflow-hidden border-2 border-[#eab308] shadow-[0_0_15px_rgba(234,179,8,0.45)] bg-[#2e1f0a]">
+          {/* Logo & Bio */}
+          <div className="md:col-span-5 space-y-4">
+            <div className="flex items-center space-x-3">
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#74c69d] shadow-md bg-[#081c15]">
                 <img
-                  src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-08-07_20-34-51.jpg?v=1786124116"
-                  alt="Cashcate Coin"
+                  src={CHILLTOAD_LOGO}
+                  alt="Just a chill Toad Logo"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="flex flex-col">
-                <span className="font-serif font-black text-2xl tracking-tight text-white uppercase italic">
-                  Cash<span className="text-[#facc15]">cate</span>
+              <div>
+                <span className="font-display font-black text-2xl text-white tracking-tight">
+                  Just a chill <span className="text-[#74c69d]">Toad</span>
                 </span>
-                <span className="text-[10px] font-mono text-[#fde047]/80 font-bold -mt-1 tracking-widest">
-                  $cashcate • SOLANA
-                </span>
+                <div className="text-[10px] font-mono text-[#74c69d] font-bold">
+                  {CHILLTOAD_TICKER} • POND LORE ON SOLANA
+                </div>
               </div>
             </div>
-            <p className="text-sm text-[#fde047]/90 max-w-md font-serif font-semibold leading-relaxed">
-              “Curiosity Creates Opportunity.” A golden figure on the windowsill sees what others miss. The timeless market cat on Solana with 0% tax and 100% community composure. 📜🪙🐾
+
+            <p className="text-sm text-[#b7e4c7] max-w-md font-sans leading-relaxed">
+              “Why stress when the lily pad is wide?” Unbothered, relaxed, and enjoying the clear waters of Solana with 0% tax and 100% serene community vibes. 🐸🪷🍃
             </p>
+
+            <div className="pt-2">
+              <a
+                href={TELEGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0088cc] hover:bg-[#0099e6] text-white font-mono font-bold text-xs shadow-md transition-all"
+              >
+                <Send className="w-3.5 h-3.5" />
+                <span>Join Official Telegram: t.me/chilltoad</span>
+              </a>
+            </div>
           </div>
 
-          {/* External Ecosystem Links */}
-          <div className="md:col-span-6 flex flex-wrap justify-center md:justify-end gap-3.5 relative">
-            
-            <a
-              href={DEXSCREENER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              id="chart-footer"
-              className="px-4 py-2.5 rounded-xl bg-[#2e1f0a] hover:bg-[#3d2a0d] text-[#fde047] font-mono font-bold text-xs transition-all flex items-center gap-2 border border-[#785317] shadow-md cursor-pointer"
-            >
-              <TrendingUp className="w-4 h-4 text-[#facc15]" />
-              DexScreener
-            </a>
+          {/* Quick Ecosystem Links */}
+          <div className="md:col-span-3 space-y-3 font-mono text-xs">
+            <span className="text-[#74c69d] font-black uppercase tracking-wider block">
+              POND ECOSYSTEM
+            </span>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href={TELEGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors flex items-center gap-1.5 text-[#70d6ff]"
+                >
+                  <Send className="w-3.5 h-3.5" /> Telegram Community
+                </a>
+              </li>
+              <li>
+                <a
+                  href={DEXSCREENER_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors flex items-center gap-1.5"
+                >
+                  <TrendingUp className="w-3.5 h-3.5 text-[#74c69d]" /> DexScreener Chart
+                </a>
+              </li>
+              <li>
+                <a
+                  href={PUMPFUN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors flex items-center gap-1.5"
+                >
+                  <span>💊</span> Pump.fun Portal
+                </a>
+              </li>
+              <li>
+                <a
+                  href={RAYDIUM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors flex items-center gap-1.5"
+                >
+                  <span>💧</span> Raydium Swap
+                </a>
+              </li>
+            </ul>
+          </div>
 
-            <a
-              href={PUMPFUN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              id="pumpfun-footer"
-              className="px-4 py-2.5 rounded-xl bg-[#1c2912] hover:bg-[#243816] text-[#86efac] font-mono font-bold text-xs transition-all flex items-center gap-2 border border-[#3f6212] shadow-md cursor-pointer"
-            >
-              <span>💊</span>
-              Pump.fun
-            </a>
-
-            <a
-              href={SOLSCAN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              id="solscan-footer"
-              className="px-4 py-2.5 rounded-xl bg-[#2e1f0a] hover:bg-[#3d2a0d] text-[#fde047] font-mono font-bold text-xs transition-all flex items-center gap-2 border border-[#785317] shadow-md cursor-pointer"
-            >
-              <ArrowUpRight className="w-4 h-4 text-[#facc15]" />
-              Solscan
-            </a>
-
-            <a
-              href={RAYDIUM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              id="raydium-footer"
-              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#eab308] hover:from-[#b45309] hover:to-[#d97706] text-[#1c1305] font-display font-black text-xs transition-all flex items-center gap-1.5 shadow-lg border-none"
-            >
-              Raydium Swap <ArrowUpRight className="w-4 h-4 stroke-[3]" />
-            </a>
-
+          {/* Pond Navigation */}
+          <div className="md:col-span-4 space-y-3 font-mono text-xs">
+            <span className="text-[#74c69d] font-black uppercase tracking-wider block">
+              MARSH SANCTUARY
+            </span>
+            <div className="grid grid-cols-2 gap-2 text-[#b7e4c7]">
+              <button
+                onClick={() => {
+                  const el = document.getElementById("pond-lore");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="text-left hover:text-white transition-colors bg-transparent border-none cursor-pointer"
+              >
+                • Pond Lore
+              </button>
+              <button
+                onClick={() => {
+                  const el = document.getElementById("chronicles");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="text-left hover:text-white transition-colors bg-transparent border-none cursor-pointer"
+              >
+                • Toad Chronicles
+              </button>
+              <button
+                onClick={() => {
+                  const el = document.getElementById("chill-lounge");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="text-left hover:text-white transition-colors bg-transparent border-none cursor-pointer"
+              >
+                • Chill Lounge
+              </button>
+              <button
+                onClick={() => {
+                  const el = document.getElementById("tokenomics");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="text-left hover:text-white transition-colors bg-transparent border-none cursor-pointer"
+              >
+                • Pond Ledger
+              </button>
+              <button
+                onClick={() => {
+                  const el = document.getElementById("roadmap");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="text-left hover:text-white transition-colors bg-transparent border-none cursor-pointer"
+              >
+                • Lilypad Roadmap
+              </button>
+              <button
+                onClick={handleScrollToTop}
+                className="text-left hover:text-[#74c69d] text-white font-bold transition-colors bg-transparent border-none cursor-pointer"
+              >
+                ↑ Back to Top
+              </button>
+            </div>
           </div>
 
         </div>
 
-        {/* Disclaimer Block */}
-        <div className="pt-12 space-y-6 text-center md:text-left">
-          <div className="space-y-2">
-            <span className="text-[10px] font-mono font-bold text-[#facc15] uppercase tracking-widest block">
-              ⚠️ CASHCATE ($CASHCATE) DISCLAIMER
-            </span>
-            <p className="text-[11px] leading-relaxed text-[#fde047]/80 font-serif font-semibold">
-              $cashcate is a community memecoin on Solana inspired by market lore and timeless feline curiosity. $cashcate has zero intrinsic financial value or expectation of financial return. Cryptocurrencies are speculative and subject to market volatility. Always do your own research (DYOR) and enjoy the market chronicles responsibly.
-            </p>
-          </div>
+        {/* Bottom Disclaimer */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-[#b7e4c7]/70">
+          <p className="text-center sm:text-left">
+            © {new Date().getFullYear()} {CHILLTOAD_NAME} ({CHILLTOAD_TICKER}). All rights reserved in the lily pad marsh.
+          </p>
 
-          <div className="flex flex-col sm:flex-row justify-between items-center pt-6 text-[11px] text-[#fde047]/80 font-mono font-bold gap-4">
-            <span>© 2026 Cashcate ($cashcate). “Curiosity Creates Opportunity.” Inscribed on Solana.</span>
-            <button onClick={handleScrollToTop} className="hover:text-white transition-colors cursor-pointer font-mono border-none bg-transparent">
-              Back to Top ↑
-            </button>
-          </div>
+          <p className="text-[11px] text-center sm:text-right max-w-md">
+            Disclaimer: $chilltoad is a community meme token created for relaxation, entertainment, and unbothered vibes. No financial guarantees.
+          </p>
         </div>
 
       </div>

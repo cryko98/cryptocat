@@ -1,359 +1,323 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import { Sparkles, TrendingUp, BookOpen, Volume2, VolumeX, Compass, Heart, ExternalLink } from "lucide-react";
-import { DEXSCREENER_URL, PUMPFUN_URL, SOLSCAN_URL, RAYDIUM_URL } from "../constants";
+import { Sparkles, TrendingUp, Volume2, VolumeX, Send, Heart, ExternalLink, Leaf, Coffee, Smile } from "lucide-react";
+import { CHILLTOAD_NAME, CHILLTOAD_TICKER, CHILLTOAD_LOGO, TELEGRAM_URL, DEXSCREENER_URL, PUMPFUN_URL, RAYDIUM_URL } from "../constants";
 
 export default function Hero() {
   const [soundEnabled, setSoundEnabled] = useState(false);
-  const [likedCount, setLikedCount] = useState(742);
+  const [likedCount, setLikedCount] = useState(42069);
   const [hasLiked, setHasLiked] = useState(false);
+  const [currentQuoteIndex, setCurrentQuoteIndex] = useState(0);
+
+  const chillWisdoms = [
+    "“Why stress when the lily pad is wide and the water is calm?”",
+    "“Markets go up, markets go down, but a chill toad never loses its vibe.”",
+    "“Breathe in pond mist, exhale red candles. Zero drama, pure composure.”",
+    "“Sitting still is an art form. The best trade is often just vibing.”",
+    "“No hurry, no worry. Nature never rushes, yet everything gets done.”"
+  ];
+
+  // Gentle Audio Synthesizer for Serene Pond Ambience & Calm Chime
+  useEffect(() => {
+    if (!soundEnabled) return;
+
+    let audioCtx: AudioContext | null = null;
+    let timer: NodeJS.Timeout | null = null;
+
+    try {
+      const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      audioCtx = new AudioContextClass();
+
+      const playPondRipple = () => {
+        if (!audioCtx || audioCtx.state === "closed") return;
+        const now = audioCtx.currentTime;
+
+        // Water droplet sine oscillator
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        // Pleasant pentatonic water droplet frequency
+        const freqs = [329.63, 392.00, 440.00, 523.25, 659.25];
+        const randomFreq = freqs[Math.floor(Math.random() * freqs.length)];
+
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(randomFreq, now);
+        osc.frequency.exponentialRampToValueAtTime(randomFreq * 1.5, now + 0.15);
+
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(0.04, now + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.5);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.6);
+      };
+
+      // Play soft ambient droplet every 2.5 seconds
+      timer = setInterval(playPondRipple, 2500);
+      playPondRipple();
+    } catch {
+      // Audio context fallback
+    }
+
+    return () => {
+      if (timer) clearInterval(timer);
+      if (audioCtx && audioCtx.state !== "closed") {
+        audioCtx.close();
+      }
+    };
+  }, [soundEnabled]);
 
   const toggleSound = () => {
     setSoundEnabled(!soundEnabled);
-    if (!soundEnabled) {
-      // Play a soft serene bell tone using web audio API
-      try {
-        const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(432, audioCtx.currentTime); // 432 Hz serene golden frequency
-        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.5);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 1.5);
-      } catch (e) {
-        // audio context fallback
-      }
-    }
   };
 
   const handleLike = () => {
     if (!hasLiked) {
       setLikedCount((prev) => prev + 1);
       setHasLiked(true);
+    } else {
+      setLikedCount((prev) => prev - 1);
+      setHasLiked(false);
     }
   };
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+  const nextQuote = () => {
+    setCurrentQuoteIndex((prev) => (prev + 1) % chillWisdoms.length);
   };
 
   return (
-    <section
-      id="hero"
-      className="relative min-h-[92vh] bg-[#f8edd1] text-[#1c1305] overflow-hidden border-b-2 border-[#b48c3c]/50 pt-8 pb-16 lg:py-20 vintage-ledger-grid selection:bg-[#fde047] selection:text-[#1c1305]"
-    >
-      {/* Golden Aura ambient glows */}
-      <div className="absolute inset-0 pointer-events-none select-none z-0">
-        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[550px] sm:w-[750px] h-[550px] sm:h-[750px] bg-[#fbbf24] rounded-full blur-[140px] opacity-45 animate-pulse-subtle"></div>
-        <div className="absolute top-[5%] right-[10%] w-[350px] h-[350px] bg-[#f59e0b] rounded-full blur-[120px] opacity-35"></div>
-        <div className="absolute bottom-[10%] left-[5%] w-[380px] h-[380px] bg-[#d97706] rounded-full blur-[130px] opacity-30"></div>
-      </div>
-
-      {/* Decorative 4-pointed golden sparkle stars as in original artwork */}
-      <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
-        <span className="absolute top-[12%] left-[18%] text-[#d97706] text-xl animate-sparkle">✦</span>
-        <span className="absolute top-[24%] right-[22%] text-[#eab308] text-2xl animate-sparkle" style={{ animationDelay: "1s" }}>✦</span>
-        <span className="absolute bottom-[28%] left-[28%] text-[#b45309] text-base animate-sparkle" style={{ animationDelay: "2s" }}>✦</span>
-        <span className="absolute bottom-[18%] right-[15%] text-[#ca8a04] text-xl animate-sparkle" style={{ animationDelay: "1.5s" }}>✦</span>
-        <span className="absolute top-[48%] left-[12%] text-[#d97706] text-sm animate-sparkle" style={{ animationDelay: "0.5s" }}>✦</span>
-        <span className="absolute top-[52%] right-[10%] text-[#eab308] text-lg animate-sparkle" style={{ animationDelay: "2.5s" }}>✦</span>
+    <section className="relative pt-10 pb-20 sm:pt-14 sm:pb-28 overflow-hidden text-white">
+      {/* Ambient Pond Mist & Glow */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute top-[10%] left-[15%] w-[500px] h-[500px] bg-[#2d6a4f]/25 rounded-full blur-[150px]"></div>
+        <div className="absolute top-[30%] right-[10%] w-[550px] h-[550px] bg-[#52b788]/20 rounded-full blur-[160px]"></div>
+        <div className="absolute bottom-[5%] left-[30%] w-[400px] h-[400px] bg-[#74c69d]/15 rounded-full blur-[140px]"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Main Title Badge Header */}
-        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12 space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fae8b8] border border-[#b48c3c] shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#d97706] animate-ping"></span>
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#78350f]">
-              📜 HISTORIC MARKET SANCTUARY • SOLANA
+        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12 space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#163824] border border-[#52b788]/50 shadow-[0_0_15px_rgba(82,183,136,0.25)]">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#74c69d] animate-ping"></span>
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#d8f3dc]">
+              SOLANA’S COZIEST TOAD • EST. POND WATERS
             </span>
           </div>
 
-          <h1 className="font-serif font-black text-4xl sm:text-6xl lg:text-7xl text-[#1c1305] tracking-tight uppercase leading-[1.08]">
-            Cash<span className="text-[#b45309]">cate</span>
+          <h1 className="font-display font-black text-5xl sm:text-7xl md:text-8xl tracking-tight text-white drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)]">
+            Just a chill <span className="text-[#74c69d] animate-pulse">Toad</span>
           </h1>
 
-          <p className="font-serif italic text-lg sm:text-2xl text-[#78350f] font-semibold max-w-2xl mx-auto">
-            “A Cat Walked Into the Market — Curiosity Sparked a Legend”
+          <p className="font-sans font-medium text-lg sm:text-2xl text-[#b7e4c7] max-w-2xl mx-auto leading-relaxed">
+            “A Toad Sat on a Lily Pad — Unbothered, Relaxed, and Vibing on Solana”
           </p>
 
+          {/* Interactive Chill Controls */}
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <button
               onClick={toggleSound}
-              className="px-3.5 py-1.5 rounded-full bg-[#fdf3d7] hover:bg-[#fae8b8] border border-[#b48c3c] text-xs font-mono font-bold text-[#78350f] transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
+              className="px-4 py-2 rounded-full bg-[#112d20] hover:bg-[#163824] border border-[#52b788]/60 text-xs font-mono font-bold text-[#d8f3dc] transition-all flex items-center gap-2 shadow-sm cursor-pointer hover:border-[#74c69d]"
             >
-              {soundEnabled ? <Volume2 className="w-3.5 h-3.5 text-[#b45309]" /> : <VolumeX className="w-3.5 h-3.5 text-[#92400e]" />}
-              <span>{soundEnabled ? "432 Hz Resonance On" : "Enable Serene Chime"}</span>
+              {soundEnabled ? (
+                <>
+                  <Volume2 className="w-4 h-4 text-[#74c69d] animate-bounce" />
+                  <span>Pond Sound: Playing (Zen Drops)</span>
+                </>
+              ) : (
+                <>
+                  <VolumeX className="w-4 h-4 text-[#74c69d]" />
+                  <span>Sound: Off (Click for Calm Drops)</span>
+                </>
+              )}
             </button>
 
             <button
               onClick={handleLike}
-              className="px-3.5 py-1.5 rounded-full bg-[#fdf3d7] hover:bg-[#fae8b8] border border-[#b48c3c] text-xs font-mono font-bold text-[#78350f] transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
+              className={`px-4 py-2 rounded-full border text-xs font-mono font-bold transition-all flex items-center gap-2 shadow-sm cursor-pointer ${
+                hasLiked
+                  ? "bg-[#52b788] text-[#081c15] border-[#74c69d] shadow-[0_0_15px_rgba(116,198,157,0.4)]"
+                  : "bg-[#112d20] hover:bg-[#163824] text-[#d8f3dc] border-[#52b788]/60"
+              }`}
             >
-              <Heart className={`w-3.5 h-3.5 ${hasLiked ? "fill-[#b45309] text-[#b45309]" : "text-[#92400e]"}`} />
-              <span>{likedCount} Paws of Respect</span>
+              <Heart className={`w-4 h-4 ${hasLiked ? "fill-[#081c15] text-[#081c15]" : "text-[#74c69d]"}`} />
+              <span>{likedCount.toLocaleString()} Webbed Toes of Respect</span>
             </button>
 
+            {/* Prominent Telegram pill */}
             <a
-              href={DEXSCREENER_URL}
+              href={TELEGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-3.5 py-1.5 rounded-full bg-[#fdf3d7] hover:bg-[#fae8b8] border border-[#b48c3c] text-xs font-mono font-bold text-[#78350f] transition-all flex items-center gap-1.5 shadow-sm"
+              className="px-4 py-2 rounded-full bg-[#0088cc]/30 hover:bg-[#0088cc]/50 border border-[#0088cc] text-xs font-mono font-bold text-[#70d6ff] hover:text-white transition-all flex items-center gap-2 shadow-sm"
             >
-              <TrendingUp className="w-3.5 h-3.5 text-[#b45309]" />
-              <span>DexScreener</span>
-            </a>
-
-            <a
-              href={PUMPFUN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3.5 py-1.5 rounded-full bg-[#1c2912] hover:bg-[#243816] border border-[#3f6212] text-[#86efac] text-xs font-mono font-bold transition-all flex items-center gap-1.5 shadow-sm"
-            >
-              <span>💊</span>
-              <span>Pump.fun</span>
+              <Send className="w-4 h-4 text-[#00a8ff]" />
+              <span>Telegram: t.me/chilltoad</span>
             </a>
           </div>
         </div>
 
-        {/* ------------------------------------------------------------- */}
-        {/* EXACT VISUAL RECREATION OF THE ATTACHED ARTWORK COMPOSITION   */}
-        {/* ------------------------------------------------------------- */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
-          {/* LEFT COLUMN: 2 Pinned Lore Clippings */}
-          <div className="lg:col-span-4 space-y-6">
-            
-            {/* Note 1: Market Lore • Est. Long Ago */}
-            <motion.div
-              initial={{ opacity: 0, x: -25 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="relative p-6 sm:p-7 rounded-sm bg-[#fcf6e8] border border-[#cbb07a] shadow-[0_10px_25px_rgba(58,38,7,0.18)] rotate-[-1deg] hover:rotate-0 transition-transform duration-300 group"
-            >
-              {/* Yellow Masking Tape on Top-Left Corner */}
-              <div className="absolute -top-3.5 -left-3.5 w-14 h-7 bg-[#fef08a]/90 border border-[#eab308]/60 rotate-[-25deg] shadow-sm pointer-events-none z-20"></div>
+        {/* HERO SHOWCASE CARD WITH OFFICIAL ARTWORK */}
+        <div className="max-w-5xl mx-auto mb-14">
+          <div className="pond-card p-6 sm:p-10 rounded-2xl border-2 border-[#52b788] relative overflow-hidden">
+            {/* Top decorative lily pads pins */}
+            <div className="absolute top-3 left-3 w-4 h-4 rounded-full bg-[#52b788] border border-[#d8f3dc] shadow-[0_0_10px_#52b788]"></div>
+            <div className="absolute top-3 right-3 w-4 h-4 rounded-full bg-[#52b788] border border-[#d8f3dc] shadow-[0_0_10px_#52b788]"></div>
 
-              {/* Pushpin at top left */}
-              <div className="absolute top-2 left-3 w-4 h-4 rounded-full bg-[#1c1305] border-2 border-[#78350f] shadow-[0_2px_4px_rgba(0,0,0,0.4)] z-20"></div>
-
-              <div className="space-y-3 pt-2">
-                <span className="inline-block text-[11px] font-mono font-bold text-[#78350f] uppercase tracking-wider border-b border-[#cbb07a] pb-1">
-                  MARKET LORE • EST. LONG AGO
-                </span>
-
-                <h3 className="font-serif font-black text-xl sm:text-2xl text-[#1c1305] leading-tight">
-                  A Cat Walked Into the Market— Curiosity Sparked a Legend
-                </h3>
-
-                <p className="font-serif text-sm sm:text-base text-[#38260d] leading-relaxed">
-                  They say a curious cat named <span className="highlight-yellow">CASHCATE</span> wandered into the market at dawn. No one knows where she came from, but she had a way of showing up at the right moment. From that day on, the legend of <span className="highlight-yellow">CASHCATE</span> began.
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Note 2: Founders' Note • Passed Down */}
-            <motion.div
-              initial={{ opacity: 0, x: -25 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative p-6 sm:p-7 rounded-sm bg-[#fcf6e8] border border-[#cbb07a] shadow-[0_10px_25px_rgba(58,38,7,0.18)] rotate-[1.2deg] hover:rotate-0 transition-transform duration-300 group"
-            >
-              {/* Yellow Masking Tape on Bottom-Left Corner */}
-              <div className="absolute -bottom-3.5 -left-3.5 w-14 h-7 bg-[#fef08a]/90 border border-[#eab308]/60 rotate-[28deg] shadow-sm pointer-events-none z-20"></div>
-
-              {/* Pushpin at top left */}
-              <div className="absolute top-2 left-3 w-4 h-4 rounded-full bg-[#1c1305] border-2 border-[#78350f] shadow-[0_2px_4px_rgba(0,0,0,0.4)] z-20"></div>
-
-              {/* Dot Grid accent as on the left margin */}
-              <div className="absolute left-2 top-10 flex flex-col gap-1.5 opacity-30 text-[#78350f] text-[8px] font-mono select-none">
-                <span>• • •</span>
-                <span>• • •</span>
-                <span>• • •</span>
-                <span>• • •</span>
-              </div>
-
-              <div className="space-y-3 pl-4 pt-1">
-                <span className="inline-block text-[11px] font-mono font-bold text-[#78350f] uppercase tracking-wider border-b border-[#cbb07a] pb-1">
-                  FOUNDERS' NOTE • PASSED DOWN
-                </span>
-
-                <h3 className="font-serif font-black text-xl sm:text-2xl text-[#1c1305] leading-tight">
-                  “Curiosity Creates Opportunity,” — That’s Why We Love <span className="highlight-yellow">CASHCATE</span>.
-                </h3>
-
-                <p className="font-serif text-sm sm:text-base text-[#38260d] leading-relaxed">
-                  Some called her lucky. Some called it fate. But those who saw her knew—she had a spark. <span className="highlight-yellow">CASHCATE</span> reminds us that curiosity can turn the ordinary into the extraordinary.
-                </p>
-              </div>
-            </motion.div>
-
-          </div>
-
-          {/* CENTER COLUMN: The Golden Coin Medallion with large engraved "C" & Golden Cat */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-center my-4 lg:my-0">
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.7 }}
-              className="relative group select-none"
-            >
-              {/* Outer Golden Ray Concentric Ring */}
-              <div className="absolute -inset-6 sm:-inset-8 rounded-full border-2 border-dashed border-[#d97706]/40 animate-[spin_60s_linear_infinite] pointer-events-none"></div>
-              <div className="absolute -inset-3 sm:-inset-4 rounded-full border border-[#f59e0b]/50 pointer-events-none"></div>
-
-              {/* Main Golden Embossed Coin Frame */}
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full p-2 bg-gradient-to-tr from-[#92400e] via-[#f59e0b] to-[#fef08a] shadow-[0_0_50px_rgba(217,119,6,0.5),0_15px_35px_rgba(0,0,0,0.35)] animate-gold-glow flex items-center justify-center overflow-hidden">
-                
-                {/* Golden Relief Ring */}
-                <div className="w-full h-full rounded-full border-4 border-[#b45309] bg-[#d97706] p-1.5 flex items-center justify-center overflow-hidden relative shadow-inner">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              
+              {/* Left: The Official Chill Toad Artwork */}
+              <div className="lg:col-span-6 flex flex-col items-center justify-center">
+                <div className="relative group">
+                  {/* Glowing halo behind avatar */}
+                  <div className="absolute -inset-4 bg-gradient-to-r from-[#2d6a4f] via-[#52b788] to-[#74c69d] rounded-3xl blur-2xl opacity-60 group-hover:opacity-90 transition duration-700 animate-chill-glow"></div>
                   
-                  {/* Outer Golden Coin Texture */}
-                  <img
-                    src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-08-07_20-34-51.jpg?v=1786124116"
-                    alt="Cashcate Golden Coin Medallion"
-                    className="w-full h-full object-cover rounded-full group-hover:scale-105 transition-transform duration-500"
-                  />
-
-                  {/* Gentle shimmering reflection */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none group-hover:opacity-40 transition-opacity"></div>
+                  {/* Main Portrait Frame */}
+                  <div className="relative w-72 sm:w-84 md:w-96 aspect-square rounded-2xl overflow-hidden border-4 border-[#74c69d] shadow-[0_20px_50px_rgba(0,0,0,0.8)] bg-[#081c15]">
+                    <img
+                      src={CHILLTOAD_LOGO}
+                      alt="Just a chill Toad Artwork"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    
+                    {/* Badge on avatar */}
+                    <div className="absolute bottom-3 left-3 right-3 bg-[#081c15]/85 backdrop-blur-md px-3.5 py-2 rounded-xl border border-[#52b788]/60 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#52b788] animate-ping"></span>
+                        <span className="text-xs font-mono font-black text-white">CHILL LEVEL: 100%</span>
+                      </div>
+                      <span className="text-xs font-mono font-bold text-[#74c69d]">{CHILLTOAD_TICKER}</span>
+                    </div>
+                  </div>
                 </div>
 
-              </div>
-
-              {/* Golden Coin Sub-Label Badge */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full bg-[#1c1305] text-[#fef08a] border-2 border-[#eab308] shadow-lg flex items-center gap-2 whitespace-nowrap">
-                <Sparkles className="w-3.5 h-3.5 text-[#facc15]" />
-                <span className="font-mono font-black text-xs uppercase tracking-widest">
-                  THE GOLDEN EMBLEM • $CASHCATE
-                </span>
-              </div>
-            </motion.div>
-          </div>
-
-          {/* RIGHT COLUMN: 2 Pinned Chronicle Clippings with Vintage Illustrations */}
-          <div className="lg:col-span-4 space-y-6">
-            
-            {/* Note 3: Windowsill Chronicle */}
-            <motion.div
-              initial={{ opacity: 0, x: 25 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative p-6 sm:p-7 rounded-sm bg-[#fcf6e8] border border-[#cbb07a] shadow-[0_10px_25px_rgba(58,38,7,0.18)] rotate-[0.8deg] hover:rotate-0 transition-transform duration-300 group"
-            >
-              {/* Pushpin at top right */}
-              <div className="absolute top-2 right-3 w-4 h-4 rounded-full bg-[#1c1305] border-2 border-[#78350f] shadow-[0_2px_4px_rgba(0,0,0,0.4)] z-20"></div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-start">
-                <div className="sm:col-span-8 space-y-2.5">
-                  <span className="inline-block text-[11px] font-mono font-bold text-[#78350f] uppercase tracking-wider border-b border-[#cbb07a] pb-1">
-                    WINDOWSILL CHRONICLE
+                {/* Caption underneath */}
+                <div className="mt-4 text-center">
+                  <span className="text-xs font-mono text-[#b7e4c7] font-semibold flex items-center gap-1.5 justify-center">
+                    <Leaf className="w-3.5 h-3.5 text-[#52b788]" /> Verified Chill Toad on the Solana Lily Pad
                   </span>
+                </div>
+              </div>
 
-                  <h3 className="font-serif font-black text-xl sm:text-2xl text-[#1c1305] leading-tight">
-                    A Golden Figure on the Windowsill Sees What Others Miss
-                  </h3>
-
-                  <p className="font-serif text-sm text-[#38260d] leading-relaxed">
-                    Every morning, a golden cat appears. She watches in silence, sees what others overlook, and finds beauty in the quiet details. The newcomer has a name: <span className="highlight-yellow">CASHCATE</span>.
+              {/* Right: The Chill Toad Lore & Direct Community Access */}
+              <div className="lg:col-span-6 space-y-6">
+                <div className="space-y-3">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#163824] text-[#74c69d] text-xs font-mono font-bold border border-[#2d6a4f]">
+                    <Smile className="w-3.5 h-3.5" /> ZERO DRAMA • MAXIMUM VIBES
+                  </div>
+                  <h2 className="font-display font-black text-3xl sm:text-4xl text-white tracking-tight leading-tight">
+                    Never hurried, never panicked. <span className="text-[#74c69d]">Just chilling.</span>
+                  </h2>
+                  <p className="font-sans text-base text-[#d8f3dc]/90 leading-relaxed">
+                    While the rest of the world scrambles, panics over candles, and checks charts every 5 seconds, <strong className="text-white">Just a chill Toad</strong> reclines peacefully on a giant water lily, taking a calm breath of fresh marsh air.
                   </p>
                 </div>
 
-                {/* Vintage Woodcut Cat on Windowsill Thumbnail */}
-                <div className="sm:col-span-4 flex justify-center">
-                  <div className="relative p-1 bg-[#faebd0] border border-[#b48c3c] shadow-inner rounded-sm overflow-hidden w-24 h-24 sm:w-28 sm:h-28">
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-08-07_20-34-51.jpg?v=1786124116"
-                      alt="Windowsill Cat Chronicle"
-                      className="w-full h-full object-cover grayscale contrast-125 sepia hover:grayscale-0 transition-all duration-300"
-                    />
-                    <div className="absolute bottom-0 inset-x-0 bg-[#1c1305]/80 text-[#fef08a] text-[8px] font-mono text-center py-0.5">
-                      Windowsill View
-                    </div>
+                {/* Chill Wisdom interactive quote box */}
+                <div 
+                  onClick={nextQuote}
+                  className="p-4 rounded-xl bg-[#0b2419] border border-[#52b788]/50 cursor-pointer hover:border-[#74c69d] transition-all group relative"
+                  title="Click to draw another Chill Toad Wisdom"
+                >
+                  <div className="flex items-center justify-between text-[11px] font-mono text-[#74c69d] mb-1.5 font-bold">
+                    <span>🐸 DAILY LILY PAD WISDOM</span>
+                    <span className="text-[10px] text-[#b7e4c7]/70 group-hover:text-white transition-colors">Tap for next quote →</span>
                   </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Note 4: Market Chronicles • Vol. 1 • No. 7 */}
-            <motion.div
-              initial={{ opacity: 0, x: 25 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="relative p-6 sm:p-7 rounded-sm bg-[#fcf6e8] border border-[#cbb07a] shadow-[0_10px_25px_rgba(58,38,7,0.18)] rotate-[-1.5deg] hover:rotate-0 transition-transform duration-300 group"
-            >
-              {/* Yellow Masking Tape on Bottom-Right Corner */}
-              <div className="absolute -bottom-3.5 -right-3.5 w-14 h-7 bg-[#fef08a]/90 border border-[#eab308]/60 rotate-[-28deg] shadow-sm pointer-events-none z-20"></div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 items-start">
-                <div className="sm:col-span-8 space-y-2.5">
-                  <div className="flex justify-between items-center border-b border-[#cbb07a] pb-1">
-                    <span className="text-[11px] font-mono font-bold text-[#78350f] uppercase tracking-wider">
-                      MARKET CHRONICLES
-                    </span>
-                    <span className="text-[10px] font-mono font-bold text-[#92400e] uppercase">
-                      VOL. 1 • NO. 7
-                    </span>
-                  </div>
-
-                  <h3 className="font-serif font-black text-xl sm:text-2xl text-[#1c1305] leading-tight">
-                    <span className="highlight-yellow">CASHCATE</span> Roams the Market Still— A Legend in Every Pawstep.
-                  </h3>
-
-                  <p className="font-serif text-sm text-[#38260d] leading-relaxed">
-                    She explores every corner, from busy streets to quiet alleys. Through every season, through every change, <span className="highlight-yellow">CASHCATE</span> is here—curious, calm, and timeless.
+                  <p className="font-serif italic text-base sm:text-lg text-white font-medium">
+                    {chillWisdoms[currentQuoteIndex]}
                   </p>
                 </div>
 
-                {/* Vintage Woodcut Alley Thumbnail */}
-                <div className="sm:col-span-4 flex justify-center">
-                  <div className="relative p-1 bg-[#faebd0] border border-[#b48c3c] shadow-inner rounded-sm overflow-hidden w-24 h-24 sm:w-28 sm:h-28">
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-08-07_20-34-51.jpg?v=1786124116"
-                      alt="Market Street Wanderer"
-                      className="w-full h-full object-cover grayscale contrast-125 sepia hover:grayscale-0 transition-all duration-300"
-                    />
-                    <div className="absolute bottom-0 inset-x-0 bg-[#1c1305]/80 text-[#fef08a] text-[8px] font-mono text-center py-0.5">
-                      Market Alley
-                    </div>
+                {/* Key Pillars Highlights */}
+                <div className="grid grid-cols-2 gap-3 pt-1 font-mono text-xs">
+                  <div className="p-3 rounded-xl bg-[#081c15] border border-[#2d6a4f]">
+                    <div className="text-[#74c69d] font-black text-sm">0% TAX</div>
+                    <div className="text-[#b7e4c7] text-[11px]">Clean trades, no hidden fees</div>
+                  </div>
+                  <div className="p-3 rounded-xl bg-[#081c15] border border-[#2d6a4f]">
+                    <div className="text-[#74c69d] font-black text-sm">100% BURNED LP</div>
+                    <div className="text-[#b7e4c7] text-[11px]">Permanent lily pad security</div>
+                  </div>
+                  <div className="p-3 rounded-xl bg-[#081c15] border border-[#2d6a4f]">
+                    <div className="text-[#74c69d] font-black text-sm">FAIR LAUNCH</div>
+                    <div className="text-[#b7e4c7] text-[11px]">No pre-mines, pure toad community</div>
+                  </div>
+                  <div className="p-3 rounded-xl bg-[#081c15] border border-[#2d6a4f]">
+                    <div className="text-[#74c69d] font-black text-sm">IMMUTABLE CHILL</div>
+                    <div className="text-[#b7e4c7] text-[11px]">The serene king of Solana</div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
 
+                {/* Direct Action Links */}
+                <div className="flex flex-wrap items-center gap-3 pt-2">
+                  <a
+                    href={TELEGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 min-w-[200px] px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#0088cc] to-[#00b4d8] hover:from-[#0077b6] hover:to-[#0096c7] text-white font-display font-black text-sm text-center shadow-[0_0_25px_rgba(0,180,216,0.4)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2"
+                  >
+                    <Send className="w-4 h-4" />
+                    <span>Join Official Telegram</span>
+                  </a>
+
+                  <a
+                    href={DEXSCREENER_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-3.5 rounded-xl bg-[#1b4332] hover:bg-[#2d6a4f] border border-[#52b788] text-white font-mono font-bold text-xs shadow-md transition-all flex items-center gap-1.5"
+                  >
+                    <TrendingUp className="w-4 h-4 text-[#74c69d]" />
+                    <span>DexScreener</span>
+                  </a>
+
+                  <a
+                    href={PUMPFUN_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-3.5 rounded-xl bg-[#143621] hover:bg-[#1e4a30] border border-[#2d6a4f] text-[#86efac] font-mono font-bold text-xs shadow-md transition-all flex items-center gap-1.5"
+                  >
+                    <span>💊 Pump.fun</span>
+                  </a>
+                </div>
+
+              </div>
+            </div>
           </div>
-
         </div>
 
-        {/* Bottom Interactive Navigation & Action Bar */}
-        <div className="mt-14 pt-8 border-t border-[#b48c3c]/40 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3 text-[#78350f] font-mono text-xs font-bold">
-            <span className="w-3 h-3 rounded-full bg-[#eab308]"></span>
-            <span>NO TAX • 100% BURNED LP • IMMUTABLE CONTRACT • PURE COMMUNITY SANCTUARY</span>
+        {/* 3 Quick Highlight Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="p-5 rounded-xl bg-[#0b2419]/90 border border-[#2d6a4f] space-y-2">
+            <div className="w-10 h-10 rounded-lg bg-[#1b4332] border border-[#52b788] flex items-center justify-center text-xl">
+              🪷
+            </div>
+            <h3 className="font-display font-bold text-lg text-white">The Lily Pad Philosophy</h3>
+            <p className="text-xs text-[#b7e4c7] font-sans leading-relaxed">
+              Why chase green candles when you are already green? The chill toad stays grounded in peace and pond wisdom.
+            </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
-            <button
-              onClick={() => scrollToSection("market-lore")}
-              className="px-5 py-2.5 rounded-xl bg-[#261a08] hover:bg-[#38260d] text-[#fef08a] font-mono font-bold text-xs shadow-md transition-all flex items-center gap-2 border border-[#785317]"
-            >
-              <BookOpen className="w-4 h-4 text-[#facc15]" /> Read Full Lore
-            </button>
+          <div className="p-5 rounded-xl bg-[#0b2419]/90 border border-[#2d6a4f] space-y-2">
+            <div className="w-10 h-10 rounded-lg bg-[#1b4332] border border-[#52b788] flex items-center justify-center text-xl">
+              🍃
+            </div>
+            <h3 className="font-display font-bold text-lg text-white">100% Organic Community</h3>
+            <p className="text-xs text-[#b7e4c7] font-sans leading-relaxed">
+              No stress, no toxic hype. Just good people sharing toad memes, vibing, and floating together across the Solana waters.
+            </p>
+          </div>
 
-            <button
-              onClick={() => scrollToSection("interactive-lounge")}
-              className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#d97706] via-[#f59e0b] to-[#eab308] hover:from-[#b45309] hover:to-[#d97706] text-[#1c1305] font-display font-black text-xs shadow-lg transition-all flex items-center gap-2"
-            >
-              <Sparkles className="w-4 h-4" /> Golden Opportunity Lounge
-            </button>
+          <div className="p-5 rounded-xl bg-[#0b2419]/90 border border-[#2d6a4f] space-y-2">
+            <div className="w-10 h-10 rounded-lg bg-[#1b4332] border border-[#52b788] flex items-center justify-center text-xl">
+              🐸
+            </div>
+            <h3 className="font-display font-bold text-lg text-white">Zero Fumbles</h3>
+            <p className="text-xs text-[#b7e4c7] font-sans leading-relaxed">
+              When everyone else panics, the chill toad just reclines, breathes, and sips pond water. Composure is supreme.
+            </p>
           </div>
         </div>
 

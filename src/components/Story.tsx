@@ -1,126 +1,129 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { BookOpen, Compass, Sparkles, Feather, Clock, Quote, Heart, Award, Eye } from "lucide-react";
+import { BookOpen, Compass, Sparkles, Send, Heart, Award, Leaf, Smile } from "lucide-react";
+import { TELEGRAM_URL, CHILLTOAD_LOGO } from "../constants";
 
 export default function Story() {
   const [selectedChronicle, setSelectedChronicle] = useState<number>(0);
 
-  const chronicles = [
+  const toadChronicles = [
     {
       id: "lore-1",
-      tag: "MARKET LORE • EST. LONG AGO",
-      title: "A Cat Walked Into the Market— Curiosity Sparked a Legend",
-      subtitle: "The Genesis at Dawn",
-      quote: "No one knows where she came from, but she had a way of showing up at the right moment.",
+      tag: "POND ORIGINS • CHAPTER I",
+      title: "A Toad Sat on a Lily Pad at Dawn — And Never Looked Back",
+      subtitle: "The Genesis of Pure Chill",
+      quote: "While other creatures rushed to and fro, the Toad simply breathed, finding contentment right where he sat.",
       fullText: [
-        "They say a curious cat named CASHCATE wandered into the market at dawn. No one knows where she came from, but she had a way of showing up at the right moment. From that day on, the legend of CASHCATE began.",
-        "Traders in the morning mist noticed how she walked with serene confidence, stepping lightly between stalls of spices, silk, and gold. She never hurried, never panicked when the crowds surged, and always seemed to anticipate the rhythm of the day.",
-        "To this day, market veterans speak of her arrival as the turning point: the moment when ordinary commerce was touched by a spark of feline serendipity.",
+        "In the tranquil mist of the early morning pond, before the world woke up to endless chaos and noise, a lone toad climbed aboard a floating green lily pad. He didn't come to conquer, he didn't come to rush—he came simply to chill.",
+        "Traders and travelers passing through the marsh paused to watch him. He watched the water ripples gently disperse, never flinching at passing storms or sudden surges. He had found the greatest secret in all of nature: absolute composure.",
+        "From that morning onward, the pond was never the same. The legend of Just a chill Toad was born, reminding everyone that peace of mind is the ultimate treasure on Solana.",
       ],
-      highlightPhrase: "Curiosity sparked a legend in every pawstep",
-      stat: "EST. LONG AGO • SOLANA",
+      highlightPhrase: "Unbothered by the storms, peaceful on the pad",
+      stat: "IMMUTABLE CHILL • SOLANA",
     },
     {
       id: "lore-2",
-      tag: "FOUNDERS' NOTE • PASSED DOWN",
-      title: "“Curiosity Creates Opportunity,” — That’s Why We Love CASHCATE.",
-      subtitle: "The Timeless Philosophy",
-      quote: "Curiosity can turn the ordinary into the extraordinary.",
+      tag: "ZEN PHILOSOPHY • CHAPTER II",
+      title: "“Why Stress When the Lily Pad is Wide?”",
+      subtitle: "The Timeless Marsh Creed",
+      quote: "Rushing only creates ripples. Stillness reflects the entire sky.",
       fullText: [
-        "Some called her lucky. Some called it fate. But those who saw her knew—she had a spark. CASHCATE reminds us that curiosity can turn the ordinary into the extraordinary.",
-        "While other traders rushed blindly after rumors, those who watched CASHCATE learned the virtue of patient observation. She taught the market that genuine opportunity doesn't come from chaos, but from quiet, inquisitive composure.",
-        "We hold CASHCATE because she stands for unshakeable belief, transparent community, and the timeless truth that an open mind discovers what everyone else walks right past.",
+        "Some called it laziness. But the wise knew better—it was supreme mastery of energy. Just a chill Toad taught that true power isn't about running faster on the hamster wheel; it's about knowing when to sit still and enjoy the sunlight.",
+        "In a market driven by panic, FOMO, and sleepless nights, the Chill Toad offers a sanctuary of calm. He sits with his webbed feet relaxed, smoking his pipe, soaking in the good vibes, and sharing laughs with fellow pond dwellers.",
+        "When you hold $chilltoad, you aren't just holding a token; you're joining a movement of relaxed souls who refuse to let the world's madness disturb their peace.",
       ],
-      highlightPhrase: "Curiosity creates opportunity, composure creates legacy",
-      stat: "100% COMMUNITY RESONANCE",
+      highlightPhrase: "Stillness reflects the sky, chill creates clarity",
+      stat: "100% RELAXATION GUARANTEE",
     },
     {
       id: "lore-3",
-      tag: "WINDOWSILL CHRONICLE",
-      title: "A Golden Figure on the Windowsill Sees What Others Miss",
-      subtitle: "The High Vantage Point",
-      quote: "She watches in silence, sees what others overlook, and finds beauty in the quiet details.",
+      tag: "MARSH WISDOM • CHAPTER III",
+      title: "The Water Speaks to Those Who Listen",
+      subtitle: "Patience Over Panic",
+      quote: "The pond always balances itself out. The waves calm, the lotus blooms, and the toad remains.",
       fullText: [
-        "Every morning, a golden cat appears. She watches in silence, sees what others overlook, and finds beauty in the quiet details. The newcomer has a name: CASHCATE.",
-        "Perched high on the sunlit stone windowsill overlooking the busy square, her golden fur catching the early sunlight, CASHCATE looks down with timeless grace. The gold coins stacked below her tell the story of patience rewarded.",
-        "In a market full of noise, her calm presence is an anchor. Those who look up to the windowsill are reminded to pause, breathe, and see the bigger picture.",
+        "Every seasoned traveler of the crypto marsh knows the trials: red days, choppy waters, and endless rumors. Yet whenever someone visits the Chill Toad's lily pad, they are greeted by the same serene grin.",
+        "“Did the pond dry up?” asks the Toad. “No. Did the sun stop shining? No. Then take a deep breath, close your eyes, and let the current carry you.”",
+        "His pond philosophy has cured countless paper hands, turning panicked traders into serene Zen masters who understand that patience always wins.",
       ],
-      highlightPhrase: "Seeing what others miss from the golden windowsill",
-      stat: "SILENT PERCEPTION • 432 HZ",
+      highlightPhrase: "Patience over panic in every market season",
+      stat: "ZERO FUMBLES RECORD",
     },
     {
       id: "lore-4",
-      tag: "MARKET CHRONICLES • VOL. 1 • NO. 7",
-      title: "CASHCATE Roams the Market Still— A Legend in Every Pawstep.",
-      subtitle: "The Living Legend",
-      quote: "Through every season, through every change, CASHCATE is here—curious, calm, and timeless.",
+      tag: "LIVING LEGEND • CHAPTER IV",
+      title: "The Chill Toad Vibing Forever on Solana",
+      subtitle: "The Eternal Pond Community",
+      quote: "Through bull or bear, rain or shine, the chill toad's vibe remains untouchable.",
       fullText: [
-        "She explores every corner, from busy streets to quiet alleys. Through every season, through every change, CASHCATE is here—curious, calm, and timeless.",
-        "Bull markets, bear markets, sunny dawns, or stormy afternoons: CASHCATE's pawsteps remain steady. She belongs to no single merchant, but is beloved by everyone who values sincerity and wonder.",
-        "Her story is written into the stones of the market, passed down through whispers, ledger entries, and now, immortalized forever on the Solana blockchain.",
+        "Today, the pond has grown into a global sanctuary. Thousands of chillers gather daily in the Telegram to share memes, listen to the water drops, and embrace the unbothered lifestyle.",
+        "With 0% tax, 100% burned liquidity, and no shady insider schemes, the Chill Toad represents the purest spirit of community-driven fun and serenity on the Solana blockchain.",
+        "The story is written in the tranquil waters, echoed in every gentle ribbit, and celebrated by everyone who knows how to kick back and enjoy the ride.",
       ],
-      highlightPhrase: "Curious, calm, and timeless in every pawstep",
-      stat: "VOL. 1 • NO. 7 • IMMORTALIZED",
+      highlightPhrase: "The chillest community in all of Solana",
+      stat: "GLOBAL CHILL MOVEMENT",
     },
   ];
 
   return (
     <section
-      id="chronicles"
-      className="relative py-20 sm:py-28 bg-[#f5e6be] text-[#1c1305] overflow-hidden border-t-2 border-[#b48c3c] vintage-ledger-grid selection:bg-[#fde047] selection:text-[#1c1305]"
+      id="pond-lore"
+      className="relative py-20 sm:py-28 bg-[#0b2419] text-white overflow-hidden border-t-2 border-b-2 border-[#2d6a4f] pond-water-grid selection:bg-[#74c69d] selection:text-[#081c15]"
     >
-      {/* Warm parchment ambient light */}
+      {/* Pond ambient glow */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        <div className="absolute top-[30%] left-[10%] w-[450px] h-[450px] bg-[#f59e0b] rounded-full blur-[160px] opacity-25"></div>
-        <div className="absolute bottom-[20%] right-[10%] w-[450px] h-[450px] bg-[#fbbf24] rounded-full blur-[150px] opacity-35"></div>
+        <div className="absolute top-[30%] left-[10%] w-[450px] h-[450px] bg-[#52b788]/15 rounded-full blur-[160px]"></div>
+        <div className="absolute bottom-[20%] right-[10%] w-[450px] h-[450px] bg-[#2d6a4f]/20 rounded-full blur-[150px]"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Section Header */}
-        <div id="market-lore" className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fcf6e8] border border-[#b48c3c] shadow-sm">
-            <BookOpen className="w-3.5 h-3.5 text-[#b45309]" />
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#78350f]">
-              THE COMPLETE MARKET CHRONICLES
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#112d20] border border-[#52b788]/60 shadow-sm">
+            <BookOpen className="w-3.5 h-3.5 text-[#74c69d]" />
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#d8f3dc]">
+              THE CHRONICLES OF THE CHILL TOAD
             </span>
           </div>
 
-          <h2 className="font-serif font-black text-4xl sm:text-6xl text-[#1c1305] tracking-tight uppercase">
-            The Lore of <span className="text-[#b45309]">Cashcate</span>
+          <h2 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tight uppercase">
+            The Lore of <span className="text-[#74c69d]">Chill Toad</span>
           </h2>
-          <p className="font-serif italic text-base sm:text-xl text-[#78350f] font-semibold max-w-2xl mx-auto">
-            Read the handwritten chronicles and timeless notes passed down through generations of market traders.
+          <p className="font-sans text-base sm:text-xl text-[#b7e4c7] font-medium max-w-2xl mx-auto">
+            Discover how a simple green amphibian on a floating lily pad became the patron saint of unbothered composure on Solana.
           </p>
         </div>
 
         {/* 4 Interactive Parchment Tabs */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          {chronicles.map((item, idx) => {
+          {toadChronicles.map((item, idx) => {
             const isSelected = selectedChronicle === idx;
             return (
               <button
                 key={item.id}
                 onClick={() => setSelectedChronicle(idx)}
-                className={`text-left p-5 rounded-sm border transition-all duration-300 relative cursor-pointer ${
+                className={`text-left p-5 rounded-2xl border transition-all duration-300 relative cursor-pointer ${
                   isSelected
-                    ? "bg-[#fcf6e8] border-[#92400e] shadow-[0_8px_25px_rgba(58,38,7,0.2)] scale-[1.02] ring-2 ring-[#d97706]/40"
-                    : "bg-[#faedd0]/80 border-[#cbb07a] hover:bg-[#fcf6e8] hover:border-[#b48c3c] opacity-80 hover:opacity-100"
+                    ? "bg-[#163824] border-[#74c69d] shadow-[0_8px_30px_rgba(82,183,136,0.3)] scale-[1.02] ring-2 ring-[#74c69d]/40"
+                    : "bg-[#0f2d20]/80 border-[#2d6a4f] hover:bg-[#163824] hover:border-[#52b788] opacity-80 hover:opacity-100"
                 }`}
               >
-                {/* Yellow tape effect if selected */}
+                {/* Floating Lily Icon indicator if selected */}
                 {isSelected && (
-                  <div className="absolute -top-3 right-4 w-12 h-5 bg-[#fef08a] border border-[#eab308] rotate-[-8deg] shadow-sm pointer-events-none"></div>
+                  <div className="absolute -top-3 right-4 px-2 py-0.5 rounded-full bg-[#74c69d] text-[#081c15] text-[10px] font-mono font-black shadow-sm">
+                    🪷 ACTIVE CHAPTER
+                  </div>
                 )}
 
                 <div className="space-y-2">
-                  <span className="block text-[10px] font-mono font-bold text-[#92400e] uppercase tracking-wider">
+                  <span className="block text-[10px] font-mono font-bold text-[#74c69d] uppercase tracking-wider">
                     {item.tag}
                   </span>
-                  <h3 className="font-serif font-black text-lg text-[#1c1305] line-clamp-2 leading-snug">
+                  <h3 className="font-display font-black text-lg text-white line-clamp-2 leading-snug">
                     {item.title}
                   </h3>
-                  <span className="block text-xs font-serif italic text-[#78350f] font-semibold">
+                  <span className="block text-xs font-sans text-[#b7e4c7] font-medium">
                     {item.subtitle}
                   </span>
                 </div>
@@ -132,126 +135,64 @@ export default function Story() {
         {/* Selected Chronicle Reading Stand */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={chronicles[selectedChronicle].id}
+            key={toadChronicles[selectedChronicle].id}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.4 }}
-            className="parchment-card p-8 sm:p-12 rounded-sm border-2 border-[#b48c3c] shadow-2xl relative"
+            className="pond-card p-8 sm:p-12 rounded-2xl border-2 border-[#52b788] shadow-2xl relative"
           >
-            {/* Top pushpins on parchment corners */}
-            <div className="absolute top-4 left-4 w-4 h-4 rounded-full bg-[#1c1305] border-2 border-[#78350f] shadow-md"></div>
-            <div className="absolute top-4 right-4 w-4 h-4 rounded-full bg-[#1c1305] border-2 border-[#78350f] shadow-md"></div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-              
-              {/* Left text column */}
-              <div className="lg:col-span-8 space-y-6">
-                
-                <div className="border-b border-[#cbb07a] pb-4 space-y-2">
-                  <span className="text-xs font-mono font-bold text-[#b45309] uppercase tracking-widest block">
-                    {chronicles[selectedChronicle].tag}
-                  </span>
-                  <h3 className="font-serif font-black text-2xl sm:text-4xl text-[#1c1305] leading-tight">
-                    {chronicles[selectedChronicle].title}
-                  </h3>
-                  <span className="inline-block text-xs font-mono font-bold text-[#78350f] bg-[#fef08a] px-2.5 py-0.5 rounded border border-[#eab308]">
-                    {chronicles[selectedChronicle].stat}
-                  </span>
-                </div>
-
-                {/* Highlighted Quote Box */}
-                <div className="p-5 rounded bg-[#f5e8c4] border-l-4 border-[#b45309] border-y border-r border-[#cbb07a] shadow-inner flex items-start gap-3.5">
-                  <Quote className="w-8 h-8 text-[#b45309] flex-shrink-0 opacity-80" />
-                  <p className="font-serif italic text-lg sm:text-xl font-bold text-[#1c1305] leading-snug">
-                    “{chronicles[selectedChronicle].quote}”
-                  </p>
-                </div>
-
-                {/* Body Paragraphs */}
-                <div className="space-y-4 font-serif text-base sm:text-lg text-[#38260d] leading-relaxed">
-                  {chronicles[selectedChronicle].fullText.map((p, pIdx) => (
-                    <p key={pIdx}>
-                      {p.includes("CASHCATE") ? (
-                        <>
-                          {p.split("CASHCATE").map((chunk, cIdx, arr) => (
-                            <React.Fragment key={cIdx}>
-                              {chunk}
-                              {cIdx < arr.length - 1 && (
-                                <span className="highlight-yellow">CASHCATE</span>
-                              )}
-                            </React.Fragment>
-                          ))}
-                        </>
-                      ) : (
-                        p
-                      )}
-                    </p>
-                  ))}
-                </div>
-
-                {/* Signature of the chronicler */}
-                <div className="pt-4 border-t border-[#cbb07a] flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#78350f]">
-                    <Feather className="w-4 h-4 text-[#b45309]" />
-                    <span>Archived in the Cashcate Ledger • Volume 1</span>
-                  </div>
-                  <span className="font-serif italic font-bold text-sm text-[#92400e]">
-                    ~ The Market Scribe
-                  </span>
-                </div>
-
+            {/* Top Badge */}
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#2d6a4f] pb-6 mb-8">
+              <div className="space-y-1">
+                <span className="text-xs font-mono font-bold text-[#74c69d] uppercase tracking-widest block">
+                  {toadChronicles[selectedChronicle].tag}
+                </span>
+                <h3 className="font-display font-black text-2xl sm:text-4xl text-white">
+                  {toadChronicles[selectedChronicle].title}
+                </h3>
               </div>
 
-              {/* Right column: Archival Coin & Stamp Exhibit */}
-              <div className="lg:col-span-4 flex flex-col items-center space-y-6">
-                
-                <div className="p-4 rounded bg-[#fdf8ee] border-2 border-[#b48c3c] shadow-lg text-center space-y-4 w-full">
-                  <div className="relative w-44 h-44 mx-auto rounded-full p-2 bg-gradient-to-tr from-[#92400e] via-[#f59e0b] to-[#fef08a] shadow-[0_0_25px_rgba(217,119,6,0.4)]">
-                    <img
-                      src="https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-08-07_20-34-51.jpg?v=1786124116"
-                      alt="Cashcate Seal"
-                      className="w-full h-full object-cover rounded-full"
-                    />
-                  </div>
+              <div className="flex items-center gap-3">
+                <span className="px-3.5 py-1.5 rounded-full bg-[#081c15] text-[#74c69d] font-mono font-bold text-xs border border-[#2d6a4f]">
+                  {toadChronicles[selectedChronicle].stat}
+                </span>
+              </div>
+            </div>
 
-                  <div className="space-y-1">
-                    <span className="font-serif font-black text-xl text-[#1c1305] block">
-                      Cashcate ($cashcate)
-                    </span>
-                    <span className="text-[11px] font-mono font-bold text-[#78350f] block">
-                      The Golden Market Feline
-                    </span>
-                  </div>
+            {/* Quote Block */}
+            <div className="p-6 rounded-xl bg-[#081c15]/90 border border-[#52b788]/60 mb-8 relative">
+              <span className="text-4xl text-[#52b788] font-serif leading-none absolute top-2 left-3 opacity-40">“</span>
+              <p className="font-serif italic text-lg sm:text-2xl text-[#d8f3dc] pl-6 font-medium leading-relaxed">
+                {toadChronicles[selectedChronicle].quote}
+              </p>
+            </div>
 
-                  <div className="p-3 bg-[#f5e8c4] rounded border border-[#cbb07a] text-left text-xs font-mono space-y-1 text-[#38260d]">
-                    <div className="flex justify-between">
-                      <span className="text-[#78350f]">Composure:</span>
-                      <span className="font-bold text-[#1c1305]">100% Serene</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-[#78350f]">Tax:</span>
-                      <span className="font-bold text-[#1c1305]">0% Forever</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-[#78350f]">Curiosity:</span>
-                      <span className="font-bold text-[#b45309]">Infinite</span>
-                    </div>
-                  </div>
-                </div>
+            {/* Paragraph Content */}
+            <div className="space-y-4 font-sans text-base sm:text-lg text-[#d8f3dc]/90 leading-relaxed max-w-4xl">
+              {toadChronicles[selectedChronicle].fullText.map((p, pIdx) => (
+                <p key={pIdx}>{p}</p>
+              ))}
+            </div>
 
-                {/* Archival Wax Seal / Badge */}
-                <div className="w-full p-4 rounded bg-[#f7eed4] border border-[#cbb07a] text-center space-y-2">
-                  <span className="text-[10px] font-mono font-bold text-[#78350f] uppercase tracking-widest block">
-                    SANCTUARY RULE
-                  </span>
-                  <p className="font-serif italic font-bold text-sm text-[#1c1305]">
-                    “Curiosity Creates Opportunity — That’s Why We Love Cashcate.”
-                  </p>
-                </div>
-
+            {/* Bottom highlight pill and Telegram invite */}
+            <div className="mt-8 pt-6 border-t border-[#2d6a4f] flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-2">
+                <Leaf className="w-4 h-4 text-[#74c69d]" />
+                <span className="text-xs font-mono font-bold text-[#74c69d]">
+                  {toadChronicles[selectedChronicle].highlightPhrase}
+                </span>
               </div>
 
+              <a
+                href={TELEGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-xl bg-[#0088cc] hover:bg-[#0099e6] text-white font-mono font-bold text-xs flex items-center gap-2 shadow-md transition-all"
+              >
+                <Send className="w-3.5 h-3.5" />
+                <span>Discuss in Telegram: t.me/chilltoad</span>
+              </a>
             </div>
 
           </motion.div>
