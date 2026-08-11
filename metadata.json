@@ -1,8 +1,9 @@
 {
-  "name": "Chill Toad Pepe",
-  "description": "Chill Toad Pepe ($chilltoad) — Unbothered, relaxed, and vibing on the pond lily pad. The ultimate chill toad on Solana with 0% tax and pure zen energy.",
+  "name": "Giga Toad Pepe",
+  "description": "Giga Toad Pepe ($gigatoad) — The most muscular, most alpha toad in the Solana universe. Pure chad gains, 0% tax, and unyielding green candle energy.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
+
 
 

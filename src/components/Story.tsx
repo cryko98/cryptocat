@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { BookOpen, Compass, Sparkles, Send, Heart, Award, Leaf, Smile } from "lucide-react";
-import { TELEGRAM_URL, CHILLTOAD_LOGO } from "../constants";
+import { BookOpen, Sparkles, Send, Dumbbell, Trophy, Zap, ShieldAlert, Award } from "lucide-react";
+import { TELEGRAM_URL, GIGATOAD_LOGO } from "../constants";
 
 export default function Story() {
   const [selectedChronicle, setSelectedChronicle] = useState<number>(0);
@@ -9,89 +9,89 @@ export default function Story() {
   const toadChronicles = [
     {
       id: "lore-1",
-      tag: "POND ORIGINS • CHAPTER I",
-      title: "A Toad Sat on a Lily Pad at Dawn — And Never Looked Back",
-      subtitle: "The Genesis of Pure Chill",
-      quote: "While other creatures rushed to and fro, the Toad simply breathed, finding contentment right where he sat.",
+      tag: "THE ORIGIN • CHAPTER I",
+      title: "Forged on the Iron Lily Pad — The Rise of the Alpha",
+      subtitle: "The Genesis of Pure Muscular Greatness",
+      quote: "While ordinary frogs hopped away from heavy weights, Giga Toad loaded another 500kg onto the bar.",
       fullText: [
-        "In the tranquil mist of the early morning pond, before the world woke up to endless chaos and noise, a lone toad climbed aboard a floating green lily pad. He didn't come to conquer, he didn't come to rush—he came simply to chill.",
-        "Traders and travelers passing through the marsh paused to watch him. He watched the water ripples gently disperse, never flinching at passing storms or sudden surges. He had found the greatest secret in all of nature: absolute composure.",
-        "From that morning onward, the pond was never the same. The legend of Just a chill Toad was born, reminding everyone that peace of mind is the ultimate treasure on Solana.",
+        "In the deepest, most turbulent waters of the Solana blockchain, where weak-handed tadpoles washed away in the currents, one amphibian stood tall. He didn't just survive the volatility—he used it as progressive overload.",
+        "Equipped with an unyielding mindset and massive iron lily pad barbells, Giga Toad Pepe began a rigorous training regimen. Every red candle became a deep squat; every consolidation became a 1,000-rep bench press session.",
+        "From that moment on, the Solana ecosystem witnessed the birth of its ultimate apex titan: the most muscular, most alpha toad in the entire universe.",
       ],
-      highlightPhrase: "Unbothered by the storms, peaceful on the pad",
-      stat: "IMMUTABLE CHILL • SOLANA",
+      highlightPhrase: "Unshakable discipline, 1000kg bench press, pure hypertrophy",
+      stat: "ALPHA TITAN • SOLANA UNIVERSE",
     },
     {
       id: "lore-2",
-      tag: "ZEN PHILOSOPHY • CHAPTER II",
-      title: "“Why Stress When the Lily Pad is Wide?”",
-      subtitle: "The Timeless Marsh Creed",
-      quote: "Rushing only creates ripples. Stillness reflects the entire sky.",
+      tag: "ALPHA MENTALITY • CHAPTER II",
+      title: "“Bench The Bear Market Into Green God Candles”",
+      subtitle: "The Timeless Chad Toad Creed",
+      quote: "FUD is just psychological cardio. Real Chads build massive portfolios with pure iron hands.",
       fullText: [
-        "Some called it laziness. But the wise knew better—it was supreme mastery of energy. Just a chill Toad taught that true power isn't about running faster on the hamster wheel; it's about knowing when to sit still and enjoy the sunlight.",
-        "In a market driven by panic, FOMO, and sleepless nights, the Chill Toad offers a sanctuary of calm. He sits with his webbed feet relaxed, smoking his pipe, soaking in the good vibes, and sharing laughs with fellow pond dwellers.",
-        "When you hold $chilltoad, you aren't just holding a token; you're joining a movement of relaxed souls who refuse to let the world's madness disturb their peace.",
+        "Some called his gains impossible. But the wise knew better—it was the pure law of hypertrophy and unwavering conviction. Giga Toad Pepe proved that true strength isn't about avoiding the dip; it's about benching the entire market back to all-time highs.",
+        "While other communities panic over minor pullbacks, Giga Toad takes another scoop of pure Solana pre-workout, flexes his 24-inch green biceps, and leads the charge with massive green volume.",
+        "Holding $GIGATOAD isn't just holding a memecoin; it's an initiation into the most jacked, high-testosterone brotherhood on Solana.",
       ],
-      highlightPhrase: "Stillness reflects the sky, chill creates clarity",
-      stat: "100% RELAXATION GUARANTEE",
+      highlightPhrase: "No skipped workouts, no weak hands, pure gains",
+      stat: "100% ALPHA GUARANTEE",
     },
     {
       id: "lore-3",
-      tag: "MARSH WISDOM • CHAPTER III",
-      title: "The Water Speaks to Those Who Listen",
-      subtitle: "Patience Over Panic",
-      quote: "The pond always balances itself out. The waves calm, the lotus blooms, and the toad remains.",
+      tag: "SOLANA OLYMPUS • CHAPTER III",
+      title: "Solana’s Most Jacked Amphibian Takes the Crown",
+      subtitle: "Apex Predator of the Crypto Universe",
+      quote: "The pond belongs to the strongest. The Giga Toad's jawline was carved by pure cryptographic proof-of-history.",
       fullText: [
-        "Every seasoned traveler of the crypto marsh knows the trials: red days, choppy waters, and endless rumors. Yet whenever someone visits the Chill Toad's lily pad, they are greeted by the same serene grin.",
-        "“Did the pond dry up?” asks the Toad. “No. Did the sun stop shining? No. Then take a deep breath, close your eyes, and let the current carry you.”",
-        "His pond philosophy has cured countless paper hands, turning panicked traders into serene Zen masters who understand that patience always wins.",
+        "Through every market cycle, thousands of skinny tokens appear and vanish. Yet whenever traders look toward the Giga Toad's gym sanctuary, they see an immovable mountain of muscle and green aura.",
+        "“Did the validator stop pumping?” asks Giga Toad. “No. Did the iron get lighter? No. Then strap on your lifting belt, lock in, and push through the pain.”",
+        "His alpha philosophy has transformed timid paper hands into stone-hard diamond chads capable of lifting generational wealth.",
       ],
-      highlightPhrase: "Patience over panic in every market season",
-      stat: "ZERO FUMBLES RECORD",
+      highlightPhrase: "Apex predator of the blockchain ecosystem",
+      stat: "ZERO WEAKNESS RECORD",
     },
     {
       id: "lore-4",
-      tag: "LIVING LEGEND • CHAPTER IV",
-      title: "The Chill Toad Vibing Forever on Solana",
-      subtitle: "The Eternal Pond Community",
-      quote: "Through bull or bear, rain or shine, the chill toad's vibe remains untouchable.",
+      tag: "ETERNAL DYNASTY • CHAPTER IV",
+      title: "The Giga Toad Pump Dynasty on Solana",
+      subtitle: "The Eternal Alpha Community",
+      quote: "Through bull runs and bear storms, Giga Toad's reign is etched in pure iron.",
       fullText: [
-        "Today, the pond has grown into a global sanctuary. Thousands of chillers gather daily in the Telegram to share memes, listen to the water drops, and embrace the unbothered lifestyle.",
-        "With 0% tax, 100% burned liquidity, and no shady insider schemes, the Chill Toad represents the purest spirit of community-driven fun and serenity on the Solana blockchain.",
-        "The story is written in the tranquil waters, echoed in every gentle ribbit, and celebrated by everyone who knows how to kick back and enjoy the ride.",
+        "Today, the Giga Toad movement spans across every corner of the decentralized world. Tens of thousands of alpha traders gather daily to share PRs, push high-volume market raids, and flex their unstoppable momentum.",
+        "With 0% tax, 100% burned liquidity pool, and zero corporate weak points, Giga Toad Pepe embodies the rawest power of community-driven Chad culture.",
+        "The legend is written in green candles, verified on the blockchain, and carried forward by every believer who refuses to stay average.",
       ],
-      highlightPhrase: "The chillest community in all of Solana",
-      stat: "GLOBAL CHILL MOVEMENT",
+      highlightPhrase: "The most dominant community in the Solana universe",
+      stat: "IMMORTAL CHAD LEGACY",
     },
   ];
 
   return (
     <section
-      id="pond-lore"
-      className="relative py-20 sm:py-28 bg-[#0b2419] text-white overflow-hidden border-t-2 border-b-2 border-[#2d6a4f] pond-water-grid selection:bg-[#74c69d] selection:text-[#081c15]"
+      id="giga-lore"
+      className="relative py-20 sm:py-28 bg-[#050d1a] text-white overflow-hidden border-t-2 border-b-2 border-[#1e3a8a] giga-blue-grid selection:bg-[#00ff88] selection:text-[#050d1a]"
     >
-      {/* Pond ambient glow */}
+      {/* Blue & Green Ambient Glow */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        <div className="absolute top-[30%] left-[10%] w-[450px] h-[450px] bg-[#52b788]/15 rounded-full blur-[160px]"></div>
-        <div className="absolute bottom-[20%] right-[10%] w-[450px] h-[450px] bg-[#2d6a4f]/20 rounded-full blur-[150px]"></div>
+        <div className="absolute top-[30%] left-[10%] w-[450px] h-[450px] bg-[#00ff88]/10 rounded-full blur-[160px]"></div>
+        <div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-[#0052FF]/15 rounded-full blur-[170px]"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#112d20] border border-[#52b788]/60 shadow-sm">
-            <BookOpen className="w-3.5 h-3.5 text-[#74c69d]" />
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#d8f3dc]">
-              THE CHRONICLES OF THE CHILL TOAD
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0a2040] border border-[#00ff88]/60 shadow-sm">
+            <Dumbbell className="w-3.5 h-3.5 text-[#00ff88]" />
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#00ff88]">
+              THE CHRONICLES OF GIGA TOAD PEPE
             </span>
           </div>
 
           <h2 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tight uppercase">
-            The Lore of <span className="text-[#74c69d]">Chill Toad Pepe</span>
+            The Lore of the <span className="text-[#00ff88]">Most Alpha Toad</span>
           </h2>
-          <p className="font-sans text-base sm:text-xl text-[#b7e4c7] font-medium max-w-2xl mx-auto">
-            Discover how a simple green amphibian on a floating lily pad became the patron saint of unbothered composure on Solana.
+          <p className="font-sans text-base sm:text-xl text-white/90 font-medium max-w-2xl mx-auto">
+            Discover the epic saga of how a muscle-bound amphibian forged in heavy iron became the undisputed king of the Solana universe.
           </p>
         </div>
 
@@ -105,25 +105,25 @@ export default function Story() {
                 onClick={() => setSelectedChronicle(idx)}
                 className={`text-left p-5 rounded-2xl border transition-all duration-300 relative cursor-pointer ${
                   isSelected
-                    ? "bg-[#163824] border-[#74c69d] shadow-[0_8px_30px_rgba(82,183,136,0.3)] scale-[1.02] ring-2 ring-[#74c69d]/40"
-                    : "bg-[#0f2d20]/80 border-[#2d6a4f] hover:bg-[#163824] hover:border-[#52b788] opacity-80 hover:opacity-100"
+                    ? "bg-[#0c2244] border-[#00ff88] shadow-[0_8px_30px_rgba(0,255,136,0.3)] scale-[1.02] ring-2 ring-[#00ff88]/40"
+                    : "bg-[#091a32]/80 border-[#1e3a8a] hover:bg-[#0c2244] hover:border-[#38bdf8] opacity-85 hover:opacity-100"
                 }`}
               >
-                {/* Floating Lily Icon indicator if selected */}
+                {/* Floating Badge indicator if selected */}
                 {isSelected && (
-                  <div className="absolute -top-3 right-4 px-2 py-0.5 rounded-full bg-[#74c69d] text-[#081c15] text-[10px] font-mono font-black shadow-sm">
-                    🪷 ACTIVE CHAPTER
+                  <div className="absolute -top-3 right-4 px-2.5 py-0.5 rounded-full bg-[#00ff88] text-[#050d1a] text-[10px] font-mono font-black shadow-sm flex items-center gap-1">
+                    <Zap className="w-3 h-3 text-[#050d1a]" /> ACTIVE CHAPTER
                   </div>
                 )}
 
                 <div className="space-y-2">
-                  <span className="block text-[10px] font-mono font-bold text-[#74c69d] uppercase tracking-wider">
+                  <span className="block text-[10px] font-mono font-bold text-[#00ff88] uppercase tracking-wider">
                     {item.tag}
                   </span>
                   <h3 className="font-display font-black text-lg text-white line-clamp-2 leading-snug">
                     {item.title}
                   </h3>
-                  <span className="block text-xs font-sans text-[#b7e4c7] font-medium">
+                  <span className="block text-xs font-sans text-white/70 font-medium">
                     {item.subtitle}
                   </span>
                 </div>
@@ -140,12 +140,12 @@ export default function Story() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.4 }}
-            className="pond-card p-8 sm:p-12 rounded-2xl border-2 border-[#52b788] shadow-2xl relative"
+            className="giga-card p-8 sm:p-12 rounded-2xl border-2 border-[#00ff88] shadow-2xl relative"
           >
             {/* Top Badge */}
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#2d6a4f] pb-6 mb-8">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#1e3a8a] pb-6 mb-8">
               <div className="space-y-1">
-                <span className="text-xs font-mono font-bold text-[#74c69d] uppercase tracking-widest block">
+                <span className="text-xs font-mono font-bold text-[#00ff88] uppercase tracking-widest block">
                   {toadChronicles[selectedChronicle].tag}
                 </span>
                 <h3 className="font-display font-black text-2xl sm:text-4xl text-white">
@@ -154,45 +154,51 @@ export default function Story() {
               </div>
 
               <div className="flex items-center gap-3">
-                <span className="px-3.5 py-1.5 rounded-full bg-[#081c15] text-[#74c69d] font-mono font-bold text-xs border border-[#2d6a4f]">
+                <span className="px-3.5 py-1.5 rounded-full bg-[#050d1a] text-[#00ff88] font-mono font-bold text-xs border border-[#1e3a8a]">
                   {toadChronicles[selectedChronicle].stat}
                 </span>
               </div>
             </div>
 
             {/* Quote Block */}
-            <div className="p-6 rounded-xl bg-[#081c15]/90 border border-[#52b788]/60 mb-8 relative">
-              <span className="text-4xl text-[#52b788] font-serif leading-none absolute top-2 left-3 opacity-40">“</span>
-              <p className="font-serif italic text-lg sm:text-2xl text-[#d8f3dc] pl-6 font-medium leading-relaxed">
+            <div className="p-6 rounded-xl bg-[#050d1a]/90 border border-[#00ff88]/60 mb-8 relative">
+              <span className="text-4xl text-[#00ff88] font-serif leading-none absolute top-2 left-3 opacity-50">“</span>
+              <p className="font-serif italic text-lg sm:text-2xl text-white pl-6 font-medium leading-relaxed">
                 {toadChronicles[selectedChronicle].quote}
               </p>
             </div>
 
             {/* Paragraph Content */}
-            <div className="space-y-4 font-sans text-base sm:text-lg text-[#d8f3dc]/90 leading-relaxed max-w-4xl">
+            <div className="space-y-4 font-sans text-base sm:text-lg text-white/90 leading-relaxed max-w-4xl">
               {toadChronicles[selectedChronicle].fullText.map((p, pIdx) => (
                 <p key={pIdx}>{p}</p>
               ))}
             </div>
 
-            {/* Bottom highlight pill and Telegram invite */}
-            <div className="mt-8 pt-6 border-t border-[#2d6a4f] flex flex-col sm:flex-row items-center justify-between gap-4">
+            {/* Bottom highlight pill */}
+            <div className="mt-8 pt-6 border-t border-[#1e3a8a] flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2">
-                <Leaf className="w-4 h-4 text-[#74c69d]" />
-                <span className="text-xs font-mono font-bold text-[#74c69d]">
+                <Dumbbell className="w-4 h-4 text-[#00ff88]" />
+                <span className="text-xs font-mono font-bold text-[#00ff88]">
                   {toadChronicles[selectedChronicle].highlightPhrase}
                 </span>
               </div>
 
-              <a
-                href={TELEGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-xl bg-[#0088cc] hover:bg-[#0099e6] text-white font-mono font-bold text-xs flex items-center gap-2 shadow-md transition-all"
-              >
-                <Send className="w-3.5 h-3.5" />
-                <span>Discuss in Telegram: t.me/chilltoad</span>
-              </a>
+              {TELEGRAM_URL ? (
+                <a
+                  href={TELEGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 rounded-xl bg-[#0088cc] hover:bg-[#0099e6] text-white font-mono font-bold text-xs flex items-center gap-2 shadow-md transition-all"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                  <span>Join the Giga Chat: Telegram</span>
+                </a>
+              ) : (
+                <span className="px-4 py-2 rounded-xl bg-[#0a2040] text-[#38bdf8] font-mono font-bold text-xs border border-[#1e3a8a]">
+                  ⚡ The Most Alpha Community on Solana
+                </span>
+              )}
             </div>
 
           </motion.div>

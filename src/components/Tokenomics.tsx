@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { ShieldCheck, Flame, CirclePercent, Coins, Lock, Sparkles, BookOpen, ExternalLink, TrendingUp, Send, Copy, Check } from "lucide-react";
-import { CHILLTOAD_CA, TELEGRAM_URL, DEXSCREENER_URL, PUMPFUN_URL, RAYDIUM_URL, SOLSCAN_URL } from "../constants";
+import { ShieldCheck, Flame, CirclePercent, Coins, Lock, Sparkles, Dumbbell, ExternalLink, TrendingUp, Send, Copy, Check, Zap, Trophy } from "lucide-react";
+import { GIGATOAD_CA, GIGATOAD_NAME, GIGATOAD_TICKER, TELEGRAM_URL, DEXSCREENER_URL, PUMPFUN_URL, RAYDIUM_URL, SOLSCAN_URL } from "../constants";
 
 export default function Tokenomics() {
   const [copiedCA, setCopiedCA] = useState(false);
 
   const handleCopyCA = () => {
-    navigator.clipboard.writeText(CHILLTOAD_CA);
+    navigator.clipboard.writeText(GIGATOAD_CA);
     setCopiedCA(true);
     setTimeout(() => setCopiedCA(false), 2000);
   };
@@ -16,78 +16,84 @@ export default function Tokenomics() {
     {
       title: "TOTAL SUPPLY",
       value: "1,000,000,000",
-      description: "Fixed 1 Billion $chilltoad minted once in the pond",
+      description: "Fixed 1 Billion $gigatoad minted once in the Solana universe",
       icon: Coins,
       highlight: "100% In Circulation",
     },
     {
       title: "BUY / SELL TAX",
       value: "0% / 0%",
-      description: "Zero fees, zero friction, maximum peace of mind",
+      description: "Zero fees, zero friction, maximum alpha gains for Chads",
       icon: CirclePercent,
       highlight: "Pure Zero Tax",
     },
     {
       title: "LIQUIDITY POOL",
       value: "100% BURNED",
-      description: "LP tokens sent to the incinerator forever",
+      description: "LP tokens sent to the incinerator forever for unshakeable security",
       icon: Flame,
-      highlight: "Immutable Security",
+      highlight: "Ironclad Security",
     },
     {
       title: "CONTRACT OWNERSHIP",
       value: "RENOUNCED",
-      description: "Owned purely by the community and the water spirits",
+      description: "Owned purely by the alpha community and the Solana validators",
       icon: ShieldCheck,
-      highlight: "Community Owned",
+      highlight: "100% Community Owned",
     },
   ];
 
   return (
-    <section id="tokenomics" className="relative py-20 sm:py-28 bg-[#0b2419] text-white overflow-hidden border-b-2 border-[#2d6a4f] pond-water-grid selection:bg-[#74c69d] selection:text-[#081c15]">
+    <section id="tokenomics" className="relative py-20 sm:py-28 bg-[#050d1a] text-white overflow-hidden border-b-2 border-[#1e3a8a] giga-blue-grid selection:bg-[#00ff88] selection:text-[#050d1a]">
       
       {/* Background ambient glow */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
-        <div className="absolute top-[25%] right-[15%] w-80 h-80 rounded-full bg-[#52b788]/20 blur-[150px]"></div>
-        <div className="absolute bottom-[25%] left-[15%] w-80 h-80 rounded-full bg-[#2d6a4f]/25 blur-[150px]"></div>
+        <div className="absolute top-[25%] right-[15%] w-80 h-80 rounded-full bg-[#00ff88]/10 blur-[150px]"></div>
+        <div className="absolute bottom-[25%] left-[15%] w-80 h-80 rounded-full bg-[#0052FF]/20 blur-[150px]"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#112d20] border border-[#52b788]/60 shadow-sm">
-            <Coins className="w-3.5 h-3.5 text-[#74c69d]" />
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#d8f3dc]">
-              THE POND LEDGER & TOKENOMICS
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0a2040] border border-[#00ff88]/60 shadow-sm">
+            <Coins className="w-3.5 h-3.5 text-[#00ff88]" />
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#00ff88]">
+              THE ALPHA LEDGER & TOKENOMICS
             </span>
           </div>
 
           <h2 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tight uppercase">
-            Pond <span className="text-[#74c69d]">Tokenomics</span>
+            Chad <span className="text-[#00ff88]">Tokenomics</span>
           </h2>
-          <p className="font-sans text-base sm:text-lg text-[#b7e4c7] font-medium max-w-2xl mx-auto leading-relaxed">
-            No insider allocations, no hidden VC reserves, 0% tax. Pure unbothered toad energy engineered for everlasting composure on Solana!
+          <p className="font-sans text-base sm:text-lg text-white/90 font-medium max-w-2xl mx-auto leading-relaxed">
+            No insider allocations, no hidden team tokens, 0% tax. Pure muscle hypertrophy engineered for everlasting domination on Solana!
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3 pt-4">
-            <a
-              href={TELEGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-xl bg-[#0088cc] hover:bg-[#0099e6] text-white font-mono font-bold text-xs flex items-center gap-2 shadow-md transition-all"
-            >
-              <Send className="w-4 h-4" />
-              <span>Telegram: t.me/chilltoad</span>
-            </a>
+            {TELEGRAM_URL ? (
+              <a
+                href={TELEGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-2.5 rounded-xl bg-[#0088cc] hover:bg-[#0099e6] text-white font-mono font-bold text-xs flex items-center gap-2 shadow-md transition-all"
+              >
+                <Send className="w-4 h-4" />
+                <span>Join Telegram</span>
+              </a>
+            ) : (
+              <span className="px-5 py-2.5 rounded-xl bg-[#0a2040] text-[#38bdf8] font-mono font-bold text-xs border border-[#1e3a8a]">
+                ⚡ 100% Alpha & Zero Fees
+              </span>
+            )}
 
             <a
               href={DEXSCREENER_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2.5 rounded-xl bg-[#1b4332] hover:bg-[#2d6a4f] border border-[#52b788] text-white font-mono font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all"
+              className="px-4 py-2.5 rounded-xl bg-[#0b213f] hover:bg-[#0f2b52] border border-[#00ff88]/60 text-white font-mono font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all"
             >
-              <TrendingUp className="w-3.5 h-3.5 text-[#74c69d]" />
+              <TrendingUp className="w-3.5 h-3.5 text-[#00ff88]" />
               <span>DexScreener Chart</span>
             </a>
 
@@ -95,7 +101,7 @@ export default function Tokenomics() {
               href={PUMPFUN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2.5 rounded-xl bg-[#143621] hover:bg-[#1e4a30] border border-[#2d6a4f] text-[#86efac] font-mono font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all"
+              className="px-4 py-2.5 rounded-xl bg-[#092244] hover:bg-[#0d2e5b] border border-[#00ff88] text-[#00ff88] font-mono font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all"
             >
               <span>💊</span>
               <span>Pump.fun Market</span>
@@ -104,11 +110,11 @@ export default function Tokenomics() {
         </div>
 
         {/* Verified Solana Contract Address Highlight Box */}
-        <div className="max-w-4xl mx-auto mb-12 pond-card p-6 sm:p-7 rounded-2xl border-2 border-[#52b788] shadow-2xl space-y-3">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#2d6a4f] pb-3">
+        <div className="max-w-4xl mx-auto mb-12 giga-card p-6 sm:p-7 rounded-2xl border-2 border-[#00ff88] shadow-2xl space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#1e3a8a] pb-3">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#52b788] animate-ping"></span>
-              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#74c69d]">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#00ff88] animate-ping"></span>
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#00ff88]">
                 OFFICIAL SOLANA CONTRACT ADDRESS (CA)
               </span>
             </div>
@@ -116,23 +122,23 @@ export default function Tokenomics() {
               href={SOLSCAN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-mono font-bold text-[#b7e4c7] hover:text-white flex items-center gap-1 underline"
+              className="text-xs font-mono font-bold text-[#38bdf8] hover:text-white flex items-center gap-1 underline"
             >
               View on Solscan <ExternalLink className="w-3 h-3" />
             </a>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-3">
-            <div className="w-full flex-1 bg-[#081c15] px-4 py-3 rounded-xl border border-[#2d6a4f] font-mono text-xs sm:text-sm text-white select-all break-all sm:truncate">
-              {CHILLTOAD_CA}
+            <div className="w-full flex-1 bg-[#050d1a] px-4 py-3 rounded-xl border border-[#1e3a8a] font-mono text-xs sm:text-sm text-white select-all break-all sm:truncate">
+              {GIGATOAD_CA}
             </div>
 
             <button
               onClick={handleCopyCA}
               className={`w-full sm:w-auto px-6 py-3 rounded-xl font-mono font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer ${
                 copiedCA
-                  ? "bg-[#52b788] text-[#081c15] border border-[#74c69d]"
-                  : "bg-[#1b4332] hover:bg-[#2d6a4f] text-white border border-[#52b788]"
+                  ? "bg-[#00ff88] text-[#050d1a] border border-[#00ff88]"
+                  : "bg-[#0b213f] hover:bg-[#0f2b52] text-white border border-[#00ff88]/60"
               }`}
             >
               {copiedCA ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
@@ -148,18 +154,18 @@ export default function Tokenomics() {
             return (
               <div
                 key={idx}
-                className="pond-card p-6 sm:p-7 rounded-2xl border-2 border-[#52b788] shadow-xl flex flex-col justify-between relative group hover:scale-[1.02] transition-transform duration-300"
+                className="giga-card p-6 sm:p-7 rounded-2xl border-2 border-[#00ff88]/60 shadow-xl flex flex-col justify-between relative group hover:scale-[1.02] transition-transform duration-300"
               >
                 {/* Decorative Pin */}
-                <div className="absolute top-3 right-3 w-3 h-3 rounded-full bg-[#52b788] border border-[#d8f3dc]"></div>
+                <div className="absolute top-3 right-3 w-3 h-3 rounded-full bg-[#00ff88] border border-white"></div>
 
                 <div className="space-y-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#163824] border border-[#52b788] flex items-center justify-center text-[#74c69d] shadow-sm">
+                  <div className="w-12 h-12 rounded-xl bg-[#0c2244] border border-[#00ff88]/50 flex items-center justify-center text-[#00ff88] shadow-sm">
                     <Icon className="w-6 h-6" />
                   </div>
 
                   <div>
-                    <span className="text-[10px] font-mono font-bold text-[#74c69d] uppercase tracking-wider block">
+                    <span className="text-[10px] font-mono font-bold text-[#00ff88] uppercase tracking-wider block">
                       {stat.title}
                     </span>
                     <div className="font-display font-black text-2xl sm:text-3xl text-white tracking-tight">
@@ -167,16 +173,16 @@ export default function Tokenomics() {
                     </div>
                   </div>
 
-                  <p className="font-sans text-xs text-[#b7e4c7] font-medium leading-relaxed">
+                  <p className="font-sans text-xs text-white/80 font-medium leading-relaxed">
                     {stat.description}
                   </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-[#2d6a4f] flex items-center justify-between">
-                  <span className="text-[11px] font-mono font-bold text-[#74c69d]">
+                <div className="mt-4 pt-3 border-t border-[#1e3a8a] flex items-center justify-between">
+                  <span className="text-[11px] font-mono font-bold text-[#00ff88]">
                     {stat.highlight}
                   </span>
-                  <span className="text-sm">🐸</span>
+                  <span className="text-sm">💪</span>
                 </div>
               </div>
             );
@@ -184,22 +190,22 @@ export default function Tokenomics() {
         </div>
 
         {/* Trust & Transparency Banner */}
-        <div className="max-w-4xl mx-auto pond-card p-8 rounded-2xl border-2 border-[#52b788] text-center space-y-4">
+        <div className="max-w-4xl mx-auto giga-card p-8 rounded-2xl border-2 border-[#00ff88] text-center space-y-4">
           <h3 className="font-display font-black text-2xl sm:text-3xl text-white">
-            “No Rush, No Rugs, Just Calm Pond Vibes”
+            “No Weak Hands, No Rugs, Pure Iron Hypertrophy”
           </h3>
-          <p className="font-sans text-sm sm:text-base text-[#d8f3dc] max-w-2xl mx-auto leading-relaxed">
-            Chill Toad Pepe was created to be the most relaxing meme token on Solana. Mint authority revoked, freeze authority revoked, liquidity burned to a crisp, and community empowered.
+          <p className="font-sans text-sm sm:text-base text-white/90 max-w-2xl mx-auto leading-relaxed">
+            {GIGATOAD_NAME} was engineered to be the most dominant meme token on Solana. Mint authority revoked, freeze authority revoked, liquidity burned to ash, and community fueled by pure alpha strength.
           </p>
           <div className="pt-2">
             <a
-              href={TELEGRAM_URL}
+              href={PUMPFUN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0088cc] hover:bg-[#0099e6] text-white font-display font-black text-xs shadow-lg transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#00ff88] to-[#38bdf8] text-[#050d1a] font-display font-black text-xs shadow-lg transition-all hover:scale-105"
             >
-              <Send className="w-4 h-4" />
-              <span>Connect with Fellow Chillers on Telegram</span>
+              <Trophy className="w-4 h-4 text-[#050d1a]" />
+              <span>Dominate the Market with {GIGATOAD_TICKER}</span>
             </a>
           </div>
         </div>

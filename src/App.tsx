@@ -9,31 +9,31 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#061811] text-[#d8f3dc] font-sans selection:bg-[#74c69d] selection:text-[#081c15] antialiased overflow-x-hidden relative pond-water-grid">
-      {/* Background ambient serene pond glow */}
-      <div className="absolute inset-0 pointer-events-none opacity-40 z-0 overflow-hidden">
-        <div className="absolute top-[-5%] right-[-10%] w-[600px] h-[600px] bg-[#2d6a4f] rounded-full blur-[160px]"></div>
-        <div className="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-[#1b4332] rounded-full blur-[160px]"></div>
-        <div className="absolute top-[40%] left-[20%] w-[400px] h-[400px] bg-[#52b788] rounded-full blur-[150px] opacity-25"></div>
-        <div className="absolute bottom-[5%] right-[10%] w-[500px] h-[500px] bg-[#74c69d] rounded-full blur-[150px] opacity-20"></div>
+    <div className="min-h-screen bg-[#050d1a] text-white font-sans selection:bg-[#00ff88] selection:text-[#050d1a] antialiased overflow-x-hidden relative giga-blue-grid">
+      {/* Background ambient electric blue & neon green glows */}
+      <div className="absolute inset-0 pointer-events-none opacity-60 z-0 overflow-hidden">
+        <div className="absolute top-[-5%] right-[-10%] w-[600px] h-[600px] bg-[#0052FF]/20 rounded-full blur-[170px]"></div>
+        <div className="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-[#00ff88]/15 rounded-full blur-[170px]"></div>
+        <div className="absolute top-[40%] left-[20%] w-[450px] h-[450px] bg-[#38bdf8]/15 rounded-full blur-[150px]"></div>
+        <div className="absolute bottom-[5%] right-[10%] w-[500px] h-[500px] bg-[#0052FF]/20 rounded-full blur-[160px]"></div>
       </div>
 
       {/* Navigation */}
       <Navbar />
 
-      {/* Hero Header Section with exact artwork layout & Telegram */}
+      {/* Hero Header Section with exact artwork layout & CA */}
       <Hero />
 
-      {/* Complete Pond Lore & Chronicles of the Chill Toad Section */}
+      {/* Complete Giga Toad Lore & Chronicles of the Alpha Toad Section */}
       <Story />
 
-      {/* Interactive Chill Toad Lounge & Vibe-o-Meter */}
+      {/* Interactive Giga Toad Alpha Gym & Hypertrophy Calculator */}
       <InteractiveApp />
 
-      {/* Pond Ledger & Tokenomics */}
+      {/* Alpha Ledger & Tokenomics */}
       <Tokenomics />
 
-      {/* Lily Pad Hop Roadmap */}
+      {/* Alpha Roadmap */}
       <AuraRoadmap />
 
       {/* Footer & Disclaimer */}
