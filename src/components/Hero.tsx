@@ -91,27 +91,28 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative pt-10 pb-20 sm:pt-14 sm:pb-28 overflow-hidden text-white">
-      {/* Ambient Electric Blue & Neon Green Glow */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-[8%] left-[10%] w-[550px] h-[550px] bg-[#0052FF]/20 rounded-full blur-[170px]"></div>
-        <div className="absolute top-[25%] right-[5%] w-[600px] h-[600px] bg-[#00ff88]/15 rounded-full blur-[180px]"></div>
-        <div className="absolute bottom-[5%] left-[25%] w-[450px] h-[450px] bg-[#38bdf8]/15 rounded-full blur-[150px]"></div>
+    <section className="relative pt-8 pb-16 sm:pt-12 sm:pb-24 overflow-hidden text-white">
+      {/* Soft ambient blue glows (no grids) */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-50">
+        <div className="absolute top-[8%] left-[10%] w-[550px] h-[550px] bg-[#0038b8] rounded-full blur-[160px]"></div>
+        <div className="absolute top-[25%] right-[5%] w-[600px] h-[600px] bg-[#0066ff] rounded-full blur-[160px]"></div>
+        <div className="absolute bottom-[5%] left-[25%] w-[450px] h-[450px] bg-[#38bdf8]/20 rounded-full blur-[140px]"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Main Title Badge Header */}
         <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0a2040] border border-[#00ff88]/60 shadow-[0_0_20px_rgba(0,255,136,0.3)]">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#003cb8] border border-white/40 shadow-md">
             <span className="w-2.5 h-2.5 rounded-full bg-[#00ff88] animate-ping"></span>
             <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#00ff88]">
               THE MOST MUSCULAR & ALPHA TOAD IN THE SOLANA UNIVERSE
             </span>
           </div>
 
-          <h1 className="font-display font-black text-5xl sm:text-7xl md:text-8xl tracking-tight text-white drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)]">
-            Giga Toad <span className="text-[#00ff88] drop-shadow-[0_0_25px_rgba(0,255,136,0.6)]">Pepe</span>
+          {/* Exact typography matching image: giga "toad" pepe */}
+          <h1 className="font-script text-6xl sm:text-8xl md:text-9xl text-white tracking-normal lowercase drop-shadow-[0_8px_30px_rgba(0,0,0,0.3)] my-2">
+            giga &ldquo;toad&rdquo; pepe
           </h1>
 
           <p className="font-sans font-medium text-lg sm:text-2xl text-white max-w-2xl mx-auto leading-relaxed">
@@ -122,7 +123,7 @@ export default function Hero() {
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <button
               onClick={toggleSound}
-              className="px-4 py-2 rounded-full bg-[#091a32] hover:bg-[#0d264a] border border-[#00ff88]/60 text-xs font-mono font-bold text-white transition-all flex items-center gap-2 shadow-sm cursor-pointer hover:border-[#00ff88]"
+              className="px-4 py-2 rounded-full bg-[#003bb5] hover:bg-[#00329e] border border-white/30 text-xs font-mono font-bold text-white transition-all flex items-center gap-2 shadow-sm cursor-pointer hover:border-white"
             >
               {soundEnabled ? (
                 <>
@@ -131,7 +132,7 @@ export default function Hero() {
                 </>
               ) : (
                 <>
-                  <VolumeX className="w-4 h-4 text-[#38bdf8]" />
+                  <VolumeX className="w-4 h-4 text-[#70d6ff]" />
                   <span>Audio: Off (Click for Alpha Bass)</span>
                 </>
               )}
@@ -141,11 +142,11 @@ export default function Hero() {
               onClick={handleFlexAura}
               className={`px-4 py-2 rounded-full border text-xs font-mono font-bold transition-all flex items-center gap-2 shadow-md cursor-pointer ${
                 hasFlexed
-                  ? "bg-[#00ff88] text-[#050d1a] border-[#00ff88] scale-105 shadow-[0_0_25px_rgba(0,255,136,0.8)]"
-                  : "bg-[#091a32] hover:bg-[#0d264a] text-white border-[#38bdf8]/60"
+                  ? "bg-[#00ff88] text-[#003bb5] border-[#00ff88] scale-105 shadow-[0_0_25px_rgba(0,255,136,0.8)]"
+                  : "bg-[#003bb5] hover:bg-[#00329e] text-white border-white/30"
               }`}
             >
-              <Dumbbell className={`w-4 h-4 ${hasFlexed ? "text-[#050d1a] rotate-45" : "text-[#00ff88]"}`} />
+              <Dumbbell className={`w-4 h-4 ${hasFlexed ? "text-[#003bb5] rotate-45" : "text-[#00ff88]"}`} />
               <span>{chadPower.toLocaleString()} Chad Alpha Power (Tap to Flex +1000)</span>
             </button>
 
@@ -155,9 +156,9 @@ export default function Hero() {
                 href={TELEGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full bg-[#0088cc]/30 hover:bg-[#0088cc]/50 border border-[#0088cc] text-xs font-mono font-bold text-[#70d6ff] hover:text-white transition-all flex items-center gap-2 shadow-sm"
+                className="px-4 py-2 rounded-full bg-[#0088cc]/30 hover:bg-[#0088cc]/50 border border-white/40 text-xs font-mono font-bold text-white transition-all flex items-center gap-2 shadow-sm"
               >
-                <Send className="w-4 h-4 text-[#00a8ff]" />
+                <Send className="w-4 h-4 text-white" />
                 <span>Telegram</span>
               </a>
             )}
@@ -166,10 +167,10 @@ export default function Hero() {
 
         {/* HERO SHOWCASE CARD WITH OFFICIAL GIGA TOAD PEPE ARTWORK */}
         <div className="max-w-5xl mx-auto mb-14">
-          <div className="giga-card p-6 sm:p-10 rounded-2xl relative overflow-hidden">
+          <div className="giga-card p-6 sm:p-10 rounded-3xl relative overflow-hidden">
             {/* Top decorative pins */}
-            <div className="absolute top-3 left-3 w-4 h-4 rounded-full bg-[#00ff88] border border-white shadow-[0_0_12px_#00ff88]"></div>
-            <div className="absolute top-3 right-3 w-4 h-4 rounded-full bg-[#38bdf8] border border-white shadow-[0_0_12px_#38bdf8]"></div>
+            <div className="absolute top-4 left-4 w-3.5 h-3.5 rounded-full bg-[#00ff88] border-2 border-white shadow-[0_0_12px_#00ff88]"></div>
+            <div className="absolute top-4 right-4 w-3.5 h-3.5 rounded-full bg-[#38bdf8] border-2 border-white shadow-[0_0_12px_#38bdf8]"></div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
@@ -177,10 +178,10 @@ export default function Hero() {
               <div className="lg:col-span-6 flex flex-col items-center justify-center">
                 <div className="relative group">
                   {/* Glowing halo behind avatar */}
-                  <div className="absolute -inset-4 bg-gradient-to-r from-[#0052FF] via-[#00ff88] to-[#38bdf8] rounded-3xl blur-2xl opacity-60 group-hover:opacity-90 transition duration-700 animate-giga-flex"></div>
+                  <div className="absolute -inset-4 bg-gradient-to-r from-[#00ff88] via-[#38bdf8] to-white rounded-3xl blur-2xl opacity-50 group-hover:opacity-80 transition duration-700 animate-giga-flex"></div>
                   
                   {/* Main Portrait Frame */}
-                  <div className="relative w-72 sm:w-84 md:w-96 aspect-square rounded-2xl overflow-hidden border-4 border-[#00ff88] shadow-[0_20px_50px_rgba(0,0,0,0.9)] bg-[#050d1a]">
+                  <div className="relative w-72 sm:w-84 md:w-96 aspect-square rounded-2xl overflow-hidden border-4 border-white shadow-[0_20px_50px_rgba(0,10,50,0.5)] bg-[#003bb5]">
                     <img
                       src={GIGATOAD_LOGO}
                       alt="Giga Toad Pepe Artwork"
@@ -188,7 +189,7 @@ export default function Hero() {
                     />
                     
                     {/* Badge on avatar */}
-                    <div className="absolute bottom-3 left-3 right-3 bg-[#050d1a]/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-[#00ff88]/60 flex items-center justify-between">
+                    <div className="absolute bottom-3 left-3 right-3 bg-[#00319e]/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/30 flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <span className="w-2.5 h-2.5 rounded-full bg-[#00ff88] animate-ping"></span>
                         <span className="text-xs font-mono font-black text-white">ALPHA LEVEL: MAXIMUM</span>
@@ -200,7 +201,7 @@ export default function Hero() {
 
                 {/* Caption underneath */}
                 <div className="mt-4 text-center">
-                  <span className="text-xs font-mono text-[#38bdf8] font-bold flex items-center gap-1.5 justify-center">
+                  <span className="text-xs font-mono text-white/90 font-bold flex items-center gap-1.5 justify-center">
                     <Zap className="w-3.5 h-3.5 text-[#00ff88]" /> The Undisputed Chad of the Solana Universe
                   </span>
                 </div>
@@ -209,26 +210,26 @@ export default function Hero() {
               {/* Right: The Giga Toad Lore & Direct Community Access */}
               <div className="lg:col-span-6 space-y-6">
                 <div className="space-y-3">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#0a2040] text-[#00ff88] text-xs font-mono font-bold border border-[#00ff88]/40">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#0035a8] text-[#00ff88] text-xs font-mono font-bold border border-white/20">
                     <Trophy className="w-3.5 h-3.5 text-[#00ff88]" /> PURE CHAD MUSCLE • MAXIMUM GAINS
                   </div>
                   <h2 className="font-display font-black text-3xl sm:text-4xl text-white tracking-tight leading-tight">
                     No weakness. No missed sets. <span className="text-[#00ff88]">Only pure alpha.</span>
                   </h2>
-                  <p className="font-sans text-base text-white/90 leading-relaxed">
-                    While weak-handed frogs panic over market dips, <strong className="text-[#00ff88]">Giga Toad Pepe</strong> loads another 500kg on the bar and pumps straight through resistance. Built different, carved from Solana code, and fueled by unyielding chad energy.
+                  <p className="font-sans text-base text-white/95 leading-relaxed">
+                    While weak-handed frogs panic over market dips, <strong className="text-[#00ff88]">giga &ldquo;toad&rdquo; pepe</strong> loads another 500kg on the bar and pumps straight through resistance. Built different, carved from Solana code, and fueled by unyielding chad energy.
                   </p>
                 </div>
 
                 {/* Giga Wisdom interactive quote box */}
                 <div 
                   onClick={nextQuote}
-                  className="p-4 rounded-xl bg-[#07152b] border border-[#00ff88]/50 cursor-pointer hover:border-[#00ff88] transition-all group relative"
+                  className="p-4 rounded-2xl bg-[#0038b5] border border-white/30 cursor-pointer hover:border-white transition-all group relative shadow-md"
                   title="Click to draw another Giga Chad quote"
                 >
                   <div className="flex items-center justify-between text-[11px] font-mono text-[#00ff88] mb-1.5 font-bold">
                     <span>⚡ GIGA TOAD ALPHA CODE</span>
-                    <span className="text-[10px] text-[#38bdf8] group-hover:text-white transition-colors">Tap for next wisdom →</span>
+                    <span className="text-[10px] text-white/80 group-hover:text-white transition-colors">Tap for next wisdom →</span>
                   </div>
                   <p className="font-serif italic text-base sm:text-lg text-white font-medium">
                     {gigaWisdoms[currentQuoteIndex]}
@@ -236,28 +237,28 @@ export default function Hero() {
                 </div>
 
                 {/* Dedicated Solana Contract Address Copy Box */}
-                <div className="p-4 rounded-xl bg-[#050d1a] border-2 border-[#00ff88] shadow-md space-y-2">
+                <div className="p-4 rounded-2xl bg-[#00319e] border-2 border-white/40 shadow-lg space-y-2">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] font-mono font-bold text-[#00ff88] uppercase tracking-wider flex items-center gap-1.5">
                       <Coins className="w-3.5 h-3.5 text-[#00ff88]" /> SOLANA CONTRACT ADDRESS (CA)
                     </span>
-                    <span className="text-[10px] font-mono text-[#38bdf8] font-semibold">100% VERIFIED ALPHA</span>
+                    <span className="text-[10px] font-mono text-[#70d6ff] font-semibold">100% VERIFIED ALPHA</span>
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <div className="flex-1 bg-[#091a32] px-3 py-2 rounded-lg border border-[#1e3a8a] font-mono text-xs text-white truncate select-all">
+                    <div className="flex-1 bg-[#002882] px-3 py-2 rounded-xl border border-white/20 font-mono text-xs text-white truncate select-all">
                       {GIGATOAD_CA}
                     </div>
 
                     <button
                       onClick={handleCopyCA}
-                      className={`px-4 py-2 rounded-lg font-mono font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer ${
+                      className={`px-4 py-2 rounded-xl font-mono font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer ${
                         copiedCA
-                          ? "bg-[#00ff88] text-[#050d1a] border border-[#00ff88]"
-                          : "bg-[#0b213f] hover:bg-[#0f2b52] text-white border border-[#00ff88]/60"
+                          ? "bg-[#00ff88] text-[#003bb5] border border-[#00ff88]"
+                          : "bg-white hover:bg-white/90 text-[#0052fe]"
                       }`}
                     >
-                      {copiedCA ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                      {copiedCA ? <Check className="w-4 h-4 text-[#003bb5]" /> : <Copy className="w-4 h-4 text-[#0052fe]" />}
                       <span>{copiedCA ? "Copied!" : "Copy CA"}</span>
                     </button>
                   </div>
@@ -265,19 +266,19 @@ export default function Hero() {
 
                 {/* Key Pillars Highlights */}
                 <div className="grid grid-cols-2 gap-3 pt-1 font-mono text-xs">
-                  <div className="p-3 rounded-xl bg-[#050d1a] border border-[#1e3a8a]">
+                  <div className="p-3 rounded-xl bg-[#0038b5] border border-white/20">
                     <div className="text-[#00ff88] font-black text-sm">0% TAX</div>
                     <div className="text-white/80 text-[11px]">No fees, pure chad trading</div>
                   </div>
-                  <div className="p-3 rounded-xl bg-[#050d1a] border border-[#1e3a8a]">
+                  <div className="p-3 rounded-xl bg-[#0038b5] border border-white/20">
                     <div className="text-[#00ff88] font-black text-sm">100% BURNED LP</div>
                     <div className="text-white/80 text-[11px]">Permanent ironclad liquidity</div>
                   </div>
-                  <div className="p-3 rounded-xl bg-[#050d1a] border border-[#1e3a8a]">
+                  <div className="p-3 rounded-xl bg-[#0038b5] border border-white/20">
                     <div className="text-[#00ff88] font-black text-sm">1000KG BENCH</div>
                     <div className="text-white/80 text-[11px]">Crushing all red candles</div>
                   </div>
-                  <div className="p-3 rounded-xl bg-[#050d1a] border border-[#1e3a8a]">
+                  <div className="p-3 rounded-xl bg-[#0038b5] border border-white/20">
                     <div className="text-[#00ff88] font-black text-sm">IMMUTABLE ALPHA</div>
                     <div className="text-white/80 text-[11px]">Apex predator on Solana</div>
                   </div>
@@ -289,7 +290,7 @@ export default function Hero() {
                     href={PUMPFUN_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 min-w-[180px] px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#00ff88] via-[#10b981] to-[#38bdf8] hover:from-[#00ff88] hover:to-[#10b981] text-[#050d1a] font-display font-black text-sm text-center shadow-[0_0_25px_rgba(0,255,136,0.5)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2"
+                    className="flex-1 min-w-[180px] px-6 py-3.5 rounded-xl bg-white hover:bg-white/95 text-[#0052fe] font-display font-black text-sm text-center shadow-[0_0_25px_rgba(255,255,255,0.35)] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2"
                   >
                     <span>💊 Buy on Pump.fun</span>
                   </a>
@@ -298,7 +299,7 @@ export default function Hero() {
                     href={DEXSCREENER_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 py-3.5 rounded-xl bg-[#0b213f] hover:bg-[#0f2b52] border border-[#00ff88]/60 text-white font-mono font-bold text-xs shadow-md transition-all flex items-center gap-1.5"
+                    className="px-5 py-3.5 rounded-xl bg-[#0038b5] hover:bg-[#00309e] border border-white/40 text-white font-mono font-bold text-xs shadow-md transition-all flex items-center gap-1.5"
                   >
                     <TrendingUp className="w-4 h-4 text-[#00ff88]" />
                     <span>DexScreener</span>
@@ -308,9 +309,9 @@ export default function Hero() {
                     href={SOLSCAN_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-5 py-3.5 rounded-xl bg-[#07152b] hover:bg-[#0a2040] border border-[#1e3a8a] text-[#38bdf8] font-mono font-bold text-xs shadow-md transition-all flex items-center gap-1.5"
+                    className="px-5 py-3.5 rounded-xl bg-[#00319e] hover:bg-[#002882] border border-white/30 text-white font-mono font-bold text-xs shadow-md transition-all flex items-center gap-1.5"
                   >
-                    <ExternalLink className="w-4 h-4 text-[#38bdf8]" />
+                    <ExternalLink className="w-4 h-4 text-[#70d6ff]" />
                     <span>Solscan</span>
                   </a>
                 </div>
@@ -322,8 +323,8 @@ export default function Hero() {
 
         {/* 3 Quick Highlight Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          <div className="p-5 rounded-xl bg-[#091a32] border border-[#1e3a8a] space-y-2">
-            <div className="w-10 h-10 rounded-lg bg-[#0b213f] border border-[#00ff88] flex items-center justify-center text-xl">
+          <div className="p-5 rounded-2xl bg-[#0041bf] border border-white/25 space-y-2 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-[#00319e] border border-white/30 flex items-center justify-center text-xl">
               🏋️‍♂️
             </div>
             <h3 className="font-display font-bold text-lg text-white">The Iron Lily Pad</h3>
@@ -332,8 +333,8 @@ export default function Hero() {
             </p>
           </div>
 
-          <div className="p-5 rounded-xl bg-[#091a32] border border-[#1e3a8a] space-y-2">
-            <div className="w-10 h-10 rounded-lg bg-[#0b213f] border border-[#00ff88] flex items-center justify-center text-xl">
+          <div className="p-5 rounded-2xl bg-[#0041bf] border border-white/25 space-y-2 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-[#00319e] border border-white/30 flex items-center justify-center text-xl">
               💪
             </div>
             <h3 className="font-display font-bold text-lg text-white">100% Muscular Community</h3>
@@ -342,8 +343,8 @@ export default function Hero() {
             </p>
           </div>
 
-          <div className="p-5 rounded-xl bg-[#091a32] border border-[#1e3a8a] space-y-2">
-            <div className="w-10 h-10 rounded-lg bg-[#0b213f] border border-[#00ff88] flex items-center justify-center text-xl">
+          <div className="p-5 rounded-2xl bg-[#0041bf] border border-white/25 space-y-2 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-[#00319e] border border-white/30 flex items-center justify-center text-xl">
               👑
             </div>
             <h3 className="font-display font-bold text-lg text-white">The Solana Apex King</h3>

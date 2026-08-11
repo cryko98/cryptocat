@@ -64,19 +64,19 @@ export default function AuraRoadmap() {
   ];
 
   return (
-    <section id="roadmap" className="relative py-20 sm:py-28 bg-[#050d1a] text-white overflow-hidden border-b-2 border-[#1e3a8a] giga-blue-grid selection:bg-[#00ff88] selection:text-[#050d1a]">
+    <section id="roadmap" className="relative py-16 sm:py-24 bg-[#0047db] text-white overflow-hidden border-b border-white/20 selection:bg-[#00ff88] selection:text-[#003bb5]">
       
       {/* Background ambient glow */}
-      <div className="absolute inset-0 pointer-events-none select-none z-0">
-        <div className="absolute top-[20%] left-[20%] w-80 h-80 rounded-full bg-[#00ff88]/10 blur-[150px]"></div>
-        <div className="absolute bottom-[20%] right-[20%] w-80 h-80 rounded-full bg-[#0052FF]/20 blur-[150px]"></div>
+      <div className="absolute inset-0 pointer-events-none select-none z-0 opacity-40">
+        <div className="absolute top-[20%] left-[20%] w-80 h-80 rounded-full bg-[#00ff88]/15 blur-[150px]"></div>
+        <div className="absolute bottom-[20%] right-[20%] w-80 h-80 rounded-full bg-[#0038b8] blur-[150px]"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0a2040] border border-[#00ff88]/60 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#003bb5] border border-white/30 shadow-sm">
             <Dumbbell className="w-3.5 h-3.5 text-[#00ff88]" />
             <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#00ff88]">
               PROGRESSIVE OVERLOAD • THE EXPEDITION
@@ -86,7 +86,7 @@ export default function AuraRoadmap() {
           <h2 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tight uppercase">
             Alpha <span className="text-[#00ff88]">Roadmap</span>
           </h2>
-          <p className="font-sans text-base sm:text-lg text-white/90 font-medium max-w-2xl mx-auto leading-relaxed">
+          <p className="font-sans text-base sm:text-lg text-white/95 font-medium max-w-2xl mx-auto leading-relaxed">
             No skipped workouts, no missed sets. Just a ruthless, steady push from one PR to the next.
           </p>
         </div>
@@ -96,11 +96,11 @@ export default function AuraRoadmap() {
           {phases.map((phase, idx) => (
             <div
               key={idx}
-              className="giga-card p-6 sm:p-7 rounded-2xl border-2 border-[#00ff88]/60 shadow-xl flex flex-col justify-between relative group hover:scale-[1.02] transition-transform duration-300"
+              className="giga-card p-6 sm:p-7 rounded-3xl border-2 border-white/30 shadow-xl flex flex-col justify-between relative group hover:scale-[1.02] transition-transform duration-300"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono font-bold text-[#00ff88] uppercase tracking-wider px-2.5 py-1 rounded bg-[#0c2244] border border-[#00ff88]/40">
+                  <span className="text-[10px] font-mono font-bold text-[#00ff88] uppercase tracking-wider px-2.5 py-1 rounded-xl bg-[#00319e] border border-white/20">
                     {phase.step}
                   </span>
                   <span className="text-2xl">{phase.icon}</span>
@@ -115,13 +115,13 @@ export default function AuraRoadmap() {
                   </div>
                 </div>
 
-                <p className="font-sans text-xs text-white/80 leading-relaxed">
+                <p className="font-sans text-xs text-white/90 leading-relaxed">
                   {phase.description}
                 </p>
 
-                <ul className="space-y-2 pt-2 border-t border-[#1e3a8a]">
+                <ul className="space-y-2 pt-2 border-t border-white/20">
                   {phase.items.map((item, iIdx) => (
-                    <li key={iIdx} className="text-xs font-sans text-white/90 flex items-start gap-2">
+                    <li key={iIdx} className="text-xs font-sans text-white/95 flex items-start gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#00ff88] flex-shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
@@ -129,7 +129,7 @@ export default function AuraRoadmap() {
                 </ul>
               </div>
 
-              <div className="mt-6 pt-3 border-t border-[#1e3a8a] flex items-center justify-between text-[11px] font-mono text-white/70">
+              <div className="mt-6 pt-3 border-t border-white/20 flex items-center justify-between text-[11px] font-mono text-white/80">
                 <span>Phase {idx + 1} of 4</span>
                 <Zap className="w-3.5 h-3.5 text-[#00ff88]" />
               </div>
@@ -138,11 +138,11 @@ export default function AuraRoadmap() {
         </div>
 
         {/* Action Banner */}
-        <div className="max-w-4xl mx-auto giga-card p-8 rounded-2xl border-2 border-[#00ff88] text-center space-y-4">
+        <div className="max-w-4xl mx-auto giga-card p-8 rounded-3xl border-2 border-white/40 text-center space-y-4 shadow-2xl">
           <h3 className="font-display font-black text-2xl sm:text-3xl text-white">
             “Join the Most Muscular Movement on Solana”
           </h3>
-          <p className="font-sans text-sm sm:text-base text-white/90 max-w-xl mx-auto leading-relaxed">
+          <p className="font-sans text-sm sm:text-base text-white/95 max-w-xl mx-auto leading-relaxed">
             The brotherhood gathers daily to push volume, share massive gains, and ride the unstoppable momentum of {GIGATOAD_NAME}.
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
@@ -162,9 +162,9 @@ export default function AuraRoadmap() {
               href={PUMPFUN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#00ff88] to-[#38bdf8] text-[#050d1a] font-display font-black text-sm shadow-xl transition-all hover:scale-105"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-white hover:bg-white/90 text-[#0052fe] font-display font-black text-sm shadow-xl transition-all hover:scale-105"
             >
-              <Trophy className="w-4 h-4 text-[#050d1a]" />
+              <Trophy className="w-4 h-4 text-[#0052fe]" />
               <span>Pump {GIGATOAD_TICKER} on Pump.fun</span>
             </a>
           </div>

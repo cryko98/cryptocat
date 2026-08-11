@@ -68,19 +68,19 @@ export default function Story() {
   return (
     <section
       id="giga-lore"
-      className="relative py-20 sm:py-28 bg-[#050d1a] text-white overflow-hidden border-t-2 border-b-2 border-[#1e3a8a] giga-blue-grid selection:bg-[#00ff88] selection:text-[#050d1a]"
+      className="relative py-16 sm:py-24 bg-[#0047db] text-white overflow-hidden border-t border-b border-white/20 selection:bg-[#00ff88] selection:text-[#003bb5]"
     >
-      {/* Blue & Green Ambient Glow */}
-      <div className="absolute inset-0 pointer-events-none select-none z-0">
-        <div className="absolute top-[30%] left-[10%] w-[450px] h-[450px] bg-[#00ff88]/10 rounded-full blur-[160px]"></div>
-        <div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-[#0052FF]/15 rounded-full blur-[170px]"></div>
+      {/* Soft Ambient Glow (No Grids) */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0 opacity-40">
+        <div className="absolute top-[30%] left-[10%] w-[450px] h-[450px] bg-[#00ff88]/15 rounded-full blur-[160px]"></div>
+        <div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-[#0038b8] rounded-full blur-[160px]"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0a2040] border border-[#00ff88]/60 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#003bb5] border border-white/30 shadow-sm">
             <Dumbbell className="w-3.5 h-3.5 text-[#00ff88]" />
             <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#00ff88]">
               THE CHRONICLES OF GIGA TOAD PEPE
@@ -90,7 +90,7 @@ export default function Story() {
           <h2 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tight uppercase">
             The Lore of the <span className="text-[#00ff88]">Most Alpha Toad</span>
           </h2>
-          <p className="font-sans text-base sm:text-xl text-white/90 font-medium max-w-2xl mx-auto">
+          <p className="font-sans text-base sm:text-xl text-white/95 font-medium max-w-2xl mx-auto">
             Discover the epic saga of how a muscle-bound amphibian forged in heavy iron became the undisputed king of the Solana universe.
           </p>
         </div>
@@ -105,14 +105,14 @@ export default function Story() {
                 onClick={() => setSelectedChronicle(idx)}
                 className={`text-left p-5 rounded-2xl border transition-all duration-300 relative cursor-pointer ${
                   isSelected
-                    ? "bg-[#0c2244] border-[#00ff88] shadow-[0_8px_30px_rgba(0,255,136,0.3)] scale-[1.02] ring-2 ring-[#00ff88]/40"
-                    : "bg-[#091a32]/80 border-[#1e3a8a] hover:bg-[#0c2244] hover:border-[#38bdf8] opacity-85 hover:opacity-100"
+                    ? "bg-[#0038b5] border-[#00ff88] shadow-[0_8px_30px_rgba(0,255,136,0.3)] scale-[1.02] ring-2 ring-[#00ff88]/40"
+                    : "bg-[#003dbd]/80 border-white/20 hover:bg-[#0038b5] hover:border-white opacity-85 hover:opacity-100"
                 }`}
               >
                 {/* Floating Badge indicator if selected */}
                 {isSelected && (
-                  <div className="absolute -top-3 right-4 px-2.5 py-0.5 rounded-full bg-[#00ff88] text-[#050d1a] text-[10px] font-mono font-black shadow-sm flex items-center gap-1">
-                    <Zap className="w-3 h-3 text-[#050d1a]" /> ACTIVE CHAPTER
+                  <div className="absolute -top-3 right-4 px-2.5 py-0.5 rounded-full bg-[#00ff88] text-[#003bb5] text-[10px] font-mono font-black shadow-sm flex items-center gap-1">
+                    <Zap className="w-3 h-3 text-[#003bb5]" /> ACTIVE CHAPTER
                   </div>
                 )}
 
@@ -123,7 +123,7 @@ export default function Story() {
                   <h3 className="font-display font-black text-lg text-white line-clamp-2 leading-snug">
                     {item.title}
                   </h3>
-                  <span className="block text-xs font-sans text-white/70 font-medium">
+                  <span className="block text-xs font-sans text-white/80 font-medium">
                     {item.subtitle}
                   </span>
                 </div>
@@ -140,10 +140,10 @@ export default function Story() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.4 }}
-            className="giga-card p-8 sm:p-12 rounded-2xl border-2 border-[#00ff88] shadow-2xl relative"
+            className="giga-card p-8 sm:p-12 rounded-3xl border-2 border-white/40 shadow-2xl relative"
           >
             {/* Top Badge */}
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#1e3a8a] pb-6 mb-8">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/20 pb-6 mb-8">
               <div className="space-y-1">
                 <span className="text-xs font-mono font-bold text-[#00ff88] uppercase tracking-widest block">
                   {toadChronicles[selectedChronicle].tag}
@@ -154,14 +154,14 @@ export default function Story() {
               </div>
 
               <div className="flex items-center gap-3">
-                <span className="px-3.5 py-1.5 rounded-full bg-[#050d1a] text-[#00ff88] font-mono font-bold text-xs border border-[#1e3a8a]">
+                <span className="px-3.5 py-1.5 rounded-full bg-[#00319e] text-[#00ff88] font-mono font-bold text-xs border border-white/20">
                   {toadChronicles[selectedChronicle].stat}
                 </span>
               </div>
             </div>
 
             {/* Quote Block */}
-            <div className="p-6 rounded-xl bg-[#050d1a]/90 border border-[#00ff88]/60 mb-8 relative">
+            <div className="p-6 rounded-2xl bg-[#0038b5] border border-white/30 mb-8 relative">
               <span className="text-4xl text-[#00ff88] font-serif leading-none absolute top-2 left-3 opacity-50">“</span>
               <p className="font-serif italic text-lg sm:text-2xl text-white pl-6 font-medium leading-relaxed">
                 {toadChronicles[selectedChronicle].quote}
@@ -169,14 +169,14 @@ export default function Story() {
             </div>
 
             {/* Paragraph Content */}
-            <div className="space-y-4 font-sans text-base sm:text-lg text-white/90 leading-relaxed max-w-4xl">
+            <div className="space-y-4 font-sans text-base sm:text-lg text-white/95 leading-relaxed max-w-4xl">
               {toadChronicles[selectedChronicle].fullText.map((p, pIdx) => (
                 <p key={pIdx}>{p}</p>
               ))}
             </div>
 
             {/* Bottom highlight pill */}
-            <div className="mt-8 pt-6 border-t border-[#1e3a8a] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="mt-8 pt-6 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2">
                 <Dumbbell className="w-4 h-4 text-[#00ff88]" />
                 <span className="text-xs font-mono font-bold text-[#00ff88]">
@@ -195,12 +195,11 @@ export default function Story() {
                   <span>Join the Giga Chat: Telegram</span>
                 </a>
               ) : (
-                <span className="px-4 py-2 rounded-xl bg-[#0a2040] text-[#38bdf8] font-mono font-bold text-xs border border-[#1e3a8a]">
+                <span className="px-4 py-2 rounded-xl bg-[#00319e] text-white font-mono font-bold text-xs border border-white/20">
                   ⚡ The Most Alpha Community on Solana
                 </span>
               )}
             </div>
-
           </motion.div>
         </AnimatePresence>
 

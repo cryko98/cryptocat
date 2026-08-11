@@ -16,16 +16,16 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#030812] text-white pt-16 pb-12 border-t-2 border-[#1e3a8a] overflow-hidden selection:bg-[#00ff88] selection:text-[#050d1a]">
+    <footer className="relative bg-[#002b8c] text-white pt-14 pb-12 border-t border-white/20 overflow-hidden selection:bg-[#00ff88] selection:text-[#003bb5]">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Main Footer Row */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-[#0f2444]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/15">
           
           {/* Logo & Bio */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#00ff88] shadow-md bg-[#050d1a]">
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md bg-[#003bb5]">
                 <img
                   src={GIGATOAD_LOGO}
                   alt="Giga Toad Pepe Logo"
@@ -33,8 +33,8 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <span className="font-display font-black text-2xl text-white tracking-tight">
-                  Giga Toad <span className="text-[#00ff88]">Pepe</span>
+                <span className="font-script text-3xl text-white tracking-normal lowercase block">
+                  giga &ldquo;toad&rdquo; pepe
                 </span>
                 <div className="text-[10px] font-mono text-[#00ff88] font-bold">
                   {GIGATOAD_TICKER} • THE MOST ALPHA TOAD ON SOLANA
@@ -42,7 +42,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <p className="text-sm text-white/80 max-w-md font-sans leading-relaxed">
+            <p className="text-sm text-white/90 max-w-md font-sans leading-relaxed">
               “Why be a skinny tadpole when you can bench 1000kg on Solana?” The most jacked, alpha amphibian on the blockchain with 0% tax and pure hypertrophy gains. 🏋️‍♂️💪🐸
             </p>
 
@@ -58,7 +58,7 @@ export default function Footer() {
                   <span>Join Official Telegram</span>
                 </a>
               ) : (
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#091a32] border border-[#00ff88]/40 text-[#00ff88] font-mono font-bold text-xs">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#0038b5] border border-white/20 text-[#00ff88] font-mono font-bold text-xs">
                   <Zap className="w-3.5 h-3.5 text-[#00ff88]" />
                   <span>Verified 100% Chad Muscle Token</span>
                 </div>
@@ -119,9 +119,9 @@ export default function Footer() {
                   href={SOLSCAN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#38bdf8] transition-colors flex items-center gap-1.5 text-[#38bdf8]"
+                  className="hover:text-[#70d6ff] transition-colors flex items-center gap-1.5 text-white/90"
                 >
-                  <ExternalLink className="w-3.5 h-3.5" /> Solscan Explorer
+                  <ExternalLink className="w-3.5 h-3.5 text-[#70d6ff]" /> Solscan Explorer
                 </a>
               </li>
             </ul>
@@ -132,7 +132,7 @@ export default function Footer() {
             <span className="text-[#00ff88] font-black uppercase tracking-wider block">
               QUICK NAVIGATION
             </span>
-            <div className="grid grid-cols-2 gap-2 text-white/80">
+            <div className="grid grid-cols-2 gap-2 text-white/90">
               <button
                 onClick={() => {
                   const el = document.getElementById("giga-lore");
@@ -181,37 +181,37 @@ export default function Footer() {
         </div>
 
         {/* CA Copy Bar in Footer */}
-        <div className="py-6 border-b border-[#0f2444] flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="py-6 border-b border-white/15 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#00ff88] animate-ping"></span>
             <span className="font-mono text-xs font-bold text-[#00ff88]">OFFICIAL SOLANA CONTRACT ADDRESS:</span>
           </div>
 
           <div className="flex items-center gap-2 max-w-xl w-full md:w-auto">
-            <div className="bg-[#050d1a] px-3 py-1.5 rounded-lg border border-[#1e3a8a] font-mono text-xs text-white truncate flex-1 select-all">
+            <div className="bg-[#002270] px-3 py-1.5 rounded-xl border border-white/20 font-mono text-xs text-white truncate flex-1 select-all">
               {GIGATOAD_CA}
             </div>
             <button
               onClick={handleCopyCA}
-              className={`px-3.5 py-1.5 rounded-lg font-mono font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-xl font-mono font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer ${
                 copiedCA
-                  ? "bg-[#00ff88] text-[#050d1a] border border-[#00ff88]"
-                  : "bg-[#0b213f] hover:bg-[#0f2b52] text-white border border-[#00ff88]/60"
+                  ? "bg-[#00ff88] text-[#003bb5] border border-[#00ff88]"
+                  : "bg-white hover:bg-white/90 text-[#0052fe]"
               }`}
             >
-              {copiedCA ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
+              {copiedCA ? <Check className="w-3.5 h-3.5 text-[#003bb5]" /> : <Copy className="w-3.5 h-3.5 text-[#0052fe]" />}
               <span>{copiedCA ? "Copied!" : "Copy CA"}</span>
             </button>
           </div>
         </div>
 
         {/* Bottom Disclaimer */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-white/60">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-white/80">
           <p className="text-center sm:text-left">
             © {new Date().getFullYear()} {GIGATOAD_NAME} ({GIGATOAD_TICKER}). Built for chads on Solana.
           </p>
 
-          <p className="text-[11px] text-center sm:text-right max-w-md">
+          <p className="text-[11px] text-center sm:text-right max-w-md text-white/70">
             Disclaimer: {GIGATOAD_TICKER} is a community meme cryptocurrency celebrating alpha hypertrophy and toad lore. No financial advice.
           </p>
         </div>
