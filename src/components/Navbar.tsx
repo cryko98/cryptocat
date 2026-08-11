@@ -238,6 +238,17 @@ export default function Navbar() {
               </nav>
 
               <div className="pt-4 border-t border-white/20 flex flex-col gap-2.5">
+                {TELEGRAM_URL && (
+                  <a
+                    href={TELEGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full px-4 py-2.5 rounded-xl bg-[#0088cc] hover:bg-[#0099e6] text-white font-mono font-bold text-xs flex items-center justify-center gap-2 shadow-sm"
+                  >
+                    <Send className="w-4 h-4 text-white" /> Join Telegram Community
+                  </a>
+                )}
+
                 <a
                   href={DEXSCREENER_URL}
                   target="_blank"

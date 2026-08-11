@@ -1,10 +1,10 @@
 export const GIGATOAD_NAME = "Giga Toad Pepe";
 export const GIGATOAD_TICKER = "$gigatoad";
 export const GIGATOAD_LOGO = "https://cdn.shopify.com/s/files/1/0967/8087/8151/files/gigatoad_4.png?v=1786459149";
-export const GIGATOAD_CA = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+export const GIGATOAD_CA = "4QVa33qdXiFe3L3krfSGFaiQEfFUQsWpebJN2CPxpump";
 
-// User specified: telegram link is empty
-export const TELEGRAM_URL = "";
+// Official Telegram community link
+export const TELEGRAM_URL = "https://t.me/Gigatoadpepe";
 export const TWITTER_URL = "https://x.com/search?q=%24gigatoad";
 export const DEXSCREENER_URL = `https://dexscreener.com/solana/${GIGATOAD_CA}`;
 export const PUMPFUN_URL = `https://pump.fun/coin/${GIGATOAD_CA}`;
