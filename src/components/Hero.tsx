@@ -88,7 +88,7 @@ export default function Hero() {
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-black text-[#ffe600] border-2 border-black shadow-[4px_4px_0px_#ff007a]">
             <span className="w-3 h-3 rounded-full bg-[#00f0ff] animate-ping"></span>
             <span className="text-xs font-mono font-black uppercase tracking-wider">
-              THE KOL WHO FUCKED UP HIS PREVIOUS COIN
+              100% COMMUNITY-OWNED ON SOLANA
             </span>
           </div>
 
@@ -103,7 +103,7 @@ export default function Hero() {
           </div>
 
           <p className="font-sans font-extrabold text-xl sm:text-2xl text-black max-w-2xl mx-auto leading-tight">
-            Slingtard is a KOL who fucked up his previous coin because he is simply a retard. So the community named him <span className="text-[#ff007a] underline">Slingtard</span> and launched this brand new coin!
+            The 0 IQ meme coin on Solana. <span className="text-[#ff007a] underline">0% tax</span>, 0% dev allocation, 100% pure community power.
           </p>
 
           {/* Quick interactive utility badges */}
@@ -199,7 +199,7 @@ export default function Hero() {
 
                 <div className="mt-4 text-center">
                   <span className="text-xs font-mono font-black text-black bg-[#c7f9ff] px-3.5 py-1 rounded-full border-2 border-black shadow-[2px_2px_0px_#000] inline-flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-[#ff007a]" /> The KOL Who Fucked Up His Previous Coin
+                    <Sparkles className="w-3.5 h-3.5 text-[#ff007a]" /> 100% Community Run • 0 Dev Risk
                   </span>
                 </div>
               </div>
@@ -208,16 +208,16 @@ export default function Hero() {
               <div className="lg:col-span-6 space-y-6">
                 <div className="space-y-3">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-black text-[#00f0ff] text-xs font-mono font-black border border-black">
-                    <AlertTriangle className="w-3.5 h-3.5 text-[#ff007a]" /> BRAND NEW 100% COMMUNITY COIN
+                    <AlertTriangle className="w-3.5 h-3.5 text-[#ff007a]" /> 100% COMMUNITY TAKEOVER
                   </div>
                   <h2 className="font-display font-black text-3xl sm:text-4xl text-black tracking-tight leading-tight">
-                    He Fucked Up His Old Coin. <br />
+                    Pure Retard Energy. <br />
                     <span className="text-[#ff007a] underline decoration-wavy decoration-[#00f0ff]">
-                      So We Launched $slingtartd!
+                      Powered by the Community!
                     </span>
                   </h2>
                   <p className="font-sans text-base text-black font-semibold leading-relaxed">
-                    Slingtard is a KOL who fucked up his previous coin because he is simply a retard. The community nicknamed him Slingtard and created this new token where the community has 100% control!
+                    Zero dev bags, zero tax, and infinite meme momentum. Born on pump.fun and taken over by the community on Solana.
                   </p>
                 </div>
 
@@ -328,19 +328,19 @@ export default function Hero() {
             <div className="w-12 h-12 rounded-2xl bg-white border-2 border-black flex items-center justify-center text-2xl shadow-[3px_3px_0px_#000]">
               🤤
             </div>
-            <h3 className="font-display font-black text-xl text-black">The 0 IQ KOL</h3>
+            <h3 className="font-display font-black text-xl text-black">The 0 IQ Legend</h3>
             <p className="font-sans text-sm text-black font-semibold leading-relaxed">
-              Slingtard is a KOL who fucked up his previous coin because he is simply a retard. 0 IQ legend.
+              Negative braincells, maximum meme potential. The funniest mascot on the Solana blockchain.
             </p>
           </div>
 
           <div className="comic-card-cyan p-6 space-y-2">
             <div className="w-12 h-12 rounded-2xl bg-white border-2 border-black flex items-center justify-center text-2xl shadow-[3px_3px_0px_#000]">
-              🚨➡️👑
+              💊
             </div>
-            <h3 className="font-display font-black text-xl text-black">Why $slingtartd?</h3>
+            <h3 className="font-display font-black text-xl text-black">Fair Pump.fun Launch</h3>
             <p className="font-sans text-sm text-black font-semibold leading-relaxed">
-              Because he fucked up his previous coin, the community named him Slingtard and created this new token on pump.fun!
+              Launched fairly on pump.fun with zero team pre-allocations, zero insider deals, and 100% fair access.
             </p>
           </div>
 

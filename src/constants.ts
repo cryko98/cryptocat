@@ -12,10 +12,10 @@ export const RAYDIUM_URL = `https://raydium.io/swap/?inputMint=sol&outputMint=${
 
 // Story Quotes & KOL dumb quotes
 export const SLINGTARD_QUOTES = [
-  "\"I fucked up my previous coin because I am literally a retard. That's why the community made $slingtartd.\"",
-  "\"0 IQ KOL who ruined his previous project. No complicated excuses.\"",
-  "\"They named me Slingtard because I fucked up my coin, and now the chads launched $slingtartd.\"",
-  "\"I am simply a retard. The community launched this new token and owns 100% of it.\"",
-  "\"0% dev control on $slingtartd. Pure retard energy and 100% community on Solana.\"",
-  "\"I ruined my previous token, so the chads took over and sent $slingtartd.\"",
+  "\"I have 0 braincells and negative trading IQ. Pure retard energy forever.\"",
+  "\"0% tax, 0% dev allocation, 100% community. The chads are running the show now.\"",
+  "\"They named me Slingtard and now $slingtartd is taking over pump.fun.\"",
+  "\"Why think when you can just embrace the 0 IQ degen life on Solana?\"",
+  "\"100% community owned. Devs can't dump if the community is in full control.\"",
+  "\"Brain status: 0/100. $slingtartd status: 100% community power on Solana.\"",
 ];

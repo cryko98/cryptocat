@@ -41,25 +41,25 @@ export default function Navbar() {
       {/* Top Ticker Marquee */}
       <div className="bg-black text-[#ffe600] py-1.5 px-4 overflow-hidden border-b-2 border-black">
         <div className="whitespace-nowrap flex items-center gap-8 animate-[marquee_22s_linear_infinite] text-xs font-mono font-black tracking-wider uppercase">
-          <span>🧠 0 IQ KOL WHO FUCKED UP HIS PREVIOUS COIN</span>
+          <span>🤤 $SLINGTARTD ON SOLANA</span>
+          <span>•</span>
+          <span>👑 100% COMMUNITY-OWNED</span>
+          <span>•</span>
+          <span>💸 0% TAX • 0% DEV HOLDINGS • 100% FAIR</span>
+          <span>•</span>
+          <span>🌈 PURE RETARD ENERGY ON PUMP.FUN</span>
+          <span>•</span>
+          <span>🚀 CHADS IN FULL CONTROL</span>
           <span>•</span>
           <span>🤤 $SLINGTARTD ON SOLANA</span>
           <span>•</span>
-          <span>💸 HE IS SIMPLY A RETARD • COMMUNITY LAUNCHED $SLINGTARTD</span>
+          <span>👑 100% COMMUNITY-OWNED</span>
           <span>•</span>
-          <span>🌈 100% PURE RETARD ENERGY</span>
+          <span>💸 0% TAX • 0% DEV HOLDINGS • 100% FAIR</span>
           <span>•</span>
-          <span>🚀 0% TAX • 0% DEV HOLDINGS • 100% PUMP</span>
+          <span>🌈 PURE RETARD ENERGY ON PUMP.FUN</span>
           <span>•</span>
-          <span>🧠 0 IQ KOL WHO FUCKED UP HIS PREVIOUS COIN</span>
-          <span>•</span>
-          <span>🤤 $SLINGTARTD ON SOLANA</span>
-          <span>•</span>
-          <span>💸 HE IS SIMPLY A RETARD • COMMUNITY LAUNCHED $SLINGTARTD</span>
-          <span>•</span>
-          <span>🌈 100% PURE RETARD ENERGY</span>
-          <span>•</span>
-          <span>🚀 0% TAX • 0% DEV HOLDINGS • 100% PUMP</span>
+          <span>🚀 CHADS IN FULL CONTROL</span>
         </div>
       </div>
 

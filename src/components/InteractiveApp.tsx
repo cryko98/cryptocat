@@ -33,16 +33,16 @@ export default function InteractiveApp() {
   // Apology Tweet Generator
   const [copiedTweet, setCopiedTweet] = useState(false);
   const [tweetText, setTweetText] = useState(
-    "I fucked up my previous coin because I am literally a retard. That's why the community launched $slingtartd."
+    "Embracing my 0 IQ and holding $slingtartd with the Solana chads. 🤤💸"
   );
 
   const apologyTemplates = [
-    "I fucked up my previous coin because I am literally a retard. That's why the community launched $slingtartd.",
-    "I am a 0 IQ KOL who fucked up his previous coin because I am literally dumb. Now the community owns $slingtartd.",
-    "No complicated excuses: I fucked up my coin, they named me Slingtard, and the chads created $slingtartd.",
-    "I ruined my previous token because I have negative braincells. The community is now in 100% control of $slingtartd.",
-    "0% dev allocation on $slingtartd because I'm not allowed to touch anything anymore. Pure community power on Solana.",
-    "I fucked up my coin, got nicknamed Slingtard, and the community launched $slingtartd. 0 IQ forever.",
+    "Embracing my 0 IQ and holding $slingtartd with the Solana chads. 🤤💸",
+    "0% tax, 0% dev allocation, 100% community. $slingtartd is taking over pump.fun! 🚀",
+    "Brain cells: 0. Conviction: 100%. Slingtard community is unstoppable on Solana. 🕶️",
+    "No dev can rug when the community is in 100% control. Long live $slingtartd! 👑",
+    "Certified retard energy on Solana. Loading up my $slingtartd bag on pump.fun! 💊",
+    "They named him Slingtard and now we're sending $slingtartd to Valhalla. 🚀🤤",
   ];
 
   const handleFaceClick = (e: React.MouseEvent<HTMLDivElement>) => {
