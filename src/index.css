@@ -12,80 +12,89 @@
   font-family: var(--font-comic);
 }
 
-/* Bullseye Animations */
-@keyframes target-pulse {
+/* Cat's Eye Glow Animations */
+@keyframes cat-eye-glow {
   0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(0, 240, 118, 0.6));
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(230, 0, 18, 0.4);
   }
   50% {
-    transform: scale(1.03);
-    box-shadow: 0 0 0 16px rgba(230, 0, 18, 0);
+    filter: drop-shadow(0 0 30px rgba(0, 240, 118, 0.9)) drop-shadow(0 0 45px rgba(0, 240, 118, 0.4));
+    transform: scale(1.02);
   }
 }
 
-@keyframes crosshair-spin {
-  from {
+@keyframes laser-sweep {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }
 
-@keyframes float-hit {
+@keyframes purr-pulse {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.02);
+  }
+}
+
+@keyframes float-paw {
   0% {
     opacity: 1;
     transform: translateY(0px) scale(0.8);
   }
   50% {
-    transform: translateY(-20px) scale(1.15);
+    transform: translateY(-25px) scale(1.2);
   }
   100% {
     opacity: 0;
-    transform: translateY(-40px) scale(1);
+    transform: translateY(-50px) scale(1);
   }
 }
 
-.animate-target-pulse {
-  animation: target-pulse 3s ease-in-out infinite;
+.animate-cat-eye {
+  animation: cat-eye-glow 3.5s ease-in-out infinite;
 }
 
-.animate-crosshair {
-  animation: crosshair-spin 20s linear infinite;
+.animate-purr {
+  animation: purr-pulse 2s ease-in-out infinite;
 }
 
-/* Precision Brutalist Cards - White, Black, Vivid Red */
-.target-card {
+/* Cat's Eye Brutalist Cards */
+.cat-card {
   background-color: #ffffff;
   border: 3.5px solid #000000;
   box-shadow: 6px 6px 0px #000000;
-  border-radius: 20px;
+  border-radius: 22px;
   transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.target-card:hover {
+.cat-card:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0px #e60012;
+  box-shadow: 8px 8px 0px #00f076;
 }
 
-.target-card-red {
-  background-color: #fff5f5;
-  border: 3.5px solid #e60012;
-  box-shadow: 6px 6px 0px #000000;
-  border-radius: 20px;
-}
-
-.target-card-dark {
-  background-color: #0a0a0a;
+.cat-card-green {
+  background-color: #eafff3;
   border: 3.5px solid #000000;
-  box-shadow: 6px 6px 0px #e60012;
-  border-radius: 20px;
+  box-shadow: 6px 6px 0px #000000;
+  border-radius: 22px;
+}
+
+.cat-card-dark {
+  background-color: #0d0e15;
+  border: 3.5px solid #000000;
+  box-shadow: 6px 6px 0px #00f076;
+  border-radius: 22px;
   color: #ffffff;
 }
 
-/* Target Buttons */
-.target-btn {
+/* Buttons */
+.cat-btn {
   border: 3px solid #000000;
   box-shadow: 4px 4px 0px #000000;
   border-radius: 14px;
@@ -94,37 +103,45 @@
   cursor: pointer;
 }
 
-.target-btn:hover {
+.cat-btn:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #e60012;
+  box-shadow: 6px 6px 0px #00f076;
 }
 
-.target-btn:active {
+.cat-btn:active {
   transform: translate(2px, 2px);
   box-shadow: 1px 1px 0px #000000;
 }
 
-.target-btn-red {
-  background-color: #e60012;
+.cat-btn-green {
+  background-color: #00f076;
+  color: #000000;
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+.cat-btn-green:hover {
+  background-color: #00d96a;
+  box-shadow: 6px 6px 0px #000000;
+}
+
+.cat-btn-tg {
+  background-color: #229ED9;
   color: #ffffff;
   border: 3px solid #000000;
   box-shadow: 4px 4px 0px #000000;
 }
 
-.target-btn-red:hover {
-  background-color: #cc0010;
+.cat-btn-tg:hover {
+  background-color: #1b8ac0;
   box-shadow: 6px 6px 0px #000000;
 }
 
-/* Concentric Target Background Dots */
-.target-grid {
-  background-image: radial-gradient(#000000 10%, transparent 10%);
+/* Halftone Grid with emerald cat aura */
+.cat-grid {
+  background-image: radial-gradient(#000000 9%, transparent 9%);
   background-position: 0 0;
   background-size: 24px 24px;
-}
-
-.target-concentric {
-  background: radial-gradient(circle, #e60012 12%, #ffffff 13%, #ffffff 28%, #000000 29%, #000000 45%, #ffffff 46%);
 }
 
 /* Custom Scrollbar */
@@ -140,5 +157,5 @@
   border: 2px solid #ffffff;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #e60012;
+  background: #00f076;
 }
