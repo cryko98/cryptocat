@@ -1,7 +1,7 @@
 export const CATSEYE_NAME = "CAT'S EYE";
 export const CATSEYE_TICKER = "$catseye";
 export const CATSEYE_LOGO = "https://cdn.shopify.com/s/files/1/0967/8087/8151/files/photo_2026-08-18_20-59-54.jpg?v=1787076163";
-export const CATSEYE_CA = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+export const CATSEYE_CA = "7TGno7LGF4mJHT1mvBMsthaEmavcKM5H8ojXCVcJpump";
 
 // Official Links
 export const TELEGRAM_URL = "https://t.me/catseyetggroup";
