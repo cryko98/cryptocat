@@ -1,380 +1,411 @@
 import React, { useState } from "react";
 import {
-  Brain,
-  Zap,
-  Sparkles,
-  RefreshCw,
-  Copy,
+  Target,
+  Crosshair,
+  Calculator,
+  Share2,
   Check,
-  TrendingUp,
+  Copy,
+  Sparkles,
   Flame,
-  Award,
-  AlertCircle,
-  HelpCircle,
+  Volume2,
+  VolumeX,
+  Trophy,
+  ArrowRight,
+  TrendingUp,
 } from "lucide-react";
 import {
-  SLINGTARD_NAME,
-  SLINGTARD_TICKER,
-  SLINGTARD_LOGO,
+  BULLSEYE_NAME,
+  BULLSEYE_TICKER,
+  BULLSEYE_LOGO,
+  BULLSEYE_CA,
   X_COMMUNITY_URL,
   PUMPFUN_URL,
 } from "../constants";
 
 export default function InteractiveApp() {
-  // Clicker State
-  const [braincells, setBraincells] = useState(100);
-  const [vamps, setVamps] = useState(0);
-  const [clickEffect, setClickEffect] = useState<{ id: number; text: string; x: number; y: number }[]>([]);
-  
+  const [activeTab, setActiveTab] = useState<"target" | "calculator" | "tweets">("target");
+  const [soundEnabled, setSoundEnabled] = useState(false);
+
+  // Target Game State
+  const [score, setScore] = useState(1250);
+  const [shotsFired, setShotsFired] = useState(15);
+  const [bullseyeHits, setBullseyeHits] = useState(11);
+  const [hitEffects, setHitEffects] = useState<Array<{ id: number; text: string; x: number; y: number }>>([]);
+  const [accuracyRating, setAccuracyRating] = useState("DEADLY PRECISION");
+
   // Calculator State
   const [solAmount, setSolAmount] = useState<number>(1);
   const [targetMcap, setTargetMcap] = useState<number>(10000000); // $10M
-  
-  // Apology Tweet Generator
+
+  // Tweet Generator State
   const [copiedTweet, setCopiedTweet] = useState(false);
   const [tweetText, setTweetText] = useState(
-    "Embracing my 0 IQ and holding $slingtartd with the Solana chads. 🤤💸"
+    "Someone literally spelled it 'BULLS'S EYE' on Solana... so we launched the real $bullseye to take over the lead! 🎯🚀"
   );
 
-  const apologyTemplates = [
-    "Embracing my 0 IQ and holding $slingtartd with the Solana chads. 🤤💸",
-    "0% tax, 0% dev allocation, 100% community. $slingtartd is taking over pump.fun! 🚀",
-    "Brain cells: 0. Conviction: 100%. Slingtard community is unstoppable on Solana. 🕶️",
-    "No dev can rug when the community is in 100% control. Long live $slingtartd! 👑",
-    "Certified retard energy on Solana. Loading up my $slingtartd bag on pump.fun! 💊",
-    "They named him Slingtard and now we're sending $slingtartd to Valhalla. 🚀🤤",
+  const tweetTemplates = [
+    "Someone literally spelled it 'BULLS'S EYE' on Solana... so we launched the real $bullseye to take over the lead! 🎯🚀",
+    "Fix the spelling, hit the target, flip the typo coin. $bullseye is 100% community owned on pump.fun! 🎯💎",
+    "0% tax, zero dev baggage, and direct center hits. Loading up my $bullseye bag on Solana! 🎯🔥",
+    "From a tragic grammatical disaster to the cleanest meme coin on Solana. $bullseye to Valhalla! 🎯👑",
+    "BULLS'S EYE ❌ vs BULLSEYE ✅. The community took over and we're sending $bullseye! 🚀🎯",
   ];
 
-  const handleFaceClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const playHitSound = (frequency = 880) => {
+    if (!soundEnabled) return;
+    try {
+      const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.16);
+    } catch (e) {}
+  };
+
+  const handleTargetClick = (type: "bullseye" | "inner" | "outer", e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const emojiArray = ["🤤", "🧠-1", "💸", "🚨 VAMP!", "🌈", "📉➡️🚀", "🕶️"];
-    const randomEmoji = emojiArray[Math.floor(Math.random() * emojiArray.length)];
+    let points = 25;
+    let hitText = "+25 TARGET HIT";
+    let freq = 440;
 
-    const newEffect = {
-      id: Date.now(),
-      text: randomEmoji,
-      x,
-      y,
-    };
+    if (type === "bullseye") {
+      points = 100;
+      hitText = "🎯 BULLSEYE! +100";
+      freq = 1200;
+      setBullseyeHits((prev) => prev + 1);
+    } else if (type === "inner") {
+      points = 50;
+      hitText = "💥 INNER RING +50";
+      freq = 750;
+    }
 
-    setClickEffect((prev) => [...prev.slice(-8), newEffect]);
-    setBraincells((prev) => Math.max(0, prev - 1));
-    setVamps((prev) => prev + 1);
+    playHitSound(freq);
+    setScore((prev) => prev + points);
+    setShotsFired((prev) => prev + 1);
 
-    // Auto clean effect
+    const id = Date.now() + Math.random();
+    setHitEffects((prev) => [...prev, { id, text: hitText, x, y }]);
     setTimeout(() => {
-      setClickEffect((prev) => prev.filter((item) => item.id !== newEffect.id));
+      setHitEffects((prev) => prev.filter((item) => item.id !== id));
     }, 1000);
   };
 
-  const generateRandomTweet = () => {
-    const filtered = apologyTemplates.filter((t) => t !== tweetText);
-    const random = filtered[Math.floor(Math.random() * filtered.length)];
-    setTweetText(random);
-    setCopiedTweet(false);
-  };
-
-  const handleCopyTweet = () => {
+  const copyTweetToClipboard = () => {
     navigator.clipboard.writeText(tweetText);
     setCopiedTweet(true);
     setTimeout(() => setCopiedTweet(false), 2000);
   };
 
-  // Calculator math
-  const solPrice = 180;
-  const initialMcap = 45000;
+  // Calculations for target profit
+  const solPrice = 180; // Approximate SOL price
+  const initialMcap = 50000; // $50k launch mcap baseline
   const multiplier = Math.max(1, targetMcap / initialMcap);
-  const potentialUSD = solAmount * solPrice * multiplier;
-  const kebabCount = Math.floor(potentialUSD / 9);
+  const potentialValue = (solAmount * solPrice * multiplier).toFixed(2);
+  const profitX = multiplier.toFixed(1);
 
   return (
-    <section id="vamp-lab" className="relative py-16 sm:py-24 bg-[#ffe600] text-black overflow-hidden border-b-4 border-black comic-dots">
-      
+    <section id="target-lab" className="relative py-16 sm:py-24 bg-white text-black overflow-hidden border-b-4 border-black">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-black text-[#ff007a] border-2 border-black shadow-[4px_4px_0px_#00f0ff]">
-            <Sparkles className="w-4 h-4 text-[#ffe600]" />
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-white border-2 border-black shadow-[3px_3px_0px_#e60012]">
+            <Crosshair className="w-4 h-4 text-[#e60012]" />
             <span className="text-xs font-mono font-black uppercase tracking-wider">
-              INTERACTIVE 0 IQ PLAYGROUND
+              BULLSEYE INTERACTIVE TARGET LAB
             </span>
           </div>
 
-          <h2 className="font-comic text-4xl sm:text-6xl text-black tracking-tight uppercase drop-shadow-[3px_3px_0px_#fff]">
-            The 0 IQ <span className="text-[#00f0ff]">KOL Lab</span>
+          <h2 className="font-comic text-4xl sm:text-6xl text-black tracking-tight uppercase drop-shadow-[3px_3px_0px_#e60012]">
+            Target Practice & <span className="text-[#e60012]">Tools</span>
           </h2>
 
-          <p className="font-sans text-base sm:text-xl text-black font-extrabold max-w-2xl mx-auto">
-            Drain Slingtard's braincells, simulate your astronomical CTO gains, and generate authentic 0 IQ apology tweets.
+          <p className="font-sans text-base sm:text-lg text-black font-extrabold max-w-xl mx-auto">
+            Test your aim on the official $bullseye target, calculate target gains, or launch viral memes to take over the lead.
           </p>
         </div>
 
-        {/* 2 Main Lab Modules */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
-          
-          {/* LEFT: Clickable Slingtard Face & Braincell Drainer */}
-          <div className="lg:col-span-6 comic-card p-6 sm:p-8 bg-white border-4 border-black shadow-[8px_8px_0px_#000] flex flex-col justify-between">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between border-b-3 border-black pb-3">
-                <span className="font-mono font-black text-xs uppercase text-[#ff007a] flex items-center gap-1.5">
-                  <Brain className="w-4 h-4" /> BRAINCELL DRAIN ENGINE
-                </span>
-                <span className="text-xs font-mono font-bold text-black bg-[#c7f9ff] px-2.5 py-1 rounded-full border border-black">
-                  Tap Face to Drain
-                </span>
-              </div>
-
-              {/* Interactive Face Canvas */}
-              <div
-                onClick={handleFaceClick}
-                className="relative w-full aspect-square max-w-[320px] mx-auto rounded-3xl overflow-hidden border-4 border-black bg-[#ffd600] shadow-[6px_6px_0px_#000] cursor-pointer group select-none flex items-center justify-center transition-transform active:scale-95"
-              >
-                <img
-                  src={SLINGTARD_LOGO}
-                  alt="Tap Slingtard"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                />
-
-                {/* Floating click animations */}
-                {clickEffect.map((eff) => (
-                  <span
-                    key={eff.id}
-                    style={{ left: eff.x, top: eff.y }}
-                    className="absolute pointer-events-none text-2xl font-mono font-black text-[#ff007a] drop-shadow-[2px_2px_0px_#000] animate-bounce"
-                  >
-                    {eff.text}
-                  </span>
-                ))}
-
-                {/* Overlay Prompt */}
-                <div className="absolute bottom-2 left-2 right-2 bg-black/85 text-white backdrop-blur-sm p-2 rounded-xl border border-white text-center text-xs font-mono font-bold">
-                  👆 Tap to Drain Braincells & Vamp (+1)
-                </div>
-              </div>
-
-              {/* Stats Bar */}
-              <div className="grid grid-cols-2 gap-3 pt-2">
-                <div className="p-3 rounded-2xl bg-[#fff9c4] border-2 border-black text-center">
-                  <span className="text-[10px] font-mono font-black text-black/70 uppercase block">REMAINING BRAINCELLS</span>
-                  <span className="font-comic text-2xl sm:text-3xl text-black">
-                    {braincells} <span className="text-sm font-sans">/ 100</span>
-                  </span>
-                </div>
-
-                <div className="p-3 rounded-2xl bg-[#ffe0ef] border-2 border-black text-center">
-                  <span className="text-[10px] font-mono font-black text-[#ff007a] uppercase block">SELF-VAMPS EXECUTED</span>
-                  <span className="font-comic text-2xl sm:text-3xl text-[#ff007a]">
-                    {vamps.toLocaleString()}
-                  </span>
-                </div>
-              </div>
-
-              {/* Dumb Rank Badge */}
-              <div className="p-3 rounded-2xl bg-[#c7f9ff] border-2 border-black flex items-center justify-between font-mono text-xs font-black">
-                <span>KOL RANK:</span>
-                <span className="text-[#ff007a]">
-                  {vamps < 10 && "🤤 Level 1: Novice Drooler"}
-                  {vamps >= 10 && vamps < 30 && "🕶️ Level 2: 0 IQ KOL"}
-                  {vamps >= 30 && vamps < 60 && "🚨 Level 3: Token Destroyer"}
-                  {vamps >= 60 && "👑 Level 4: Sovereign Retard of Solana"}
-                </span>
-              </div>
-            </div>
+        {/* Tab Navigation */}
+        <div className="flex justify-center mb-10">
+          <div className="inline-flex p-1.5 rounded-2xl bg-[#f4f4f5] border-3 border-black shadow-[4px_4px_0px_#000]">
+            <button
+              onClick={() => setActiveTab("target")}
+              className={`px-4 sm:px-6 py-2.5 rounded-xl font-display font-black text-xs sm:text-sm flex items-center gap-2 transition-all ${
+                activeTab === "target"
+                  ? "bg-[#e60012] text-white shadow-[2px_2px_0px_#000]"
+                  : "text-black hover:text-[#e60012]"
+              }`}
+            >
+              <Target className="w-4 h-4" />
+              <span>Target Practice</span>
+            </button>
 
             <button
-              onClick={() => {
-                setBraincells(100);
-                setVamps(0);
-              }}
-              className="mt-4 text-xs font-mono font-bold text-black/60 hover:text-black flex items-center justify-center gap-1 cursor-pointer"
+              onClick={() => setActiveTab("calculator")}
+              className={`px-4 sm:px-6 py-2.5 rounded-xl font-display font-black text-xs sm:text-sm flex items-center gap-2 transition-all ${
+                activeTab === "calculator"
+                  ? "bg-[#e60012] text-white shadow-[2px_2px_0px_#000]"
+                  : "text-black hover:text-[#e60012]"
+              }`}
             >
-              <RefreshCw className="w-3.5 h-3.5" /> Reset Brain Simulator
+              <Calculator className="w-4 h-4" />
+              <span>Target Multiplier</span>
             </button>
-          </div>
 
-          {/* RIGHT: CTO Gains & Kebab Index Calculator */}
-          <div className="lg:col-span-6 comic-card p-6 sm:p-8 bg-white border-4 border-black shadow-[8px_8px_0px_#000] flex flex-col justify-between">
-            <div className="space-y-5">
-              <div className="flex items-center justify-between border-b-3 border-black pb-3">
-                <span className="font-mono font-black text-xs uppercase text-[#00a2ff] flex items-center gap-1.5">
-                  <TrendingUp className="w-4 h-4" /> CTO MOON GAINS CALCULATOR
-                </span>
-                <span className="text-xs font-mono font-bold text-black bg-[#ffe0ef] px-2.5 py-1 rounded-full border border-black">
-                  100% Math (0 IQ Approved)
-                </span>
-              </div>
-
-              {/* Investment input */}
-              <div className="space-y-2">
-                <label className="text-xs font-mono font-black uppercase text-black flex items-center justify-between">
-                  <span>YOUR SOL INVESTMENT:</span>
-                  <span className="text-sm font-comic text-[#ff007a]">{solAmount} SOL (~${(solAmount * solPrice).toLocaleString()})</span>
-                </label>
-                <div className="flex gap-2">
-                  {[0.5, 1, 2, 5, 10].map((amt) => (
-                    <button
-                      key={amt}
-                      onClick={() => setSolAmount(amt)}
-                      className={`comic-btn flex-1 py-2 text-xs font-mono font-black ${
-                        solAmount === amt
-                          ? "bg-[#ff007a] text-white"
-                          : "bg-white text-black hover:bg-yellow-50"
-                      }`}
-                    >
-                      {amt} SOL
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Target Market Cap */}
-              <div className="space-y-2">
-                <label className="text-xs font-mono font-black uppercase text-black flex items-center justify-between">
-                  <span>TARGET CTO MARKET CAP:</span>
-                  <span className="text-sm font-comic text-[#0091ea]">${(targetMcap / 1000000).toFixed(1)}M Mcap</span>
-                </label>
-                <div className="grid grid-cols-4 gap-2">
-                  {[
-                    { label: "$1M", val: 1000000 },
-                    { label: "$5M", val: 5000000 },
-                    { label: "$25M", val: 25000000 },
-                    { label: "$100M", val: 100000000 },
-                  ].map((m) => (
-                    <button
-                      key={m.val}
-                      onClick={() => setTargetMcap(m.val)}
-                      className={`comic-btn py-2 text-xs font-mono font-black ${
-                        targetMcap === m.val
-                          ? "bg-[#00f0ff] text-black"
-                          : "bg-white text-black hover:bg-yellow-50"
-                      }`}
-                    >
-                      {m.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Calculated Outputs */}
-              <div className="p-5 rounded-2xl bg-[#fff9c4] border-3 border-black space-y-3 shadow-[4px_4px_0px_#000]">
-                <div className="flex items-center justify-between border-b-2 border-black pb-2">
-                  <span className="text-xs font-mono font-bold text-black">ESTIMATED MULTIPLIER:</span>
-                  <span className="font-comic text-xl text-[#ff007a]">
-                    {multiplier.toFixed(1)}x ROAS 🚀
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between border-b-2 border-black pb-2">
-                  <span className="text-xs font-mono font-bold text-black">POTENTIAL BAG VALUE:</span>
-                  <span className="font-comic text-2xl text-black">
-                    ${potentialUSD.toLocaleString(undefined, { maximumFractionDigits: 0 })} USD
-                  </span>
-                </div>
-
-                <div className="flex items-center justify-between pt-1">
-                  <span className="text-xs font-mono font-bold text-black flex items-center gap-1">
-                    🌯 KEBAB INDEX EQUIVALENCY:
-                  </span>
-                  <span className="font-mono font-black text-xs text-[#00a2ff] bg-white px-2 py-1 rounded-lg border border-black">
-                    {kebabCount.toLocaleString()} Giant Kebabs
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-4">
-              <a
-                href={PUMPFUN_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="comic-btn w-full py-3.5 bg-[#ff007a] hover:bg-[#ff1a80] text-white font-display font-black text-xs flex items-center justify-center gap-2"
-              >
-                <span>💊 Load Your $SLINGTARTD Bag on Pump.fun</span>
-              </a>
-            </div>
+            <button
+              onClick={() => setActiveTab("tweets")}
+              className={`px-4 sm:px-6 py-2.5 rounded-xl font-display font-black text-xs sm:text-sm flex items-center gap-2 transition-all ${
+                activeTab === "tweets"
+                  ? "bg-[#e60012] text-white shadow-[2px_2px_0px_#000]"
+                  : "text-black hover:text-[#e60012]"
+              }`}
+            >
+              <Share2 className="w-4 h-4" />
+              <span>Typo Roast Memes</span>
+            </button>
           </div>
         </div>
 
-        {/* BOTTOM: Dumb KOL Tweet Generator */}
-        <div className="max-w-4xl mx-auto comic-card p-6 sm:p-8 bg-white border-4 border-black shadow-[8px_8px_0px_#000]">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b-3 border-black pb-4 mb-6">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">🐦</span>
-              <div>
-                <h3 className="font-display font-black text-xl text-black">
-                  Dumb KOL Tweet Generator
-                </h3>
-                <p className="text-xs font-mono text-black/70">
-                  Generate authentic 0 IQ confessions to post on X timeline
-                </p>
-              </div>
-            </div>
+        {/* TAB 1: Target Practice Game */}
+        {activeTab === "target" && (
+          <div className="max-w-4xl mx-auto target-card p-6 sm:p-10 bg-white">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+              
+              {/* Left: Interactive Concentric Target Board */}
+              <div className="md:col-span-6 flex flex-col items-center">
+                
+                <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full border-4 border-black bg-white shadow-[8px_8px_0px_#000] flex items-center justify-center select-none overflow-hidden cursor-crosshair">
+                  
+                  {/* Outer Ring (25 pts) */}
+                  <div
+                    onClick={(e) => handleTargetClick("outer", e)}
+                    className="absolute inset-0 bg-white hover:bg-gray-100 flex items-center justify-center transition-colors"
+                  >
+                    {/* Middle Black Ring (50 pts) */}
+                    <div
+                      onClick={(e) => handleTargetClick("inner", e)}
+                      className="w-48 h-48 sm:w-60 sm:h-60 rounded-full bg-black hover:bg-gray-900 border-4 border-black flex items-center justify-center transition-colors shadow-inner"
+                    >
+                      {/* Inner White Ring */}
+                      <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-white border-4 border-black flex items-center justify-center">
+                        
+                        {/* Red Center Bullseye (100 pts) */}
+                        <div
+                          onClick={(e) => handleTargetClick("bullseye", e)}
+                          className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#e60012] hover:bg-[#cc0010] border-3 border-black flex items-center justify-center cursor-pointer shadow-[0_0_15px_rgba(230,0,18,0.5)] active:scale-90 transition-transform"
+                          title="CLICK RED CENTER FOR BULLSEYE (+100)"
+                        >
+                          <Target className="w-8 h-8 text-white animate-pulse pointer-events-none" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-            <button
-              onClick={generateRandomTweet}
-              className="comic-btn px-4 py-2 bg-[#00f0ff] hover:bg-[#38f4ff] text-black font-mono font-black text-xs flex items-center gap-1.5"
-            >
-              <RefreshCw className="w-3.5 h-3.5" />
-              <span>Generate New Tweet</span>
-            </button>
-          </div>
-
-          {/* Tweet Card Box */}
-          <div className="p-5 rounded-2xl bg-[#f8fafc] border-3 border-black space-y-3 mb-6">
-            <div className="flex items-center gap-3">
-              <img
-                src={SLINGTARD_LOGO}
-                alt="Slingtard X Avatar"
-                className="w-10 h-10 rounded-full border-2 border-black object-cover"
-              />
-              <div>
-                <div className="font-display font-black text-sm text-black flex items-center gap-1">
-                  <span>slingtard</span>
-                  <span className="text-blue-500">✓</span>
+                  {/* Floating Click FX */}
+                  {hitEffects.map((effect) => (
+                    <div
+                      key={effect.id}
+                      style={{ left: effect.x, top: effect.y }}
+                      className="absolute pointer-events-none text-xs sm:text-sm font-display font-black text-[#e60012] z-30 animate-[float-hit_1s_ease-out_forwards]"
+                    >
+                      {effect.text}
+                    </div>
+                  ))}
                 </div>
-                <div className="font-mono text-[11px] text-gray-500">@the_real_slingtard (0 IQ KOL)</div>
+
+                <div className="mt-4 flex items-center gap-3">
+                  <button
+                    onClick={() => setSoundEnabled(!soundEnabled)}
+                    className="target-btn px-3 py-1.5 bg-[#f4f4f5] text-xs font-mono font-bold flex items-center gap-1.5"
+                  >
+                    {soundEnabled ? <Volume2 className="w-3.5 h-3.5 text-[#e60012]" /> : <VolumeX className="w-3.5 h-3.5" />}
+                    <span>Sound: {soundEnabled ? "On" : "Off"}</span>
+                  </button>
+                  <span className="text-xs font-mono font-bold text-gray-500">
+                    Click red dot (+100) or rings (+50/+25)
+                  </span>
+                </div>
+              </div>
+
+              {/* Right: Scoreboard & Stats */}
+              <div className="md:col-span-6 space-y-4">
+                <div className="p-4 rounded-xl bg-[#fff5f5] border-2 border-[#e60012] space-y-1">
+                  <span className="text-xs font-mono font-black text-[#e60012] uppercase tracking-wider">
+                    TARGET SCOREBOARD
+                  </span>
+                  <div className="font-comic text-4xl sm:text-5xl text-black">
+                    {score.toLocaleString()} <span className="text-base font-sans font-black text-[#e60012]">PTS</span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="p-3.5 rounded-xl bg-[#f4f4f5] border-2 border-black">
+                    <div className="text-xs font-mono font-bold text-gray-600">Total Shots</div>
+                    <div className="font-display font-black text-2xl text-black">{shotsFired}</div>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-[#f4f4f5] border-2 border-black">
+                    <div className="text-xs font-mono font-bold text-[#e60012]">Bullseyes Hit</div>
+                    <div className="font-display font-black text-2xl text-[#e60012]">{bullseyeHits} 🎯</div>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-xl bg-black text-white space-y-2">
+                  <div className="flex items-center justify-between text-xs font-mono font-bold">
+                    <span>ACCURACY RATING</span>
+                    <span className="text-[#e60012] font-black">
+                      {shotsFired > 0 ? Math.round((bullseyeHits / shotsFired) * 100) : 100}%
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-800 h-3 rounded-full overflow-hidden border border-white/20">
+                    <div
+                      className="bg-[#e60012] h-full transition-all duration-300"
+                      style={{
+                        width: `${Math.min(100, Math.max(10, shotsFired > 0 ? (bullseyeHits / shotsFired) * 100 : 100))}%`,
+                      }}
+                    ></div>
+                  </div>
+                  <div className="text-xs font-mono text-gray-300">
+                    STATUS: Ready to flip the "BULLS'S EYE" typo coin.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        )}
+
+        {/* TAB 2: Target Multiplier Calculator */}
+        {activeTab === "calculator" && (
+          <div className="max-w-3xl mx-auto target-card p-6 sm:p-8 bg-white space-y-6">
+            <div className="flex items-center justify-between border-b-2 border-black pb-4">
+              <div>
+                <h3 className="font-display font-black text-2xl text-black">Target Mcap Profit Simulator</h3>
+                <p className="text-xs text-gray-600 font-medium">See potential returns as $bullseye hits target market caps.</p>
+              </div>
+              <span className="text-xs font-mono font-black px-3 py-1 rounded-full bg-[#fff5f5] text-[#e60012] border border-[#e60012]">
+                0% TAX ESTIMATE
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-mono font-black uppercase text-black mb-1.5">
+                  Your SOL Investment:
+                </label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="number"
+                    min="0.1"
+                    step="0.5"
+                    value={solAmount}
+                    onChange={(e) => setSolAmount(Math.max(0.1, parseFloat(e.target.value) || 0.1))}
+                    className="w-full font-mono text-lg bg-[#f4f4f5] text-black p-3 rounded-xl border-2 border-black font-bold focus:outline-none focus:border-[#e60012]"
+                  />
+                  <span className="font-mono font-black text-sm px-3 py-3 rounded-xl bg-black text-white">SOL</span>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono font-black uppercase text-black mb-1.5">
+                  Target Market Cap:
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {[1000000, 5000000, 10000000, 50000000].map((mcap) => (
+                    <button
+                      key={mcap}
+                      onClick={() => setTargetMcap(mcap)}
+                      className={`px-3 py-2 rounded-xl text-xs font-mono font-black border-2 border-black transition-all ${
+                        targetMcap === mcap
+                          ? "bg-[#e60012] text-white shadow-[2px_2px_0px_#000]"
+                          : "bg-white text-black hover:bg-gray-100"
+                      }`}
+                    >
+                      ${(mcap / 1000000).toFixed(0)}M
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
-            <p className="font-sans font-bold text-base sm:text-lg text-black leading-relaxed">
-              {tweetText}
-            </p>
+            {/* Result Box */}
+            <div className="p-6 rounded-2xl bg-[#fff5f5] border-3 border-[#e60012] shadow-[4px_4px_0px_#000] text-center space-y-2">
+              <span className="text-xs font-mono font-black text-[#e60012] uppercase tracking-wider">
+                ESTIMATED TARGET VALUE AT ${(targetMcap / 1000000).toFixed(0)}M MCAP
+              </span>
+              <div className="font-comic text-4xl sm:text-5xl text-black">
+                ${parseFloat(potentialValue).toLocaleString()}{" "}
+                <span className="text-xl font-sans font-black text-[#e60012]">({profitX}x GAIN)</span>
+              </div>
+              <p className="text-xs font-mono text-gray-700 font-bold">
+                From {solAmount} SOL (~${(solAmount * solPrice).toFixed(0)} USD) to ${parseFloat(potentialValue).toLocaleString()} USD.
+              </p>
+            </div>
           </div>
+        )}
 
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <span className="text-xs font-mono font-bold text-black/80">
-              Post this to spread the unhinged gospel of {SLINGTARD_TICKER}
-            </span>
+        {/* TAB 3: Typo Roast Memes */}
+        {activeTab === "tweets" && (
+          <div className="max-w-3xl mx-auto target-card p-6 sm:p-8 bg-white space-y-6">
+            <div>
+              <h3 className="font-display font-black text-2xl text-black">Viral Typo Roast Generator</h3>
+              <p className="text-xs text-gray-600 font-medium">Spread the word about the real $bullseye and why we're taking the lead.</p>
+            </div>
 
-            <div className="flex items-center gap-2">
+            <div className="space-y-3">
+              <textarea
+                rows={3}
+                value={tweetText}
+                onChange={(e) => setTweetText(e.target.value)}
+                className="w-full p-4 rounded-xl border-2 border-black bg-[#f4f4f5] font-mono text-sm text-black font-bold focus:outline-none focus:border-[#e60012]"
+              />
+
+              <div className="flex flex-wrap gap-2">
+                {tweetTemplates.map((template, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setTweetText(template)}
+                    className="text-xs font-mono font-bold px-3 py-1.5 rounded-lg bg-white border border-black hover:bg-gray-100 text-black"
+                  >
+                    Template #{idx + 1}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
-                onClick={handleCopyTweet}
-                className={`comic-btn px-4 py-2 font-mono font-bold text-xs flex items-center gap-1.5 ${
-                  copiedTweet ? "bg-[#00f0ff] text-black" : "bg-white text-black hover:bg-yellow-50"
-                }`}
+                onClick={copyTweetToClipboard}
+                className="target-btn target-btn-red px-5 py-3 text-white text-xs font-display font-black flex items-center gap-2"
               >
-                {copiedTweet ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copiedTweet ? "Copied Tweet!" : "Copy Tweet"}</span>
+                {copiedTweet ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                <span>{copiedTweet ? "Tweet Copied to Clipboard!" : "Copy Tweet Text"}</span>
               </button>
 
               <a
-                href={`https://x.com/intent/tweet?text=${encodeURIComponent(tweetText)}`}
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="comic-btn px-4 py-2 bg-black text-white font-mono font-bold text-xs flex items-center gap-1.5"
+                className="target-btn px-5 py-3 bg-black hover:bg-[#1a1a1a] text-white text-xs font-display font-bold flex items-center gap-2"
               >
-                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
-                <span>Tweet on X</span>
+                <span>Post directly to X</span>
               </a>
             </div>
           </div>
-        </div>
+        )}
 
       </div>
     </section>

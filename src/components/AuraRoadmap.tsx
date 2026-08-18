@@ -1,186 +1,163 @@
 import React from "react";
 import {
-  CheckCircle2,
-  Zap,
-  TrendingUp,
-  Brain,
+  Target,
   Sparkles,
-  Trophy,
+  Flame,
+  CheckCircle2,
+  TrendingUp,
+  Award,
+  ArrowRight,
 } from "lucide-react";
 import {
-  SLINGTARD_NAME,
-  SLINGTARD_TICKER,
-  X_COMMUNITY_URL,
+  BULLSEYE_NAME,
+  BULLSEYE_TICKER,
   PUMPFUN_URL,
+  X_COMMUNITY_URL,
 } from "../constants";
 
 export default function AuraRoadmap() {
-  const phases = [
+  const targets = [
     {
-      step: "PHASE 1 • COMPLETE",
-      title: "Previous Coin Fumble & New Launch",
-      time: "GENESIS",
-      icon: "🚨",
-      description:
-        "The KOL ruins his previous project because he is dumb, the community nicknames him Slingtard, and launches THIS brand new token $slingtartd on pump.fun.",
+      targetNumber: "TARGET 01",
+      phaseTitle: "The Grammatical Correction",
+      status: "COMPLETED",
+      statusColor: "bg-[#e60012] text-white",
+      description: "Launch $bullseye on pump.fun with proper spelling, establish the X Community, and initiate the movement.",
       items: [
-        "KOL Fucks Up Previous Coin",
-        "Community Christens Him 'Slingtard'",
-        "Brand New $slingtartd Token Launched",
-        "100% Community Ownership Established",
+        "Fair launch on pump.fun (0% dev bags)",
+        "Creation of official X Community & meme hub",
+        "Fixing the 'BULLS'S EYE' spelling blunder on Solana",
+        "Initial 1,000+ community target holders",
       ],
-      cardColor: "comic-card-yellow",
+      icon: "🎯",
+      cardColor: "bg-[#fff5f5] border-[#e60012]",
     },
     {
-      step: "PHASE 2 • IN PROGRESS",
-      title: "Viral CTO & Retard-Core Meta",
-      time: "VIRAL EXPANSION",
-      icon: "🤤",
-      description:
-        "The community unites around the hilarious $slingtartd lore with raids and memes storming the Solana timeline.",
+      targetNumber: "TARGET 02",
+      phaseTitle: "Flipping The Typo Coin",
+      status: "IN PROGRESS",
+      statusColor: "bg-black text-white",
+      description: "Surpass the market cap of the broken typo token and establish $bullseye as the definitive leader.",
       items: [
-        "DexScreener Profile & Banner Verification",
-        "Active X Community Raids & Meme Contests",
-        "Pump.fun Bonding Curve Blitz",
-        "KOL Apology Confession Generator",
+        "DexScreener update & banner verification",
+        "Flipping the typo token in volume and market cap",
+        "Viral X raids and target meme propagation",
+        "Community spaces and target leaderboards",
       ],
-      cardColor: "comic-card-pink",
-    },
-    {
-      step: "PHASE 3 • UPCOMING",
-      title: "Raydium Graduation & Global Cult",
-      time: "GRADUATION",
-      icon: "🚀",
-      description:
-        "Graduating pump.fun with 100% burned liquidity into Raydium. Multi-million market cap ascent.",
-      items: [
-        "Automatic Raydium LP Migration & Burn",
-        "CoinGecko & CoinMarketCap Fast-Track",
-        "Buy Slingtard A New Pair Of Rainbow Shades",
-        "Tier-1 Meme Partnerships & Space Takeovers",
-      ],
-      cardColor: "comic-card-cyan",
-    },
-    {
-      step: "PHASE 4 • THE DESTINY",
-      title: "Flipping Every 'Smart' Dev",
-      time: "SOLANA DOMINANCE",
       icon: "👑",
-      description:
-        "Proving that a united 0 IQ degen community is infinitely stronger than any cabal of over-promising devs.",
+      cardColor: "bg-white border-black",
+    },
+    {
+      targetNumber: "TARGET 03",
+      phaseTitle: "Raydium Migration & Velocity",
+      status: "UPCOMING",
+      statusColor: "bg-gray-200 text-black",
+      description: "Graduate from pump.fun bonding curve with 100% LP burned directly to Raydium.",
       items: [
-        "$100M+ Market Cap Hyper-Meme Status",
-        "Slingtard Statue with Real Rainbow Shades",
-        "Zero Sell Pressure Ever From Dev",
-        "Solana Retard-Core Supremacy",
+        "100% Bonding curve completion on pump.fun",
+        "LP tokens burned forever to Raydium",
+        "CoinGecko & CoinMarketCap fast-track listing",
+        "Multi-platform Solana ecosystem integrations",
       ],
-      cardColor: "comic-card-yellow",
+      icon: "🚀",
+      cardColor: "bg-white border-black",
+    },
+    {
+      targetNumber: "TARGET 04",
+      phaseTitle: "Center Bullseye Domination",
+      status: "VISION",
+      statusColor: "bg-gray-200 text-black",
+      description: "Global community expansion and premier meme status on the Solana blockchain.",
+      items: [
+        "Tier-1 CEX listing outreach",
+        "Official Bullseye target merchandise & arcade games",
+        "Top-ranking Solana community DAO governance",
+        "Hitting the 9-figure market cap center bullseye",
+      ],
+      icon: "💎",
+      cardColor: "bg-white border-black",
     },
   ];
 
   return (
-    <section id="roadmap" className="relative py-16 sm:py-24 bg-[#ffd600] text-black overflow-hidden border-b-4 border-black comic-dots">
-      
-      {/* Background ambient glow */}
-      <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-[#ff007a]/20 rounded-full blur-[140px] pointer-events-none"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#00f0ff]/20 rounded-full blur-[140px] pointer-events-none"></div>
-
+    <section id="roadmap" className="relative py-16 sm:py-24 bg-white text-black overflow-hidden border-b-4 border-black">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-black text-[#00f0ff] border-2 border-black shadow-[4px_4px_0px_#ff007a]">
-            <Brain className="w-4 h-4 text-[#ffe600]" />
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-black text-white border-2 border-black shadow-[4px_4px_0px_#e60012]">
+            <Target className="w-4 h-4 text-[#e60012]" />
             <span className="text-xs font-mono font-black uppercase tracking-wider">
-              THE 0 IQ MASTERPLAN & ROADMAP
+              TARGET TRAJECTORY ROADMAP
             </span>
           </div>
 
-          <h2 className="font-comic text-4xl sm:text-6xl text-black tracking-tight uppercase drop-shadow-[3px_3px_0px_#fff]">
-            Slingtard <span className="text-[#ff007a]">Roadmap</span>
+          <h2 className="font-comic text-4xl sm:text-6xl text-black tracking-tight uppercase drop-shadow-[3px_3px_0px_#e60012]">
+            The <span className="text-[#e60012]">Bullseye</span> Targets
           </h2>
 
-          <p className="font-sans text-base sm:text-lg text-black font-extrabold max-w-2xl mx-auto leading-relaxed">
-            No empty whitepapers, no complex roadmaps. Just a ruthless, hilarious push from one green candle to the next.
+          <p className="font-sans text-base sm:text-lg text-black font-extrabold max-w-xl mx-auto">
+            From correcting a Solana spelling catastrophe to leading the entire meme meta. Here is our direct target trajectory.
           </p>
         </div>
 
-        {/* 4 Step Roadmap Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {phases.map((phase, idx) => (
+        {/* 4 Target Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-14">
+          {targets.map((target, idx) => (
             <div
               key={idx}
-              className={`${phase.cardColor} p-6 sm:p-7 flex flex-col justify-between relative group hover:scale-[1.02] transition-transform duration-300`}
+              className={`target-card ${target.cardColor} p-6 sm:p-8 flex flex-col justify-between group hover:scale-[1.02] transition-transform duration-200 relative`}
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono font-black text-white uppercase tracking-wider px-2.5 py-1 rounded-xl bg-black border border-black shadow-[2px_2px_0px_#ff007a]">
-                    {phase.step}
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl">{target.icon}</span>
+                    <span className="font-comic text-xl text-black">{target.targetNumber}</span>
+                  </div>
+                  <span className={`text-[10px] font-mono font-black px-3 py-1 rounded-full border border-black shadow-[2px_2px_0px_#000] ${target.statusColor}`}>
+                    {target.status}
                   </span>
-                  <span className="text-3xl">{phase.icon}</span>
                 </div>
 
                 <div>
-                  <span className="text-[11px] font-mono font-black text-black/70 block">
-                    {phase.time}
-                  </span>
-                  <h3 className="font-display font-black text-xl text-black leading-snug mt-1">
-                    {phase.title}
+                  <h3 className="font-display font-black text-2xl text-black">
+                    {target.phaseTitle}
                   </h3>
+                  <p className="text-xs sm:text-sm text-black/80 font-bold mt-1 leading-relaxed">
+                    {target.description}
+                  </p>
                 </div>
 
-                <p className="font-sans text-xs text-black font-bold leading-relaxed">
-                  {phase.description}
-                </p>
-
-                <ul className="space-y-2 pt-2 border-t-2 border-black">
-                  {phase.items.map((item, iIdx) => (
-                    <li key={iIdx} className="text-xs font-sans text-black font-bold flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#ff007a] flex-shrink-0 mt-0.5" />
+                {/* Checklist */}
+                <div className="space-y-2 pt-2 border-t-2 border-black/10">
+                  {target.items.map((item, itemIdx) => (
+                    <div key={itemIdx} className="flex items-center gap-2.5 text-xs font-mono font-bold text-black">
+                      <CheckCircle2 className="w-4 h-4 text-[#e60012] shrink-0" />
                       <span>{item}</span>
-                    </li>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
 
-              <div className="mt-6 pt-3 border-t-2 border-black flex items-center justify-between text-[11px] font-mono text-black font-bold">
-                <span>Phase {idx + 1} of 4</span>
-                <Zap className="w-3.5 h-3.5 text-[#ff007a]" />
+              <div className="mt-6 pt-4 border-t-2 border-black flex items-center justify-between text-xs font-mono font-black text-black">
+                <span>PHASE {idx + 1} OF 04</span>
+                <span className="text-[#e60012]">AIM FOR CENTER</span>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Action Banner */}
-        <div className="max-w-4xl mx-auto comic-card p-8 bg-white border-4 border-black text-center space-y-4 shadow-[8px_8px_0px_#000]">
-          <h3 className="font-comic text-2xl sm:text-3xl text-black">
-            “Join the Most Unhinged Community on Solana”
-          </h3>
-          <p className="font-sans text-sm sm:text-base text-black font-bold max-w-xl mx-auto leading-relaxed">
-            The brotherhood gathers daily on X to raid, share 0 IQ memes, and ride the unstoppable momentum of {SLINGTARD_NAME}.
-          </p>
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href={X_COMMUNITY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="comic-btn inline-flex items-center gap-2 px-6 py-3.5 bg-black hover:bg-[#1a1a24] text-white font-display font-bold text-xs"
-            >
-              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-              <span>Join Official X Community</span>
-            </a>
-
-            <a
-              href={PUMPFUN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="comic-btn inline-flex items-center gap-2 px-6 py-3.5 bg-[#ff007a] hover:bg-[#ff1a80] text-white font-display font-black text-xs"
-            >
-              <span>💊 Pump {SLINGTARD_TICKER} on Pump.fun</span>
-            </a>
-          </div>
+        {/* Quick CTA */}
+        <div className="text-center">
+          <a
+            href={PUMPFUN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="target-btn target-btn-red inline-flex items-center gap-2 px-8 py-4 text-white font-display font-black text-sm sm:text-base"
+          >
+            <span>🎯 Lock In Target: Buy {BULLSEYE_TICKER} on Pump.fun</span>
+            <ArrowRight className="w-5 h-5" />
+          </a>
         </div>
 
       </div>

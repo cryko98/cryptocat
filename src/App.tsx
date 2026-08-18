@@ -9,31 +9,30 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#ffd600] text-black font-sans selection:bg-[#ff007a] selection:text-white antialiased overflow-x-hidden relative">
-      {/* Background ambient comic splashes */}
-      <div className="absolute inset-0 pointer-events-none opacity-40 z-0 overflow-hidden">
-        <div className="absolute top-[-5%] right-[-10%] w-[600px] h-[600px] bg-[#00f0ff] rounded-full blur-[160px]"></div>
-        <div className="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-[#ff007a] rounded-full blur-[160px]"></div>
-        <div className="absolute top-[40%] left-[20%] w-[450px] h-[450px] bg-[#ffe600] rounded-full blur-[150px]"></div>
-        <div className="absolute bottom-[5%] right-[10%] w-[500px] h-[500px] bg-[#00f0ff] rounded-full blur-[160px]"></div>
+    <div className="min-h-screen bg-[#ffffff] text-black font-sans selection:bg-[#e60012] selection:text-white antialiased overflow-x-hidden relative">
+      {/* Background ambient subtle red & black glow accents */}
+      <div className="absolute inset-0 pointer-events-none opacity-20 z-0 overflow-hidden">
+        <div className="absolute top-[-5%] right-[-10%] w-[600px] h-[600px] bg-[#e60012] rounded-full blur-[180px]"></div>
+        <div className="absolute bottom-[20%] left-[-10%] w-[500px] h-[500px] bg-[#e60012] rounded-full blur-[180px]"></div>
+        <div className="absolute top-[45%] right-[20%] w-[450px] h-[450px] bg-[#0a0a0a] rounded-full blur-[200px]"></div>
       </div>
 
       {/* Navigation Bar */}
       <Navbar />
 
-      {/* Hero Section: Avatar, CA, KOL Wisdom & Fast CTAs */}
+      {/* Hero Section: Logo, CA, Bullseye Target & Quick Action Buttons */}
       <Hero />
 
-      {/* The Saga of the Self-Vamped KOL Lore */}
+      {/* The Story: Fixing the "BULLS'S EYE" Typo & Taking Over The Lead */}
       <Story />
 
-      {/* 0 IQ KOL Lab & Interactive Playground */}
+      {/* Bullseye Interactive Target Range & Typo Comparison Lab */}
       <InteractiveApp />
 
-      {/* Tokenomics & Transparency Ledger */}
+      {/* Tokenomics & Transparency */}
       <Tokenomics />
 
-      {/* The Masterplan & Roadmap */}
+      {/* Target Roadmap & Milestones */}
       <AuraRoadmap />
 
       {/* Footer */}

@@ -1,9 +1,6 @@
 {
-  "name": "slingtard",
-  "description": "slingtard ($slingtartd) — The retard who vamped his own coin. 100% community-owned meme coin on Solana.",
+  "name": "Bullseye",
+  "description": "Bullseye ($bullseye) — The real target meme coin on Solana. Fixing the 'BULLS'S EYE' typo and taking over the lead on pump.fun.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
-
-
-
