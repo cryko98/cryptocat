@@ -41,15 +41,7 @@ export default function Navbar() {
       {/* Top Ticker Marquee */}
       <div className="bg-black text-[#ffe600] py-1.5 px-4 overflow-hidden border-b-2 border-black">
         <div className="whitespace-nowrap flex items-center gap-8 animate-[marquee_22s_linear_infinite] text-xs font-mono font-black tracking-wider uppercase">
-          <span>🤤 $SLINGTARTD ON SOLANA</span>
-          <span>•</span>
-          <span>👑 100% COMMUNITY-OWNED</span>
-          <span>•</span>
-          <span>💸 0% TAX • 0% DEV HOLDINGS • 100% FAIR</span>
-          <span>•</span>
-          <span>🌈 PURE RETARD ENERGY ON PUMP.FUN</span>
-          <span>•</span>
-          <span>🚀 CHADS IN FULL CONTROL</span>
+          <span>🧠 THE RETARD WHO VAMPED HIS OWN COIN</span>
           <span>•</span>
           <span>🤤 $SLINGTARTD ON SOLANA</span>
           <span>•</span>
@@ -59,7 +51,15 @@ export default function Navbar() {
           <span>•</span>
           <span>🌈 PURE RETARD ENERGY ON PUMP.FUN</span>
           <span>•</span>
-          <span>🚀 CHADS IN FULL CONTROL</span>
+          <span>🧠 THE RETARD WHO VAMPED HIS OWN COIN</span>
+          <span>•</span>
+          <span>🤤 $SLINGTARTD ON SOLANA</span>
+          <span>•</span>
+          <span>👑 100% COMMUNITY-OWNED</span>
+          <span>•</span>
+          <span>💸 0% TAX • 0% DEV HOLDINGS • 100% FAIR</span>
+          <span>•</span>
+          <span>🌈 PURE RETARD ENERGY ON PUMP.FUN</span>
         </div>
       </div>
 

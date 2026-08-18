@@ -88,7 +88,7 @@ export default function Hero() {
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-black text-[#ffe600] border-2 border-black shadow-[4px_4px_0px_#ff007a]">
             <span className="w-3 h-3 rounded-full bg-[#00f0ff] animate-ping"></span>
             <span className="text-xs font-mono font-black uppercase tracking-wider">
-              100% COMMUNITY-OWNED ON SOLANA
+              THE RETARD WHO VAMPED HIS OWN COIN
             </span>
           </div>
 
@@ -102,8 +102,8 @@ export default function Hero() {
             </div>
           </div>
 
-          <p className="font-sans font-extrabold text-xl sm:text-2xl text-black max-w-2xl mx-auto leading-tight">
-            The 0 IQ meme coin on Solana. <span className="text-[#ff007a] underline">0% tax</span>, 0% dev allocation, 100% pure community power.
+          <p className="font-sans font-extrabold text-2xl sm:text-4xl text-black max-w-3xl mx-auto leading-tight">
+            The retard who <span className="text-[#ff007a] underline decoration-wavy decoration-[#00f0ff]">vamped his own coin</span>.
           </p>
 
           {/* Quick interactive utility badges */}

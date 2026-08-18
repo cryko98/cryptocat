@@ -52,13 +52,13 @@ export default function Footer() {
                   {SLINGTARD_NAME}
                 </span>
                 <div className="text-[10px] font-mono text-[#00f0ff] font-bold">
-                  {SLINGTARD_TICKER} • 100% COMMUNITY-OWNED MEME COIN
+                  {SLINGTARD_TICKER} • THE RETARD WHO VAMPED HIS OWN COIN
                 </div>
               </div>
             </div>
 
             <p className="text-sm text-white/90 max-w-md font-sans font-medium leading-relaxed">
-              $slingtartd is a 100% community-owned meme token on Solana with 0% tax, zero dev allocation, and infinite degen energy on pump.fun. 🤤🕶️💸
+              $slingtartd — the retard who vamped his own coin. 100% community-owned on Solana with 0% tax and pure retard energy on pump.fun. 🤤🕶️💸
             </p>
 
             <div className="pt-2">
