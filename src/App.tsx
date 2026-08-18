@@ -9,34 +9,34 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#0052fe] text-white font-sans selection:bg-[#00ff88] selection:text-[#0052fe] antialiased overflow-x-hidden relative">
-      {/* Background ambient soft glows (no grids) */}
+    <div className="min-h-screen bg-[#ffd600] text-black font-sans selection:bg-[#ff007a] selection:text-white antialiased overflow-x-hidden relative">
+      {/* Background ambient comic splashes */}
       <div className="absolute inset-0 pointer-events-none opacity-40 z-0 overflow-hidden">
-        <div className="absolute top-[-5%] right-[-10%] w-[600px] h-[600px] bg-[#0038b8] rounded-full blur-[160px]"></div>
-        <div className="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-[#0066ff] rounded-full blur-[160px]"></div>
-        <div className="absolute top-[40%] left-[20%] w-[450px] h-[450px] bg-[#38bdf8]/20 rounded-full blur-[150px]"></div>
-        <div className="absolute bottom-[5%] right-[10%] w-[500px] h-[500px] bg-[#002f9e] rounded-full blur-[160px]"></div>
+        <div className="absolute top-[-5%] right-[-10%] w-[600px] h-[600px] bg-[#00f0ff] rounded-full blur-[160px]"></div>
+        <div className="absolute bottom-[20%] left-[-10%] w-[600px] h-[600px] bg-[#ff007a] rounded-full blur-[160px]"></div>
+        <div className="absolute top-[40%] left-[20%] w-[450px] h-[450px] bg-[#ffe600] rounded-full blur-[150px]"></div>
+        <div className="absolute bottom-[5%] right-[10%] w-[500px] h-[500px] bg-[#00f0ff] rounded-full blur-[160px]"></div>
       </div>
 
-      {/* Navigation */}
+      {/* Navigation Bar */}
       <Navbar />
 
-      {/* Hero Header Section with exact artwork layout & CA */}
+      {/* Hero Section: Avatar, CA, KOL Wisdom & Fast CTAs */}
       <Hero />
 
-      {/* Complete Giga Toad Lore & Chronicles of the Alpha Toad Section */}
+      {/* The Saga of the Self-Vamped KOL Lore */}
       <Story />
 
-      {/* Interactive Giga Toad Alpha Gym & Hypertrophy Calculator */}
+      {/* 0 IQ KOL Lab & Interactive Playground */}
       <InteractiveApp />
 
-      {/* Alpha Ledger & Tokenomics */}
+      {/* Tokenomics & Transparency Ledger */}
       <Tokenomics />
 
-      {/* Alpha Roadmap */}
+      {/* The Masterplan & Roadmap */}
       <AuraRoadmap />
 
-      {/* Footer & Disclaimer */}
+      {/* Footer */}
       <Footer />
     </div>
   );

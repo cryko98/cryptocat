@@ -2,131 +2,163 @@
 
 @theme {
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Fredoka", "Plus Jakarta Sans", sans-serif;
-  --font-script: "Pacifico", "Caveat", cursive;
-  --font-mono: "Space Grotesk", "Courier Prime", monospace;
+  --font-display: "Fredoka", "Bungee", "Plus Jakarta Sans", cursive, sans-serif;
+  --font-comic: "Bungee", "Fredoka", cursive;
+  --font-mono: "Space Grotesk", monospace;
 }
 
-/* Custom script font utility */
-.font-script {
-  font-family: var(--font-script);
+/* Custom comic font utilities */
+.font-comic {
+  font-family: var(--font-comic);
 }
 
-/* Giga Toad Pepe Alpha Animations */
-@keyframes giga-flex {
+/* Slingtard Cartoon Animations */
+@keyframes drool-wobble {
   0%, 100% {
-    transform: translateY(0px) scale(1);
-    filter: drop-shadow(0 0 25px rgba(0, 255, 136, 0.4));
+    transform: rotate(0deg) scale(1);
   }
-  50% {
-    transform: translateY(-8px) scale(1.02);
-    filter: drop-shadow(0 0 45px rgba(0, 255, 136, 0.75)) drop-shadow(0 0 20px rgba(56, 189, 248, 0.6));
+  25% {
+    transform: rotate(-2deg) scale(1.02);
   }
-}
-
-@keyframes iron-pulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.6), 0 0 0 0 rgba(56, 189, 248, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 25px 8px rgba(0, 255, 136, 0.35), 0 0 50px 15px rgba(56, 189, 248, 0.2);
+  75% {
+    transform: rotate(2.5deg) scale(0.98);
   }
 }
 
-@keyframes marquee {
+@keyframes rainbow-shift {
   0% {
-    transform: translateX(0%);
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
   100% {
-    transform: translateX(-50%);
+    background-position: 0% 50%;
   }
 }
 
-@keyframes energy-flow {
+@keyframes comic-bounce {
   0%, 100% {
-    opacity: 0.4;
-    transform: scale(0.9) translate(0, 0);
+    transform: translateY(0px);
   }
   50% {
-    opacity: 0.95;
-    transform: scale(1.15) translate(8px, -12px);
+    transform: translateY(-8px);
   }
 }
 
-.animate-giga-flex {
-  animation: giga-flex 4.5s ease-in-out infinite;
+@keyframes chromatic-glitch {
+  0%, 100% {
+    text-shadow: 2px 2px 0px #00f0ff, -2px -2px 0px #ff007a;
+  }
+  50% {
+    text-shadow: -3px 2px 0px #00f0ff, 3px -2px 0px #ff007a;
+  }
 }
 
-.animate-iron-pulse {
-  animation: iron-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+.animate-drool {
+  animation: drool-wobble 4s ease-in-out infinite;
 }
 
-.animate-energy {
-  animation: energy-flow 3.5s ease-in-out infinite;
+.animate-comic-bounce {
+  animation: comic-bounce 2.5s ease-in-out infinite;
 }
 
-/* Giga Text Highlighters */
-.highlight-green {
-  background-color: #00ff88;
-  color: #0036a7;
-  padding: 0.12em 0.45em;
-  border-radius: 6px;
-  font-weight: 900;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-  display: inline;
+.rainbow-gradient {
+  background: linear-gradient(135deg, #00f0ff 0%, #ff007a 50%, #ffe600 100%);
+  background-size: 200% 200%;
+  animation: rainbow-shift 5s ease infinite;
 }
 
-.highlight-blue {
-  background-color: #38bdf8;
-  color: #0036a7;
-  padding: 0.12em 0.45em;
-  border-radius: 6px;
-  font-weight: 900;
-  display: inline;
+.rainbow-border {
+  border-image: linear-gradient(135deg, #00f0ff, #ff007a, #ffe600) 1;
 }
 
-.highlight-white {
+/* Comic Neo-Brutalist Cards */
+.comic-card {
   background-color: #ffffff;
-  color: #0052fe;
-  padding: 0.12em 0.45em;
-  border-radius: 6px;
-  font-weight: 900;
-  display: inline;
+  border: 3.5px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+  border-radius: 24px;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Clean Solid Royal/Cobalt Blue Cards - NO GRIDS */
-.giga-card {
-  background-color: #0044d4;
-  border: 2px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 20px 45px -10px rgba(0, 20, 80, 0.5), 0 0 25px rgba(0, 82, 254, 0.3);
+.comic-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px #000000;
 }
 
-.giga-card-blue {
-  background-color: #003dbd;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 45px -10px rgba(0, 20, 80, 0.5), 0 0 25px rgba(56, 189, 248, 0.2);
+.comic-card-cyan {
+  background-color: #c7f9ff;
+  border: 3.5px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+  border-radius: 24px;
 }
 
-.giga-card-dark {
-  background-color: #00319e;
-  border: 2px solid rgba(0, 255, 136, 0.4);
-  box-shadow: 0 20px 45px -10px rgba(0, 20, 80, 0.6);
+.comic-card-pink {
+  background-color: #ffe0ef;
+  border: 3.5px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+  border-radius: 24px;
+}
+
+.comic-card-yellow {
+  background-color: #fff9c4;
+  border: 3.5px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+  border-radius: 24px;
+}
+
+.comic-card-dark {
+  background-color: #121218;
+  border: 3.5px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+  border-radius: 24px;
+  color: #ffffff;
+}
+
+/* Comic Buttons */
+.comic-btn {
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 16px;
+  font-weight: 800;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.comic-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px #000000;
+}
+
+.comic-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #000000;
+}
+
+/* Halftone / Comic Dot pattern */
+.comic-dots {
+  background-image: radial-gradient(#000000 12%, transparent 12%);
+  background-position: 0 0;
+  background-size: 18px 18px;
+}
+
+.comic-waves {
+  background: radial-gradient(circle at 50% 100%, #00f0ff 0%, #ffe600 80%);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0044d4;
+  background: #ffe600;
 }
 ::-webkit-scrollbar-thumb {
-  background: #00319e;
-  border-radius: 4px;
-  border: 2px solid #0052fe;
+  background: #000000;
+  border-radius: 6px;
+  border: 2px solid #ffe600;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00ff88;
+  background: #ff007a;
 }
-

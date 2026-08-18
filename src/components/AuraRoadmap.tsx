@@ -1,171 +1,184 @@
 import React from "react";
-import { motion } from "motion/react";
-import { Compass, Sparkles, Send, CheckCircle2, Dumbbell, Zap, Trophy, ShieldAlert, Award } from "lucide-react";
-import { GIGATOAD_NAME, GIGATOAD_TICKER, TELEGRAM_URL, PUMPFUN_URL } from "../constants";
+import {
+  CheckCircle2,
+  Zap,
+  TrendingUp,
+  Brain,
+  Sparkles,
+  Trophy,
+} from "lucide-react";
+import {
+  SLINGTARD_NAME,
+  SLINGTARD_TICKER,
+  X_COMMUNITY_URL,
+  PUMPFUN_URL,
+} from "../constants";
 
 export default function AuraRoadmap() {
   const phases = [
     {
-      step: "PHASE 1: THE GENESIS REP",
-      title: "Iron Awakening",
-      status: "COMPLETED",
-      description: "Genesis of Giga Toad Pepe on Solana, fair launch with 0% tax, 100% LP burned forever, and initial Chad momentum.",
+      step: "PHASE 1 • COMPLETE",
+      title: "Previous Coin Fumble & New Launch",
+      time: "GENESIS",
+      icon: "🚨",
+      description:
+        "The KOL ruins his previous project because he is dumb, the community nicknames him Slingtard, and launches THIS brand new token $slingtartd on pump.fun.",
       items: [
-        "Fair launch with 0% tax & burned LP",
-        "Official contract address verified on Solana",
-        "Genesis viral meme & lifting raid waves",
-        "DexScreener & Raydium integration",
+        "KOL Fucks Up Previous Coin",
+        "Community Christens Him 'Slingtard'",
+        "Brand New $slingtartd Token Launched",
+        "100% Community Ownership Established",
       ],
-      icon: "🏋️‍♂️",
-      color: "#00ff88",
+      cardColor: "comic-card-yellow",
     },
     {
-      step: "PHASE 2: PROGRESSIVE OVERLOAD",
-      title: "Solana Market Raids",
-      status: "CURRENT FOCUS",
-      description: "Mobilizing tens of thousands of alpha traders to shatter resistance levels and dominate high-volume decentralized feeds.",
+      step: "PHASE 2 • IN PROGRESS",
+      title: "Viral CTO & Retard-Core Meta",
+      time: "VIRAL EXPANSION",
+      icon: "🤤",
+      description:
+        "The community unites around the hilarious $slingtartd lore with raids and memes storming the Solana timeline.",
       items: [
-        "Trending campaigns across DexScreener & CT",
-        "Alpha meme competitions with massive PR prizes",
-        "Daily community raid spaces & lifting sessions",
-        "Ecosystem partnerships with Solana powerhouses",
+        "DexScreener Profile & Banner Verification",
+        "Active X Community Raids & Meme Contests",
+        "Pump.fun Bonding Curve Blitz",
+        "KOL Apology Confession Generator",
       ],
-      icon: "⚡",
-      color: "#38bdf8",
+      cardColor: "comic-card-pink",
     },
     {
-      step: "PHASE 3: MAXIMUM HYPERTROPHY",
-      title: "The Iron Olympus Gathering",
-      status: "UPCOMING",
-      description: "Elevating the Giga Toad brand with next-level interactive tools, custom artwork drops, and multi-tier rewards.",
+      step: "PHASE 3 • UPCOMING",
+      title: "Raydium Graduation & Global Cult",
+      time: "GRADUATION",
+      icon: "🚀",
+      description:
+        "Graduating pump.fun with 100% burned liquidity into Raydium. Multi-million market cap ascent.",
       items: [
-        "Interactive Alpha Gym & Soundboard ecosystem",
-        "Community governance of the Chad Treasury",
-        "Global high-octane live raids & chart pumps",
-        "Tier-1 decentralized liquidity amplification",
+        "Automatic Raydium LP Migration & Burn",
+        "CoinGecko & CoinMarketCap Fast-Track",
+        "Buy Slingtard A New Pair Of Rainbow Shades",
+        "Tier-1 Meme Partnerships & Space Takeovers",
       ],
-      icon: "🏆",
-      color: "#00ff88",
+      cardColor: "comic-card-cyan",
     },
     {
-      step: "PHASE 4: IMMORTAL ALPHA DYNASTY",
-      title: "Apex Predator of Solana",
-      status: "FUTURE HORIZON",
-      description: "Solidifying $GIGATOAD as the eternal standard of muscular greatness and financial dominance across Web3.",
-      items: [
-        "Chad DAO voting on strategic community growth",
-        "Real-world fitness & athlete sponsorship initiatives",
-        "Multi-chain Giga Toad ambassador squad",
-        "Permanent legend in the Solana history archives",
-      ],
+      step: "PHASE 4 • THE DESTINY",
+      title: "Flipping Every 'Smart' Dev",
+      time: "SOLANA DOMINANCE",
       icon: "👑",
-      color: "#ffd166",
+      description:
+        "Proving that a united 0 IQ degen community is infinitely stronger than any cabal of over-promising devs.",
+      items: [
+        "$100M+ Market Cap Hyper-Meme Status",
+        "Slingtard Statue with Real Rainbow Shades",
+        "Zero Sell Pressure Ever From Dev",
+        "Solana Retard-Core Supremacy",
+      ],
+      cardColor: "comic-card-yellow",
     },
   ];
 
   return (
-    <section id="roadmap" className="relative py-16 sm:py-24 bg-[#0047db] text-white overflow-hidden border-b border-white/20 selection:bg-[#00ff88] selection:text-[#003bb5]">
+    <section id="roadmap" className="relative py-16 sm:py-24 bg-[#ffd600] text-black overflow-hidden border-b-4 border-black comic-dots">
       
       {/* Background ambient glow */}
-      <div className="absolute inset-0 pointer-events-none select-none z-0 opacity-40">
-        <div className="absolute top-[20%] left-[20%] w-80 h-80 rounded-full bg-[#00ff88]/15 blur-[150px]"></div>
-        <div className="absolute bottom-[20%] right-[20%] w-80 h-80 rounded-full bg-[#0038b8] blur-[150px]"></div>
-      </div>
+      <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-[#ff007a]/20 rounded-full blur-[140px] pointer-events-none"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#00f0ff]/20 rounded-full blur-[140px] pointer-events-none"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#003bb5] border border-white/30 shadow-sm">
-            <Dumbbell className="w-3.5 h-3.5 text-[#00ff88]" />
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#00ff88]">
-              PROGRESSIVE OVERLOAD • THE EXPEDITION
+        <div className="text-center max-w-3xl mx-auto space-y-4 mb-14">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-black text-[#00f0ff] border-2 border-black shadow-[4px_4px_0px_#ff007a]">
+            <Brain className="w-4 h-4 text-[#ffe600]" />
+            <span className="text-xs font-mono font-black uppercase tracking-wider">
+              THE 0 IQ MASTERPLAN & ROADMAP
             </span>
           </div>
 
-          <h2 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tight uppercase">
-            Alpha <span className="text-[#00ff88]">Roadmap</span>
+          <h2 className="font-comic text-4xl sm:text-6xl text-black tracking-tight uppercase drop-shadow-[3px_3px_0px_#fff]">
+            Slingtard <span className="text-[#ff007a]">Roadmap</span>
           </h2>
-          <p className="font-sans text-base sm:text-lg text-white/95 font-medium max-w-2xl mx-auto leading-relaxed">
-            No skipped workouts, no missed sets. Just a ruthless, steady push from one PR to the next.
+
+          <p className="font-sans text-base sm:text-lg text-black font-extrabold max-w-2xl mx-auto leading-relaxed">
+            No empty whitepapers, no complex roadmaps. Just a ruthless, hilarious push from one green candle to the next.
           </p>
         </div>
 
-        {/* 4 Roadmap Phases */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-16">
+        {/* 4 Step Roadmap Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {phases.map((phase, idx) => (
             <div
               key={idx}
-              className="giga-card p-6 sm:p-7 rounded-3xl border-2 border-white/30 shadow-xl flex flex-col justify-between relative group hover:scale-[1.02] transition-transform duration-300"
+              className={`${phase.cardColor} p-6 sm:p-7 flex flex-col justify-between relative group hover:scale-[1.02] transition-transform duration-300`}
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono font-bold text-[#00ff88] uppercase tracking-wider px-2.5 py-1 rounded-xl bg-[#00319e] border border-white/20">
+                  <span className="text-[10px] font-mono font-black text-white uppercase tracking-wider px-2.5 py-1 rounded-xl bg-black border border-black shadow-[2px_2px_0px_#ff007a]">
                     {phase.step}
                   </span>
-                  <span className="text-2xl">{phase.icon}</span>
+                  <span className="text-3xl">{phase.icon}</span>
                 </div>
 
                 <div>
-                  <h3 className="font-display font-black text-xl sm:text-2xl text-white">
+                  <span className="text-[11px] font-mono font-black text-black/70 block">
+                    {phase.time}
+                  </span>
+                  <h3 className="font-display font-black text-xl text-black leading-snug mt-1">
                     {phase.title}
                   </h3>
-                  <div className="text-[10px] font-mono font-bold text-[#00ff88] mt-1">
-                    STATUS: {phase.status}
-                  </div>
                 </div>
 
-                <p className="font-sans text-xs text-white/90 leading-relaxed">
+                <p className="font-sans text-xs text-black font-bold leading-relaxed">
                   {phase.description}
                 </p>
 
-                <ul className="space-y-2 pt-2 border-t border-white/20">
+                <ul className="space-y-2 pt-2 border-t-2 border-black">
                   {phase.items.map((item, iIdx) => (
-                    <li key={iIdx} className="text-xs font-sans text-white/95 flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#00ff88] flex-shrink-0 mt-0.5" />
+                    <li key={iIdx} className="text-xs font-sans text-black font-bold flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-[#ff007a] flex-shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="mt-6 pt-3 border-t border-white/20 flex items-center justify-between text-[11px] font-mono text-white/80">
+              <div className="mt-6 pt-3 border-t-2 border-black flex items-center justify-between text-[11px] font-mono text-black font-bold">
                 <span>Phase {idx + 1} of 4</span>
-                <Zap className="w-3.5 h-3.5 text-[#00ff88]" />
+                <Zap className="w-3.5 h-3.5 text-[#ff007a]" />
               </div>
             </div>
           ))}
         </div>
 
         {/* Action Banner */}
-        <div className="max-w-4xl mx-auto giga-card p-8 rounded-3xl border-2 border-white/40 text-center space-y-4 shadow-2xl">
-          <h3 className="font-display font-black text-2xl sm:text-3xl text-white">
-            “Join the Most Muscular Movement on Solana”
+        <div className="max-w-4xl mx-auto comic-card p-8 bg-white border-4 border-black text-center space-y-4 shadow-[8px_8px_0px_#000]">
+          <h3 className="font-comic text-2xl sm:text-3xl text-black">
+            “Join the Most Unhinged Community on Solana”
           </h3>
-          <p className="font-sans text-sm sm:text-base text-white/95 max-w-xl mx-auto leading-relaxed">
-            The brotherhood gathers daily to push volume, share massive gains, and ride the unstoppable momentum of {GIGATOAD_NAME}.
+          <p className="font-sans text-sm sm:text-base text-black font-bold max-w-xl mx-auto leading-relaxed">
+            The brotherhood gathers daily on X to raid, share 0 IQ memes, and ride the unstoppable momentum of {SLINGTARD_NAME}.
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
-            {TELEGRAM_URL ? (
-              <a
-                href={TELEGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0088cc] hover:bg-[#0099e6] text-white font-display font-black text-sm shadow-xl transition-all hover:scale-105"
-              >
-                <Send className="w-4 h-4" />
-                <span>Join Official Telegram</span>
-              </a>
-            ) : null}
+            <a
+              href={X_COMMUNITY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="comic-btn inline-flex items-center gap-2 px-6 py-3.5 bg-black hover:bg-[#1a1a24] text-white font-display font-bold text-xs"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+              <span>Join Official X Community</span>
+            </a>
 
             <a
               href={PUMPFUN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-white hover:bg-white/90 text-[#0052fe] font-display font-black text-sm shadow-xl transition-all hover:scale-105"
+              className="comic-btn inline-flex items-center gap-2 px-6 py-3.5 bg-[#ff007a] hover:bg-[#ff1a80] text-white font-display font-black text-xs"
             >
-              <Trophy className="w-4 h-4 text-[#0052fe]" />
-              <span>Pump {GIGATOAD_TICKER} on Pump.fun</span>
+              <span>💊 Pump {SLINGTARD_TICKER} on Pump.fun</span>
             </a>
           </div>
         </div>

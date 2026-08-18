@@ -1,21 +1,21 @@
-export const GIGATOAD_NAME = "Giga Toad Pepe";
-export const GIGATOAD_TICKER = "$gigatoad";
-export const GIGATOAD_LOGO = "https://cdn.shopify.com/s/files/1/0967/8087/8151/files/gigatoad_4.png?v=1786459149";
-export const GIGATOAD_CA = "4QVa33qdXiFe3L3krfSGFaiQEfFUQsWpebJN2CPxpump";
+export const SLINGTARD_NAME = "slingtard";
+export const SLINGTARD_TICKER = "$slingtartd";
+export const SLINGTARD_LOGO = "https://pbs.twimg.com/media/HP9d3tPboAAjDU-?format=jpg&name=small";
+export const SLINGTARD_CA = "46vawUnks5nrN6Y99WRcay2Am9bQuqnKiokf3dgNpump";
 
-// Official Telegram community link
-export const TELEGRAM_URL = "https://t.me/Gigatoadpepe";
-export const TWITTER_URL = "https://x.com/search?q=%24gigatoad";
-export const DEXSCREENER_URL = `https://dexscreener.com/solana/${GIGATOAD_CA}`;
-export const PUMPFUN_URL = `https://pump.fun/coin/${GIGATOAD_CA}`;
-export const SOLSCAN_URL = `https://solscan.io/token/${GIGATOAD_CA}`;
-export const RAYDIUM_URL = `https://raydium.io/swap/?inputMint=sol&outputMint=${GIGATOAD_CA}`;
+// Official Social Links
+export const X_COMMUNITY_URL = "https://x.com/i/communities/2038276050287993288";
+export const DEXSCREENER_URL = `https://dexscreener.com/solana/${SLINGTARD_CA}`;
+export const PUMPFUN_URL = `https://pump.fun/coin/${SLINGTARD_CA}`;
+export const SOLSCAN_URL = `https://solscan.io/token/${SLINGTARD_CA}`;
+export const RAYDIUM_URL = `https://raydium.io/swap/?inputMint=sol&outputMint=${SLINGTARD_CA}`;
 
-// Backward compatibility exports
-export const CHILLTOAD_NAME = GIGATOAD_NAME;
-export const CHILLTOAD_TICKER = GIGATOAD_TICKER;
-export const CHILLTOAD_LOGO = GIGATOAD_LOGO;
-export const CHILLTOAD_CA = GIGATOAD_CA;
-export const TICKER = GIGATOAD_TICKER;
-export const CONTRACT_ADDRESS = GIGATOAD_CA;
-
+// Story Quotes & KOL dumb quotes
+export const SLINGTARD_QUOTES = [
+  "\"I fucked up my previous coin because I am literally a retard. That's why the community made $slingtartd.\"",
+  "\"0 IQ KOL who ruined his previous project. No complicated excuses.\"",
+  "\"They named me Slingtard because I fucked up my coin, and now the chads launched $slingtartd.\"",
+  "\"I am simply a retard. The community launched this new token and owns 100% of it.\"",
+  "\"0% dev control on $slingtartd. Pure retard energy and 100% community on Solana.\"",
+  "\"I ruined my previous token, so the chads took over and sent $slingtartd.\"",
+];

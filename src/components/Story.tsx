@@ -1,207 +1,132 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { BookOpen, Sparkles, Send, Dumbbell, Trophy, Zap, ShieldAlert, Award } from "lucide-react";
-import { TELEGRAM_URL, GIGATOAD_LOGO } from "../constants";
+import React from "react";
+import { Brain, Zap, Sparkles, ArrowRight } from "lucide-react";
+import {
+  SLINGTARD_NAME,
+  SLINGTARD_TICKER,
+  SLINGTARD_LOGO,
+  X_COMMUNITY_URL,
+  PUMPFUN_URL,
+} from "../constants";
 
 export default function Story() {
-  const [selectedChronicle, setSelectedChronicle] = useState<number>(0);
-
-  const toadChronicles = [
+  const steps = [
     {
-      id: "lore-1",
-      tag: "THE ORIGIN • CHAPTER I",
-      title: "Forged on the Iron Lily Pad — The Rise of the Alpha",
-      subtitle: "The Genesis of Pure Muscular Greatness",
-      quote: "While ordinary frogs hopped away from heavy weights, Giga Toad loaded another 500kg onto the bar.",
-      fullText: [
-        "In the deepest, most turbulent waters of the Solana blockchain, where weak-handed tadpoles washed away in the currents, one amphibian stood tall. He didn't just survive the volatility—he used it as progressive overload.",
-        "Equipped with an unyielding mindset and massive iron lily pad barbells, Giga Toad Pepe began a rigorous training regimen. Every red candle became a deep squat; every consolidation became a 1,000-rep bench press session.",
-        "From that moment on, the Solana ecosystem witnessed the birth of its ultimate apex titan: the most muscular, most alpha toad in the entire universe.",
-      ],
-      highlightPhrase: "Unshakable discipline, 1000kg bench press, pure hypertrophy",
-      stat: "ALPHA TITAN • SOLANA UNIVERSE",
+      num: "01",
+      icon: "🤤",
+      badge: "THE FUMBLE",
+      title: "The 0 IQ KOL",
+      description:
+        "Slingtard was a crypto KOL who hyped up his previous coin and ruined it because he is simply a retard.",
+      cardColor: "comic-card-yellow",
     },
     {
-      id: "lore-2",
-      tag: "ALPHA MENTALITY • CHAPTER II",
-      title: "“Bench The Bear Market Into Green God Candles”",
-      subtitle: "The Timeless Chad Toad Creed",
-      quote: "FUD is just psychological cardio. Real Chads build massive portfolios with pure iron hands.",
-      fullText: [
-        "Some called his gains impossible. But the wise knew better—it was the pure law of hypertrophy and unwavering conviction. Giga Toad Pepe proved that true strength isn't about avoiding the dip; it's about benching the entire market back to all-time highs.",
-        "While other communities panic over minor pullbacks, Giga Toad takes another scoop of pure Solana pre-workout, flexes his 24-inch green biceps, and leads the charge with massive green volume.",
-        "Holding $GIGATOAD isn't just holding a memecoin; it's an initiation into the most jacked, high-testosterone brotherhood on Solana.",
-      ],
-      highlightPhrase: "No skipped workouts, no weak hands, pure gains",
-      stat: "100% ALPHA GUARANTEE",
+      num: "02",
+      icon: "🕶️",
+      badge: "THE MEME",
+      title: "Named 'Slingtard'",
+      description:
+        "The crypto timeline roasted his 0 IQ moment, turned him into a meme, and permanently crowned him Slingtard.",
+      cardColor: "comic-card-pink",
     },
     {
-      id: "lore-3",
-      tag: "SOLANA OLYMPUS • CHAPTER III",
-      title: "Solana’s Most Jacked Amphibian Takes the Crown",
-      subtitle: "Apex Predator of the Crypto Universe",
-      quote: "The pond belongs to the strongest. The Giga Toad's jawline was carved by pure cryptographic proof-of-history.",
-      fullText: [
-        "Through every market cycle, thousands of skinny tokens appear and vanish. Yet whenever traders look toward the Giga Toad's gym sanctuary, they see an immovable mountain of muscle and green aura.",
-        "“Did the validator stop pumping?” asks Giga Toad. “No. Did the iron get lighter? No. Then strap on your lifting belt, lock in, and push through the pain.”",
-        "His alpha philosophy has transformed timid paper hands into stone-hard diamond chads capable of lifting generational wealth.",
-      ],
-      highlightPhrase: "Apex predator of the blockchain ecosystem",
-      stat: "ZERO WEAKNESS RECORD",
-    },
-    {
-      id: "lore-4",
-      tag: "ETERNAL DYNASTY • CHAPTER IV",
-      title: "The Giga Toad Pump Dynasty on Solana",
-      subtitle: "The Eternal Alpha Community",
-      quote: "Through bull runs and bear storms, Giga Toad's reign is etched in pure iron.",
-      fullText: [
-        "Today, the Giga Toad movement spans across every corner of the decentralized world. Tens of thousands of alpha traders gather daily to share PRs, push high-volume market raids, and flex their unstoppable momentum.",
-        "With 0% tax, 100% burned liquidity pool, and zero corporate weak points, Giga Toad Pepe embodies the rawest power of community-driven Chad culture.",
-        "The legend is written in green candles, verified on the blockchain, and carried forward by every believer who refuses to stay average.",
-      ],
-      highlightPhrase: "The most dominant community in the Solana universe",
-      stat: "IMMORTAL CHAD LEGACY",
+      num: "03",
+      icon: "👑",
+      badge: "THE COIN",
+      title: "Community Takes Over",
+      description:
+        "The community launched $slingtartd on pump.fun. 100% community owned with 0% dev control and 0% tax.",
+      cardColor: "comic-card-cyan",
     },
   ];
 
   return (
-    <section
-      id="giga-lore"
-      className="relative py-16 sm:py-24 bg-[#0047db] text-white overflow-hidden border-t border-b border-white/20 selection:bg-[#00ff88] selection:text-[#003bb5]"
-    >
-      {/* Soft Ambient Glow (No Grids) */}
-      <div className="absolute inset-0 pointer-events-none select-none z-0 opacity-40">
-        <div className="absolute top-[30%] left-[10%] w-[450px] h-[450px] bg-[#00ff88]/15 rounded-full blur-[160px]"></div>
-        <div className="absolute bottom-[20%] right-[10%] w-[500px] h-[500px] bg-[#0038b8] rounded-full blur-[160px]"></div>
-      </div>
+    <section id="lore" className="relative py-16 sm:py-20 bg-[#ffd600] text-black overflow-hidden border-t-4 border-b-4 border-black comic-dots">
+      
+      {/* Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#ff007a]/20 rounded-full blur-[140px] pointer-events-none"></div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#003bb5] border border-white/30 shadow-sm">
-            <Dumbbell className="w-3.5 h-3.5 text-[#00ff88]" />
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#00ff88]">
-              THE CHRONICLES OF GIGA TOAD PEPE
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-[#00f0ff] border-2 border-black shadow-[3px_3px_0px_#ff007a]">
+            <Brain className="w-4 h-4 text-[#ff007a]" />
+            <span className="text-xs font-mono font-black uppercase tracking-wider">
+              HOW IT HAPPENED
             </span>
           </div>
 
-          <h2 className="font-display font-black text-4xl sm:text-6xl text-white tracking-tight uppercase">
-            The Lore of the <span className="text-[#00ff88]">Most Alpha Toad</span>
+          <h2 className="font-comic text-4xl sm:text-6xl text-black tracking-tight uppercase drop-shadow-[3px_3px_0px_#fff]">
+            The Story in <span className="text-[#ff007a]">3 Simple Steps</span>
           </h2>
-          <p className="font-sans text-base sm:text-xl text-white/95 font-medium max-w-2xl mx-auto">
-            Discover the epic saga of how a muscle-bound amphibian forged in heavy iron became the undisputed king of the Solana universe.
+
+          <p className="font-sans text-base sm:text-lg text-black font-extrabold max-w-xl mx-auto">
+            No long essays or complicated excuses. Just a pure 0 IQ moment that gave birth to Solana's best meme.
           </p>
         </div>
 
-        {/* 4 Interactive Parchment Tabs */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          {toadChronicles.map((item, idx) => {
-            const isSelected = selectedChronicle === idx;
-            return (
-              <button
-                key={item.id}
-                onClick={() => setSelectedChronicle(idx)}
-                className={`text-left p-5 rounded-2xl border transition-all duration-300 relative cursor-pointer ${
-                  isSelected
-                    ? "bg-[#0038b5] border-[#00ff88] shadow-[0_8px_30px_rgba(0,255,136,0.3)] scale-[1.02] ring-2 ring-[#00ff88]/40"
-                    : "bg-[#003dbd]/80 border-white/20 hover:bg-[#0038b5] hover:border-white opacity-85 hover:opacity-100"
-                }`}
-              >
-                {/* Floating Badge indicator if selected */}
-                {isSelected && (
-                  <div className="absolute -top-3 right-4 px-2.5 py-0.5 rounded-full bg-[#00ff88] text-[#003bb5] text-[10px] font-mono font-black shadow-sm flex items-center gap-1">
-                    <Zap className="w-3 h-3 text-[#003bb5]" /> ACTIVE CHAPTER
-                  </div>
-                )}
-
-                <div className="space-y-2">
-                  <span className="block text-[10px] font-mono font-bold text-[#00ff88] uppercase tracking-wider">
-                    {item.tag}
+        {/* 3 Step Comic Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-10">
+          {steps.map((step, idx) => (
+            <div
+              key={idx}
+              className={`${step.cardColor} p-6 sm:p-8 flex flex-col justify-between relative group hover:scale-[1.02] transition-transform duration-300`}
+            >
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono font-black text-white px-2.5 py-1 rounded-xl bg-black border border-black shadow-[2px_2px_0px_#ff007a]">
+                    {step.badge}
                   </span>
-                  <h3 className="font-display font-black text-lg text-white line-clamp-2 leading-snug">
-                    {item.title}
-                  </h3>
-                  <span className="block text-xs font-sans text-white/80 font-medium">
-                    {item.subtitle}
+                  <span className="font-comic text-2xl text-black/40 group-hover:text-black transition-colors">
+                    {step.num}
                   </span>
                 </div>
-              </button>
-            );
-          })}
+
+                <div className="text-5xl my-2">{step.icon}</div>
+
+                <h3 className="font-display font-black text-2xl text-black">
+                  {step.title}
+                </h3>
+
+                <p className="font-sans text-sm sm:text-base text-black font-bold leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t-2 border-black flex items-center justify-between text-xs font-mono font-black text-black/80">
+                <span>STEP {step.num} OF 03</span>
+                <Zap className="w-4 h-4 text-[#ff007a]" />
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Selected Chronicle Reading Stand */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={toadChronicles[selectedChronicle].id}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.4 }}
-            className="giga-card p-8 sm:p-12 rounded-3xl border-2 border-white/40 shadow-2xl relative"
-          >
-            {/* Top Badge */}
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/20 pb-6 mb-8">
-              <div className="space-y-1">
-                <span className="text-xs font-mono font-bold text-[#00ff88] uppercase tracking-widest block">
-                  {toadChronicles[selectedChronicle].tag}
-                </span>
-                <h3 className="font-display font-black text-2xl sm:text-4xl text-white">
-                  {toadChronicles[selectedChronicle].title}
-                </h3>
-              </div>
+        {/* Quick CTA banner */}
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="inline-flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={PUMPFUN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="comic-btn px-6 py-3.5 bg-[#ff007a] hover:bg-[#ff1a80] text-white font-display font-black text-xs sm:text-sm flex items-center gap-2"
+            >
+              <span>💊 Buy {SLINGTARD_TICKER} on Pump.fun</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
 
-              <div className="flex items-center gap-3">
-                <span className="px-3.5 py-1.5 rounded-full bg-[#00319e] text-[#00ff88] font-mono font-bold text-xs border border-white/20">
-                  {toadChronicles[selectedChronicle].stat}
-                </span>
-              </div>
-            </div>
-
-            {/* Quote Block */}
-            <div className="p-6 rounded-2xl bg-[#0038b5] border border-white/30 mb-8 relative">
-              <span className="text-4xl text-[#00ff88] font-serif leading-none absolute top-2 left-3 opacity-50">“</span>
-              <p className="font-serif italic text-lg sm:text-2xl text-white pl-6 font-medium leading-relaxed">
-                {toadChronicles[selectedChronicle].quote}
-              </p>
-            </div>
-
-            {/* Paragraph Content */}
-            <div className="space-y-4 font-sans text-base sm:text-lg text-white/95 leading-relaxed max-w-4xl">
-              {toadChronicles[selectedChronicle].fullText.map((p, pIdx) => (
-                <p key={pIdx}>{p}</p>
-              ))}
-            </div>
-
-            {/* Bottom highlight pill */}
-            <div className="mt-8 pt-6 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-2">
-                <Dumbbell className="w-4 h-4 text-[#00ff88]" />
-                <span className="text-xs font-mono font-bold text-[#00ff88]">
-                  {toadChronicles[selectedChronicle].highlightPhrase}
-                </span>
-              </div>
-
-              {TELEGRAM_URL ? (
-                <a
-                  href={TELEGRAM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-xl bg-[#0088cc] hover:bg-[#0099e6] text-white font-mono font-bold text-xs flex items-center gap-2 shadow-md transition-all"
-                >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>Join the Giga Chat: Telegram</span>
-                </a>
-              ) : (
-                <span className="px-4 py-2 rounded-xl bg-[#00319e] text-white font-mono font-bold text-xs border border-white/20">
-                  ⚡ The Most Alpha Community on Solana
-                </span>
-              )}
-            </div>
-          </motion.div>
-        </AnimatePresence>
+            <a
+              href={X_COMMUNITY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="comic-btn px-6 py-3.5 bg-black hover:bg-[#1a1a24] text-white font-display font-bold text-xs sm:text-sm flex items-center gap-2"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+              <span>Join the X Community</span>
+            </a>
+          </div>
+        </div>
 
       </div>
     </section>

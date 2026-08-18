@@ -1,283 +1,221 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, Sparkles, TrendingUp, BookOpen, Coins, Send, Copy, Check, Dumbbell, Flame } from "lucide-react";
-import { GIGATOAD_NAME, GIGATOAD_TICKER, GIGATOAD_LOGO, GIGATOAD_CA, TELEGRAM_URL, DEXSCREENER_URL, PUMPFUN_URL } from "../constants";
+import React, { useState } from "react";
+import {
+  Copy,
+  Check,
+  Menu,
+  X as CloseIcon,
+  ExternalLink,
+  Zap,
+  TrendingUp,
+  Brain,
+} from "lucide-react";
+import {
+  SLINGTARD_NAME,
+  SLINGTARD_TICKER,
+  SLINGTARD_LOGO,
+  SLINGTARD_CA,
+  X_COMMUNITY_URL,
+  DEXSCREENER_URL,
+  PUMPFUN_URL,
+} from "../constants";
 
 export default function Navbar() {
+  const [copied, setCopied] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [copiedCA, setCopiedCA] = useState(false);
 
-  const handleCopyCA = () => {
-    navigator.clipboard.writeText(GIGATOAD_CA);
-    setCopiedCA(true);
-    setTimeout(() => setCopiedCA(false), 2000);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(SLINGTARD_CA);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (id: string) => {
-    setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const navLinks = [
+    { name: "Story & Lore", href: "#lore" },
+    { name: "0 IQ Lab", href: "#vamp-lab" },
+    { name: "Tokenomics", href: "#tokenomics" },
+    { name: "Roadmap", href: "#roadmap" },
+  ];
 
   return (
-    <>
-      {/* Top Ticker Tape - Giga Chad Alpha Marquee */}
-      <div id="top-ticker" className="w-full bg-[#003bb5] text-[#f8fafc] py-2 px-4 text-xs font-mono font-bold tracking-wider overflow-hidden select-none whitespace-nowrap border-b border-white/20">
-        <div className="inline-block animate-[marquee_25s_linear_infinite] whitespace-nowrap">
-          <span className="mx-4 text-[#00ff88] font-black">💪 GIGA TOAD PEPE • THE MOST ALPHA TOAD IN THE SOLANA UNIVERSE</span>
-          <span className="mx-4 text-white">⚡ CA: {GIGATOAD_CA}</span>
-          <span className="mx-4 text-[#70d6ff]">“BENCHING 1000KG ON THE LILY PAD — ZERO WEAK HANDS”</span>
-          <span className="mx-4 text-[#00ff88]">🔥 $GIGATOAD • 100% ALPHA GAINS</span>
-          <span className="mx-4 text-white">🪙 0% TAX • 100% LP BURNED • PURE CHAD MUSCLE</span>
-          <span className="mx-4 text-[#70d6ff]">🌊 SOLANA’S MOST JACKED AMPHIBIAN</span>
-          <span className="mx-4 text-[#00ff88]">⚡ CONTRACT: {GIGATOAD_CA}</span>
+    <header className="sticky top-0 z-50 bg-[#ffd600]/95 backdrop-blur-md border-b-[3.5px] border-black text-black">
+      {/* Top Ticker Marquee */}
+      <div className="bg-black text-[#ffe600] py-1.5 px-4 overflow-hidden border-b-2 border-black">
+        <div className="whitespace-nowrap flex items-center gap-8 animate-[marquee_22s_linear_infinite] text-xs font-mono font-black tracking-wider uppercase">
+          <span>🧠 0 IQ KOL WHO FUCKED UP HIS PREVIOUS COIN</span>
+          <span>•</span>
+          <span>🤤 $SLINGTARTD ON SOLANA</span>
+          <span>•</span>
+          <span>💸 HE IS SIMPLY A RETARD • COMMUNITY LAUNCHED $SLINGTARTD</span>
+          <span>•</span>
+          <span>🌈 100% PURE RETARD ENERGY</span>
+          <span>•</span>
+          <span>🚀 0% TAX • 0% DEV HOLDINGS • 100% PUMP</span>
+          <span>•</span>
+          <span>🧠 0 IQ KOL WHO FUCKED UP HIS PREVIOUS COIN</span>
+          <span>•</span>
+          <span>🤤 $SLINGTARTD ON SOLANA</span>
+          <span>•</span>
+          <span>💸 HE IS SIMPLY A RETARD • COMMUNITY LAUNCHED $SLINGTARTD</span>
+          <span>•</span>
+          <span>🌈 100% PURE RETARD ENERGY</span>
+          <span>•</span>
+          <span>🚀 0% TAX • 0% DEV HOLDINGS • 100% PUMP</span>
         </div>
       </div>
 
-      {/* Main Navbar */}
-      <header
-        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
-          scrolled
-            ? "bg-[#0047db]/95 backdrop-blur-md border-b border-white/25 shadow-[0_8px_30px_rgba(0,0,0,0.3)] py-2 text-white"
-            : "bg-[#0052fe]/95 backdrop-blur-md border-b border-white/20 py-3 text-white"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            
-            {/* Logo */}
-            <div 
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} 
-              className="flex items-center space-x-3 cursor-pointer group"
-            >
-              <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-[0_0_15px_rgba(255,255,255,0.4)] group-hover:scale-105 transition-transform bg-[#003bb5]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo & Name */}
+          <div className="flex items-center gap-3">
+            <a href="#" className="flex items-center gap-3 group">
+              <div className="relative w-12 h-12 rounded-2xl overflow-hidden border-3 border-black bg-[#ffe600] shadow-[3px_3px_0px_#000] group-hover:rotate-6 transition-transform">
                 <img
-                  src={GIGATOAD_LOGO}
-                  alt="Giga Toad Pepe Logo"
+                  src={SLINGTARD_LOGO}
+                  alt="slingtard Logo"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="flex flex-col">
-                <div className="flex items-center gap-1.5">
-                  <span className="font-script text-2xl sm:text-3xl text-white tracking-wide group-hover:text-[#00ff88] transition-colors lowercase">
-                    giga &ldquo;toad&rdquo; pepe
-                  </span>
-                  <span className="text-[10px] font-mono font-black text-[#003bb5] bg-[#00ff88] px-2 py-0.5 rounded-full shadow-sm">
-                    {GIGATOAD_TICKER}
-                  </span>
-                </div>
-                <span className="text-[10px] font-mono text-white/90 font-bold -mt-0.5 tracking-wider flex items-center gap-1">
-                  <Dumbbell className="w-2.5 h-2.5 text-[#00ff88]" /> Most Alpha Toad on Solana
+                <span className="font-display font-black text-2xl tracking-tight text-black flex items-center gap-1 leading-none">
+                  {SLINGTARD_NAME}
+                </span>
+                <span className="text-xs font-mono font-black text-[#ff007a] tracking-wider uppercase mt-1">
+                  {SLINGTARD_TICKER}
                 </span>
               </div>
-            </div>
+            </a>
+          </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-6 font-mono font-bold text-xs uppercase tracking-wider text-white">
-              <button onClick={() => scrollToSection("giga-lore")} className="hover:text-[#00ff88] transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
-                <BookOpen className="w-3.5 h-3.5 text-[#00ff88]" />
-                Giga Lore
-              </button>
-              <button onClick={() => scrollToSection("alpha-gym")} className="hover:text-[#00ff88] transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
-                <Dumbbell className="w-3.5 h-3.5 text-[#00ff88]" />
-                Alpha Gym
-              </button>
-              <button onClick={() => scrollToSection("tokenomics")} className="hover:text-[#00ff88] transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
-                <Coins className="w-3.5 h-3.5 text-[#00ff88]" />
-                Chad Ledger
-              </button>
-              <button onClick={() => scrollToSection("roadmap")} className="hover:text-[#00ff88] transition-colors cursor-pointer flex items-center gap-1.5 border-none bg-transparent">
-                <Flame className="w-3.5 h-3.5 text-[#00ff88]" />
-                Roadmap
-              </button>
-            </nav>
-
-            {/* Quick Actions, CA Copy & Links */}
-            <div className="hidden md:flex items-center space-x-2 relative">
-              {/* Copy CA Button */}
-              <button
-                onClick={handleCopyCA}
-                title="Copy Contract Address"
-                className="px-3.5 py-2 rounded-xl bg-[#003cb8] hover:bg-[#0034a1] border border-white/30 text-white font-mono font-bold text-xs transition-all flex items-center gap-1.5 shadow-sm cursor-pointer"
+          {/* Desktop Nav Links */}
+          <nav className="hidden lg:flex items-center gap-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-sm font-display font-bold text-black hover:text-[#ff007a] transition-colors relative py-1"
               >
-                {copiedCA ? <Check className="w-3.5 h-3.5 text-[#00ff88]" /> : <Copy className="w-3.5 h-3.5 text-[#00ff88]" />}
-                <span className="hidden xl:inline text-[#00ff88]">CA:</span>
-                <span>{GIGATOAD_CA.slice(0, 4)}...{GIGATOAD_CA.slice(-4)}</span>
-                {copiedCA && <span className="text-[10px] text-[#00ff88] font-bold">Copied!</span>}
-              </button>
+                {link.name}
+              </a>
+            ))}
+          </nav>
 
-              {/* Telegram Official Pill (Handles empty URL gracefully) */}
-              {TELEGRAM_URL ? (
-                <a
-                  href={TELEGRAM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  id="header-telegram-btn"
-                  className="px-3.5 py-2 rounded-xl bg-[#0088cc]/30 hover:bg-[#0088cc]/50 border border-white/40 text-white font-mono font-bold text-xs transition-all flex items-center gap-1.5 shadow-md group"
-                >
-                  <Send className="w-3.5 h-3.5 text-white group-hover:rotate-12 transition-transform" />
-                  <span>Telegram</span>
-                </a>
+          {/* Right Action Buttons */}
+          <div className="hidden sm:flex items-center gap-3">
+            {/* CA Copy Button */}
+            <button
+              onClick={handleCopy}
+              className={`comic-btn px-3.5 py-2 text-xs font-mono font-bold flex items-center gap-2 ${
+                copied
+                  ? "bg-[#00f0ff] text-black"
+                  : "bg-white hover:bg-yellow-50 text-black"
+              }`}
+              title="Click to copy CA"
+            >
+              {copied ? (
+                <>
+                  <Check className="w-4 h-4 text-black" />
+                  <span>CA Copied!</span>
+                </>
               ) : (
-                <span
-                  title="Telegram channel opening soon"
-                  className="px-3 py-2 rounded-xl bg-[#003cb8]/80 border border-white/20 text-white/70 font-mono font-bold text-xs flex items-center gap-1.5 select-none"
-                >
-                  <Send className="w-3.5 h-3.5 text-white/60" />
-                  <span>Telegram (Soon)</span>
-                </span>
+                <>
+                  <Copy className="w-4 h-4 text-black" />
+                  <span className="truncate max-w-[110px]">
+                    {SLINGTARD_CA.slice(0, 4)}...{SLINGTARD_CA.slice(-4)}
+                  </span>
+                </>
               )}
+            </button>
 
-              <a
-                href={DEXSCREENER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3.5 py-2 rounded-xl bg-[#003cb8] hover:bg-[#0034a1] border border-white/30 text-white font-mono font-bold text-xs transition-all flex items-center gap-1.5 shadow-md"
-              >
-                <TrendingUp className="w-3.5 h-3.5 text-[#00ff88]" />
-                <span>Chart</span>
-              </a>
+            {/* X Community Button */}
+            <a
+              href={X_COMMUNITY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="comic-btn px-4 py-2 bg-black hover:bg-[#1a1a24] text-white text-xs font-display font-bold flex items-center gap-2"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+              <span>X Community</span>
+            </a>
 
-              <a
-                href={PUMPFUN_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3.5 py-2 rounded-xl bg-white hover:bg-white/90 text-[#0052fe] font-mono font-bold text-xs transition-all flex items-center gap-1.5 shadow-md"
-              >
-                <span>💊</span>
-                <span>Pump.fun</span>
-              </a>
+            {/* Pump.fun Direct Button */}
+            <a
+              href={PUMPFUN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="comic-btn px-4 py-2 bg-[#00f0ff] hover:bg-[#38f4ff] text-black text-xs font-display font-black flex items-center gap-1.5"
+            >
+              <span>💊</span>
+              <span>Buy on Pump.fun</span>
+            </a>
+          </div>
 
-              <button
-                onClick={() => scrollToSection("alpha-gym")}
-                id="explore-alpha-gym-header-btn"
-                className="px-4 py-2 rounded-xl bg-[#00ff88] hover:bg-[#00e67a] text-[#003bb5] font-display font-black text-xs shadow-[0_0_20px_rgba(0,255,136,0.4)] hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer border-none"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-[#003bb5]" />
-                Alpha Gym
-              </button>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="lg:hidden flex items-center space-x-2">
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-xl bg-[#003cb8] text-white hover:text-[#00ff88] border border-white/30 focus:outline-none cursor-pointer"
-                aria-label="Toggle mobile menu"
-              >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            </div>
-
+          {/* Mobile Menu Toggle */}
+          <div className="flex sm:hidden items-center gap-2">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="comic-btn p-2.5 bg-white text-black"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <CloseIcon className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="lg:hidden bg-[#0047db] border-b border-white/20 shadow-xl px-4 pt-2 pb-6 space-y-4"
-            >
-              {/* Contract Address for Mobile */}
-              <button
-                onClick={handleCopyCA}
-                className="w-full p-3 rounded-xl bg-[#003bb5] border border-white/30 flex items-center justify-between text-white cursor-pointer"
+      {/* Mobile Drawer */}
+      {mobileMenuOpen && (
+        <div className="sm:hidden bg-[#ffe600] border-b-4 border-black px-4 pt-4 pb-6 space-y-4 shadow-xl">
+          <nav className="flex flex-col gap-3">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="comic-btn p-3 bg-white text-black font-display font-bold text-center text-sm"
               >
-                <div className="flex items-center gap-2">
-                  {copiedCA ? <Check className="w-4 h-4 text-[#00ff88]" /> : <Copy className="w-4 h-4 text-[#00ff88]" />}
-                  <div className="text-left">
-                    <span className="text-[10px] font-mono text-[#00ff88] block font-bold">SOLANA CONTRACT ADDRESS</span>
-                    <span className="text-xs font-mono font-bold text-white">{GIGATOAD_CA.slice(0, 8)}...{GIGATOAD_CA.slice(-8)}</span>
-                  </div>
-                </div>
-                <span className="text-xs font-mono font-bold bg-[#0052fe] text-[#00ff88] px-2.5 py-1 rounded border border-[#00ff88]/40">
-                  {copiedCA ? "Copied!" : "Copy CA"}
-                </span>
-              </button>
+                {link.name}
+              </a>
+            ))}
+          </nav>
 
-              <nav className="flex flex-col space-y-3 font-mono font-medium text-white">
-                <button
-                  onClick={() => scrollToSection("giga-lore")}
-                  className="text-left py-2 px-3 rounded-lg hover:bg-[#003bb5] hover:text-[#00ff88] transition-all text-sm flex items-center gap-2 border-none bg-transparent"
-                >
-                  <BookOpen className="w-4 h-4 text-[#00ff88]" /> Giga Lore
-                </button>
-                <button
-                  onClick={() => scrollToSection("alpha-gym")}
-                  className="text-left py-2 px-3 rounded-lg hover:bg-[#003bb5] hover:text-[#00ff88] transition-all text-sm flex items-center gap-2 border-none bg-transparent"
-                >
-                  <Dumbbell className="w-4 h-4 text-[#00ff88]" /> Alpha Gym & Gains Clicker
-                </button>
-                <button
-                  onClick={() => scrollToSection("tokenomics")}
-                  className="text-left py-2 px-3 rounded-lg hover:bg-[#003bb5] hover:text-[#00ff88] transition-all text-sm flex items-center gap-2 border-none bg-transparent"
-                >
-                  <Coins className="w-4 h-4 text-[#00ff88]" /> Chad Ledger
-                </button>
-                <button
-                  onClick={() => scrollToSection("roadmap")}
-                  className="text-left py-2 px-3 rounded-lg hover:bg-[#003bb5] hover:text-[#00ff88] transition-all text-sm flex items-center gap-2 border-none bg-transparent"
-                >
-                  <Flame className="w-4 h-4 text-[#00ff88]" /> Giga Roadmap
-                </button>
-              </nav>
+          <div className="pt-2 flex flex-col gap-2.5">
+            <button
+              onClick={handleCopy}
+              className="comic-btn w-full p-3 bg-[#c7f9ff] text-black font-mono font-bold text-xs flex items-center justify-center gap-2"
+            >
+              {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+              <span>{copied ? "Copied CA!" : "Copy CA: " + SLINGTARD_CA.slice(0, 8) + "..."}</span>
+            </button>
 
-              <div className="pt-4 border-t border-white/20 flex flex-col gap-2.5">
-                {TELEGRAM_URL && (
-                  <a
-                    href={TELEGRAM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full px-4 py-2.5 rounded-xl bg-[#0088cc] hover:bg-[#0099e6] text-white font-mono font-bold text-xs flex items-center justify-center gap-2 shadow-sm"
-                  >
-                    <Send className="w-4 h-4 text-white" /> Join Telegram Community
-                  </a>
-                )}
+            <a
+              href={X_COMMUNITY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="comic-btn w-full p-3 bg-black text-white font-display font-bold text-xs flex items-center justify-center gap-2"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+              <span>Join X Community</span>
+            </a>
 
-                <a
-                  href={DEXSCREENER_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full px-4 py-2.5 rounded-xl bg-[#003bb5] border border-white/20 text-white font-mono font-bold text-xs flex items-center justify-center gap-2"
-                >
-                  <TrendingUp className="w-4 h-4 text-[#00ff88]" /> DexScreener Chart
-                </a>
-
-                <a
-                  href={PUMPFUN_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full px-4 py-2.5 rounded-xl bg-white text-[#0052fe] font-mono font-bold text-xs flex items-center justify-center gap-2"
-                >
-                  <span>💊</span> Pump.fun
-                </a>
-
-                <button
-                  onClick={() => scrollToSection("alpha-gym")}
-                  className="w-full px-5 py-3 rounded-xl bg-[#00ff88] text-[#003bb5] font-display font-black text-sm shadow-md border-none flex items-center justify-center gap-2"
-                >
-                  <Sparkles className="w-4 h-4" /> Enter Alpha Gym
-                </button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
-    </>
+            <a
+              href={PUMPFUN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="comic-btn w-full p-3 bg-[#ff007a] text-white font-display font-black text-xs flex items-center justify-center gap-2"
+            >
+              <span>💊 Buy on Pump.fun</span>
+            </a>
+          </div>
+        </div>
+      )}
+    </header>
   );
 }
